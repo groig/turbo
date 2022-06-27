@@ -10,6 +10,7 @@ defmodule Turbo.CarsFixtures do
   """
   def car_fixture(attrs \\ %{}) do
     driver = DriversFixtures.driver_fixture()
+
     {:ok, car} =
       attrs
       |> Enum.into(%{

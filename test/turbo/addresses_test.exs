@@ -22,8 +22,13 @@ defmodule Turbo.AddressesTest do
     end
 
     test "create_address/1 with valid data creates a address" do
-      customer = CustomersFixtures.customer_fixture
-      valid_attrs = %{name: "name", location: %Geo.Point{coordinates: {30.20, 20.30}}, customer_id: customer.id}
+      customer = CustomersFixtures.customer_fixture()
+
+      valid_attrs = %{
+        name: "name",
+        location: %Geo.Point{coordinates: {30.20, 20.30}},
+        customer_id: customer.id
+      }
 
       assert {:ok, %Address{} = _address} = Addresses.create_address(valid_attrs)
     end

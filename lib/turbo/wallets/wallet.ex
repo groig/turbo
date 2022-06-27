@@ -5,7 +5,6 @@ defmodule Turbo.Wallets.Wallet do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "wallets" do
-
     belongs_to :driver, Turbo.Drivers.Driver
     field :credit, :integer, default: 0
 
