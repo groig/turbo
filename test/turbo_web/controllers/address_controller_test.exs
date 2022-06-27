@@ -1,5 +1,5 @@
 defmodule TurboWeb.AddressControllerTest do
-  use TurboWeb.ConnCase
+  use TurboWeb.ConnCase, async: true
 
   alias Turbo.CustomersFixtures
 

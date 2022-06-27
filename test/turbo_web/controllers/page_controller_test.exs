@@ -1,5 +1,5 @@
 defmodule TurboWeb.PageControllerTest do
-  use TurboWeb.ConnCase
+  use TurboWeb.ConnCase, async: true
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")

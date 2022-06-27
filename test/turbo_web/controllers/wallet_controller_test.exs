@@ -1,5 +1,5 @@
 defmodule TurboWeb.WalletControllerTest do
-  use TurboWeb.ConnCase
+  use TurboWeb.ConnCase, async: True
 
   alias Turbo.DriversFixtures
 

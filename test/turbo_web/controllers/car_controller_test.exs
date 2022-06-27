@@ -1,5 +1,5 @@
 defmodule TurboWeb.CarControllerTest do
-  use TurboWeb.ConnCase
+  use TurboWeb.ConnCase, async: true
   alias Turbo.DriversFixtures
 
   import Turbo.CarsFixtures

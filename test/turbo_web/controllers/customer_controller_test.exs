@@ -1,5 +1,5 @@
 defmodule TurboWeb.CustomerControllerTest do
-  use TurboWeb.ConnCase
+  use TurboWeb.ConnCase, async: true
   alias Turbo.AccountsFixtures
 
   import Turbo.CustomersFixtures
