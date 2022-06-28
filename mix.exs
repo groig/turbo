@@ -51,7 +51,8 @@ defmodule Turbo.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:geo_postgis, "~> 3.4"},
-      {:open_api_spex, "~> 3.11"}
+      {:open_api_spex, "~> 3.11"},
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
     ]
   end
 
