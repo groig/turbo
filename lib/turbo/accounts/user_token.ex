@@ -11,7 +11,6 @@ defmodule Turbo.Accounts.UserToken do
   @reset_password_validity_in_days 1
   @confirm_validity_in_days 7
   @change_email_validity_in_days 7
-  @session_validity_in_days 60
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
@@ -44,7 +43,7 @@ defmodule Turbo.Accounts.UserToken do
   session they deem invalid.
   """
   def build_session_token(user) do
-    token = :crypto.strong_rand_bytes(@rand_size)
+    token = Base.url_encode64(:crypto.strong_rand_bytes(@rand_size))
     {token, %UserToken{token: token, context: "session", user_id: user.id}}
   end
 
@@ -56,11 +55,10 @@ defmodule Turbo.Accounts.UserToken do
   The token is valid if it matches the value in the database and it has
   not expired (after @session_validity_in_days).
   """
-  def verify_session_token_query(token) do
+  def verify_token_query(token) do
     query =
       from token in token_and_context_query(token, "session"),
         join: user in assoc(token, :user),
-        where: token.inserted_at > ago(@session_validity_in_days, "day"),
         select: user
 
     {:ok, query}

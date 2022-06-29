@@ -4,24 +4,22 @@ defmodule TurboWeb.UserSessionController do
   alias Turbo.Accounts
   alias TurboWeb.UserAuth
 
-  def new(conn, _params) do
-    render(conn, "new.html", error_message: nil)
-  end
-
-  def create(conn, %{"user" => user_params}) do
-    %{"email" => email, "password" => password} = user_params
-
+  def create(conn, %{"email" => email, "password" => password}) do
     if user = Accounts.get_user_by_email_and_password(email, password) do
-      UserAuth.log_in_user(conn, user, user_params)
+      token = UserAuth.log_in_user(user)
+      conn |> render("token.json", token: token)
     else
-      # In order to prevent user enumeration attacks, don't disclose whether the email is registered.
-      render(conn, "new.html", error_message: "Invalid email or password")
+      conn
+      |> put_status(401)
+      |> put_view(TurboWeb.MessageView)
+      |> render("message.json", message: "Invalid email or password.")
     end
   end
 
   def delete(conn, _params) do
     conn
-    |> put_flash(:info, "Logged out successfully.")
     |> UserAuth.log_out_user()
+    |> put_view(TurboWeb.MessageView)
+    |> render("message.json", message: "Logged out successfully")
   end
 end

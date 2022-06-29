@@ -166,7 +166,11 @@ defmodule Turbo.Accounts do
       {:ok, %{to: ..., body: ...}}
 
   """
-  def deliver_update_email_instructions(%User{} = user, current_email, update_email_url_fun)
+  def deliver_update_email_instructions(
+        %User{} = user,
+        current_email,
+        update_email_url_fun \\ &"#{&1}"
+      )
       when is_function(update_email_url_fun, 1) do
     {encoded_token, user_token} = UserToken.build_email_token(user, "change:#{current_email}")
 
@@ -220,7 +224,7 @@ defmodule Turbo.Accounts do
   @doc """
   Generates a session token.
   """
-  def generate_user_session_token(user) do
+  def generate_user_token(user) do
     {token, user_token} = UserToken.build_session_token(user)
     Repo.insert!(user_token)
     token
@@ -229,17 +233,24 @@ defmodule Turbo.Accounts do
   @doc """
   Gets the user with the given signed token.
   """
-  def get_user_by_session_token(token) do
-    {:ok, query} = UserToken.verify_session_token_query(token)
+  def get_user_by_token(token) do
+    {:ok, query} = UserToken.verify_token_query(token)
     Repo.one(query)
   end
 
   @doc """
   Deletes the signed token with the given context.
   """
-  def delete_session_token(token) do
+  def delete_token(token) do
     Repo.delete_all(UserToken.token_and_context_query(token, "session"))
     :ok
+  end
+
+  @doc """
+  Deletes all the user tokens
+  """
+  def delete_tokens(user) do
+    Repo.delete_all(from t in UserToken, where: t.user_id == ^user.id)
   end
 
   ## Confirmation
@@ -256,7 +267,7 @@ defmodule Turbo.Accounts do
       {:error, :already_confirmed}
 
   """
-  def deliver_user_confirmation_instructions(%User{} = user, confirmation_url_fun)
+  def deliver_user_confirmation_instructions(%User{} = user, confirmation_url_fun \\ &"#{&1}")
       when is_function(confirmation_url_fun, 1) do
     if user.confirmed_at do
       {:error, :already_confirmed}
@@ -300,7 +311,7 @@ defmodule Turbo.Accounts do
       {:ok, %{to: ..., body: ...}}
 
   """
-  def deliver_user_reset_password_instructions(%User{} = user, reset_password_url_fun)
+  def deliver_user_reset_password_instructions(%User{} = user, reset_password_url_fun \\ &"#{&1}")
       when is_function(reset_password_url_fun, 1) do
     {encoded_token, user_token} = UserToken.build_email_token(user, "reset_password")
     Repo.insert!(user_token)

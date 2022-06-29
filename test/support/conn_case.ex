@@ -14,6 +14,7 @@ defmodule TurboWeb.ConnCase do
   by setting `use TurboWeb.ConnCase, async: true`, although
   this option is not recommended for other databases.
   """
+  alias TurboWeb.UserAuth
 
   use ExUnit.CaseTemplate
 
@@ -46,19 +47,14 @@ defmodule TurboWeb.ConnCase do
   """
   def register_and_log_in_user(%{conn: conn}) do
     user = Turbo.AccountsFixtures.user_fixture()
-    %{conn: log_in_user(conn, user), user: user}
+    token = UserAuth.log_in_user(user)
+    conn = Plug.Conn.put_req_header(conn, "authorization", "Bearer #{token}")
+    %{conn: conn, user: user}
   end
 
-  @doc """
-  Logs the given `user` into the `conn`.
-
-  It returns an updated `conn`.
-  """
   def log_in_user(conn, user) do
-    token = Turbo.Accounts.generate_user_session_token(user)
-
-    conn
-    |> Phoenix.ConnTest.init_test_session(%{})
-    |> Plug.Conn.put_session(:user_token, token)
+    token = UserAuth.log_in_user(user)
+    conn = Plug.Conn.put_req_header(conn, "authorization", "Bearer #{token}")
+    %{conn: conn, user: user}
   end
 end
