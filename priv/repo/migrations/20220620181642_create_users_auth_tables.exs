@@ -11,6 +11,7 @@ defmodule Turbo.Repo.Migrations.CreateUsersAuthTables do
       add :phone, :string
       add :hashed_password, :string, null: false
       add :confirmed_at, :naive_datetime
+      add(:type, :string, default: "customer")
       timestamps()
     end
 

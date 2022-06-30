@@ -30,9 +30,9 @@ defmodule TurboWeb.UserConfirmationController do
       :error ->
         conn
         |> put_status(410)
-        |> put_view(TurboWeb.MessageView)
-        |> render("message.json",
-          message: "User confirmation code is invalid or it has expired."
+        |> put_view(TurboWeb.ErrorView)
+        |> render("error.json",
+          error: "User confirmation code is invalid or it has expired."
         )
     end
   end

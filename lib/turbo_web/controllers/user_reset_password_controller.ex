@@ -34,8 +34,8 @@ defmodule TurboWeb.UserResetPasswordController do
       {:error, changeset} ->
         conn
         |> put_status(409)
-        |> put_view(TurboWeb.MessageView)
-        |> render("message.json", message: changeset_error_to_string(changeset))
+        |> put_view(TurboWeb.ErrorView)
+        |> render("error.json", changeset: changeset)
     end
   end
 
@@ -47,8 +47,8 @@ defmodule TurboWeb.UserResetPasswordController do
     else
       conn
       |> put_status(410)
-      |> put_view(TurboWeb.MessageView)
-      |> render("message.json", message: "Reset password token is invalid or it has expired.")
+      |> put_view(TurboWeb.ErrorView)
+      |> render("error.json", error: "Reset password token is invalid or it has expired.")
       |> halt()
     end
   end

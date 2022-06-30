@@ -35,11 +35,11 @@ defmodule TurboWeb.UserSessionControllerTest do
 
   describe "DELETE /auth/log_out" do
     test "logs the user out", %{conn: conn, user: user} do
-      %{conn: conn, user: user} = log_in_user(conn, user)
+      %{conn: conn, user: _user} = log_in_user(conn, user)
       conn = delete(conn, Routes.user_session_path(conn, :delete))
-      token = UserAuth.fetch_token(conn)
       assert conn.resp_body =~ "Logged out successfully"
-      # refute get_session(conn, :user_token)
+      token = UserAuth.fetch_token(conn)
+      refute Accounts.get_user_by_token(token)
     end
 
     test "succeeds even if the user is not logged in", %{conn: conn} do

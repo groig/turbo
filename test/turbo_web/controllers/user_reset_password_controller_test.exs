@@ -53,11 +53,11 @@ defmodule TurboWeb.UserResetPasswordControllerTest do
     test "does not reset password on invalid data", %{conn: conn, token: token} do
       conn =
         put(conn, Routes.user_reset_password_path(conn, :update, token), %{
-          "password" => "too short",
+          "password" => "toosmol",
           "password_confirmation" => "does not match"
         })
 
-      assert conn.resp_body =~ "should be at least 12 character(s)"
+      assert conn.resp_body =~ "should be at least 8 character(s)"
       assert conn.resp_body =~ "does not match password"
     end
 

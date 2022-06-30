@@ -21,8 +21,7 @@ defmodule TurboWeb.Router do
   scope "/api/auth", TurboWeb do
     pipe_through :api
 
-    post "/register_customer", UserRegistrationController, :new
-    post "/register_driver", UserRegistrationController, :create
+    post "/register", RegistrationController, :create
     post "/log_in", UserSessionController, :create
     delete "/log_out", UserSessionController, :delete
     post "/reset_password", UserResetPasswordController, :create

@@ -7,7 +7,7 @@ defmodule TurboWeb.UserSettingsControllerTest do
 
   setup :register_and_log_in_user
 
-  describe "PUT /users/settings (change password form)" do
+  describe "PUT /auth/settings (change password form)" do
     test "updates the user password and resets tokens", %{conn: conn, user: user} do
       new_password_conn =
         put(conn, Routes.user_settings_path(conn, :update), %{
@@ -36,12 +36,12 @@ defmodule TurboWeb.UserSettingsControllerTest do
           "action" => "update_password",
           "current_password" => "invalid",
           "passwords" => %{
-            "password" => "too short",
+            "password" => "toosmol",
             "password_confirmation" => "does not match"
           }
         })
 
-      assert old_password_conn.resp_body =~ "should be at least 12 character(s)"
+      assert old_password_conn.resp_body =~ "should be at least 8 character(s)"
       assert old_password_conn.resp_body =~ "does not match password"
       assert old_password_conn.resp_body =~ "is not valid"
       old_token = UserAuth.fetch_token(conn)
@@ -49,7 +49,7 @@ defmodule TurboWeb.UserSettingsControllerTest do
     end
   end
 
-  describe "PUT /users/settings (change email form)" do
+  describe "PUT /auth/settings (change email form)" do
     @tag :capture_log
     test "updates the user email", %{conn: conn, user: user} do
       conn =
@@ -96,12 +96,12 @@ defmodule TurboWeb.UserSettingsControllerTest do
       assert Accounts.get_user_by_email(email)
 
       conn = get(conn, Routes.user_settings_path(conn, :confirm_email, token))
-      assert conn.resp_body =~ "Email change link is invalid or it has expired"
+      assert conn.resp_body =~ "Email change code is invalid or it has expired"
     end
 
     test "does not update email with invalid token", %{conn: conn, user: user} do
       conn = get(conn, Routes.user_settings_path(conn, :confirm_email, "oops"))
-      assert conn.resp_body =~ "Email change link is invalid or it has expired"
+      assert conn.resp_body =~ "Email change code is invalid or it has expired"
       assert Accounts.get_user_by_email(user.email)
     end
 

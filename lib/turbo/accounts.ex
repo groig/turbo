@@ -5,6 +5,9 @@ defmodule Turbo.Accounts do
 
   import Ecto.Query, warn: false
   alias Turbo.Repo
+  alias Turbo.Customers.Customer
+  alias Turbo.Drivers.Driver
+  alias Ecto.Multi
 
   alias Turbo.Accounts.{User, UserToken, UserNotifier}
 
@@ -78,6 +81,54 @@ defmodule Turbo.Accounts do
     %User{}
     |> User.registration_changeset(attrs)
     |> Repo.insert()
+  end
+
+  @doc """
+  Registers a customer
+
+  """
+  def register_customer(attrs) do
+    user_changeset = User.registration_changeset(%User{}, attrs)
+
+    multi =
+      Multi.new()
+      |> Multi.insert(:user, user_changeset)
+      |> Multi.merge(fn %{user: user} ->
+        customer_changeset = Customer.changeset(%Customer{}, %{user_id: user.id})
+
+        Multi.new()
+        |> Multi.insert(:customer, customer_changeset)
+      end)
+
+    case Repo.transaction(multi) do
+      {:ok, data} ->
+        {:ok, data}
+
+      {:error, _step, %Ecto.Changeset{} = changeset, _changes_so_far} ->
+        {:error, changeset}
+    end
+  end
+
+  def register_driver(attrs) do
+    user_changeset = User.registration_changeset(%User{}, attrs)
+
+    multi =
+      Multi.new()
+      |> Multi.insert(:user, user_changeset)
+      |> Multi.merge(fn %{user: user} ->
+        driver_changeset = Driver.changeset(%Driver{}, Map.merge(attrs, %{"user_id" => user.id}))
+
+        Multi.new()
+        |> Multi.insert(:driver, driver_changeset)
+      end)
+
+    case Repo.transaction(multi) do
+      {:ok, data} ->
+        {:ok, data}
+
+      {:error, _step, %Ecto.Changeset{} = changeset, _changes_so_far} ->
+        {:error, changeset}
+    end
   end
 
   @doc """

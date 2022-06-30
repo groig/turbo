@@ -11,8 +11,8 @@ defmodule TurboWeb.UserSessionController do
     else
       conn
       |> put_status(401)
-      |> put_view(TurboWeb.MessageView)
-      |> render("message.json", message: "Invalid email or password.")
+      |> put_view(TurboWeb.ErrorView)
+      |> render("error.json", error: "Invalid email or password.")
     end
   end
 
