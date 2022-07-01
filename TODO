@@ -1,0 +1,48 @@
+Clientes
+[*] Registrarse en la aplicacion
+[X] Autenticarse en la aplicacion
+[] Consultar viajes previamente realizados
+[] Poder filtrar viajes previamente realizados
+[] Establecer puntos de recogida/destino predeterminados(Casa,Trabajo, ETC[Pueden registrarse tantos como el usuario quiera])
+[] Elegir modalidad de viaje({Establecer destino en el mapa}{Establecer destino en el trayecto})
+[] Recibir notificacion de llegada del auto
+[] Recibir notificacion de fin de carrera
+[] Recibir notificaciones de los dueños de la app
+[] Elegir tipo de vehiculo para un viaje(Estandar, Confort, Premium)
+[] Ver el costo aproximado del viaje y su duracion basado en la ruta optima del mismo.
+[] Visualizar los taxis cercanos al usuario por categoria al momento de solicitar el viaje
+[] Visualizar en el mapa la ubicacion del usuario y el taxi previo a la recogida
+[] Visualizar en el mapa la ubicacion del taxi, el destino y la ruta durante el viaje
+[] Visualizar en el mapa la cantidad de KM transitados durante el viaje en tiempo real
+[] Visualizar en el mapa la duracion del viaje
+[] Ver el recibo del viaje(Cantidad de KM, Tarifa por KM, Duracion y costo total)
+[] Poder dar calificacion al chofer( de 0 a 5 estrellas) y dejar comentario sobre el viaje(aplicable a cada viaje sin importar si se repite el chofer)
+[] Ver info de contacto del chofer(No de tlf)(Poder abrir seccion de chat con el)
+[] Cancelar un viaje
+
+Choferes
+[*] Registrarse en la aplicacion
+[X] Autenticarse en la aplicacion
+[] Consultar saldo restante
+[] Consultar viajes previamente realizados y sus tarifas
+[] Ser Notificado de nuevos viajes
+[] Ver lugar de recogida del viaje(distancia a la hubicacion del cliente, Valor de la carrera, Distancia aproximada hasta la carrera)
+[] Una vez aceptada la carrera visualizar la hubicacion relativa del cliente a la posicion del chofer)
+[] Una vez concluida la carrera ver recibo de la misma detallando kilometraje tiempo y cantidad a cobrar junto con el valor a descontar de su saldo
+[] Recibir notificaciones sobre saldo bajo
+[] Recibir notificaciones de los administradores de la aplicacion
+[] Aceptar o rechazar un viaje
+[] Ver la calificacion como chofer dada por los clientes.
+[] Ver info de contacto del cliente poder abrir conversacion con el
+[] Cancelar un viaje
+
+Administradores
+[X] Autenticarse en la aplicacion
+[X] Registrar nuevos administradores
+[]  Consultar cantidad de carreras por filtro( Diarias, semanales, Mensuales)
+[] Consultar cantidad de choferes activos(desglosado por estado, a la espera o viajando)
+[] Listar choferes en activo con info de contacto(posibilidad de abrir un chat con ellos)
+[] Dar de alta a un nuevo chofer
+[] Dar de baja a un chofer
+[] Agregar saldo a la cuenta de un chofer(Especificar si pago por efectvo o trasnferencia(en el caso de ser por transferencia ID de transferencia)
+[] Generar Reporte en Excel o PDF Desglosando todos los viajes realizados en un periodo de tiempo X, Mostrando Ganancias por cada carrera realizada)
