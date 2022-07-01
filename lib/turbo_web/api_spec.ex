@@ -1,5 +1,5 @@
 defmodule TurboWeb.ApiSpec do
-  alias OpenApiSpex.{Components, Info, OpenApi, Paths, Server}
+  alias OpenApiSpex.{Info, OpenApi, Paths, Server}
   alias TurboWeb.{Endpoint, Router}
 
   @behaviour OpenApi
