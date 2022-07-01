@@ -16,6 +16,7 @@ defmodule TurboWeb.RegistrationController do
 
       {:error, %Ecto.Changeset{} = changeset} ->
         conn
+        |> put_status(400)
         |> put_view(TurboWeb.ErrorView)
         |> render("error.json", changeset: changeset)
     end
@@ -33,6 +34,7 @@ defmodule TurboWeb.RegistrationController do
 
       {:error, %Ecto.Changeset{} = changeset} ->
         conn
+        |> put_status(400)
         |> put_view(TurboWeb.ErrorView)
         |> render("error.json", changeset: changeset)
     end
@@ -51,6 +53,7 @@ defmodule TurboWeb.RegistrationController do
 
       {:error, %Ecto.Changeset{} = changeset} ->
         conn
+        |> put_status(400)
         |> put_view(TurboWeb.ErrorView)
         |> render("error.json", changeset: changeset)
     end

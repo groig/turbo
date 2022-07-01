@@ -24,6 +24,7 @@ defmodule TurboWeb.ConnCase do
       import Plug.Conn
       import Phoenix.ConnTest
       import TurboWeb.ConnCase
+      import Bureaucrat.Helpers
 
       alias TurboWeb.Router.Helpers, as: Routes
 

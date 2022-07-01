@@ -12,7 +12,9 @@ defmodule TurboWeb.UserResetPasswordControllerTest do
   describe "POST /auth/reset_password" do
     @tag :capture_log
     test "sends a new reset password token", %{conn: conn, user: user} do
-      conn = post(conn, Routes.user_reset_password_path(conn, :create), %{"email" => user.email})
+      conn =
+        post(conn, Routes.user_reset_password_path(conn, :create), %{"email" => user.email})
+        |> doc
 
       assert conn.resp_body =~ "If your email is in our system"
       assert Repo.get_by!(Accounts.UserToken, user_id: user.id).context == "reset_password"
@@ -23,6 +25,7 @@ defmodule TurboWeb.UserResetPasswordControllerTest do
         post(conn, Routes.user_reset_password_path(conn, :create), %{
           "email" => "unknown@example.com"
         })
+        |> doc
 
       assert conn.resp_body =~ "If your email is in our system"
       assert Repo.all(Accounts.UserToken) == []
@@ -45,6 +48,7 @@ defmodule TurboWeb.UserResetPasswordControllerTest do
           "password" => "new valid password",
           "password_confirmation" => "new valid password"
         })
+        |> doc
 
       assert conn.resp_body =~ "Password reset successfully"
       assert Accounts.get_user_by_email_and_password(user.email, "new valid password")
@@ -56,13 +60,14 @@ defmodule TurboWeb.UserResetPasswordControllerTest do
           "password" => "toosmol",
           "password_confirmation" => "does not match"
         })
+        |> doc
 
       assert conn.resp_body =~ "should be at least 8 character(s)"
       assert conn.resp_body =~ "does not match password"
     end
 
     test "does not reset password with invalid token", %{conn: conn} do
-      conn = put(conn, Routes.user_reset_password_path(conn, :update, "oops"))
+      conn = put(conn, Routes.user_reset_password_path(conn, :update, "oops")) |> doc
       assert conn.resp_body =~ "Reset password token is invalid or it has expired"
     end
   end

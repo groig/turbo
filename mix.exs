@@ -52,6 +52,8 @@ defmodule Turbo.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:geo_postgis, "~> 3.4"},
       {:open_api_spex, "~> 3.11"},
+      {:bureaucrat, "~> 0.2.9"},
+      {:earmark, "~> 1.4"},
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
     ]
   end

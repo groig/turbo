@@ -40,7 +40,7 @@ defmodule TurboWeb.UserSettingsController do
 
       {:error, changeset} ->
         conn
-        |> put_status(410)
+        |> put_status(400)
         |> put_view(TurboWeb.ErrorView)
         |> render("error.json", changeset: changeset)
     end
@@ -55,6 +55,7 @@ defmodule TurboWeb.UserSettingsController do
 
       :error ->
         conn
+        |> put_status(410)
         |> put_view(TurboWeb.ErrorView)
         |> render("error.json", error: "Email change code is invalid or it has expired.")
     end

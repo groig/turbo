@@ -16,6 +16,7 @@ defmodule TurboWeb.UserSessionControllerTest do
           "email" => user.email,
           "password" => valid_user_password()
         })
+        |> doc
 
       assert %{"token" => token} = Jason.decode!(conn.resp_body)
       assert user == Accounts.get_user_by_token(token)
@@ -27,6 +28,7 @@ defmodule TurboWeb.UserSessionControllerTest do
           "email" => user.email,
           "password" => "invalid_password"
         })
+        |> doc
 
       assert conn.status == 401
       assert conn.resp_body =~ "Invalid email or password"
@@ -36,14 +38,14 @@ defmodule TurboWeb.UserSessionControllerTest do
   describe "DELETE /auth/log_out" do
     test "logs the user out", %{conn: conn, user: user} do
       %{conn: conn, user: _user} = log_in_user(conn, user)
-      conn = delete(conn, Routes.user_session_path(conn, :delete))
+      conn = delete(conn, Routes.user_session_path(conn, :delete)) |> doc
       assert conn.resp_body =~ "Logged out successfully"
       token = UserAuth.fetch_token(conn)
       refute Accounts.get_user_by_token(token)
     end
 
     test "succeeds even if the user is not logged in", %{conn: conn} do
-      conn = delete(conn, Routes.user_session_path(conn, :delete))
+      conn = delete(conn, Routes.user_session_path(conn, :delete)) |> doc
       assert conn.resp_body =~ "Logged out successfully"
     end
   end

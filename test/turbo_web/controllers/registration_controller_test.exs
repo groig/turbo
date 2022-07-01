@@ -15,6 +15,7 @@ defmodule TurboWeb.RegistrationControllerTest do
         post(conn, Routes.registration_path(conn, :create), %{
           "customer" => valid_user_attributes(email: email)
         })
+        |> doc
 
       assert %{"id" => id, "token" => token} = Jason.decode!(conn.resp_body)
       user = Accounts.get_user_by_token(token)
@@ -28,6 +29,7 @@ defmodule TurboWeb.RegistrationControllerTest do
         post(conn, Routes.registration_path(conn, :create), %{
           "customer" => %{"email" => "with spaces", "password" => "toosmol"}
         })
+        |> doc
 
       assert conn.resp_body =~ "must have the @ sign and no spaces"
       assert conn.resp_body =~ "should be at least 8 character"
@@ -44,6 +46,7 @@ defmodule TurboWeb.RegistrationControllerTest do
           "driver" =>
             Map.merge(valid_user_attributes(email: email), %{"license" => "driver-license-abc"})
         })
+        |> doc
 
       assert %{"id" => id, "token" => token} = Jason.decode!(conn.resp_body)
       user = Accounts.get_user_by_token(token)
@@ -59,6 +62,7 @@ defmodule TurboWeb.RegistrationControllerTest do
         post(conn, Routes.registration_path(conn, :create), %{
           "driver" => valid_user_attributes(email: email)
         })
+        |> doc
 
       assert conn.resp_body =~ "can't be blank"
     end
@@ -73,6 +77,7 @@ defmodule TurboWeb.RegistrationControllerTest do
         post(conn, Routes.registration_path(conn, :create), %{
           "admin" => valid_user_attributes(email: email)
         })
+        |> doc
 
       assert conn.resp_body =~ "Admin user created successfully"
     end
@@ -82,6 +87,7 @@ defmodule TurboWeb.RegistrationControllerTest do
         post(conn, Routes.registration_path(conn, :create), %{
           "admin" => %{"email" => "with spaces", "password" => "toosmol"}
         })
+        |> doc
 
       assert conn.resp_body =~ "must have the @ sign and no spaces"
       assert conn.resp_body =~ "should be at least 8 character"

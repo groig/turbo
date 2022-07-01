@@ -18,6 +18,7 @@ defmodule TurboWeb.UserSettingsControllerTest do
             "password_confirmation" => "new valid password"
           }
         })
+        |> doc
 
       old_token = UserAuth.fetch_token(conn)
 
@@ -40,6 +41,7 @@ defmodule TurboWeb.UserSettingsControllerTest do
             "password_confirmation" => "does not match"
           }
         })
+        |> doc
 
       assert old_password_conn.resp_body =~ "should be at least 8 character(s)"
       assert old_password_conn.resp_body =~ "does not match password"
@@ -58,6 +60,7 @@ defmodule TurboWeb.UserSettingsControllerTest do
           "current_password" => valid_user_password(),
           "email" => unique_user_email()
         })
+        |> doc
 
       assert conn.resp_body =~ "A code to confirm your email"
       assert Accounts.get_user_by_email(user.email)
@@ -70,6 +73,7 @@ defmodule TurboWeb.UserSettingsControllerTest do
           "current_password" => "invalid",
           "email" => "with spaces"
         })
+        |> doc
 
       assert conn.status == 400
       assert conn.resp_body =~ "must have the @ sign and no spaces"
@@ -90,7 +94,7 @@ defmodule TurboWeb.UserSettingsControllerTest do
     end
 
     test "updates the user email once", %{conn: conn, user: user, token: token, email: email} do
-      conn = get(conn, Routes.user_settings_path(conn, :confirm_email, token))
+      conn = get(conn, Routes.user_settings_path(conn, :confirm_email, token)) |> doc
       assert conn.resp_body =~ "Email changed successfully"
       refute Accounts.get_user_by_email(user.email)
       assert Accounts.get_user_by_email(email)
@@ -100,7 +104,7 @@ defmodule TurboWeb.UserSettingsControllerTest do
     end
 
     test "does not update email with invalid token", %{conn: conn, user: user} do
-      conn = get(conn, Routes.user_settings_path(conn, :confirm_email, "oops"))
+      conn = get(conn, Routes.user_settings_path(conn, :confirm_email, "oops")) |> doc
       assert conn.resp_body =~ "Email change code is invalid or it has expired"
       assert Accounts.get_user_by_email(user.email)
     end

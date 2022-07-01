@@ -33,7 +33,7 @@ defmodule TurboWeb.UserResetPasswordController do
 
       {:error, changeset} ->
         conn
-        |> put_status(409)
+        |> put_status(400)
         |> put_view(TurboWeb.ErrorView)
         |> render("error.json", changeset: changeset)
     end

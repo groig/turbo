@@ -57,6 +57,7 @@ defmodule TurboWeb.Router do
     pipe_through :browser
 
     get "/", OpenApiSpex.Plug.SwaggerUI, path: "/api/spec"
+    get "/examples", TurboWeb.ApiExamplesController, :index
   end
 
   # Enables LiveDashboard only for development
