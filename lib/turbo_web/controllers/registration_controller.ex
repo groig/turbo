@@ -12,7 +12,10 @@ defmodule TurboWeb.RegistrationController do
         {:ok, _} = Accounts.deliver_user_confirmation_instructions(data.user)
 
         token = UserAuth.log_in_user(data.user)
-        render(conn, "registration.json", id: data.customer.id, token: token)
+
+        conn
+        |> put_status(:created)
+        |> render("registration.json", id: data.customer.id, token: token)
 
       {:error, %Ecto.Changeset{} = changeset} ->
         conn

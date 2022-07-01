@@ -16,7 +16,6 @@ defmodule TurboWeb.Router do
   pipeline :api do
     plug :accepts, ["json"]
     plug :fetch_current_user
-    plug OpenApiSpex.Plug.PutApiSpec, module: TurboWeb.ApiSpec
   end
 
   scope "/api/auth", TurboWeb do
@@ -45,19 +44,6 @@ defmodule TurboWeb.Router do
     resources "/rides", RideController
     resources "/cars", CarController
     resources "/wallets", WalletController
-  end
-
-  scope "/api" do
-    pipe_through [:api]
-    get "/spec", OpenApiSpex.Plug.RenderSpec, []
-  end
-
-  scope "/api/docs" do
-    # Use the default browser stack
-    pipe_through :browser
-
-    get "/", OpenApiSpex.Plug.SwaggerUI, path: "/api/spec"
-    get "/examples", TurboWeb.ApiExamplesController, :index
   end
 
   # Enables LiveDashboard only for development
