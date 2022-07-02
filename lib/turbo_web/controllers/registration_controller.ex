@@ -20,7 +20,7 @@ defmodule TurboWeb.RegistrationController do
       {:error, %Ecto.Changeset{} = changeset} ->
         conn
         |> put_status(400)
-        |> put_view(TurboWeb.ErrorView)
+        |> put_view(TurboWeb.ChangesetView)
         |> render("error.json", changeset: changeset)
     end
   end
@@ -33,12 +33,15 @@ defmodule TurboWeb.RegistrationController do
         {:ok, _} = Accounts.deliver_user_confirmation_instructions(data.user)
 
         token = UserAuth.log_in_user(data.user)
-        render(conn, "registration.json", id: data.driver.id, token: token)
+
+        conn
+        |> put_status(:created)
+        |> render("registration.json", id: data.driver.id, token: token)
 
       {:error, %Ecto.Changeset{} = changeset} ->
         conn
         |> put_status(400)
-        |> put_view(TurboWeb.ErrorView)
+        |> put_view(TurboWeb.ChangesetView)
         |> render("error.json", changeset: changeset)
     end
   end
@@ -51,13 +54,14 @@ defmodule TurboWeb.RegistrationController do
         {:ok, _} = Accounts.deliver_user_confirmation_instructions(user)
 
         conn
+        |> put_status(:created)
         |> put_view(TurboWeb.MessageView)
         |> render("message.json", message: "Admin user created successfully ")
 
       {:error, %Ecto.Changeset{} = changeset} ->
         conn
         |> put_status(400)
-        |> put_view(TurboWeb.ErrorView)
+        |> put_view(TurboWeb.ChangesetView)
         |> render("error.json", changeset: changeset)
     end
   end

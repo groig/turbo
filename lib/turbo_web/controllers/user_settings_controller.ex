@@ -21,7 +21,7 @@ defmodule TurboWeb.UserSettingsController do
       {:error, changeset} ->
         conn
         |> put_status(400)
-        |> put_view(TurboWeb.ErrorView)
+        |> put_view(TurboWeb.ChangesetView)
         |> render("error.json", changeset: changeset)
     end
   end
@@ -41,7 +41,7 @@ defmodule TurboWeb.UserSettingsController do
       {:error, changeset} ->
         conn
         |> put_status(400)
-        |> put_view(TurboWeb.ErrorView)
+        |> put_view(TurboWeb.ChangesetView)
         |> render("error.json", changeset: changeset)
     end
   end

@@ -9,7 +9,7 @@ defmodule Turbo.CustomersFixtures do
   Generate a customer.
   """
   def customer_fixture(attrs \\ %{}) do
-    user = AccountsFixtures.user_fixture()
+    user = AccountsFixtures.user_fixture(%{type: :customer})
 
     {:ok, customer} =
       attrs

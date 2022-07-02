@@ -286,7 +286,7 @@ defmodule Turbo.Accounts do
   """
   def get_user_by_token(token) do
     {:ok, query} = UserToken.verify_token_query(token)
-    Repo.one(query)
+    Repo.one(query) |> Repo.preload([:customer, :driver])
   end
 
   @doc """

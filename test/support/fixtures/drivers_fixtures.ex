@@ -10,7 +10,7 @@ defmodule Turbo.DriversFixtures do
   Generate a driver.
   """
   def driver_fixture(attrs \\ %{}) do
-    user = AccountsFixtures.user_fixture()
+    user = AccountsFixtures.user_fixture(%{type: :driver})
 
     {:ok, driver} =
       attrs

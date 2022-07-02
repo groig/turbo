@@ -37,7 +37,7 @@ defmodule TurboWeb.Router do
   end
 
   scope "/api", TurboWeb do
-    pipe_through [:api]
+    pipe_through [:api, :require_authenticated_user]
     resources "/customers", CustomerController
     resources "/drivers", DriverController
     resources "/addresses", AddressController

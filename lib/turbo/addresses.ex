@@ -13,29 +13,20 @@ defmodule Turbo.Addresses do
 
   ## Examples
 
-      iex> list_addresses()
+      iex> list_addresses(customer_id)
       [%Address{}, ...]
 
   """
-  def list_addresses do
-    Repo.all(Address)
+  def list_addresses(customer_id) do
+    Repo.all(from(a in Address, where: a.customer_id == ^customer_id))
   end
 
   @doc """
   Gets a single address.
-
-  Raises `Ecto.NoResultsError` if the Address does not exist.
-
-  ## Examples
-
-      iex> get_address!(123)
-      %Address{}
-
-      iex> get_address!(456)
-      ** (Ecto.NoResultsError)
-
   """
-  def get_address!(id), do: Repo.get!(Address, id)
+  def get_address(id, customer_id) do
+    Repo.one(from(a in Address, where: a.id == ^id and a.customer_id == ^customer_id))
+  end
 
   @doc """
   Creates a address.

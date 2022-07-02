@@ -7,12 +7,14 @@ defmodule TurboWeb.AddressView do
   end
 
   def render("show.json", %{address: address}) do
-    %{data: render_one(address, AddressView, "address.json")}
+    render_one(address, AddressView, "address.json")
   end
 
   def render("address.json", %{address: address}) do
     %{
-      id: address.id
+      id: address.id,
+      name: address.name,
+      location: address.location
     }
   end
 end
