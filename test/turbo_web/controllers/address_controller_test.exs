@@ -41,7 +41,7 @@ defmodule TurboWeb.AddressControllerTest do
         }
       }
 
-      conn = post(conn, Routes.address_path(conn, :create), attrs)
+      conn = post(conn, Routes.address_path(conn, :create), attrs) |> doc
       assert %{"id" => id} = json_response(conn, 201)
 
       conn = get(conn, Routes.address_path(conn, :show, id)) |> doc
@@ -85,7 +85,7 @@ defmodule TurboWeb.AddressControllerTest do
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
-      conn = post(conn, Routes.address_path(conn, :create), @invalid_attrs)
+      conn = post(conn, Routes.address_path(conn, :create), @invalid_attrs) |> doc
       assert json_response(conn, 422)["errors"] != %{}
     end
   end
@@ -95,11 +95,11 @@ defmodule TurboWeb.AddressControllerTest do
 
     test "renders address when data is valid", %{conn: conn, address: address} do
       id = address.id
-      conn = put(conn, Routes.address_path(conn, :update, address), address: @update_attrs)
+      conn = put(conn, Routes.address_path(conn, :update, address), address: @update_attrs) |> doc
 
       assert %{"id" => ^id} = json_response(conn, 200)
 
-      conn = get(conn, Routes.address_path(conn, :show, id))
+      conn = get(conn, Routes.address_path(conn, :show, id)) |> doc
 
       assert %{
                "id" => ^id
@@ -149,7 +149,6 @@ defmodule TurboWeb.AddressControllerTest do
         |> put_req_header("accept", "application/json")
         |> put_req_header("authorization", "Bearer #{not_owner_token}")
         |> delete(Routes.address_path(conn, :delete, address))
-        |> doc
         |> doc
 
       assert conn.status == 404
