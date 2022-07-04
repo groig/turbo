@@ -24,6 +24,17 @@ defmodule TurboWeb do
       import Plug.Conn
       import TurboWeb.Gettext
       alias TurboWeb.Router.Helpers, as: Routes
+
+      defp require_admin(conn, _opts) do
+        if conn.assigns[:current_user] && conn.assigns.current_user.type == :admin do
+          conn
+        else
+          conn
+          |> put_resp_content_type("application/json")
+          |> send_resp(401, Jason.encode!("Unauthorized"))
+          |> halt()
+        end
+      end
     end
   end
 

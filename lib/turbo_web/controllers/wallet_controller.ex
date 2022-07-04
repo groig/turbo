@@ -6,16 +6,17 @@ defmodule TurboWeb.WalletController do
 
   action_fallback TurboWeb.FallbackController
 
-  plug :require_driver
+  plug :require_driver, [] when action == :show
+  plug :require_admin, [] when action == :credit
 
   def show(conn, _) do
     render(conn, "show.json", wallet: conn.assigns.current_user.driver.wallet)
   end
 
   def credit(conn, %{"wallet" => wallet, "amount" => amount, "type" => type}) do
-    with {:ok, %Wallet{} = wallet} <-
+    with {:ok, data} <-
            Wallets.credit_wallet(wallet, amount, type) do
-      render(conn, "show.json", wallet: wallet)
+      render(conn, "show.json", wallet: data.wallet)
     end
   end
 

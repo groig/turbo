@@ -5,6 +5,7 @@ defmodule TurboWeb.WalletControllerTest do
   alias Turbo.Repo
   alias Turbo.Accounts.User
   alias TurboWeb.UserAuth
+  alias Turbo.AccountsFixtures
 
   import Turbo.WalletsFixtures
 
@@ -21,12 +22,32 @@ defmodule TurboWeb.WalletControllerTest do
     end
   end
 
-  # describe "credit" do
-  #   setup [:create_wallet]
-  #   test "credits the drivers wallet", %{conn: conn, wallet: wallet} do
-  #     conn = put(conn, Routes.wallet_path(conn, :credit), %{wallet: wallet.id, }) |> doc
-  #     assert %{"id" => _id, "credit" => 0} = json_response(conn, 200)    end
-  # end
+  describe "credit" do
+    setup [:create_wallet]
+
+    test "credits the drivers wallet", %{conn: conn, wallet: wallet} do
+      admin = AccountsFixtures.user_fixture(%{type: :admin})
+
+      admin_token = UserAuth.log_in_user(admin)
+
+      conn =
+        build_conn()
+        |> put_req_header("accept", "application/json")
+        |> put_req_header("authorization", "Bearer #{admin_token}")
+        |> put(Routes.wallet_path(conn, :credit), %{wallet: wallet.id, amount: 42, type: :cash})
+        |> doc
+
+      assert %{"id" => _id, "credit" => 42} = json_response(conn, 200)
+    end
+
+    test "only admin can credit a wallet", %{conn: conn, wallet: wallet} do
+      conn =
+        put(conn, Routes.wallet_path(conn, :credit), %{wallet: wallet.id, amount: 42, type: :cash})
+        |> doc
+
+      assert conn.status == 401
+    end
+  end
 
   defp create_wallet(_) do
     wallet = wallet_fixture()
