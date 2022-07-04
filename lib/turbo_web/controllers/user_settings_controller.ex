@@ -4,25 +4,20 @@ defmodule TurboWeb.UserSettingsController do
   alias Turbo.Accounts
   alias TurboWeb.UserAuth
 
+  action_fallback TurboWeb.FallbackController
+
   def update(conn, %{"action" => "update_email"} = params) do
     %{"current_password" => password, "email" => email} = params
     user = conn.assigns.current_user
 
-    case Accounts.apply_user_email(user, password, %{"email" => email}) do
-      {:ok, applied_user} ->
-        Accounts.deliver_update_email_instructions(applied_user, user.email)
+    with {:ok, applied_user} <- Accounts.apply_user_email(user, password, %{"email" => email}) do
+      Accounts.deliver_update_email_instructions(applied_user, user.email)
 
-        conn
-        |> put_view(TurboWeb.MessageView)
-        |> render("message.json",
-          message: "A code to confirm your email change has been sent to the new address."
-        )
-
-      {:error, changeset} ->
-        conn
-        |> put_status(400)
-        |> put_view(TurboWeb.ChangesetView)
-        |> render("error.json", changeset: changeset)
+      conn
+      |> put_view(TurboWeb.MessageView)
+      |> render("message.json",
+        message: "A code to confirm your email change has been sent to the new address."
+      )
     end
   end
 
@@ -30,19 +25,11 @@ defmodule TurboWeb.UserSettingsController do
     %{"current_password" => password, "passwords" => passwords} = params
     user = conn.assigns.current_user
 
-    case Accounts.update_user_password(user, password, passwords) do
-      {:ok, user} ->
-        Accounts.delete_tokens(user)
-        token = UserAuth.log_in_user(user)
+    with {:ok, user} <- Accounts.update_user_password(user, password, passwords) do
+      Accounts.delete_tokens(user)
+      token = UserAuth.log_in_user(user)
 
-        conn
-        |> render("update_password.json", token: token, message: "Password updated successfully.")
-
-      {:error, changeset} ->
-        conn
-        |> put_status(400)
-        |> put_view(TurboWeb.ChangesetView)
-        |> render("error.json", changeset: changeset)
+      render(conn, "update_password.json", token: token, message: "Password updated successfully.")
     end
   end
 

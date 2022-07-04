@@ -3,6 +3,8 @@ defmodule TurboWeb.UserResetPasswordController do
 
   alias Turbo.Accounts
 
+  action_fallback TurboWeb.FallbackController
+
   plug :get_user_by_reset_password_token when action in [:edit, :update]
 
   def create(conn, %{"email" => email}) do
@@ -25,17 +27,10 @@ defmodule TurboWeb.UserResetPasswordController do
         %{"password" => _new_password, "password_confirmation" => _new_password_confirmation} =
           user_params
       ) do
-    case Accounts.reset_user_password(conn.assigns.user, user_params) do
-      {:ok, _} ->
-        conn
-        |> put_view(TurboWeb.MessageView)
-        |> render("message.json", message: "Password reset successfully.")
-
-      {:error, changeset} ->
-        conn
-        |> put_status(400)
-        |> put_view(TurboWeb.ChangesetView)
-        |> render("error.json", changeset: changeset)
+    with {:ok, _} <- Accounts.reset_user_password(conn.assigns.user, user_params) do
+      conn
+      |> put_view(TurboWeb.MessageView)
+      |> render("message.json", message: "Password reset successfully.")
     end
   end
 

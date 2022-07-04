@@ -29,7 +29,7 @@ defmodule TurboWeb.AddressController do
         render(conn, "show.json", address: address)
 
       nil ->
-        conn |> put_status(:not_found) |> put_view(TurboWeb.ErrorView) |> render(:"404")
+        {:error, :not_found}
     end
   end
 
@@ -41,7 +41,7 @@ defmodule TurboWeb.AddressController do
         end
 
       nil ->
-        conn |> put_status(:not_found) |> put_view(TurboWeb.ErrorView) |> render(:"404")
+        {:error, :not_found}
     end
   end
 
@@ -53,7 +53,7 @@ defmodule TurboWeb.AddressController do
         end
 
       nil ->
-        conn |> put_status(:not_found) |> put_view(TurboWeb.ErrorView) |> render(:"404")
+        {:error, :not_found}
     end
   end
 

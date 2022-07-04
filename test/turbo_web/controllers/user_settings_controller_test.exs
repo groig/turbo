@@ -75,7 +75,7 @@ defmodule TurboWeb.UserSettingsControllerTest do
         })
         |> doc
 
-      assert conn.status == 400
+      assert conn.status == 422
       assert conn.resp_body =~ "must have the @ sign and no spaces"
       assert conn.resp_body =~ "is not valid"
     end
