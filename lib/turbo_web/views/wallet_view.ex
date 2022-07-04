@@ -7,12 +7,13 @@ defmodule TurboWeb.WalletView do
   end
 
   def render("show.json", %{wallet: wallet}) do
-    %{data: render_one(wallet, WalletView, "wallet.json")}
+    render_one(wallet, WalletView, "wallet.json")
   end
 
   def render("wallet.json", %{wallet: wallet}) do
     %{
-      id: wallet.id
+      id: wallet.id,
+      credit: wallet.credit
     }
   end
 end

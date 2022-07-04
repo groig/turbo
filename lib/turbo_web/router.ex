@@ -38,12 +38,17 @@ defmodule TurboWeb.Router do
 
   scope "/api", TurboWeb do
     pipe_through [:api, :require_authenticated_user]
+    resources "/addresses", AddressController
+    get "/wallets", WalletController, :show
+    put "/wallets", WalletController, :credit
+  end
+
+  scope "/api", TurboWeb do
+    pipe_through :api
     resources "/customers", CustomerController
     resources "/drivers", DriverController
-    resources "/addresses", AddressController
     resources "/rides", RideController
     resources "/cars", CarController
-    resources "/wallets", WalletController
   end
 
   # Enables LiveDashboard only for development

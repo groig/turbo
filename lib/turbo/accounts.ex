@@ -7,6 +7,7 @@ defmodule Turbo.Accounts do
   alias Turbo.Repo
   alias Turbo.Customers.Customer
   alias Turbo.Drivers.Driver
+  alias Turbo.Wallets.Wallet
   alias Ecto.Multi
 
   alias Turbo.Accounts.{User, UserToken, UserNotifier}
@@ -93,11 +94,9 @@ defmodule Turbo.Accounts do
     multi =
       Multi.new()
       |> Multi.insert(:user, user_changeset)
-      |> Multi.merge(fn %{user: user} ->
+      |> Multi.run(:customer, fn repo, %{user: user} ->
         customer_changeset = Customer.changeset(%Customer{}, %{user_id: user.id})
-
-        Multi.new()
-        |> Multi.insert(:customer, customer_changeset)
+        repo.insert(customer_changeset)
       end)
 
     case Repo.transaction(multi) do
@@ -115,11 +114,13 @@ defmodule Turbo.Accounts do
     multi =
       Multi.new()
       |> Multi.insert(:user, user_changeset)
-      |> Multi.merge(fn %{user: user} ->
+      |> Multi.run(:driver, fn repo, %{user: user} ->
         driver_changeset = Driver.changeset(%Driver{}, Map.merge(attrs, %{"user_id" => user.id}))
-
-        Multi.new()
-        |> Multi.insert(:driver, driver_changeset)
+        repo.insert(driver_changeset)
+      end)
+      |> Multi.run(:wallet, fn repo, %{driver: driver} ->
+        wallet_changeset = Wallet.changeset(%Wallet{}, %{"driver_id" => driver.id})
+        repo.insert(wallet_changeset)
       end)
 
     case Repo.transaction(multi) do
@@ -286,7 +287,7 @@ defmodule Turbo.Accounts do
   """
   def get_user_by_token(token) do
     {:ok, query} = UserToken.verify_token_query(token)
-    Repo.one(query) |> Repo.preload([:customer, :driver])
+    Repo.one(query) |> Repo.preload([:customer, driver: [:wallet]])
   end
 
   @doc """

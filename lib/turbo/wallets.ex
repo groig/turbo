@@ -5,21 +5,10 @@ defmodule Turbo.Wallets do
 
   import Ecto.Query, warn: false
   alias Turbo.Repo
+  alias Ecto.Multi
 
   alias Turbo.Wallets.Wallet
-
-  @doc """
-  Returns the list of wallets.
-
-  ## Examples
-
-      iex> list_wallets()
-      [%Wallet{}, ...]
-
-  """
-  def list_wallets do
-    Repo.all(Wallet)
-  end
+  alias Turbo.Wallets.Transaction
 
   @doc """
   Gets a single wallet.
@@ -37,68 +26,23 @@ defmodule Turbo.Wallets do
   """
   def get_wallet!(id), do: Repo.get!(Wallet, id)
 
-  @doc """
-  Creates a wallet.
+  def credit_wallet(wallet_id, credit, transaction_type) do
+    wallet = get_wallet!(wallet_id)
+    wallet_changeset = Wallet.credit_changeset(wallet, %{credit: wallet.credit + credit})
 
-  ## Examples
+    multi =
+      Multi.new()
+      |> Multi.update(:wallet, wallet_changeset)
+      |> Multi.run(:transaction, fn repo, %{wallet: wallet} ->
+        repo.insert(%Transaction{wallet_id: wallet.id, amount: credit, type: transaction_type})
+      end)
 
-      iex> create_wallet(%{field: value})
-      {:ok, %Wallet{}}
+    case Repo.transaction(multi) do
+      {:ok, data} ->
+        {:ok, data}
 
-      iex> create_wallet(%{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def create_wallet(attrs \\ %{}) do
-    %Wallet{}
-    |> Wallet.changeset(attrs)
-    |> Repo.insert()
-  end
-
-  @doc """
-  Updates a wallet.
-
-  ## Examples
-
-      iex> update_wallet(wallet, %{field: new_value})
-      {:ok, %Wallet{}}
-
-      iex> update_wallet(wallet, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def update_wallet(%Wallet{} = wallet, attrs) do
-    wallet
-    |> Wallet.changeset(attrs)
-    |> Repo.update()
-  end
-
-  @doc """
-  Deletes a wallet.
-
-  ## Examples
-
-      iex> delete_wallet(wallet)
-      {:ok, %Wallet{}}
-
-      iex> delete_wallet(wallet)
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def delete_wallet(%Wallet{} = wallet) do
-    Repo.delete(wallet)
-  end
-
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking wallet changes.
-
-  ## Examples
-
-      iex> change_wallet(wallet)
-      %Ecto.Changeset{data: %Wallet{}}
-
-  """
-  def change_wallet(%Wallet{} = wallet, attrs \\ %{}) do
-    Wallet.changeset(wallet, attrs)
+      {:error, _step, %Ecto.Changeset{} = changeset, _changes_so_far} ->
+        {:error, changeset}
+    end
   end
 end

@@ -1,5 +1,16 @@
 # API Documentation
 
+  * [TurboWeb.AddressController](#turboweb-addresscontroller)
+    * [index](#turboweb-addresscontroller-index)
+    * [create](#turboweb-addresscontroller-create)
+    * [show](#turboweb-addresscontroller-show)
+    * [create](#turboweb-addresscontroller-create)
+    * [update](#turboweb-addresscontroller-update)
+    * [show](#turboweb-addresscontroller-show)
+    * [update](#turboweb-addresscontroller-update)
+    * [delete](#turboweb-addresscontroller-delete)
+    * [show](#turboweb-addresscontroller-show)
+    * [delete](#turboweb-addresscontroller-delete)
   * [TurboWeb.RegistrationController](#turboweb-registrationcontroller)
     * [create](#turboweb-registrationcontroller-create)
   * [TurboWeb.UserConfirmationController](#turboweb-userconfirmationcontroller)
@@ -14,6 +25,482 @@
   * [TurboWeb.UserSettingsController](#turboweb-usersettingscontroller)
     * [update](#turboweb-usersettingscontroller-update)
     * [confirm_email](#turboweb-usersettingscontroller-confirm_email)
+  * [TurboWeb.WalletController](#turboweb-walletcontroller)
+    * [show](#turboweb-walletcontroller-show)
+
+## TurboWeb.AddressController
+### <a id=turboweb-addresscontroller-index></a>index
+#### index lists all addresses for a customer
+
+##### Request
+* __Method:__ GET
+* __Path:__ /api/addresses
+* __Request headers:__
+```
+accept: application/json
+authorization: Bearer gYcABzTDpc00ahi7p30Ke6ktjF78rUED2cgxNsRlkNI=
+```
+
+##### Response
+* __Status__: 200
+* __Response headers:__
+```
+content-type: application/json; charset=utf-8
+cache-control: max-age=0, private, must-revalidate
+x-request-id: Fv64fIEBq5j-Lr0AAAQC
+```
+* __Response body:__
+```json
+{
+  "data": []
+}
+```
+
+### <a id=turboweb-addresscontroller-create></a>create
+#### create address renders address when data is valid
+
+##### Request
+* __Method:__ POST
+* __Path:__ /api/addresses
+* __Request headers:__
+```
+accept: application/json
+authorization: Bearer sKKLb7bgZDEGsjj-uTbTitWFaB79W9jsQabAdxQiCag=
+content-type: multipart/mixed; boundary=plug_conn_test
+```
+* __Request body:__
+```json
+{
+  "location": {
+    "coordinates": [
+      30.2,
+      20.3
+    ],
+    "type": "Point"
+  },
+  "name": "some address"
+}
+```
+
+##### Response
+* __Status__: 201
+* __Response headers:__
+```
+content-type: application/json; charset=utf-8
+cache-control: max-age=0, private, must-revalidate
+x-request-id: Fv64fIym1Soy5N8AAAfi
+```
+* __Response body:__
+```json
+{
+  "id": "cb3b3f2c-f081-4833-8653-224b97229b9a",
+  "location": {
+    "coordinates": [
+      30.2,
+      20.3
+    ],
+    "type": "Point"
+  },
+  "name": "some address"
+}
+```
+
+### <a id=turboweb-addresscontroller-show></a>show
+#### create address renders address when data is valid
+
+##### Request
+* __Method:__ GET
+* __Path:__ /api/addresses/cb3b3f2c-f081-4833-8653-224b97229b9a
+* __Request headers:__
+```
+accept: application/json
+authorization: Bearer sKKLb7bgZDEGsjj-uTbTitWFaB79W9jsQabAdxQiCag=
+```
+
+##### Response
+* __Status__: 200
+* __Response headers:__
+```
+content-type: application/json; charset=utf-8
+cache-control: max-age=0, private, must-revalidate
+x-request-id: Fv64fIzSE68y5N8AAAuE
+```
+* __Response body:__
+```json
+{
+  "id": "cb3b3f2c-f081-4833-8653-224b97229b9a",
+  "location": {
+    "coordinates": [
+      30.2,
+      20.3
+    ],
+    "crs": {
+      "properties": {
+        "name": "EPSG:4326"
+      },
+      "type": "name"
+    },
+    "type": "Point"
+  },
+  "name": "some address"
+}
+```
+
+#### create address only the owner can see an address
+
+##### Request
+* __Method:__ GET
+* __Path:__ /api/addresses/92335b48-ebc4-465e-be5f-6126477a6954
+* __Request headers:__
+```
+accept: application/json
+authorization: Bearer lugBM2uii789ep4IsWlxBLjweBTdEi0Q0GCSchwixiI=
+```
+
+##### Response
+* __Status__: 200
+* __Response headers:__
+```
+content-type: application/json; charset=utf-8
+cache-control: max-age=0, private, must-revalidate
+x-request-id: Fv64fIp9QZivFmUAAArk
+```
+* __Response body:__
+```json
+{
+  "id": "92335b48-ebc4-465e-be5f-6126477a6954",
+  "location": {
+    "coordinates": [
+      30.2,
+      20.3
+    ],
+    "crs": {
+      "properties": {
+        "name": "EPSG:4326"
+      },
+      "type": "name"
+    },
+    "type": "Point"
+  },
+  "name": "address-576460752303420764"
+}
+```
+
+#### create address only the owner can see an address
+
+##### Request
+* __Method:__ GET
+* __Path:__ /api/addresses/92335b48-ebc4-465e-be5f-6126477a6954
+* __Request headers:__
+```
+accept: application/json
+authorization: Bearer Ic1oQDMcORyv1G_A8x6oqHVBO4U0xH2B0KQfgJxViUU=
+```
+
+##### Response
+* __Status__: 404
+* __Response headers:__
+```
+content-type: application/json; charset=utf-8
+cache-control: max-age=0, private, must-revalidate
+x-request-id: Fv64fIqtVyWvFmUAAAsk
+```
+* __Response body:__
+```json
+"Not Found"
+```
+
+### <a id=turboweb-addresscontroller-create></a>create
+#### create address renders errors when data is invalid
+
+##### Request
+* __Method:__ POST
+* __Path:__ /api/addresses
+* __Request headers:__
+```
+accept: application/json
+authorization: Bearer -kNLrnyugS6q3aKMoNg5irekEx3jf6GxDn-73U0YOSY=
+content-type: multipart/mixed; boundary=plug_conn_test
+```
+* __Request body:__
+```json
+{
+  "location": null,
+  "name": null
+}
+```
+
+##### Response
+* __Status__: 422
+* __Response headers:__
+```
+content-type: application/json; charset=utf-8
+cache-control: max-age=0, private, must-revalidate
+x-request-id: Fv64fIxNhZJDkFoAAAfC
+```
+* __Response body:__
+```json
+{
+  "errors": {
+    "location": [
+      "can't be blank"
+    ],
+    "name": [
+      "can't be blank"
+    ]
+  }
+}
+```
+
+### <a id=turboweb-addresscontroller-update></a>update
+#### update address renders address when data is valid
+
+##### Request
+* __Method:__ PUT
+* __Path:__ /api/addresses/7b2fb665-25b6-4f3f-9a9f-3fcc497b9501
+* __Request headers:__
+```
+accept: application/json
+authorization: Bearer LaullKUA3fbUwTYqdQXRf7oNDPjV4Ixv9QrZFOCrz2A=
+content-type: multipart/mixed; boundary=plug_conn_test
+```
+* __Request body:__
+```json
+{
+  "address": {
+    "location": {
+      "coordinates": [
+        42.2,
+        20.42
+      ],
+      "type": "Point"
+    },
+    "name": "New Name"
+  }
+}
+```
+
+##### Response
+* __Status__: 200
+* __Response headers:__
+```
+content-type: application/json; charset=utf-8
+cache-control: max-age=0, private, must-revalidate
+x-request-id: Fv64fIIdhHNudXwAAAbj
+```
+* __Response body:__
+```json
+{
+  "id": "7b2fb665-25b6-4f3f-9a9f-3fcc497b9501",
+  "location": {
+    "coordinates": [
+      42.2,
+      20.42
+    ],
+    "type": "Point"
+  },
+  "name": "New Name"
+}
+```
+
+### <a id=turboweb-addresscontroller-show></a>show
+#### update address renders address when data is valid
+
+##### Request
+* __Method:__ GET
+* __Path:__ /api/addresses/7b2fb665-25b6-4f3f-9a9f-3fcc497b9501
+* __Request headers:__
+```
+accept: application/json
+authorization: Bearer LaullKUA3fbUwTYqdQXRf7oNDPjV4Ixv9QrZFOCrz2A=
+```
+
+##### Response
+* __Status__: 200
+* __Response headers:__
+```
+content-type: application/json; charset=utf-8
+cache-control: max-age=0, private, must-revalidate
+x-request-id: Fv64fIfBsn9udXwAAAmE
+```
+* __Response body:__
+```json
+{
+  "id": "7b2fb665-25b6-4f3f-9a9f-3fcc497b9501",
+  "location": {
+    "coordinates": [
+      42.2,
+      20.42
+    ],
+    "crs": {
+      "properties": {
+        "name": "EPSG:4326"
+      },
+      "type": "name"
+    },
+    "type": "Point"
+  },
+  "name": "New Name"
+}
+```
+
+### <a id=turboweb-addresscontroller-update></a>update
+#### update address only owner can edit address
+
+##### Request
+* __Method:__ PUT
+* __Path:__ /api/addresses/71f7b171-acbf-4877-8d79-3e43d9ee9abe
+* __Request headers:__
+```
+accept: application/json
+authorization: Bearer z4P2suylQ1gngV72aTWvgY4nw3HEPWI0pNCubp93WX4=
+content-type: multipart/mixed; boundary=plug_conn_test
+```
+* __Request body:__
+```json
+{
+  "address": {
+    "location": {
+      "coordinates": [
+        42.2,
+        20.42
+      ],
+      "type": "Point"
+    },
+    "name": "New Name"
+  }
+}
+```
+
+##### Response
+* __Status__: 404
+* __Response headers:__
+```
+content-type: application/json; charset=utf-8
+cache-control: max-age=0, private, must-revalidate
+x-request-id: Fv64fIkt-VykJR8AAAai
+```
+* __Response body:__
+```json
+"Not Found"
+```
+
+#### update address renders errors when data is invalid
+
+##### Request
+* __Method:__ PUT
+* __Path:__ /api/addresses/eebf029a-e29f-4dbb-9d95-08568797f8f1
+* __Request headers:__
+```
+accept: application/json
+authorization: Bearer bTgIYSYApz65hTjOMRvOxJ7Zu6PHtfBEPWFBEGXyEDE=
+content-type: multipart/mixed; boundary=plug_conn_test
+```
+* __Request body:__
+```json
+{
+  "address": {
+    "location": null,
+    "name": null
+  }
+}
+```
+
+##### Response
+* __Status__: 422
+* __Response headers:__
+```
+content-type: application/json; charset=utf-8
+cache-control: max-age=0, private, must-revalidate
+x-request-id: Fv64fIvbz23oKsIAAAei
+```
+* __Response body:__
+```json
+{
+  "errors": {
+    "location": [
+      "can't be blank"
+    ],
+    "name": [
+      "can't be blank"
+    ]
+  }
+}
+```
+
+### <a id=turboweb-addresscontroller-delete></a>delete
+#### delete address deletes chosen address
+
+##### Request
+* __Method:__ DELETE
+* __Path:__ /api/addresses/21ce41fa-7993-43f5-9b21-248367beef62
+* __Request headers:__
+```
+accept: application/json
+authorization: Bearer FnutsAxwIxJRkY36E8PGJPcOVxFqIAPeISlPzjjeejw=
+```
+
+##### Response
+* __Status__: 204
+* __Response headers:__
+```
+cache-control: max-age=0, private, must-revalidate
+x-request-id: Fv64fI2wVN5FB2wAAAqj
+```
+* __Response body:__
+```json
+
+```
+
+### <a id=turboweb-addresscontroller-show></a>show
+#### delete address deletes chosen address
+
+##### Request
+* __Method:__ GET
+* __Path:__ /api/addresses/21ce41fa-7993-43f5-9b21-248367beef62
+* __Request headers:__
+```
+accept: application/json
+authorization: Bearer FnutsAxwIxJRkY36E8PGJPcOVxFqIAPeISlPzjjeejw=
+```
+
+##### Response
+* __Status__: 404
+* __Response headers:__
+```
+content-type: application/json; charset=utf-8
+cache-control: max-age=0, private, must-revalidate
+x-request-id: Fv64fI4KsudFB2wAAAgC
+```
+* __Response body:__
+```json
+"Not Found"
+```
+
+### <a id=turboweb-addresscontroller-delete></a>delete
+#### delete address only owner can delete address
+
+##### Request
+* __Method:__ DELETE
+* __Path:__ /api/addresses/d3336546-87fb-4a92-a06f-f88920de82c7
+* __Request headers:__
+```
+accept: application/json
+authorization: Bearer -hcKxIS72l8CGJfnyqFJD056Hrd12v9N2zMPPZT-luU=
+```
+
+##### Response
+* __Status__: 404
+* __Response headers:__
+```
+content-type: application/json; charset=utf-8
+cache-control: max-age=0, private, must-revalidate
+x-request-id: Fv64fHJnTZmY1xAAAAOj
+```
+* __Response body:__
+```json
+"Not Found"
+```
 
 ## TurboWeb.RegistrationController
 ### <a id=turboweb-registrationcontroller-create></a>create
@@ -30,7 +517,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```json
 {
   "customer": {
-    "email": "user-576460752303422652@example.com",
+    "email": "user-576460752303421436@example.com",
     "password": "hello world!"
   }
 }
@@ -42,13 +529,13 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3L64XGF2HioAAAOE
+x-request-id: Fv64fIWduABM2RIAAAhE
 ```
 * __Response body:__
 ```json
 {
-  "id": "f5116dbd-300c-4f06-8f63-6fd59eb5e5bb",
-  "token": "ORMTTLyCePFYgfkEh1tz1KenD4jZry1IQuf2D3i3Nxw="
+  "id": "854643a2-f4d5-4d15-86e3-9bc78b83c99f",
+  "token": "C7E_yGPRURRzEr5SOIlyH82EVILnSLDQP6iF5ReoAqU="
 }
 ```
 
@@ -77,21 +564,19 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3NO-5fs3LY4AAAXk
+x-request-id: Fv64fIMGt0N_lSYAAAbE
 ```
 * __Response body:__
 ```json
 {
-  "errors": [
-    {
-      "detail": "should be at least 8 character(s)",
-      "field": "password"
-    },
-    {
-      "detail": "must have the @ sign and no spaces",
-      "field": "email"
-    }
-  ]
+  "errors": {
+    "email": [
+      "must have the @ sign and no spaces"
+    ],
+    "password": [
+      "should be at least 8 character(s)"
+    ]
+  }
 }
 ```
 
@@ -108,7 +593,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```json
 {
   "driver": {
-    "email": "user-576460752303419582@example.com",
+    "email": "user-576460752303421215@example.com",
     "license": "driver-license-abc",
     "password": "hello world!"
   }
@@ -116,18 +601,18 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 
 ##### Response
-* __Status__: 200
+* __Status__: 201
 * __Response headers:__
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3NPhd5fduOkAAA-C
+x-request-id: Fv64fIRKNeTJoe4AAAkh
 ```
 * __Response body:__
 ```json
 {
-  "id": "b99c8fcb-915a-4d6e-bd20-74d51768b970",
-  "token": "pqLIHldD8Am3Sg1qj66Ba0VjNr7yx64iVKrVAhm-nAc="
+  "id": "6168f1f3-a34d-4036-8017-45a591dd045b",
+  "token": "AMfUUlIdyqQOLrQYl1PIROAP5LpvUqzi-7KNF8NwJdg="
 }
 ```
 
@@ -144,7 +629,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```json
 {
   "driver": {
-    "email": "user-576460752303419519@example.com",
+    "email": "user-576460752303421119@example.com",
     "password": "hello world!"
   }
 }
@@ -156,17 +641,16 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3NN5ZRz38zsAAA_B
+x-request-id: Fv64fIVR48tzHbgAAAmB
 ```
 * __Response body:__
 ```json
 {
-  "errors": [
-    {
-      "detail": "can't be blank",
-      "field": "license"
-    }
-  ]
+  "errors": {
+    "license": [
+      "can't be blank"
+    ]
+  }
 }
 ```
 
@@ -183,19 +667,19 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```json
 {
   "admin": {
-    "email": "user-576460752303422076@example.com",
+    "email": "user-576460752303420831@example.com",
     "password": "hello world!"
   }
 }
 ```
 
 ##### Response
-* __Status__: 200
+* __Status__: 201
 * __Response headers:__
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3NMu5exNHS8AAAXE
+x-request-id: Fv64fIZpA9r38zsAAAqh
 ```
 * __Response body:__
 ```json
@@ -229,21 +713,19 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3NPONr-5b_QAABAB
+x-request-id: Fv64fHJn47A3F50AAAPD
 ```
 * __Response body:__
 ```json
 {
-  "errors": [
-    {
-      "detail": "should be at least 8 character(s)",
-      "field": "password"
-    },
-    {
-      "detail": "must have the @ sign and no spaces",
-      "field": "email"
-    }
-  ]
+  "errors": {
+    "email": [
+      "must have the @ sign and no spaces"
+    ],
+    "password": [
+      "should be at least 8 character(s)"
+    ]
+  }
 }
 ```
 
@@ -261,7 +743,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 * __Request body:__
 ```json
 {
-  "email": "user-576460752303419230@example.com"
+  "email": "user-576460752303421854@example.com"
 }
 ```
 
@@ -271,7 +753,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3NbC2UFZJ20AABDB
+x-request-id: Fv64fIktZY31B-YAAAwh
 ```
 * __Response body:__
 ```json
@@ -292,7 +774,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 * __Request body:__
 ```json
 {
-  "email": "user-576460752303421404@example.com"
+  "email": "user-576460752303421726@example.com"
 }
 ```
 
@@ -302,7 +784,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3NeQE_dKS7QAABEi
+x-request-id: Fv64fIpQaxUWDlkAAArE
 ```
 * __Response body:__
 ```json
@@ -333,7 +815,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3NZJa4HtbNYAAAdE
+x-request-id: Fv64fIrMjenkbB8AAA0B
 ```
 * __Response body:__
 ```json
@@ -347,7 +829,7 @@ x-request-id: Fv3Q3NZJa4HtbNYAAAdE
 
 ##### Request
 * __Method:__ POST
-* __Path:__ /api/auth/confirm/-aYQB5jlfiGundd3siUyOZ34rCX7pg4YrAbGhyLndvQ
+* __Path:__ /api/auth/confirm/v8bbSv1U8cIX4F7l--wpuoVedgM0drIfvVTqBUdhJkQ
 
 ##### Response
 * __Status__: 200
@@ -355,7 +837,7 @@ x-request-id: Fv3Q3NZJa4HtbNYAAAdE
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3NLaMIk3NIAAAAbj
+x-request-id: Fv64fIsi81RtytkAAAtk
 ```
 * __Response body:__
 ```json
@@ -368,7 +850,7 @@ x-request-id: Fv3Q3NLaMIk3NIAAAAbj
 
 ##### Request
 * __Method:__ POST
-* __Path:__ /api/auth/confirm/-aYQB5jlfiGundd3siUyOZ34rCX7pg4YrAbGhyLndvQ
+* __Path:__ /api/auth/confirm/v8bbSv1U8cIX4F7l--wpuoVedgM0drIfvVTqBUdhJkQ
 
 ##### Response
 * __Status__: 410
@@ -376,7 +858,7 @@ x-request-id: Fv3Q3NLaMIk3NIAAAAbj
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3NXSo9M3NIAAABAi
+x-request-id: Fv64fIuNnjltytkAAA1h
 ```
 * __Response body:__
 ```json
@@ -401,7 +883,7 @@ x-request-id: Fv3Q3NXSo9M3NIAAABAi
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3Nc0G7yPGjUAAAij
+x-request-id: Fv64fIbZ825Y_RUAAAjj
 ```
 * __Response body:__
 ```json
@@ -428,7 +910,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 * __Request body:__
 ```json
 {
-  "email": "user-576460752303419198@example.com"
+  "email": "user-576460752303420511@example.com"
 }
 ```
 
@@ -438,7 +920,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3NbARBoy9sIAABDi
+x-request-id: Fv64fIjpBYCus5AAAAaC
 ```
 * __Response body:__
 ```json
@@ -469,7 +951,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3Nd6LPVqkcQAABEC
+x-request-id: Fv64fIloqyc2plMAAAmD
 ```
 * __Response body:__
 ```json
@@ -483,7 +965,7 @@ x-request-id: Fv3Q3Nd6LPVqkcQAABEC
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/auth/reset_password/D0kGJ5XtH0k_ByvziXnNJZbyaOKK8ByTSnzFwBTcfdU
+* __Path:__ /api/auth/reset_password/fZD1Z7SdBBDh8AAMj04to_kF6zPbRZVKhotMgq9-fYM
 * __Request headers:__
 ```
 content-type: multipart/mixed; boundary=plug_conn_test
@@ -502,7 +984,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3NXM6CcArLoAAAbE
+x-request-id: Fv64fIm-AuVxBNAAAAqE
 ```
 * __Response body:__
 ```json
@@ -515,7 +997,7 @@ x-request-id: Fv3Q3NXM6CcArLoAAAbE
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/auth/reset_password/qQlS_Ai80n6AezPz74xnMQcXAR33iYepQCpjruA-tYQ
+* __Path:__ /api/auth/reset_password/nP4q6E5kFjXIAOuoOqsjxBTWc_Gzr4LjfamloT-lFO0
 * __Request headers:__
 ```
 content-type: multipart/mixed; boundary=plug_conn_test
@@ -534,21 +1016,19 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3NLRq86V8KcAAA8C
+x-request-id: Fv64fIrAHkz6RW8AAAtE
 ```
 * __Response body:__
 ```json
 {
-  "errors": [
-    {
-      "detail": "should be at least 8 character(s)",
-      "field": "password"
-    },
-    {
-      "detail": "does not match password",
-      "field": "password_confirmation"
-    }
-  ]
+  "errors": {
+    "password": [
+      "should be at least 8 character(s)"
+    ],
+    "password_confirmation": [
+      "does not match password"
+    ]
+  }
 }
 ```
 
@@ -564,7 +1044,7 @@ x-request-id: Fv3Q3NLRq86V8KcAAA8C
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3NclCII2plMAAAfE
+x-request-id: Fv64fIbop6bduOkAAAkD
 ```
 * __Response body:__
 ```json
@@ -591,7 +1071,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 * __Request body:__
 ```json
 {
-  "email": "user-576460752303422140@example.com",
+  "email": "user-576460752303421949@example.com",
   "password": "hello world!"
 }
 ```
@@ -602,12 +1082,12 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3NE5cyPMDlYAAA7B
+x-request-id: Fv64fH9dOlP2nzgAAAOC
 ```
 * __Response body:__
 ```json
 {
-  "token": "_b4YPi0kbOlmWNZ0yWL1FgvdCUmSQOXttQxmZwVteKI="
+  "token": "1ofjhSUFEnYbiGveY_WGizKuTuc_v2bOAur_FSxOpTA="
 }
 ```
 
@@ -623,7 +1103,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 * __Request body:__
 ```json
 {
-  "email": "user-576460752303422332@example.com",
+  "email": "user-576460752303422430@example.com",
   "password": "invalid_password"
 }
 ```
@@ -634,7 +1114,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3NCKMC-V6XgAAA5h
+x-request-id: Fv64fIEogIxi0PgAAAaj
 ```
 * __Response body:__
 ```json
@@ -655,7 +1135,7 @@ x-request-id: Fv3Q3NCKMC-V6XgAAA5h
 * __Path:__ /api/auth/log_out
 * __Request headers:__
 ```
-authorization: Bearer LhWyplWuIlIhkt9X-krimJ4U0eHnHETX12_3EKCeHPc=
+authorization: Bearer ixEeDqdkmYpIIseJcJq2QQp6VnyCRradfKiT4sf0z7M=
 ```
 
 ##### Response
@@ -664,7 +1144,7 @@ authorization: Bearer LhWyplWuIlIhkt9X-krimJ4U0eHnHETX12_3EKCeHPc=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3M7dA_TLc90AAA2h
+x-request-id: Fv64fIGEBMA9_1wAAAXk
 ```
 * __Response body:__
 ```json
@@ -685,7 +1165,7 @@ x-request-id: Fv3Q3M7dA_TLc90AAA2h
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3NDwZaHISfcAAA7C
+x-request-id: Fv64fHvOvHXRLpsAAAUj
 ```
 * __Response body:__
 ```json
@@ -703,7 +1183,7 @@ x-request-id: Fv3Q3NDwZaHISfcAAA7C
 * __Path:__ /api/auth/settings
 * __Request headers:__
 ```
-authorization: Bearer DekaMWMw99D5PSWzKwkq3_Sg0VNzfn4HDccuIK_Il60=
+authorization: Bearer kP8ZfC9GlTrIcgHT47Gm7nJ-qoHyLj7eh79VpbSUvTo=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -724,13 +1204,13 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3NHYf2zOkysAAA8B
+x-request-id: Fv64fIepOOAB7ycAAAlk
 ```
 * __Response body:__
 ```json
 {
   "message": "Password updated successfully.",
-  "token": "KBc1bGRK4gNgXHmJpkJga16-wov45Mt1tuWeW4jKEtA="
+  "token": "G52hcl6wnhdDYRXMMjgbHARXMVgmbcJGH-muEuqvkhQ="
 }
 ```
 
@@ -741,7 +1221,7 @@ x-request-id: Fv3Q3NHYf2zOkysAAA8B
 * __Path:__ /api/auth/settings
 * __Request headers:__
 ```
-authorization: Bearer K6yc7PE9Le-3qK8ORGB1oz752gJhyjkMl7Nw9gEXfZU=
+authorization: Bearer YIWUSnodM-_OUONeuldJR4rsx5skOpMqGnIMBBWE0UY=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -762,25 +1242,22 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3NMrZwPboFEAAA8i
+x-request-id: Fv64fIseAQGjhYoAAA0h
 ```
 * __Response body:__
 ```json
 {
-  "errors": [
-    {
-      "detail": "is not valid",
-      "field": "current_password"
-    },
-    {
-      "detail": "should be at least 8 character(s)",
-      "field": "password"
-    },
-    {
-      "detail": "does not match password",
-      "field": "password_confirmation"
-    }
-  ]
+  "errors": {
+    "current_password": [
+      "is not valid"
+    ],
+    "password": [
+      "should be at least 8 character(s)"
+    ],
+    "password_confirmation": [
+      "does not match password"
+    ]
+  }
 }
 ```
 
@@ -791,7 +1268,7 @@ x-request-id: Fv3Q3NMrZwPboFEAAA8i
 * __Path:__ /api/auth/settings
 * __Request headers:__
 ```
-authorization: Bearer PfQNM6_7E3f-stQdLHOvmKJ13yrhA-fgAF8omRBEWg4=
+authorization: Bearer ZlPxI-dj71lE-1Oc5w2s1m4645uOAPMbmYSGulJtZog=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -799,7 +1276,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 {
   "action": "update_email",
   "current_password": "hello world!",
-  "email": "user-576460752303421692@example.com"
+  "email": "user-576460752303421343@example.com"
 }
 ```
 
@@ -809,7 +1286,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3NY1W2ZtFTQAAAck
+x-request-id: Fv64fIQNF0ijQ4cAAAiB
 ```
 * __Response body:__
 ```json
@@ -825,7 +1302,7 @@ x-request-id: Fv3Q3NY1W2ZtFTQAAAck
 * __Path:__ /api/auth/settings
 * __Request headers:__
 ```
-authorization: Bearer IIHCtsLICb09I1Wc5Dg3mQJ48-hSMjOWdQjbrfbmQOA=
+authorization: Bearer aELPWCOGLKF2sLZrXlZg1RG2uIAHV_EAcdEz786oD5g=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -843,21 +1320,19 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3NdUwOr0FAIAAAgE
+x-request-id: Fv64fIc41KdsscoAAAYi
 ```
 * __Response body:__
 ```json
 {
-  "errors": [
-    {
-      "detail": "is not valid",
-      "field": "current_password"
-    },
-    {
-      "detail": "must have the @ sign and no spaces",
-      "field": "email"
-    }
-  ]
+  "errors": {
+    "current_password": [
+      "is not valid"
+    ],
+    "email": [
+      "must have the @ sign and no spaces"
+    ]
+  }
 }
 ```
 
@@ -866,10 +1341,10 @@ x-request-id: Fv3Q3NdUwOr0FAIAAAgE
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/auth/confirm_email/ZEndZv8E1wdqLlX-NAcHFXCcXZ5LnCECvkUphpJgAhw
+* __Path:__ /api/auth/confirm_email/bA9dkPS6Q-0skt0Q_FRk6-HSPkMSaDTsnaOcNPTofjg
 * __Request headers:__
 ```
-authorization: Bearer vibhJbd6gczrN3P0hq6chra2JezoiYvZJsFIAJWTZrI=
+authorization: Bearer QzJ_7kp4lATjsRmyZeRr5OoiTJdUZeZrY-YHZoYhRZM=
 ```
 
 ##### Response
@@ -878,7 +1353,7 @@ authorization: Bearer vibhJbd6gczrN3P0hq6chra2JezoiYvZJsFIAJWTZrI=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3NQXrC2cx38AAAeD
+x-request-id: Fv64fIk1_Btotk4AAAbC
 ```
 * __Response body:__
 ```json
@@ -894,7 +1369,7 @@ x-request-id: Fv3Q3NQXrC2cx38AAAeD
 * __Path:__ /api/auth/confirm_email/oops
 * __Request headers:__
 ```
-authorization: Bearer hJjKElq6Vzcos9EDeLEXqKQoFIP3KskzIlVFSQuK-pU=
+authorization: Bearer xKVWnIXgq8IM1MVB2-Sx1aUg2uJRux8Rafu2oWa9Vl0=
 ```
 
 ##### Response
@@ -903,7 +1378,7 @@ authorization: Bearer hJjKElq6Vzcos9EDeLEXqKQoFIP3KskzIlVFSQuK-pU=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv3Q3NOZaGb_MToAAA_h
+x-request-id: Fv64fIvtVjS5mCoAAA2h
 ```
 * __Response body:__
 ```json
@@ -913,6 +1388,35 @@ x-request-id: Fv3Q3NOZaGb_MToAAA_h
       "detail": "Email change code is invalid or it has expired."
     }
   ]
+}
+```
+
+## TurboWeb.WalletController
+### <a id=turboweb-walletcontroller-show></a>show
+#### show returns the drivers wallet
+
+##### Request
+* __Method:__ GET
+* __Path:__ /api/wallets
+* __Request headers:__
+```
+accept: application/json
+authorization: Bearer q1d9qx3cam3QBLgiquor9asMAJwRz3P-L5gYWpjVftU=
+```
+
+##### Response
+* __Status__: 200
+* __Response headers:__
+```
+content-type: application/json; charset=utf-8
+cache-control: max-age=0, private, must-revalidate
+x-request-id: Fv64fJSClgKXfqsAAAni
+```
+* __Response body:__
+```json
+{
+  "credit": 0,
+  "id": "962a2289-375d-4993-9200-eebba47f892a"
 }
 ```
 

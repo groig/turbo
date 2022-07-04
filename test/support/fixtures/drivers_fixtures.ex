@@ -5,18 +5,21 @@ defmodule Turbo.DriversFixtures do
   """
 
   alias Turbo.AccountsFixtures
+  alias Turbo.Drivers.Driver
+  alias Turbo.Wallets.Wallet
 
   @doc """
   Generate a driver.
   """
-  def driver_fixture(attrs \\ %{}) do
+  def driver_fixture() do
     user = AccountsFixtures.user_fixture(%{type: :driver})
 
     {:ok, driver} =
-      attrs
-      |> Enum.into(%{user_id: user.id, license: "licence#{System.unique_integer()}"})
-      |> Turbo.Drivers.create_driver()
+      %Driver{user_id: user.id, license: "licence#{System.unique_integer()}"}
+      |> Turbo.Repo.insert()
 
-    driver
+    {:ok, _wallet} = Turbo.Repo.insert(%Wallet{driver_id: driver.id})
+
+    Turbo.Repo.preload(driver, :wallet)
   end
 end

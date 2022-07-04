@@ -53,6 +53,7 @@ defmodule TurboWeb.RegistrationControllerTest do
       driver = Drivers.get_driver!(id)
       assert user && driver
       assert user.id == driver.user_id
+      assert driver.wallet.credit == 0
     end
 
     test "render errors for invalid data", %{conn: conn} do

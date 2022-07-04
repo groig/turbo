@@ -19,7 +19,7 @@ defmodule TurboWeb.UserSessionControllerTest do
         |> doc
 
       assert %{"token" => token} = Jason.decode!(conn.resp_body)
-      assert user == Accounts.get_user_by_token(token)
+      assert user.id == Accounts.get_user_by_token(token).id
     end
 
     test "emits error message with invalid credentials", %{conn: conn, user: user} do

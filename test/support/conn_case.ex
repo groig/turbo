@@ -57,7 +57,7 @@ defmodule TurboWeb.ConnCase do
   def register_and_log_in_customer(%{conn: conn}) do
     customer = Turbo.CustomersFixtures.customer_fixture()
     user = Accounts.get_user!(customer.user_id)
-    token =  UserAuth.log_in_user(user)
+    token = UserAuth.log_in_user(user)
     conn = Plug.Conn.put_req_header(conn, "authorization", "Bearer #{token}")
     %{conn: conn, user: user}
   end
@@ -65,7 +65,7 @@ defmodule TurboWeb.ConnCase do
   def register_and_log_in_driver(%{conn: conn}) do
     driver = Turbo.DriversFixtures.driver_fixture()
     user = Accounts.get_user!(driver.user_id)
-    token =  UserAuth.log_in_user(user)
+    token = UserAuth.log_in_user(user)
     conn = Plug.Conn.put_req_header(conn, "authorization", "Bearer #{token}")
     %{conn: conn, user: user}
   end
@@ -76,7 +76,6 @@ defmodule TurboWeb.ConnCase do
     conn = Plug.Conn.put_req_header(conn, "authorization", "Bearer #{token}")
     %{conn: conn, user: user}
   end
-
 
   def log_in_user(conn, user) do
     token = UserAuth.log_in_user(user)

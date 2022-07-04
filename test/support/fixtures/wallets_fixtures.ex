@@ -1,5 +1,6 @@
 defmodule Turbo.WalletsFixtures do
   alias Turbo.DriversFixtures
+  alias Turbo.Wallets.Wallet
 
   @moduledoc """
   This module defines test helpers for creating
@@ -9,13 +10,12 @@ defmodule Turbo.WalletsFixtures do
   @doc """
   Generate a wallet.
   """
-  def wallet_fixture(attrs \\ %{}) do
+  def wallet_fixture() do
     driver = DriversFixtures.driver_fixture()
 
     {:ok, wallet} =
-      attrs
-      |> Enum.into(%{driver_id: driver.id})
-      |> Turbo.Wallets.create_wallet()
+      %Wallet{driver_id: driver.id}
+      |> Turbo.Repo.insert()
 
     wallet
   end

@@ -1,6 +1,5 @@
 defmodule TurboWeb.CarController do
   use TurboWeb, :controller
-  use OpenApiSpex.ControllerSpecs
 
   alias Turbo.Cars
   alias Turbo.Cars.Car

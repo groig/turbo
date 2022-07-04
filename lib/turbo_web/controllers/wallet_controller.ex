@@ -6,38 +6,27 @@ defmodule TurboWeb.WalletController do
 
   action_fallback TurboWeb.FallbackController
 
-  def index(conn, _params) do
-    wallets = Wallets.list_wallets()
-    render(conn, "index.json", wallets: wallets)
+  plug :require_driver
+
+  def show(conn, _) do
+    render(conn, "show.json", wallet: conn.assigns.current_user.driver.wallet)
   end
 
-  def create(conn, %{"wallet" => wallet_params}) do
-    with {:ok, %Wallet{} = wallet} <- Wallets.create_wallet(wallet_params) do
-      conn
-      |> put_status(:created)
-      |> put_resp_header("location", Routes.wallet_path(conn, :show, wallet))
-      |> render("show.json", wallet: wallet)
-    end
-  end
-
-  def show(conn, %{"id" => id}) do
-    wallet = Wallets.get_wallet!(id)
-    render(conn, "show.json", wallet: wallet)
-  end
-
-  def update(conn, %{"id" => id, "wallet" => wallet_params}) do
-    wallet = Wallets.get_wallet!(id)
-
-    with {:ok, %Wallet{} = wallet} <- Wallets.update_wallet(wallet, wallet_params) do
+  def credit(conn, %{"wallet" => wallet, "amount" => amount, "type" => type}) do
+    with {:ok, %Wallet{} = wallet} <-
+           Wallets.credit_wallet(wallet, amount, type) do
       render(conn, "show.json", wallet: wallet)
     end
   end
 
-  def delete(conn, %{"id" => id}) do
-    wallet = Wallets.get_wallet!(id)
-
-    with {:ok, %Wallet{}} <- Wallets.delete_wallet(wallet) do
-      send_resp(conn, :no_content, "")
+  defp require_driver(conn, _opts) do
+    if conn.assigns[:current_user] && conn.assigns.current_user.type == :driver do
+      conn
+    else
+      conn
+      |> put_resp_content_type("application/json")
+      |> send_resp(401, Jason.encode!("Unauthorized"))
+      |> halt()
     end
   end
 end

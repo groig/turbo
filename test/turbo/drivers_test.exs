@@ -18,7 +18,7 @@ defmodule Turbo.DriversTest do
 
     test "get_driver!/1 returns the driver with given id" do
       driver = driver_fixture()
-      assert Drivers.get_driver!(driver.id) == driver
+      assert Drivers.get_driver!(driver.id).id == driver.id
     end
 
     test "create_driver/1 with valid data creates a driver" do
@@ -42,7 +42,7 @@ defmodule Turbo.DriversTest do
     test "update_driver/2 with invalid data returns error changeset" do
       driver = driver_fixture()
       assert {:error, %Ecto.Changeset{}} = Drivers.update_driver(driver, @invalid_attrs)
-      assert driver == Drivers.get_driver!(driver.id)
+      assert driver.id == Drivers.get_driver!(driver.id).id
     end
 
     test "delete_driver/1 deletes the driver" do
