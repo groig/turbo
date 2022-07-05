@@ -1,4 +1,4 @@
-defmodule TurboWeb.UserResetPasswordControllerTest do
+defmodule TurboWeb.ResetPasswordControllerTest do
   use TurboWeb.ConnCase, async: true
 
   alias Turbo.Accounts
@@ -13,7 +13,7 @@ defmodule TurboWeb.UserResetPasswordControllerTest do
     @tag :capture_log
     test "sends a new reset password token", %{conn: conn, user: user} do
       conn =
-        post(conn, Routes.user_reset_password_path(conn, :create), %{"email" => user.email})
+        post(conn, Routes.reset_password_path(conn, :create), %{"email" => user.email})
         |> doc
 
       assert conn.resp_body =~ "If your email is in our system"
@@ -22,7 +22,7 @@ defmodule TurboWeb.UserResetPasswordControllerTest do
 
     test "does not send reset password token if email is invalid", %{conn: conn} do
       conn =
-        post(conn, Routes.user_reset_password_path(conn, :create), %{
+        post(conn, Routes.reset_password_path(conn, :create), %{
           "email" => "unknown@example.com"
         })
         |> doc
@@ -44,7 +44,7 @@ defmodule TurboWeb.UserResetPasswordControllerTest do
 
     test "resets password once", %{conn: conn, user: user, token: token} do
       conn =
-        put(conn, Routes.user_reset_password_path(conn, :update, token), %{
+        put(conn, Routes.reset_password_path(conn, :update, token), %{
           "password" => "new valid password",
           "password_confirmation" => "new valid password"
         })
@@ -56,7 +56,7 @@ defmodule TurboWeb.UserResetPasswordControllerTest do
 
     test "does not reset password on invalid data", %{conn: conn, token: token} do
       conn =
-        put(conn, Routes.user_reset_password_path(conn, :update, token), %{
+        put(conn, Routes.reset_password_path(conn, :update, token), %{
           "password" => "toosmol",
           "password_confirmation" => "does not match"
         })
@@ -67,7 +67,7 @@ defmodule TurboWeb.UserResetPasswordControllerTest do
     end
 
     test "does not reset password with invalid token", %{conn: conn} do
-      conn = put(conn, Routes.user_reset_password_path(conn, :update, "oops")) |> doc
+      conn = put(conn, Routes.reset_password_path(conn, :update, "oops")) |> doc
       assert conn.resp_body =~ "Reset password token is invalid or it has expired"
     end
   end

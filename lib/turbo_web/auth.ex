@@ -1,4 +1,4 @@
-defmodule TurboWeb.UserAuth do
+defmodule TurboWeb.Auth do
   import Plug.Conn
 
   alias Turbo.Accounts

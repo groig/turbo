@@ -1,8 +1,8 @@
-defmodule TurboWeb.UserSettingsControllerTest do
+defmodule TurboWeb.SettingsControllerTest do
   use TurboWeb.ConnCase, async: true
 
   alias Turbo.Accounts
-  alias TurboWeb.UserAuth
+  alias TurboWeb.Auth
   import Turbo.AccountsFixtures
 
   setup :register_and_log_in_user
@@ -10,7 +10,7 @@ defmodule TurboWeb.UserSettingsControllerTest do
   describe "PUT /auth/settings (change password form)" do
     test "updates the user password and resets tokens", %{conn: conn, user: user} do
       new_password_conn =
-        put(conn, Routes.user_settings_path(conn, :update), %{
+        put(conn, Routes.settings_path(conn, :update), %{
           "action" => "update_password",
           "current_password" => valid_user_password(),
           "passwords" => %{
@@ -20,7 +20,7 @@ defmodule TurboWeb.UserSettingsControllerTest do
         })
         |> doc
 
-      old_token = UserAuth.fetch_token(conn)
+      old_token = Auth.fetch_token(conn)
 
       assert %{"message" => message, "token" => new_token} =
                Jason.decode!(new_password_conn.resp_body)
@@ -33,7 +33,7 @@ defmodule TurboWeb.UserSettingsControllerTest do
 
     test "does not update password on invalid data", %{conn: conn} do
       old_password_conn =
-        put(conn, Routes.user_settings_path(conn, :update), %{
+        put(conn, Routes.settings_path(conn, :update), %{
           "action" => "update_password",
           "current_password" => "invalid",
           "passwords" => %{
@@ -46,7 +46,7 @@ defmodule TurboWeb.UserSettingsControllerTest do
       assert old_password_conn.resp_body =~ "should be at least 8 character(s)"
       assert old_password_conn.resp_body =~ "does not match password"
       assert old_password_conn.resp_body =~ "is not valid"
-      old_token = UserAuth.fetch_token(conn)
+      old_token = Auth.fetch_token(conn)
       assert Accounts.get_user_by_token(old_token)
     end
   end
@@ -55,7 +55,7 @@ defmodule TurboWeb.UserSettingsControllerTest do
     @tag :capture_log
     test "updates the user email", %{conn: conn, user: user} do
       conn =
-        put(conn, Routes.user_settings_path(conn, :update), %{
+        put(conn, Routes.settings_path(conn, :update), %{
           "action" => "update_email",
           "current_password" => valid_user_password(),
           "email" => unique_user_email()
@@ -68,7 +68,7 @@ defmodule TurboWeb.UserSettingsControllerTest do
 
     test "does not update email on invalid data", %{conn: conn} do
       conn =
-        put(conn, Routes.user_settings_path(conn, :update), %{
+        put(conn, Routes.settings_path(conn, :update), %{
           "action" => "update_email",
           "current_password" => "invalid",
           "email" => "with spaces"
@@ -94,24 +94,24 @@ defmodule TurboWeb.UserSettingsControllerTest do
     end
 
     test "updates the user email once", %{conn: conn, user: user, token: token, email: email} do
-      conn = get(conn, Routes.user_settings_path(conn, :confirm_email, token)) |> doc
+      conn = get(conn, Routes.settings_path(conn, :confirm_email, token)) |> doc
       assert conn.resp_body =~ "Email changed successfully"
       refute Accounts.get_user_by_email(user.email)
       assert Accounts.get_user_by_email(email)
 
-      conn = get(conn, Routes.user_settings_path(conn, :confirm_email, token))
+      conn = get(conn, Routes.settings_path(conn, :confirm_email, token))
       assert conn.resp_body =~ "Email change code is invalid or it has expired"
     end
 
     test "does not update email with invalid token", %{conn: conn, user: user} do
-      conn = get(conn, Routes.user_settings_path(conn, :confirm_email, "oops")) |> doc
+      conn = get(conn, Routes.settings_path(conn, :confirm_email, "oops")) |> doc
       assert conn.resp_body =~ "Email change code is invalid or it has expired"
       assert Accounts.get_user_by_email(user.email)
     end
 
     test "deny access if user is not logged in", %{token: token} do
       conn = build_conn()
-      conn = get(conn, Routes.user_settings_path(conn, :confirm_email, token))
+      conn = get(conn, Routes.settings_path(conn, :confirm_email, token))
       assert conn.resp_body =~ "Unauthorized"
     end
   end

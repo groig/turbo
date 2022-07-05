@@ -2,7 +2,7 @@ defmodule TurboWeb.RegistrationController do
   use TurboWeb, :controller
 
   alias Turbo.Accounts
-  alias TurboWeb.UserAuth
+  alias TurboWeb.Auth
 
   action_fallback TurboWeb.FallbackController
 
@@ -12,7 +12,7 @@ defmodule TurboWeb.RegistrationController do
     with {:ok, data} <- Accounts.register_customer(customer_params) do
       {:ok, _} = Accounts.deliver_user_confirmation_instructions(data.user)
 
-      token = UserAuth.log_in_user(data.user)
+      token = Auth.log_in_user(data.user)
 
       conn
       |> put_status(:created)
@@ -26,7 +26,7 @@ defmodule TurboWeb.RegistrationController do
     with {:ok, data} <- Accounts.register_driver(driver_params) do
       {:ok, _} = Accounts.deliver_user_confirmation_instructions(data.user)
 
-      token = UserAuth.log_in_user(data.user)
+      token = Auth.log_in_user(data.user)
 
       conn
       |> put_status(:created)

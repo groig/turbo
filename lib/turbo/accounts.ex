@@ -214,7 +214,7 @@ defmodule Turbo.Accounts do
 
   ## Examples
 
-      iex> deliver_update_email_instructions(user, current_email, &Routes.user_update_email_url(conn, :edit, &1))
+      iex> deliver_update_email_instructions(user, current_email, &Routes.update_email_url(conn, :edit, &1))
       {:ok, %{to: ..., body: ...}}
 
   """
@@ -312,10 +312,10 @@ defmodule Turbo.Accounts do
 
   ## Examples
 
-      iex> deliver_user_confirmation_instructions(user, &Routes.user_confirmation_url(conn, :edit, &1))
+      iex> deliver_confirmation_instructions(user, &Routes.confirmation_url(conn, :edit, &1))
       {:ok, %{to: ..., body: ...}}
 
-      iex> deliver_user_confirmation_instructions(confirmed_user, &Routes.user_confirmation_url(conn, :edit, &1))
+      iex> deliver_confirmation_instructions(confirmed_user, &Routes.confirmation_url(conn, :edit, &1))
       {:error, :already_confirmed}
 
   """
@@ -359,7 +359,7 @@ defmodule Turbo.Accounts do
 
   ## Examples
 
-      iex> deliver_user_reset_password_instructions(user, &Routes.user_reset_password_url(conn, :edit, &1))
+      iex> deliver_reset_password_instructions(user, &Routes.reset_password_url(conn, :edit, &1))
       {:ok, %{to: ..., body: ...}}
 
   """

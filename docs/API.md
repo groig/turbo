@@ -11,20 +11,20 @@
     * [delete](#turboweb-addresscontroller-delete)
     * [show](#turboweb-addresscontroller-show)
     * [delete](#turboweb-addresscontroller-delete)
+  * [TurboWeb.ConfirmationController](#turboweb-confirmationcontroller)
+    * [create](#turboweb-confirmationcontroller-create)
+    * [update](#turboweb-confirmationcontroller-update)
   * [TurboWeb.RegistrationController](#turboweb-registrationcontroller)
     * [create](#turboweb-registrationcontroller-create)
-  * [TurboWeb.UserConfirmationController](#turboweb-userconfirmationcontroller)
-    * [create](#turboweb-userconfirmationcontroller-create)
-    * [update](#turboweb-userconfirmationcontroller-update)
-  * [TurboWeb.UserResetPasswordController](#turboweb-userresetpasswordcontroller)
-    * [create](#turboweb-userresetpasswordcontroller-create)
-    * [update](#turboweb-userresetpasswordcontroller-update)
-  * [TurboWeb.UserSessionController](#turboweb-usersessioncontroller)
-    * [create](#turboweb-usersessioncontroller-create)
-    * [delete](#turboweb-usersessioncontroller-delete)
-  * [TurboWeb.UserSettingsController](#turboweb-usersettingscontroller)
-    * [update](#turboweb-usersettingscontroller-update)
-    * [confirm_email](#turboweb-usersettingscontroller-confirm_email)
+  * [TurboWeb.ResetPasswordController](#turboweb-resetpasswordcontroller)
+    * [create](#turboweb-resetpasswordcontroller-create)
+    * [update](#turboweb-resetpasswordcontroller-update)
+  * [TurboWeb.AuthController](#turboweb-authcontroller)
+    * [create](#turboweb-authcontroller-create)
+    * [delete](#turboweb-authcontroller-delete)
+  * [TurboWeb.SettingsController](#turboweb-settingscontroller)
+    * [update](#turboweb-settingscontroller-update)
+    * [confirm_email](#turboweb-settingscontroller-confirm_email)
   * [TurboWeb.WalletController](#turboweb-walletcontroller)
     * [show](#turboweb-walletcontroller-show)
     * [credit](#turboweb-walletcontroller-credit)
@@ -39,7 +39,7 @@
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer CcX84FLXD8xlh1qH0plCBAxDWKcl-WV0bmVPVXy-caQ=
+authorization: Bearer T4j1Za9UQQnWUdRPTaUGm5LNlmX-Qb3RJXGO0QjUb3E=
 ```
 
 ##### Response
@@ -48,7 +48,7 @@ authorization: Bearer CcX84FLXD8xlh1qH0plCBAxDWKcl-WV0bmVPVXy-caQ=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrE0aFl6UH24AAAjE
+x-request-id: Fv73W_VREWqKdCIAAAyB
 ```
 * __Response body:__
 ```json
@@ -66,7 +66,7 @@ x-request-id: Fv7IrE0aFl6UH24AAAjE
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer W3PqBrXemxCdoVC0q7wMU5qt14dFFJpbA-7wVliedOI=
+authorization: Bearer 1zdLitjQAI7_e1ojwtMgKnkDxz-zkF4LFlbmlAZdEas=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -89,12 +89,12 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrFQbjFIl06MAAAoh
+x-request-id: Fv73W_a7nIwVUukAAApC
 ```
 * __Response body:__
 ```json
 {
-  "id": "4c9d3673-a399-4ba8-8f35-7ef9a63b96cb",
+  "id": "79ab4c9a-7434-4e33-945e-83950cb22879",
   "location": {
     "coordinates": [
       30.2,
@@ -111,11 +111,11 @@ x-request-id: Fv7IrFQbjFIl06MAAAoh
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/addresses/4c9d3673-a399-4ba8-8f35-7ef9a63b96cb
+* __Path:__ /api/addresses/79ab4c9a-7434-4e33-945e-83950cb22879
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer W3PqBrXemxCdoVC0q7wMU5qt14dFFJpbA-7wVliedOI=
+authorization: Bearer 1zdLitjQAI7_e1ojwtMgKnkDxz-zkF4LFlbmlAZdEas=
 ```
 
 ##### Response
@@ -124,12 +124,12 @@ authorization: Bearer W3PqBrXemxCdoVC0q7wMU5qt14dFFJpbA-7wVliedOI=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrFRbqacl06MAAAqk
+x-request-id: Fv73W_babJoVUukAAApi
 ```
 * __Response body:__
 ```json
 {
-  "id": "4c9d3673-a399-4ba8-8f35-7ef9a63b96cb",
+  "id": "79ab4c9a-7434-4e33-945e-83950cb22879",
   "location": {
     "coordinates": [
       30.2,
@@ -151,11 +151,11 @@ x-request-id: Fv7IrFRbqacl06MAAAqk
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/addresses/2c072771-196a-4a0a-a7c0-4766d4802678
+* __Path:__ /api/addresses/1cf47449-17a1-477e-9b77-e3b2d15a438e
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer 0HSvdI2zVniH_uACKlC2d8RzMQN06c4qHALP_zTGja4=
+authorization: Bearer AW19LEwQYiLCDCOtUTdiJ_Fo3vheOi5R9WyH9UjyAyI=
 ```
 
 ##### Response
@@ -164,12 +164,12 @@ authorization: Bearer 0HSvdI2zVniH_uACKlC2d8RzMQN06c4qHALP_zTGja4=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrE_8xt4ArLoAAAjh
+x-request-id: Fv73W_ZH7poW4VoAAAoC
 ```
 * __Response body:__
 ```json
 {
-  "id": "2c072771-196a-4a0a-a7c0-4766d4802678",
+  "id": "1cf47449-17a1-477e-9b77-e3b2d15a438e",
   "location": {
     "coordinates": [
       30.2,
@@ -183,7 +183,7 @@ x-request-id: Fv7IrE_8xt4ArLoAAAjh
     },
     "type": "Point"
   },
-  "name": "address-576460752303421822"
+  "name": "address-576460752303419677"
 }
 ```
 
@@ -191,11 +191,11 @@ x-request-id: Fv7IrE_8xt4ArLoAAAjh
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/addresses/2c072771-196a-4a0a-a7c0-4766d4802678
+* __Path:__ /api/addresses/1cf47449-17a1-477e-9b77-e3b2d15a438e
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer cAdVDLRLVqk5vH_Zsp4XwKRLMl06XVSbJxTRsxOb48M=
+authorization: Bearer JvlUxq9KfO50r0vGfAqMEw8FRvivLJdyex96IxqRBPE=
 ```
 
 ##### Response
@@ -204,7 +204,7 @@ authorization: Bearer cAdVDLRLVqk5vH_Zsp4XwKRLMl06XVSbJxTRsxOb48M=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrFOWRQYArLoAAAgC
+x-request-id: Fv73W_ZgMy4W4VoAAAzB
 ```
 * __Response body:__
 ```json
@@ -220,7 +220,7 @@ x-request-id: Fv7IrFOWRQYArLoAAAgC
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer ZNOxW4QeB1pvvMQaSFSIvs4kjd4PYlmEKf2hAUvCNGo=
+authorization: Bearer 2TDSaIRLrQzYbnumrZ9I6bgjSUZ42HGtgvK8Ho2hlRs=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -237,7 +237,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrEwzCBkaXdYAAAsj
+x-request-id: Fv73W_cnHgu8WKUAAA0B
 ```
 * __Response body:__
 ```json
@@ -258,11 +258,11 @@ x-request-id: Fv7IrEwzCBkaXdYAAAsj
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/addresses/1b1fd6c8-7b2d-4d3e-8368-17f623cdc4c0
+* __Path:__ /api/addresses/8112fb34-4046-43f0-b79a-3c60307cea6a
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer r5iWm0S7R6U-gFWjaF-fLqyarC5wEDlwpp2vfTijnEs=
+authorization: Bearer k5t45InEQFtLxs1R-E5oQleIJCZ-qm5Wy1K0y1ej2JA=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -287,12 +287,12 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrFXPezLKGrYAAAqB
+x-request-id: Fv73W-0sYLos5TIAAAfi
 ```
 * __Response body:__
 ```json
 {
-  "id": "1b1fd6c8-7b2d-4d3e-8368-17f623cdc4c0",
+  "id": "8112fb34-4046-43f0-b79a-3c60307cea6a",
   "location": {
     "coordinates": [
       42.2,
@@ -309,11 +309,11 @@ x-request-id: Fv7IrFXPezLKGrYAAAqB
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/addresses/1b1fd6c8-7b2d-4d3e-8368-17f623cdc4c0
+* __Path:__ /api/addresses/8112fb34-4046-43f0-b79a-3c60307cea6a
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer r5iWm0S7R6U-gFWjaF-fLqyarC5wEDlwpp2vfTijnEs=
+authorization: Bearer k5t45InEQFtLxs1R-E5oQleIJCZ-qm5Wy1K0y1ej2JA=
 ```
 
 ##### Response
@@ -322,12 +322,12 @@ authorization: Bearer r5iWm0S7R6U-gFWjaF-fLqyarC5wEDlwpp2vfTijnEs=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrFX2R6PKGrYAAAsE
+x-request-id: Fv73W_JJ8N0s5TIAAAmk
 ```
 * __Response body:__
 ```json
 {
-  "id": "1b1fd6c8-7b2d-4d3e-8368-17f623cdc4c0",
+  "id": "8112fb34-4046-43f0-b79a-3c60307cea6a",
   "location": {
     "coordinates": [
       42.2,
@@ -350,11 +350,11 @@ x-request-id: Fv7IrFX2R6PKGrYAAAsE
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/addresses/6b3f04a9-4364-433a-8073-e73481ab01c0
+* __Path:__ /api/addresses/ba23274b-3863-46d3-8be6-78d62fb0a1b6
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer CzXYMxH4kQuDaPPonji_2_2QRQ1nLTZH_few1sd_t1o=
+authorization: Bearer 0x_BPIli9nNCLGH9neP5VBEP7Usmtzz0cog5P6-8PeA=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -379,7 +379,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrE4zEWnOkysAAAmk
+x-request-id: Fv73W_NLeNx9MYAAAAwh
 ```
 * __Response body:__
 ```json
@@ -390,11 +390,11 @@ x-request-id: Fv7IrE4zEWnOkysAAAmk
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/addresses/e7a21641-d728-4e16-82d6-f007a211b3d9
+* __Path:__ /api/addresses/324da044-3d0f-4274-a5d5-d1fe0ffdd3c1
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer xwOtFW8Ez8n2jF1Yh9suvQZGiJlmBQHtI2H5uqozwnw=
+authorization: Bearer BJFKYdhn_yfeNN-DhFYxc3vYseFcFWLHzrdtSvk4H8g=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -413,7 +413,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrDsqweZu3m0AAAVE
+x-request-id: Fv73W9sYKK5TB30AAARk
 ```
 * __Response body:__
 ```json
@@ -434,11 +434,11 @@ x-request-id: Fv7IrDsqweZu3m0AAAVE
 
 ##### Request
 * __Method:__ DELETE
-* __Path:__ /api/addresses/be7fcd30-f2bb-48e1-86b8-3be76d6414e0
+* __Path:__ /api/addresses/79f9c642-1121-49f5-b114-54b3f7be5c01
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer 4Wr9y7Z6--OmlFugYwAWTq1QetYTi_p_RNhuJ_QWeb4=
+authorization: Bearer JqM-GOM9yqV-2ENhXoEp8ht8IY2wURWJ0bsQPHIOU7g=
 ```
 
 ##### Response
@@ -446,7 +446,7 @@ authorization: Bearer 4Wr9y7Z6--OmlFugYwAWTq1QetYTi_p_RNhuJ_QWeb4=
 * __Response headers:__
 ```
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrE7L8Pki1FIAAAYC
+x-request-id: Fv73W_TNxJf3A-cAAAnE
 ```
 * __Response body:__
 ```json
@@ -458,11 +458,11 @@ x-request-id: Fv7IrE7L8Pki1FIAAAYC
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/addresses/be7fcd30-f2bb-48e1-86b8-3be76d6414e0
+* __Path:__ /api/addresses/79f9c642-1121-49f5-b114-54b3f7be5c01
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer 4Wr9y7Z6--OmlFugYwAWTq1QetYTi_p_RNhuJ_QWeb4=
+authorization: Bearer JqM-GOM9yqV-2ENhXoEp8ht8IY2wURWJ0bsQPHIOU7g=
 ```
 
 ##### Response
@@ -471,7 +471,7 @@ authorization: Bearer 4Wr9y7Z6--OmlFugYwAWTq1QetYTi_p_RNhuJ_QWeb4=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrE7viSAi1FIAAAxD
+x-request-id: Fv73W_T_sIX3A-cAAAxh
 ```
 * __Response body:__
 ```json
@@ -483,11 +483,11 @@ x-request-id: Fv7IrE7viSAi1FIAAAxD
 
 ##### Request
 * __Method:__ DELETE
-* __Path:__ /api/addresses/e8bea49d-d1cc-4fd2-8442-c52f57d47bc1
+* __Path:__ /api/addresses/120ffe10-7401-42d9-996d-f730fdca019c
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer BKujy7Q6HxtDQEyh0W8wUlefzQixtw9RSu7n7xbhjh8=
+authorization: Bearer LoZ0icxB1jUaUQcCfK73DtnRe_8-NV_zcDLRkg_Gu3o=
 ```
 
 ##### Response
@@ -496,11 +496,178 @@ authorization: Bearer BKujy7Q6HxtDQEyh0W8wUlefzQixtw9RSu7n7xbhjh8=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrFcGFgBMKJkAAAuE
+x-request-id: Fv73W_fpZWontK4AAA0h
 ```
 * __Response body:__
 ```json
 "Not Found"
+```
+
+## TurboWeb.ConfirmationController
+### <a id=turboweb-confirmationcontroller-create></a>create
+#### POST /auth/confirm sends a new confirmation token
+
+##### Request
+* __Method:__ POST
+* __Path:__ /api/auth/confirm
+* __Request headers:__
+```
+content-type: multipart/mixed; boundary=plug_conn_test
+```
+* __Request body:__
+```json
+{
+  "email": "user-576460752303421503@example.com"
+}
+```
+
+##### Response
+* __Status__: 200
+* __Response headers:__
+```
+content-type: application/json; charset=utf-8
+cache-control: max-age=0, private, must-revalidate
+x-request-id: Fv73W-iFQkwRoL0AAAOC
+```
+* __Response body:__
+```json
+{
+  "message": "If your email is in our system and it has not been confirmed yet, you will receive an email with instructions shortly."
+}
+```
+
+#### POST /auth/confirm does not send confirmation token if User is confirmed
+
+##### Request
+* __Method:__ POST
+* __Path:__ /api/auth/confirm
+* __Request headers:__
+```
+content-type: multipart/mixed; boundary=plug_conn_test
+```
+* __Request body:__
+```json
+{
+  "email": "user-576460752303422558@example.com"
+}
+```
+
+##### Response
+* __Status__: 200
+* __Response headers:__
+```
+content-type: application/json; charset=utf-8
+cache-control: max-age=0, private, must-revalidate
+x-request-id: Fv73W-ohZiyDIckAAAVC
+```
+* __Response body:__
+```json
+{
+  "message": "If your email is in our system and it has not been confirmed yet, you will receive an email with instructions shortly."
+}
+```
+
+#### POST /auth/confirm does not send confirmation token if email is invalid
+
+##### Request
+* __Method:__ POST
+* __Path:__ /api/auth/confirm
+* __Request headers:__
+```
+content-type: multipart/mixed; boundary=plug_conn_test
+```
+* __Request body:__
+```json
+{
+  "email": "unknown@example.com"
+}
+```
+
+##### Response
+* __Status__: 200
+* __Response headers:__
+```
+content-type: application/json; charset=utf-8
+cache-control: max-age=0, private, must-revalidate
+x-request-id: Fv73W9sXEDChBekAAAQk
+```
+* __Response body:__
+```json
+{
+  "message": "If your email is in our system and it has not been confirmed yet, you will receive an email with instructions shortly."
+}
+```
+
+### <a id=turboweb-confirmationcontroller-update></a>update
+#### POST /auth/confirm/:token confirms the given token once
+
+##### Request
+* __Method:__ POST
+* __Path:__ /api/auth/confirm/AnZuecEIbLSKLvfY8q5ktAouTSm0JGOsVdSYM5wXU98
+
+##### Response
+* __Status__: 200
+* __Response headers:__
+```
+content-type: application/json; charset=utf-8
+cache-control: max-age=0, private, must-revalidate
+x-request-id: Fv73W-qBrOve6igAAAeE
+```
+* __Response body:__
+```json
+{
+  "message": "User confirmed successfully."
+}
+```
+
+#### POST /auth/confirm/:token confirms the given token once
+
+##### Request
+* __Method:__ POST
+* __Path:__ /api/auth/confirm/AnZuecEIbLSKLvfY8q5ktAouTSm0JGOsVdSYM5wXU98
+
+##### Response
+* __Status__: 410
+* __Response headers:__
+```
+content-type: application/json; charset=utf-8
+cache-control: max-age=0, private, must-revalidate
+x-request-id: Fv73W-q0UNbe6igAAAWC
+```
+* __Response body:__
+```json
+{
+  "errors": [
+    {
+      "detail": "User confirmation code is invalid or it has expired."
+    }
+  ]
+}
+```
+
+#### POST /auth/confirm/:token does not confirm email with invalid token
+
+##### Request
+* __Method:__ POST
+* __Path:__ /api/auth/confirm/oops
+
+##### Response
+* __Status__: 410
+* __Response headers:__
+```
+content-type: application/json; charset=utf-8
+cache-control: max-age=0, private, must-revalidate
+x-request-id: Fv73W-rnzcIGmfwAAAqj
+```
+* __Response body:__
+```json
+{
+  "errors": [
+    {
+      "detail": "User confirmation code is invalid or it has expired."
+    }
+  ]
+}
 ```
 
 ## TurboWeb.RegistrationController
@@ -518,7 +685,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```json
 {
   "customer": {
-    "email": "user-576460752303422366@example.com",
+    "email": "user-576460752303420509@example.com",
     "password": "hello world!"
   }
 }
@@ -530,13 +697,13 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrExsZsyf4hYAAASi
+x-request-id: Fv73W-0KqDm0VDoAAAvj
 ```
 * __Response body:__
 ```json
 {
-  "id": "f07d2513-a22f-4061-bea4-ab06c424234e",
-  "token": "wgsGMK7oFn2NAfe0mE6tB2Ww_O1bax0v61KWFpcKzGk="
+  "id": "16945c03-37f4-481b-acf8-6c5f898d8182",
+  "token": "Af0tHWgMgD7hhoqN48Rcq3Of0Sc10G2ctVxXUCOpLpk="
 }
 ```
 
@@ -565,7 +732,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrE5IxSQQtMwAAAhB
+x-request-id: Fv73W-sYngE2BH0AAAih
 ```
 * __Response body:__
 ```json
@@ -594,7 +761,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```json
 {
   "driver": {
-    "email": "user-576460752303421148@example.com",
+    "email": "user-576460752303421982@example.com",
     "license": "driver-license-abc",
     "password": "hello world!"
   }
@@ -607,13 +774,13 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrE16QAGnDyAAAAlk
+x-request-id: Fv73W-s8DH1ghwYAAAYi
 ```
 * __Response body:__
 ```json
 {
-  "id": "65bf21a0-9c76-4d3d-8d24-ef4e245877f6",
-  "token": "QkictebPTcOJpwcKZ552gRqMTdAFCpZ-JnGK7d_Edc0="
+  "id": "0c8630e4-5c0c-4cfb-8100-40cadcfdf5a6",
+  "token": "6EbHQsxDPQhJrg3B3capyEZswXvWA2r4vybZzaQwnO8="
 }
 ```
 
@@ -630,7 +797,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```json
 {
   "driver": {
-    "email": "user-576460752303422687@example.com",
+    "email": "user-576460752303422076@example.com",
     "password": "hello world!"
   }
 }
@@ -642,7 +809,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrDsiY0M3F50AAAHi
+x-request-id: Fv73W95-e5Xd22sAAAXE
 ```
 * __Response body:__
 ```json
@@ -668,7 +835,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```json
 {
   "admin": {
-    "email": "user-576460752303420445@example.com",
+    "email": "user-576460752303421340@example.com",
     "password": "hello world!"
   }
 }
@@ -680,7 +847,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrE4PR07_MToAAAwj
+x-request-id: Fv73W-yPcYY2plMAAAik
 ```
 * __Response body:__
 ```json
@@ -714,7 +881,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrE5WxVrBaNsAAAWC
+x-request-id: Fv73W-2x83kGkocAAAxD
 ```
 * __Response body:__
 ```json
@@ -730,175 +897,8 @@ x-request-id: Fv7IrE5WxVrBaNsAAAWC
 }
 ```
 
-## TurboWeb.UserConfirmationController
-### <a id=turboweb-userconfirmationcontroller-create></a>create
-#### POST /auth/confirm sends a new confirmation token
-
-##### Request
-* __Method:__ POST
-* __Path:__ /api/auth/confirm
-* __Request headers:__
-```
-content-type: multipart/mixed; boundary=plug_conn_test
-```
-* __Request body:__
-```json
-{
-  "email": "user-576460752303420959@example.com"
-}
-```
-
-##### Response
-* __Status__: 200
-* __Response headers:__
-```
-content-type: application/json; charset=utf-8
-cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrFOxMdXj7m8AAApk
-```
-* __Response body:__
-```json
-{
-  "message": "If your email is in our system and it has not been confirmed yet, you will receive an email with instructions shortly."
-}
-```
-
-#### POST /auth/confirm does not send confirmation token if User is confirmed
-
-##### Request
-* __Method:__ POST
-* __Path:__ /api/auth/confirm
-* __Request headers:__
-```
-content-type: multipart/mixed; boundary=plug_conn_test
-```
-* __Request body:__
-```json
-{
-  "email": "user-576460752303419933@example.com"
-}
-```
-
-##### Response
-* __Status__: 200
-* __Response headers:__
-```
-content-type: application/json; charset=utf-8
-cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrFKtflv6lT0AAA4D
-```
-* __Response body:__
-```json
-{
-  "message": "If your email is in our system and it has not been confirmed yet, you will receive an email with instructions shortly."
-}
-```
-
-#### POST /auth/confirm does not send confirmation token if email is invalid
-
-##### Request
-* __Method:__ POST
-* __Path:__ /api/auth/confirm
-* __Request headers:__
-```
-content-type: multipart/mixed; boundary=plug_conn_test
-```
-* __Request body:__
-```json
-{
-  "email": "unknown@example.com"
-}
-```
-
-##### Response
-* __Status__: 200
-* __Response headers:__
-```
-content-type: application/json; charset=utf-8
-cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrFGjlNQwWW0AAAeC
-```
-* __Response body:__
-```json
-{
-  "message": "If your email is in our system and it has not been confirmed yet, you will receive an email with instructions shortly."
-}
-```
-
-### <a id=turboweb-userconfirmationcontroller-update></a>update
-#### POST /auth/confirm/:token confirms the given token once
-
-##### Request
-* __Method:__ POST
-* __Path:__ /api/auth/confirm/htTK90k_BBn-Cena-sKF5f48immIoIw5QaaLYje9jG8
-
-##### Response
-* __Status__: 200
-* __Response headers:__
-```
-content-type: application/json; charset=utf-8
-cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrFL4roGjhYoAAAmh
-```
-* __Response body:__
-```json
-{
-  "message": "User confirmed successfully."
-}
-```
-
-#### POST /auth/confirm/:token confirms the given token once
-
-##### Request
-* __Method:__ POST
-* __Path:__ /api/auth/confirm/htTK90k_BBn-Cena-sKF5f48immIoIw5QaaLYje9jG8
-
-##### Response
-* __Status__: 410
-* __Response headers:__
-```
-content-type: application/json; charset=utf-8
-cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrFNB-FijhYoAAAnB
-```
-* __Response body:__
-```json
-{
-  "errors": [
-    {
-      "detail": "User confirmation code is invalid or it has expired."
-    }
-  ]
-}
-```
-
-#### POST /auth/confirm/:token does not confirm email with invalid token
-
-##### Request
-* __Method:__ POST
-* __Path:__ /api/auth/confirm/oops
-
-##### Response
-* __Status__: 410
-* __Response headers:__
-```
-content-type: application/json; charset=utf-8
-cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrFQZOHAy5N8AAA6j
-```
-* __Response body:__
-```json
-{
-  "errors": [
-    {
-      "detail": "User confirmation code is invalid or it has expired."
-    }
-  ]
-}
-```
-
-## TurboWeb.UserResetPasswordController
-### <a id=turboweb-userresetpasswordcontroller-create></a>create
+## TurboWeb.ResetPasswordController
+### <a id=turboweb-resetpasswordcontroller-create></a>create
 #### POST /auth/reset_password sends a new reset password token
 
 ##### Request
@@ -911,7 +911,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 * __Request body:__
 ```json
 {
-  "email": "user-576460752303421695@example.com"
+  "email": "user-576460752303422494@example.com"
 }
 ```
 
@@ -921,7 +921,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrEzvK7qf-kEAAAtD
+x-request-id: Fv73W-j8ABIAalQAAAoD
 ```
 * __Response body:__
 ```json
@@ -952,7 +952,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrEr1HEf_ZKcAAAbk
+x-request-id: Fv73W-mKfXvk2SIAAAdk
 ```
 * __Response body:__
 ```json
@@ -961,12 +961,12 @@ x-request-id: Fv7IrEr1HEf_ZKcAAAbk
 }
 ```
 
-### <a id=turboweb-userresetpasswordcontroller-update></a>update
+### <a id=turboweb-resetpasswordcontroller-update></a>update
 #### PUT /auth/reset_password/:token resets password once
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/auth/reset_password/tpCV27fTycGMj9eTeexJEv56z-dNYx-xaZBMn7xLEAw
+* __Path:__ /api/auth/reset_password/yrUZTl9YSa0pV_pdeMaDDXUWOrp1P3_Ypa8I4wCuFwo
 * __Request headers:__
 ```
 content-type: multipart/mixed; boundary=plug_conn_test
@@ -985,7 +985,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrEkrHyQ4JiQAAAYk
+x-request-id: Fv73W-BhpuW7CEoAAAWB
 ```
 * __Response body:__
 ```json
@@ -998,7 +998,7 @@ x-request-id: Fv7IrEkrHyQ4JiQAAAYk
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/auth/reset_password/rjEWZ6RyaEYyCOZZWRd5IfXnqjvK1YFjowB9fyQcGvs
+* __Path:__ /api/auth/reset_password/lAlMJfFgL2Cvj5z32Xxs3SE0o8FoIXjEm0cRfro7hcw
 * __Request headers:__
 ```
 content-type: multipart/mixed; boundary=plug_conn_test
@@ -1017,7 +1017,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrEwbJRZMC2EAAAeE
+x-request-id: Fv73W-n6m_Qgi1YAAAiB
 ```
 * __Response body:__
 ```json
@@ -1045,7 +1045,7 @@ x-request-id: Fv7IrEwbJRZMC2EAAAeE
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrE1zjnYgi1YAAAkE
+x-request-id: Fv73W-tl11hm0nMAAAkB
 ```
 * __Response body:__
 ```json
@@ -1058,8 +1058,8 @@ x-request-id: Fv7IrE1zjnYgi1YAAAkE
 }
 ```
 
-## TurboWeb.UserSessionController
-### <a id=turboweb-usersessioncontroller-create></a>create
+## TurboWeb.AuthController
+### <a id=turboweb-authcontroller-create></a>create
 #### POST /auth/log_in logs the user in
 
 ##### Request
@@ -1072,7 +1072,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 * __Request body:__
 ```json
 {
-  "email": "user-576460752303420125@example.com",
+  "email": "user-576460752303420317@example.com",
   "password": "hello world!"
 }
 ```
@@ -1083,12 +1083,12 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrFB7ml297YMAAAkB
+x-request-id: Fv73W-6Pi3Wr6o4AAAkE
 ```
 * __Response body:__
 ```json
 {
-  "token": "whzPnRN1DwCUvIkq0zRpfs3aDRLlHn49y4vLNJV74Jw="
+  "token": "iSlDxKKiIRxuHR-xbTjyfOKn8dxLl-hzAJQ7xO8KN7k="
 }
 ```
 
@@ -1104,7 +1104,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 * __Request body:__
 ```json
 {
-  "email": "user-576460752303421854@example.com",
+  "email": "user-576460752303420959@example.com",
   "password": "invalid_password"
 }
 ```
@@ -1115,7 +1115,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrE-fy1RtFTQAAAih
+x-request-id: Fv73W-2Re35xBNAAAAwD
 ```
 * __Response body:__
 ```json
@@ -1128,7 +1128,7 @@ x-request-id: Fv7IrE-fy1RtFTQAAAih
 }
 ```
 
-### <a id=turboweb-usersessioncontroller-delete></a>delete
+### <a id=turboweb-authcontroller-delete></a>delete
 #### DELETE /auth/log_out logs the user out
 
 ##### Request
@@ -1136,7 +1136,7 @@ x-request-id: Fv7IrE-fy1RtFTQAAAih
 * __Path:__ /api/auth/log_out
 * __Request headers:__
 ```
-authorization: Bearer e2pS78oiBYd1qNVYQ1wwKfNfE-44Fv7PaaDCGiigw7g=
+authorization: Bearer xNknLi1lbhYszgn0oBfxqbt4JIwmI-kfF3l_L6qErkU=
 ```
 
 ##### Response
@@ -1145,7 +1145,7 @@ authorization: Bearer e2pS78oiBYd1qNVYQ1wwKfNfE-44Fv7PaaDCGiigw7g=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrFEQNVfWp8wAAAci
+x-request-id: Fv73W-8zjxkPU7QAAAzD
 ```
 * __Response body:__
 ```json
@@ -1166,7 +1166,7 @@ x-request-id: Fv7IrFEQNVfWp8wAAAci
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrFFzY_aY-1oAAAdC
+x-request-id: Fv73W_ALyiYy5N8AAA0j
 ```
 * __Response body:__
 ```json
@@ -1175,8 +1175,8 @@ x-request-id: Fv7IrFFzY_aY-1oAAAdC
 }
 ```
 
-## TurboWeb.UserSettingsController
-### <a id=turboweb-usersettingscontroller-update></a>update
+## TurboWeb.SettingsController
+### <a id=turboweb-settingscontroller-update></a>update
 #### PUT /auth/settings (change password form) updates the user password and resets tokens
 
 ##### Request
@@ -1184,7 +1184,7 @@ x-request-id: Fv7IrFFzY_aY-1oAAAdC
 * __Path:__ /api/auth/settings
 * __Request headers:__
 ```
-authorization: Bearer K1_KfRC9RtURPjTpZdToeMQCZ75u6ucxrZ1h_PWhFhU=
+authorization: Bearer SZhm54ZQV-YkDeFQuDkJiZklHsMYXEL7dAQ7ZnL-cXA=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -1205,13 +1205,13 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrFIja7Pf-OsAAA3D
+x-request-id: Fv73W--4vKC9CpUAAAsh
 ```
 * __Response body:__
 ```json
 {
   "message": "Password updated successfully.",
-  "token": "W4j2tUiQkKS-PbZJzQyYPF1uvs8rh-6lb7iYyjCeVpA="
+  "token": "Wd8fLiGDI7rukrIzKX9V_3XFbndvLCJlIYkve9kfEwY="
 }
 ```
 
@@ -1222,7 +1222,7 @@ x-request-id: Fv7IrFIja7Pf-OsAAA3D
 * __Path:__ /api/auth/settings
 * __Request headers:__
 ```
-authorization: Bearer SvqetScVe4TBpZx4g28OKjZ2d8yUgeX6nbWvlut-yf8=
+authorization: Bearer Jtv349oIYVi8SACBJc7qgkDOMPlNmsmuaXWcm-ESoPs=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -1243,7 +1243,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrFCOoroaShMAAA1D
+x-request-id: Fv73W_DGWtTUwK4AAAlk
 ```
 * __Response body:__
 ```json
@@ -1269,7 +1269,7 @@ x-request-id: Fv7IrFCOoroaShMAAA1D
 * __Path:__ /api/auth/settings
 * __Request headers:__
 ```
-authorization: Bearer TWqrVgrMAneLhbqz-5bI9CZWdl2v1eptQtsDNf_ypLU=
+authorization: Bearer xUxfHWy0HxgpRr6wVwA1V669O3Uce0g2CPh2GkUGYIM=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -1277,7 +1277,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 {
   "action": "update_email",
   "current_password": "hello world!",
-  "email": "user-576460752303420924@example.com"
+  "email": "user-576460752303420895@example.com"
 }
 ```
 
@@ -1287,7 +1287,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrFL5UW9tytkAAAok
+x-request-id: Fv73W-32zlBXM8wAAApB
 ```
 * __Response body:__
 ```json
@@ -1303,7 +1303,7 @@ x-request-id: Fv7IrFL5UW9tytkAAAok
 * __Path:__ /api/auth/settings
 * __Request headers:__
 ```
-authorization: Bearer SEiR2rDCu4smaHOX2DAuuYYq2g5ALfJxqOatGZewY7E=
+authorization: Bearer DPE0nQalvLUpcg3umYg3IcMcDZnoGhTRNxKpsLmkKvA=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -1321,7 +1321,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrFETgMq0VDoAAAkh
+x-request-id: Fv73W-6ZK5CcisgAAAyj
 ```
 * __Response body:__
 ```json
@@ -1337,15 +1337,15 @@ x-request-id: Fv7IrFETgMq0VDoAAAkh
 }
 ```
 
-### <a id=turboweb-usersettingscontroller-confirm_email></a>confirm_email
+### <a id=turboweb-settingscontroller-confirm_email></a>confirm_email
 #### GET /users/settings/confirm_email/:token updates the user email once
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/auth/confirm_email/Q_ZO9SOEL3uQQmevLapLh6AqiGATqyMpE32CciKlrDI
+* __Path:__ /api/auth/confirm_email/zRqrUTZEYqbrHDztYlDn3CRxYE_XblYd_Fmqd3KSoKk
 * __Request headers:__
 ```
-authorization: Bearer f9d1C3ZMKm5K64AySaYg6kKz3dgit5i3NqlwDAJFuzQ=
+authorization: Bearer jVNJhCfx4MgUU7Wh-IkgbFtohHE2FE_IU0YlfO477SE=
 ```
 
 ##### Response
@@ -1354,7 +1354,7 @@ authorization: Bearer f9d1C3ZMKm5K64AySaYg6kKz3dgit5i3NqlwDAJFuzQ=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrE4VaNgNeEsAAAVi
+x-request-id: Fv73W-ufTiScx38AAAsj
 ```
 * __Response body:__
 ```json
@@ -1370,7 +1370,7 @@ x-request-id: Fv7IrE4VaNgNeEsAAAVi
 * __Path:__ /api/auth/confirm_email/oops
 * __Request headers:__
 ```
-authorization: Bearer oZxFJEk8f-NDjcn1ZeCezctrHPOErp6Qphfn-fxAtxU=
+authorization: Bearer FUOZfmdZ2_Ld5okl2GmFbSccWOz972rcDNYPmmqtZbs=
 ```
 
 ##### Response
@@ -1379,7 +1379,7 @@ authorization: Bearer oZxFJEk8f-NDjcn1ZeCezctrHPOErp6Qphfn-fxAtxU=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrFG_JEbraZgAAAei
+x-request-id: Fv73W-8SanLBEnoAAArh
 ```
 * __Response body:__
 ```json
@@ -1402,7 +1402,7 @@ x-request-id: Fv7IrFG_JEbraZgAAAei
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer ZEzsB2Jt9d0qxBDaYYstKIxI5raet0JAtMFXWim4x9w=
+authorization: Bearer M_J7-8DrYv5XveEWe4zCFRHdyEfjUP05ha-ZAgcrvb4=
 ```
 
 ##### Response
@@ -1411,13 +1411,13 @@ authorization: Bearer ZEzsB2Jt9d0qxBDaYYstKIxI5raet0JAtMFXWim4x9w=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrFziAhRw4X0AABFj
+x-request-id: Fv73W_khmi6GSNwAAA8j
 ```
 * __Response body:__
 ```json
 {
   "credit": 0,
-  "id": "404e7674-e91e-41ae-a034-e1aa40c247a1"
+  "id": "941573f1-e8b0-4dd8-b953-9223b443234c"
 }
 ```
 
@@ -1426,11 +1426,11 @@ x-request-id: Fv7IrFziAhRw4X0AABFj
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/wallet/ea040671-a857-4ce1-a20f-6e5cc7f3950d
+* __Path:__ /api/wallet/5c944a45-cf5d-40a3-9874-50ae6454a265
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer eeWDhMlKKkzSQlmT7wJvc-g8KyU2c8EaXXvt-65hXN4=
+authorization: Bearer 2IQvSjvYxKKLdaFH1WLXEuo3EfJS-K-p0zYoSBi1atU=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -1447,13 +1447,13 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrFwz4-nQJIQAABDj
+x-request-id: Fv73W_haRDgInlcAAA2h
 ```
 * __Response body:__
 ```json
 {
   "credit": 42,
-  "id": "ea040671-a857-4ce1-a20f-6e5cc7f3950d"
+  "id": "5c944a45-cf5d-40a3-9874-50ae6454a265"
 }
 ```
 
@@ -1461,11 +1461,11 @@ x-request-id: Fv7IrFwz4-nQJIQAABDj
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/wallet/ea040671-a857-4ce1-a20f-6e5cc7f3950d
+* __Path:__ /api/wallet/5c944a45-cf5d-40a3-9874-50ae6454a265
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer eeWDhMlKKkzSQlmT7wJvc-g8KyU2c8EaXXvt-65hXN4=
+authorization: Bearer 2IQvSjvYxKKLdaFH1WLXEuo3EfJS-K-p0zYoSBi1atU=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -1483,13 +1483,13 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrFx_ItvQJIQAABED
+x-request-id: Fv73W_i9s3cInlcAAA3B
 ```
 * __Response body:__
 ```json
 {
   "credit": 43,
-  "id": "ea040671-a857-4ce1-a20f-6e5cc7f3950d"
+  "id": "5c944a45-cf5d-40a3-9874-50ae6454a265"
 }
 ```
 
@@ -1497,11 +1497,11 @@ x-request-id: Fv7IrFx_ItvQJIQAABED
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/wallet/a0f34b43-a9ca-4421-a835-df7d759d4dca
+* __Path:__ /api/wallet/377ce9aa-6a1a-44e6-9d2e-6c5fa7077499
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer qNohC9W01ONc4Z7KUemkyaQdKxxCRiK4pA3Nr6974O4=
+authorization: Bearer 5wg0FMQCFwtTtyhB7bISNcHdHPDhjYGYRZhLkcDHhcs=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -1517,7 +1517,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 * __Response headers:__
 ```
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fv7IrF7IpUNsoy8AAAtB
+x-request-id: Fv73W_r75COxIFYAAA6h
 content-type: application/json; charset=utf-8
 ```
 * __Response body:__

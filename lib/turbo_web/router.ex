@@ -1,7 +1,7 @@
 defmodule TurboWeb.Router do
   use TurboWeb, :router
 
-  import TurboWeb.UserAuth
+  import TurboWeb.Auth
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -22,18 +22,18 @@ defmodule TurboWeb.Router do
     pipe_through :api
 
     post "/register", RegistrationController, :create
-    post "/log_in", UserSessionController, :create
-    delete "/log_out", UserSessionController, :delete
-    post "/reset_password", UserResetPasswordController, :create
-    put "/reset_password/:token", UserResetPasswordController, :update
-    post "/confirm", UserConfirmationController, :create
-    post "/confirm/:token", UserConfirmationController, :update
+    post "/log_in", AuthController, :create
+    delete "/log_out", AuthController, :delete
+    post "/reset_password", ResetPasswordController, :create
+    put "/reset_password/:token", ResetPasswordController, :update
+    post "/confirm", ConfirmationController, :create
+    post "/confirm/:token", ConfirmationController, :update
   end
 
   scope "/api/auth", TurboWeb do
     pipe_through [:api, :require_authenticated_user]
-    get "/confirm_email/:token", UserSettingsController, :confirm_email
-    put "/settings", UserSettingsController, :update
+    get "/confirm_email/:token", SettingsController, :confirm_email
+    put "/settings", SettingsController, :update
   end
 
   scope "/api", TurboWeb do

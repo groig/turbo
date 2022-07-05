@@ -1,8 +1,8 @@
-defmodule TurboWeb.UserSettingsController do
+defmodule TurboWeb.SettingsController do
   use TurboWeb, :controller
 
   alias Turbo.Accounts
-  alias TurboWeb.UserAuth
+  alias TurboWeb.Auth
 
   action_fallback TurboWeb.FallbackController
 
@@ -27,7 +27,7 @@ defmodule TurboWeb.UserSettingsController do
 
     with {:ok, user} <- Accounts.update_user_password(user, password, passwords) do
       Accounts.delete_tokens(user)
-      token = UserAuth.log_in_user(user)
+      token = Auth.log_in_user(user)
 
       render(conn, "update_password.json", token: token, message: "Password updated successfully.")
     end

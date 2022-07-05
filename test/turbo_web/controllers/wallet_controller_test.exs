@@ -4,7 +4,7 @@ defmodule TurboWeb.WalletControllerTest do
   alias Turbo.Drivers.Driver
   alias Turbo.Repo
   alias Turbo.Accounts.User
-  alias TurboWeb.UserAuth
+  alias TurboWeb.Auth
   alias Turbo.AccountsFixtures
 
   import Turbo.WalletsFixtures
@@ -28,7 +28,7 @@ defmodule TurboWeb.WalletControllerTest do
     test "credits the drivers wallet", %{conn: conn, wallet: wallet} do
       admin = AccountsFixtures.user_fixture(%{type: :admin})
 
-      admin_token = UserAuth.log_in_user(admin)
+      admin_token = Auth.log_in_user(admin)
 
       conn =
         build_conn()
@@ -56,7 +56,7 @@ defmodule TurboWeb.WalletControllerTest do
     test "card transactions require an id", %{conn: _conn, wallet: wallet} do
       admin = AccountsFixtures.user_fixture(%{type: :admin})
 
-      admin_token = UserAuth.log_in_user(admin)
+      admin_token = Auth.log_in_user(admin)
 
       conn =
         build_conn()
@@ -90,7 +90,7 @@ defmodule TurboWeb.WalletControllerTest do
 
     owner = Repo.get!(Driver, wallet.driver_id)
     owner_user = Repo.get!(User, owner.user_id)
-    owner_token = UserAuth.log_in_user(owner_user)
+    owner_token = Auth.log_in_user(owner_user)
 
     conn =
       build_conn()

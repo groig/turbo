@@ -6,7 +6,7 @@ defmodule TurboWeb.AddressControllerTest do
   alias Turbo.CustomersFixtures
   alias Turbo.Customers.Customer
   alias Turbo.Accounts.User
-  alias TurboWeb.UserAuth
+  alias TurboWeb.Auth
   alias Turbo.Repo
 
   @update_attrs %{
@@ -57,11 +57,11 @@ defmodule TurboWeb.AddressControllerTest do
 
       owner = Repo.get!(Customer, address.customer_id)
       owner_user = Repo.get!(User, owner.user_id)
-      owner_token = UserAuth.log_in_user(owner_user)
+      owner_token = Auth.log_in_user(owner_user)
 
       not_owner = CustomersFixtures.customer_fixture()
       not_owner_user = Repo.get!(User, not_owner.user_id)
-      not_owner_token = UserAuth.log_in_user(not_owner_user)
+      not_owner_token = Auth.log_in_user(not_owner_user)
 
       conn =
         conn
@@ -109,7 +109,7 @@ defmodule TurboWeb.AddressControllerTest do
     test "only owner can edit address", %{conn: conn, address: address} do
       not_owner = CustomersFixtures.customer_fixture()
       not_owner_user = Repo.get!(User, not_owner.user_id)
-      not_owner_token = UserAuth.log_in_user(not_owner_user)
+      not_owner_token = Auth.log_in_user(not_owner_user)
 
       conn =
         conn
@@ -142,7 +142,7 @@ defmodule TurboWeb.AddressControllerTest do
     test "only owner can delete address", %{conn: conn, address: address} do
       not_owner = CustomersFixtures.customer_fixture()
       not_owner_user = Repo.get!(User, not_owner.user_id)
-      not_owner_token = UserAuth.log_in_user(not_owner_user)
+      not_owner_token = Auth.log_in_user(not_owner_user)
 
       conn =
         conn
@@ -160,7 +160,7 @@ defmodule TurboWeb.AddressControllerTest do
 
     owner = Repo.get!(Customer, address.customer_id)
     owner_user = Repo.get!(User, owner.user_id)
-    owner_token = UserAuth.log_in_user(owner_user)
+    owner_token = Auth.log_in_user(owner_user)
 
     conn =
       build_conn()

@@ -1,8 +1,8 @@
-defmodule TurboWeb.UserAuthTest do
+defmodule TurboWeb.AuthTest do
   use TurboWeb.ConnCase, async: true
 
   alias Turbo.Accounts
-  alias TurboWeb.UserAuth
+  alias TurboWeb.Auth
   import Turbo.AccountsFixtures
 
   setup %{conn: conn} do
@@ -22,14 +22,14 @@ defmodule TurboWeb.UserAuthTest do
         conn
         |> put_req_header("authorization", "Bearer #{user_token}")
         |> assign(:current_user, user)
-        |> UserAuth.log_out_user()
+        |> Auth.log_out_user()
 
       refute conn.assigns[:current_user]
       refute Accounts.get_user_by_token(user_token)
     end
 
     test "works even if user is already logged out", %{conn: conn} do
-      conn = UserAuth.log_out_user(conn)
+      conn = Auth.log_out_user(conn)
       refute conn.assigns[:current_user]
     end
   end
@@ -41,21 +41,21 @@ defmodule TurboWeb.UserAuthTest do
       conn =
         conn
         |> put_req_header("authorization", "Bearer #{user_token}")
-        |> UserAuth.fetch_current_user()
+        |> Auth.fetch_current_user()
 
       assert conn.assigns.current_user.id == user.id
     end
 
     test "does not authenticate if data is missing", %{conn: conn, user: user} do
       _ = Accounts.generate_user_token(user)
-      conn = UserAuth.fetch_current_user(conn)
+      conn = Auth.fetch_current_user(conn)
       refute conn.assigns[:current_user]
     end
   end
 
   describe "require_authenticated_user/2" do
     test "rejects if user is not authenticated", %{conn: conn} do
-      conn = UserAuth.require_authenticated_user(conn)
+      conn = Auth.require_authenticated_user(conn)
       assert conn.halted
       assert conn.resp_body =~ "Unauthorized"
     end

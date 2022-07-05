@@ -1,4 +1,4 @@
-defmodule TurboWeb.UserResetPasswordController do
+defmodule TurboWeb.ResetPasswordController do
   use TurboWeb, :controller
 
   alias Turbo.Accounts

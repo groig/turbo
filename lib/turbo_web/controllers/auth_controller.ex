@@ -1,12 +1,12 @@
-defmodule TurboWeb.UserSessionController do
+defmodule TurboWeb.AuthController do
   use TurboWeb, :controller
 
   alias Turbo.Accounts
-  alias TurboWeb.UserAuth
+  alias TurboWeb.Auth
 
   def create(conn, %{"email" => email, "password" => password}) do
     if user = Accounts.get_user_by_email_and_password(email, password) do
-      token = UserAuth.log_in_user(user)
+      token = Auth.log_in_user(user)
       conn |> render("token.json", token: token)
     else
       conn
@@ -18,7 +18,7 @@ defmodule TurboWeb.UserSessionController do
 
   def delete(conn, _params) do
     conn
-    |> UserAuth.log_out_user()
+    |> Auth.log_out_user()
     |> put_view(TurboWeb.MessageView)
     |> render("message.json", message: "Logged out successfully")
   end

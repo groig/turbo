@@ -1,4 +1,4 @@
-defmodule TurboWeb.UserConfirmationController do
+defmodule TurboWeb.ConfirmationController do
   use TurboWeb, :controller
 
   alias Turbo.Accounts

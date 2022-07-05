@@ -331,7 +331,7 @@ defmodule Turbo.AccountsTest do
     end
   end
 
-  describe "get_user_by_session_token/1" do
+  describe "get_user_by_token/1" do
     setup do
       user = user_fixture()
       token = Accounts.generate_user_token(user)
@@ -348,7 +348,7 @@ defmodule Turbo.AccountsTest do
     end
   end
 
-  describe "delete_session_token/1" do
+  describe "delete_token/1" do
     test "deletes the token" do
       user = user_fixture()
       token = Accounts.generate_user_token(user)
