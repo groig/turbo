@@ -2,7 +2,6 @@ defmodule TurboWeb.WalletController do
   use TurboWeb, :controller
 
   alias Turbo.Wallets
-  alias Turbo.Wallets.Wallet
 
   action_fallback TurboWeb.FallbackController
 
@@ -13,9 +12,21 @@ defmodule TurboWeb.WalletController do
     render(conn, "show.json", wallet: conn.assigns.current_user.driver.wallet)
   end
 
-  def credit(conn, %{"wallet" => wallet, "amount" => amount, "type" => type}) do
+  def credit(conn, %{
+        "wallet" => wallet,
+        "amount" => amount,
+        "type" => "card",
+        "transfer_id" => transfer_id
+      }) do
     with {:ok, data} <-
-           Wallets.credit_wallet(wallet, amount, type) do
+           Wallets.credit_wallet(wallet, amount, "card", transfer_id) do
+      render(conn, "show.json", wallet: data.wallet)
+    end
+  end
+
+  def credit(conn, %{"wallet" => wallet, "amount" => amount, "type" => "cash"}) do
+    with {:ok, data} <-
+           Wallets.credit_wallet(wallet, amount, "cash") do
       render(conn, "show.json", wallet: data.wallet)
     end
   end

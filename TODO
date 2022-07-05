@@ -23,7 +23,7 @@ Clientes
 Choferes
 [*] Registrarse en la aplicacion
 [X] Autenticarse en la aplicacion
-[] Consultar saldo restante
+[X] Consultar saldo restante
 [] Consultar viajes previamente realizados y sus tarifas
 [] Ser Notificado de nuevos viajes
 [] Ver lugar de recogida del viaje(distancia a la hubicacion del cliente, Valor de la carrera, Distancia aproximada hasta la carrera)
@@ -44,5 +44,5 @@ Administradores
 [] Listar choferes en activo con info de contacto(posibilidad de abrir un chat con ellos)
 [] Dar de alta a un nuevo chofer
 [] Dar de baja a un chofer
-[] Agregar saldo a la cuenta de un chofer(Especificar si pago por efectvo o trasnferencia(en el caso de ser por transferencia ID de transferencia)
+[X] Agregar saldo a la cuenta de un chofer(Especificar si pago por efectvo o trasnferencia(en el caso de ser por transferencia ID de transferencia)
 [] Generar Reporte en Excel o PDF Desglosando todos los viajes realizados en un periodo de tiempo X, Mostrando Ganancias por cada carrera realizada)

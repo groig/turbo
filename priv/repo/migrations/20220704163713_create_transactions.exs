@@ -6,6 +6,7 @@ defmodule Turbo.Repo.Migrations.CreateTransactions do
       add(:id, :binary_id, primary_key: true)
       add(:amount, :decimal, default: 0)
       add(:type, :string, default: "cash")
+      add(:transfer_id, :string)
       add(:wallet_id, references(:wallets, on_delete: :delete_all, type: :binary_id), null: false)
 
       timestamps()
