@@ -39,8 +39,8 @@ defmodule TurboWeb.Router do
   scope "/api", TurboWeb do
     pipe_through [:api, :require_authenticated_user]
     resources "/addresses", AddressController
-    get "/wallets", WalletController, :show
-    put "/wallets", WalletController, :credit
+    get "/wallet", WalletController, :show
+    put "/wallet/:id", WalletController, :credit
   end
 
   scope "/api", TurboWeb do

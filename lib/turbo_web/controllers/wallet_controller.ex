@@ -13,20 +13,20 @@ defmodule TurboWeb.WalletController do
   end
 
   def credit(conn, %{
-        "wallet" => wallet,
+        "id" => id,
         "amount" => amount,
         "type" => "card",
         "transfer_id" => transfer_id
       }) do
     with {:ok, data} <-
-           Wallets.credit_wallet(wallet, amount, "card", transfer_id) do
+           Wallets.credit_wallet(id, amount, "card", transfer_id) do
       render(conn, "show.json", wallet: data.wallet)
     end
   end
 
-  def credit(conn, %{"wallet" => wallet, "amount" => amount, "type" => "cash"}) do
+  def credit(conn, %{"id" => id, "amount" => amount, "type" => "cash"}) do
     with {:ok, data} <-
-           Wallets.credit_wallet(wallet, amount, "cash") do
+           Wallets.credit_wallet(id, amount, "cash") do
       render(conn, "show.json", wallet: data.wallet)
     end
   end

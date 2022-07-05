@@ -34,7 +34,7 @@ defmodule TurboWeb.WalletControllerTest do
         build_conn()
         |> put_req_header("accept", "application/json")
         |> put_req_header("authorization", "Bearer #{admin_token}")
-        |> put(Routes.wallet_path(conn, :credit), %{wallet: wallet.id, amount: 42, type: "cash"})
+        |> put(Routes.wallet_path(conn, :credit, wallet), %{amount: 42, type: "cash"})
         |> doc
 
       assert %{"id" => _id, "credit" => 42} = json_response(conn, 200)
@@ -43,8 +43,7 @@ defmodule TurboWeb.WalletControllerTest do
         build_conn()
         |> put_req_header("accept", "application/json")
         |> put_req_header("authorization", "Bearer #{admin_token}")
-        |> put(Routes.wallet_path(conn, :credit), %{
-          wallet: wallet.id,
+        |> put(Routes.wallet_path(conn, :credit, wallet), %{
           amount: 1,
           type: "card",
           transfer_id: "2233344455"
@@ -65,22 +64,18 @@ defmodule TurboWeb.WalletControllerTest do
         |> put_req_header("authorization", "Bearer #{admin_token}")
 
       assert_raise Phoenix.ActionClauseError, ~r/no function clause matching in/, fn ->
-        put(conn, Routes.wallet_path(conn, :credit), %{
+        put(conn, Routes.wallet_path(conn, :credit, wallet), %{
           wallet: wallet.id,
           amount: 42,
           type: "card"
         })
         |> doc
       end
-
-      # assert conn.status == 422
-      # assert conn.resp_body =~ "can't be blank when transaction type is card"
     end
 
     test "only admin can credit a wallet", %{conn: conn, wallet: wallet} do
       conn =
-        put(conn, Routes.wallet_path(conn, :credit), %{
-          wallet: wallet.id,
+        put(conn, Routes.wallet_path(conn, :credit, wallet), %{
           amount: 42,
           type: "cash"
         })
