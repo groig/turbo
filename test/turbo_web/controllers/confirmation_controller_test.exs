@@ -9,7 +9,7 @@ defmodule TurboWeb.ConfirmationControllerTest do
     %{user: user_fixture()}
   end
 
-  describe "POST /auth/confirm" do
+  describe "POST /confirm" do
     @tag :capture_log
     test "sends a new confirmation token", %{conn: conn, user: user} do
       conn = post(conn, Routes.confirmation_path(conn, :create), %{"email" => user.email}) |> doc
@@ -43,7 +43,7 @@ defmodule TurboWeb.ConfirmationControllerTest do
     end
   end
 
-  describe "POST /auth/confirm/:token" do
+  describe "POST /confirm/:token" do
     test "confirms the given token once", %{conn: conn, user: user} do
       token =
         extract_user_token(fn url ->

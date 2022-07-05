@@ -6,7 +6,7 @@ defmodule TurboWeb.RegistrationControllerTest do
   alias Turbo.Drivers
   alias Turbo.Customers
 
-  describe "POST /auth/register customer" do
+  describe "POST /register customer" do
     @tag :capture_log
     test "creates customer and logs the user in", %{conn: conn} do
       email = unique_user_email()
@@ -36,7 +36,7 @@ defmodule TurboWeb.RegistrationControllerTest do
     end
   end
 
-  describe "POST /auth/register driver" do
+  describe "POST /register driver" do
     @tag :capture_log
     test "creates driver and logs the user in", %{conn: conn} do
       email = unique_user_email()
@@ -69,7 +69,7 @@ defmodule TurboWeb.RegistrationControllerTest do
     end
   end
 
-  describe "POST /auth/register admin" do
+  describe "POST /register admin" do
     @tag :capture_log
     test "creates admin", %{conn: conn} do
       email = unique_user_email()

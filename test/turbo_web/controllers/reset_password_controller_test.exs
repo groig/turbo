@@ -9,7 +9,7 @@ defmodule TurboWeb.ResetPasswordControllerTest do
     %{user: user_fixture()}
   end
 
-  describe "POST /auth/reset_password" do
+  describe "POST /reset_password" do
     @tag :capture_log
     test "sends a new reset password token", %{conn: conn, user: user} do
       conn =
@@ -32,7 +32,7 @@ defmodule TurboWeb.ResetPasswordControllerTest do
     end
   end
 
-  describe "PUT /auth/reset_password/:token" do
+  describe "PUT /reset_password/:token" do
     setup %{user: user} do
       token =
         extract_user_token(fn url ->

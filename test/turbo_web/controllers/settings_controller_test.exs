@@ -7,7 +7,7 @@ defmodule TurboWeb.SettingsControllerTest do
 
   setup :register_and_log_in_user
 
-  describe "PUT /auth/settings (change password form)" do
+  describe "PUT /settings (change password form)" do
     test "updates the user password and resets tokens", %{conn: conn, user: user} do
       new_password_conn =
         put(conn, Routes.settings_path(conn, :update), %{
@@ -51,7 +51,7 @@ defmodule TurboWeb.SettingsControllerTest do
     end
   end
 
-  describe "PUT /auth/settings (change email form)" do
+  describe "PUT /settings (change email form)" do
     @tag :capture_log
     test "updates the user email", %{conn: conn, user: user} do
       conn =

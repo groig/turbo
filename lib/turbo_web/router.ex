@@ -18,7 +18,7 @@ defmodule TurboWeb.Router do
     plug :fetch_current_user
   end
 
-  scope "/api/auth", TurboWeb do
+  scope "/api", TurboWeb do
     pipe_through :api
 
     post "/register", RegistrationController, :create
@@ -30,14 +30,11 @@ defmodule TurboWeb.Router do
     post "/confirm/:token", ConfirmationController, :update
   end
 
-  scope "/api/auth", TurboWeb do
+  scope "/api", TurboWeb do
     pipe_through [:api, :require_authenticated_user]
     get "/confirm_email/:token", SettingsController, :confirm_email
     put "/settings", SettingsController, :update
-  end
 
-  scope "/api", TurboWeb do
-    pipe_through [:api, :require_authenticated_user]
     resources "/addresses", AddressController
     get "/wallet", WalletController, :show
     put "/wallet/:id", WalletController, :credit
@@ -45,6 +42,7 @@ defmodule TurboWeb.Router do
 
   scope "/api", TurboWeb do
     pipe_through :api
+
     resources "/customers", CustomerController
     resources "/drivers", DriverController
     resources "/rides", RideController

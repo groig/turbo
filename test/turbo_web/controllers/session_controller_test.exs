@@ -9,7 +9,7 @@ defmodule TurboWeb.AuthControllerTest do
     %{user: user_fixture()}
   end
 
-  describe "POST /auth/log_in" do
+  describe "POST /log_in" do
     test "logs the user in", %{conn: conn, user: user} do
       conn =
         post(conn, Routes.auth_path(conn, :create), %{
@@ -35,7 +35,7 @@ defmodule TurboWeb.AuthControllerTest do
     end
   end
 
-  describe "DELETE /auth/log_out" do
+  describe "DELETE /log_out" do
     test "logs the user out", %{conn: conn, user: user} do
       %{conn: conn, user: _user} = log_in_user(conn, user)
       conn = delete(conn, Routes.auth_path(conn, :delete)) |> doc
