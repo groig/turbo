@@ -73,6 +73,12 @@ defmodule Turbo.Drivers do
     |> Repo.update()
   end
 
+  def set_driver_location(%Driver{} = driver, attrs) do
+    driver
+    |> Driver.last_location_changeset(attrs)
+    |> Repo.update()
+  end
+
   @doc """
   Deletes a driver.
 

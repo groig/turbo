@@ -38,13 +38,15 @@ defmodule TurboWeb.Router do
     resources "/addresses", AddressController
     get "/wallet", WalletController, :show
     put "/wallet/:id", WalletController, :credit
+    get "/drivers", DriverController, :index
+    get "/drivers/:id", DriverController, :show
+    put "/drivers/location", DriverController, :location
+    get "/customers", CustomerController, :index
   end
 
   scope "/api", TurboWeb do
     pipe_through :api
 
-    resources "/customers", CustomerController
-    resources "/drivers", DriverController
     resources "/rides", RideController
     resources "/cars", CarController
   end

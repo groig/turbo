@@ -67,7 +67,7 @@ defmodule TurboWeb.ConnCase do
     user = Accounts.get_user!(driver.user_id)
     token = Auth.log_in_user(user)
     conn = Plug.Conn.put_req_header(conn, "authorization", "Bearer #{token}")
-    %{conn: conn, user: user}
+    %{conn: conn, user: user, driver: driver}
   end
 
   def register_and_log_in_admin(%{conn: conn}) do

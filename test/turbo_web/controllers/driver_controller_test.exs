@@ -1,84 +1,90 @@
 defmodule TurboWeb.DriverControllerTest do
   use TurboWeb.ConnCase, async: true
-  alias Turbo.AccountsFixtures
-
-  import Turbo.DriversFixtures
-
-  alias Turbo.Drivers.Driver
-
-  @update_attrs %{}
-  @invalid_attrs %{license: nil}
+  alias Turbo.DriversFixtures
 
   setup %{conn: conn} do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
   end
 
   describe "index" do
-    test "lists all drivers", %{conn: conn} do
-      conn = get(conn, Routes.driver_path(conn, :index))
-      assert json_response(conn, 200)["data"] == []
-    end
-  end
-
-  describe "create driver" do
-    test "renders driver when data is valid", %{conn: conn} do
-      user = AccountsFixtures.user_fixture()
+    test "lists all drivers when user is admin", %{conn: conn} do
+      %{conn: conn} = register_and_log_in_admin(%{conn: conn})
+      DriversFixtures.driver_fixture()
+      DriversFixtures.driver_fixture()
+      DriversFixtures.driver_fixture()
 
       conn =
-        post(conn, Routes.driver_path(conn, :create),
-          driver: %{user_id: user.id, license: "licence#{System.unique_integer()}"}
-        )
+        get(conn, Routes.driver_path(conn, :index))
+        |> doc
 
-      assert %{"id" => id} = json_response(conn, 201)["data"]
-
-      conn = get(conn, Routes.driver_path(conn, :show, id))
-
-      assert %{
-               "id" => ^id
-             } = json_response(conn, 200)["data"]
+      assert length(json_response(conn, 200)) == 3
     end
 
-    test "renders errors when data is invalid", %{conn: conn} do
-      conn = post(conn, Routes.driver_path(conn, :create), driver: @invalid_attrs)
-      assert json_response(conn, 422)["errors"] != %{}
-    end
-  end
+    test "lists only self ", %{conn: conn} do
+      %{conn: conn, driver: driver} = register_and_log_in_driver(%{conn: conn})
+      DriversFixtures.driver_fixture()
+      DriversFixtures.driver_fixture()
+      DriversFixtures.driver_fixture()
 
-  describe "update driver" do
-    setup [:create_driver]
+      conn =
+        get(conn, Routes.driver_path(conn, :index))
+        |> doc
 
-    test "renders driver when data is valid", %{conn: conn, driver: %Driver{id: id} = driver} do
-      conn = put(conn, Routes.driver_path(conn, :update, driver), driver: @update_attrs)
-      assert %{"id" => ^id} = json_response(conn, 200)["data"]
-
-      conn = get(conn, Routes.driver_path(conn, :show, id))
-
-      assert %{
-               "id" => ^id
-             } = json_response(conn, 200)["data"]
-    end
-
-    test "renders errors when data is invalid", %{conn: conn, driver: driver} do
-      conn = put(conn, Routes.driver_path(conn, :update, driver), driver: @invalid_attrs)
-      assert json_response(conn, 422)["errors"] != %{}
+      assert hd(json_response(conn, 200))["id"] == driver.id
     end
   end
 
-  describe "delete driver" do
-    setup [:create_driver]
+  describe "show" do
+    test "renders the requested driver to admin", %{conn: conn} do
+      %{conn: conn} = register_and_log_in_admin(%{conn: conn})
+      driver1 = DriversFixtures.driver_fixture()
+      driver2 = DriversFixtures.driver_fixture()
 
-    test "deletes chosen driver", %{conn: conn, driver: driver} do
-      conn = delete(conn, Routes.driver_path(conn, :delete, driver))
-      assert response(conn, 204)
+      conn1 =
+        get(conn, Routes.driver_path(conn, :show, driver1))
+        |> doc
 
-      assert_error_sent 404, fn ->
+      assert json_response(conn1, 200)["id"] == driver1.id
+
+      conn2 =
+        get(conn, Routes.driver_path(conn, :show, driver2))
+        |> doc
+
+      assert json_response(conn2, 200)["id"] == driver2.id
+    end
+
+    test "only renders the driver to himself", %{conn: conn} do
+      %{conn: conn, driver: driver} = register_and_log_in_driver(%{conn: conn})
+
+      not_me = DriversFixtures.driver_fixture()
+
+      resp_conn =
         get(conn, Routes.driver_path(conn, :show, driver))
-      end
+        |> doc
+
+      assert json_response(resp_conn, 200)["id"] == driver.id
+
+      not_found_conn =
+        get(conn, Routes.driver_path(conn, :show, not_me))
+        |> doc
+
+      assert not_found_conn.status == 404
     end
   end
 
-  defp create_driver(_) do
-    driver = driver_fixture()
-    %{driver: driver}
+  test "updates driver with the last reported location", %{conn: conn} do
+    %{conn: conn, driver: driver} = register_and_log_in_driver(%{conn: conn})
+    refute driver.last_location
+
+    conn =
+      put(conn, Routes.driver_path(conn, :location), %{
+        last_location: %Geo.Point{coordinates: {30.20, 20.30}, srid: 4326}
+      })
+      |> doc
+
+    assert json_response(conn, 200)
+
+    driver = Turbo.Repo.reload!(driver)
+    assert driver.last_location
   end
 end

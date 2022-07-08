@@ -9,7 +9,8 @@ defmodule TurboWeb.WalletController do
   plug :require_admin, [] when action == :credit
 
   def show(conn, _) do
-    render(conn, "show.json", wallet: conn.assigns.current_user.driver.wallet)
+    driver = Turbo.Repo.preload(conn.assigns.current_user.driver, :wallet)
+    render(conn, "show.json", wallet: driver.wallet)
   end
 
   def credit(conn, %{
@@ -28,17 +29,6 @@ defmodule TurboWeb.WalletController do
     with {:ok, data} <-
            Wallets.credit_wallet(id, amount, "cash") do
       render(conn, "show.json", wallet: data.wallet)
-    end
-  end
-
-  defp require_driver(conn, _opts) do
-    if conn.assigns[:current_user] && conn.assigns.current_user.type == :driver do
-      conn
-    else
-      conn
-      |> put_resp_content_type("application/json")
-      |> send_resp(401, Jason.encode!("Unauthorized"))
-      |> halt()
     end
   end
 end

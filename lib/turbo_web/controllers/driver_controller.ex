@@ -2,42 +2,39 @@ defmodule TurboWeb.DriverController do
   use TurboWeb, :controller
 
   alias Turbo.Drivers
-  alias Turbo.Drivers.Driver
 
   action_fallback TurboWeb.FallbackController
 
-  def index(conn, _params) do
+  plug :require_driver, [] when action == :location
+
+  def index(%{assigns: %{current_user: %{type: :admin}}} = conn, _params) do
     drivers = Drivers.list_drivers()
     render(conn, "index.json", drivers: drivers)
   end
 
-  def create(conn, %{"driver" => driver_params}) do
-    with {:ok, %Driver{} = driver} <- Drivers.create_driver(driver_params) do
+  def index(%{assigns: %{current_user: %{type: :driver}}} = conn, _params) do
+    render(conn, "index.json", drivers: [conn.assigns.current_user.driver])
+  end
+
+  def show(%{assigns: %{current_user: %{type: :admin}}} = conn, %{"id" => id}) do
+    render(conn, "show.json", driver: Drivers.get_driver!(id))
+  end
+
+  def show(%{assigns: %{current_user: %{type: :driver}}} = conn, %{"id" => id}) do
+    if id == conn.assigns.current_user.driver.id do
+      render(conn, "show.json", driver: Drivers.get_driver!(id))
+    else
       conn
-      |> put_status(:created)
-      |> put_resp_header("location", Routes.driver_path(conn, :show, driver))
-      |> render("show.json", driver: driver)
+      |> put_resp_content_type("application/json")
+      |> send_resp(404, Jason.encode!("Not Found"))
+      |> halt()
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    driver = Drivers.get_driver!(id)
-    render(conn, "show.json", driver: driver)
-  end
-
-  def update(conn, %{"id" => id, "driver" => driver_params}) do
-    driver = Drivers.get_driver!(id)
-
-    with {:ok, %Driver{} = driver} <- Drivers.update_driver(driver, driver_params) do
-      render(conn, "show.json", driver: driver)
-    end
-  end
-
-  def delete(conn, %{"id" => id}) do
-    driver = Drivers.get_driver!(id)
-
-    with {:ok, %Driver{}} <- Drivers.delete_driver(driver) do
-      send_resp(conn, :no_content, "")
+  def location(conn, %{"last_location" => _location} = location_params) do
+    with {:ok, driver} <-
+           Drivers.set_driver_location(conn.assigns.current_user.driver, location_params) do
+      render(conn, "location.json", location: driver.last_location)
     end
   end
 end

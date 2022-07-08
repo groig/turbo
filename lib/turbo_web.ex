@@ -35,6 +35,17 @@ defmodule TurboWeb do
           |> halt()
         end
       end
+
+      defp require_driver(conn, _opts) do
+        if conn.assigns[:current_user] && conn.assigns.current_user.type == :driver do
+          conn
+        else
+          conn
+          |> put_resp_content_type("application/json")
+          |> send_resp(401, Jason.encode!("Unauthorized"))
+          |> halt()
+        end
+      end
     end
   end
 
