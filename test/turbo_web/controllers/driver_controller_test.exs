@@ -78,7 +78,13 @@ defmodule TurboWeb.DriverControllerTest do
 
     conn =
       put(conn, Routes.driver_path(conn, :location), %{
-        last_location: %Geo.Point{coordinates: {30.20, 20.30}, srid: 4326}
+        last_location: %{
+          coordinates: [
+            30.2,
+            20.3
+          ],
+          type: "Point"
+        }
       })
       |> doc
 
