@@ -5,7 +5,7 @@ defmodule TurboWeb.DriverController do
 
   action_fallback TurboWeb.FallbackController
 
-  plug :require_driver, [] when action == :location
+  plug :require_driver, [] when action in [:license, :location]
 
   def index(%{assigns: %{current_user: %{type: :admin}}} = conn, _params) do
     drivers = Drivers.list_drivers()
@@ -28,6 +28,19 @@ defmodule TurboWeb.DriverController do
       |> put_resp_content_type("application/json")
       |> send_resp(404, Jason.encode!("Not Found"))
       |> halt()
+    end
+  end
+
+  def license(conn, %{"license" => _license} = params) do
+    driver = conn.assigns.current_user.driver
+
+    with {:ok, _} <-
+           Drivers.change_license(driver, params) do
+      conn
+      |> put_view(TurboWeb.MessageView)
+      |> render("message.json",
+        message: "Driver license updated successfully"
+      )
     end
   end
 

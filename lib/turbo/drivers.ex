@@ -79,6 +79,12 @@ defmodule Turbo.Drivers do
     |> Repo.update()
   end
 
+  def change_license(%Driver{} = driver, attrs) do
+    driver
+    |> Driver.license_changeset(attrs)
+    |> Repo.update()
+  end
+
   @doc """
   Deletes a driver.
 

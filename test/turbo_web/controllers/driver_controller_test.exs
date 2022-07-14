@@ -93,4 +93,17 @@ defmodule TurboWeb.DriverControllerTest do
     driver = Turbo.Repo.reload!(driver)
     assert driver.last_location
   end
+
+  test "updates drivers license", %{conn: conn} do
+    %{conn: conn, driver: driver} = register_and_log_in_driver(%{conn: conn})
+    refute driver.last_location
+    license = "license#{System.unique_integer()}"
+
+    conn = put(conn, Routes.driver_path(conn, :license), %{license: license}) |> doc
+
+    assert json_response(conn, 200)
+
+    driver = Turbo.Repo.reload!(driver)
+    assert driver.license == license
+  end
 end

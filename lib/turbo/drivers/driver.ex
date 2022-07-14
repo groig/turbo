@@ -28,4 +28,11 @@ defmodule Turbo.Drivers.Driver do
     |> cast(attrs, [:last_location])
     |> validate_required([:last_location])
   end
+
+  @doc false
+  def license_changeset(driver, attrs) do
+    driver
+    |> cast(attrs, [:license])
+    |> validate_required([:license])
+  end
 end
