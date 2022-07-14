@@ -6,12 +6,16 @@ defmodule TurboWeb.CarController do
 
   action_fallback TurboWeb.FallbackController
 
+  plug :require_driver
+
   def index(conn, _params) do
-    cars = Cars.list_cars()
+    cars = Cars.list_cars_for_driver(conn.assigns.current_user.driver.id)
     render(conn, "index.json", cars: cars)
   end
 
-  def create(conn, %{"car" => car_params}) do
+  def create(conn, car_params) do
+    car_params = Map.put(car_params, "driver_id", conn.assigns.current_user.driver.id)
+
     with {:ok, %Car{} = car} <- Cars.create_car(car_params) do
       conn
       |> put_status(:created)

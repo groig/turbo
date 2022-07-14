@@ -15,5 +15,6 @@ defmodule Turbo.Repo.Migrations.CreateCars do
     end
 
     create(index(:cars, [:driver_id]))
+    create(unique_index(:cars, [:license_plate]))
   end
 end

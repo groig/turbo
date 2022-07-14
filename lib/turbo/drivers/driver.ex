@@ -7,7 +7,7 @@ defmodule Turbo.Drivers.Driver do
   schema "drivers" do
     field :license, :string
     belongs_to :user, Turbo.Accounts.User
-    has_one :car, Turbo.Cars.Car
+    has_many :cars, Turbo.Cars.Car
     has_one :wallet, Turbo.Wallets.Wallet
     has_many :rides, Turbo.Rides.Ride
     field :last_location, Geo.PostGIS.Geometry

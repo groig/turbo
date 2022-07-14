@@ -21,6 +21,10 @@ defmodule Turbo.Cars do
     Repo.all(Car)
   end
 
+  def list_cars_for_driver(driver_id) do
+    Repo.all(from c in Car, where: c.driver_id == ^driver_id)
+  end
+
   @doc """
   Gets a single car.
 

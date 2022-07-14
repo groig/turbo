@@ -42,13 +42,12 @@ defmodule TurboWeb.Router do
     get "/drivers/:id", DriverController, :show
     put "/drivers/location", DriverController, :location
     get "/customers", CustomerController, :index
+    resources "/cars", CarController
   end
 
   scope "/api", TurboWeb do
     pipe_through :api
-
     resources "/rides", RideController
-    resources "/cars", CarController
   end
 
   # Enables LiveDashboard only for development

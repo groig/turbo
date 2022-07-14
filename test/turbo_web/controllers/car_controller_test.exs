@@ -1,6 +1,5 @@
 defmodule TurboWeb.CarControllerTest do
   use TurboWeb.ConnCase, async: true
-  alias Turbo.DriversFixtures
 
   import Turbo.CarsFixtures
 
@@ -19,40 +18,45 @@ defmodule TurboWeb.CarControllerTest do
   end
 
   describe "index" do
-    test "lists all cars", %{conn: conn} do
-      conn = get(conn, Routes.car_path(conn, :index))
-      assert json_response(conn, 200)["data"] == []
+    setup :create_car
+
+    test "lists all cars for the driver", %{conn: conn, car: car} do
+      conn = get(conn, Routes.car_path(conn, :index)) |> doc
+      car_fixture()
+      car_fixture()
+      assert hd(json_response(conn, 200))["id"] == car.id
     end
   end
 
   describe "create car" do
+    setup :register_and_log_in_driver
+
     test "renders car when data is valid", %{conn: conn} do
-      driver = DriversFixtures.driver_fixture()
+      license_plate = "license-#{System.unique_integer()}"
 
       attrs = %{
         color: "some color",
-        license_plate: "some license_plate",
+        license_plate: license_plate,
         make: "some make",
-        model: "some model",
-        driver_id: driver.id
+        model: "some model"
       }
 
-      conn = post(conn, Routes.car_path(conn, :create), car: attrs)
-      assert %{"id" => id} = json_response(conn, 201)["data"]
+      conn = post(conn, Routes.car_path(conn, :create), attrs) |> doc
+      assert %{"id" => id} = json_response(conn, 201)
 
-      conn = get(conn, Routes.car_path(conn, :show, id))
+      conn = get(conn, Routes.car_path(conn, :show, id)) |> doc
 
       assert %{
                "id" => ^id,
                "color" => "some color",
-               "license_plate" => "some license_plate",
+               "license_plate" => ^license_plate,
                "make" => "some make",
                "model" => "some model"
-             } = json_response(conn, 200)["data"]
+             } = json_response(conn, 200)
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
-      conn = post(conn, Routes.car_path(conn, :create), car: @invalid_attrs)
+      conn = post(conn, Routes.car_path(conn, :create), car: @invalid_attrs) |> doc
       assert json_response(conn, 422)["errors"] != %{}
     end
   end
@@ -61,8 +65,8 @@ defmodule TurboWeb.CarControllerTest do
     setup [:create_car]
 
     test "renders car when data is valid", %{conn: conn, car: %Car{id: id} = car} do
-      conn = put(conn, Routes.car_path(conn, :update, car), car: @update_attrs)
-      assert %{"id" => ^id} = json_response(conn, 200)["data"]
+      conn = put(conn, Routes.car_path(conn, :update, car), car: @update_attrs) |> doc
+      assert %{"id" => ^id} = json_response(conn, 200)
 
       conn = get(conn, Routes.car_path(conn, :show, id))
 
@@ -72,7 +76,7 @@ defmodule TurboWeb.CarControllerTest do
                "license_plate" => "some updated license_plate",
                "make" => "some updated make",
                "model" => "some updated model"
-             } = json_response(conn, 200)["data"]
+             } = json_response(conn, 200)
     end
 
     test "renders errors when data is invalid", %{conn: conn, car: car} do
@@ -94,8 +98,10 @@ defmodule TurboWeb.CarControllerTest do
     end
   end
 
-  defp create_car(_) do
-    car = car_fixture()
-    %{car: car}
+  defp create_car(%{conn: conn}) do
+    %{conn: conn, driver: driver} = register_and_log_in_driver(%{conn: conn})
+    car = car_fixture(%{driver_id: driver.id})
+
+    %{car: car, conn: conn}
   end
 end

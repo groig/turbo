@@ -15,7 +15,7 @@ defmodule Turbo.CarsFixtures do
       attrs
       |> Enum.into(%{
         color: "some color",
-        license_plate: "some license_plate",
+        license_plate: "license-#{System.unique_integer()}",
         make: "some make",
         model: "some model",
         driver_id: driver.id
