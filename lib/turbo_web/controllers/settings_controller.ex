@@ -21,21 +21,18 @@ defmodule TurboWeb.SettingsController do
     end
   end
 
-  # def update(conn, %{"action" => "update_name"} = params) do
+  def update(conn, %{"action" => "update_name"} = params) do
+    %{"name" => name} = params
+    user = conn.assigns.current_user
 
-  #   %{"name" => name} = params
-  #   user = conn.assigns.current_user
-
-  #   with {:ok, applied_user} <- Accounts.apply_user_email(user, password, %{"email" => email}) do
-  #     Accounts.deliver_update_email_instructions(applied_user, user.email)
-
-  #     conn
-  #     |> put_view(TurboWeb.MessageView)
-  #     |> render("message.json",
-  #       message: "A code to confirm your email change has been sent to the new address."
-  #     )
-  #   end
-  # end
+    with {:ok, _} <- Accounts.change_user_name(user, %{"name" => name}) do
+      conn
+      |> put_view(TurboWeb.MessageView)
+      |> render("message.json",
+        message: "User name updated successfully"
+      )
+    end
+  end
 
   def update(conn, %{"action" => "update_password"} = params) do
     %{"current_password" => password, "passwords" => passwords} = params

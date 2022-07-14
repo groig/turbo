@@ -92,6 +92,12 @@ defmodule Turbo.Accounts.User do
     end
   end
 
+  def name_changeset(user, attrs) do
+    user
+    |> cast(attrs, [:name])
+    |> validate_required([:name])
+  end
+
   @doc """
   A user changeset for changing the password.
 

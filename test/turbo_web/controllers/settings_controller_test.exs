@@ -87,31 +87,28 @@ defmodule TurboWeb.SettingsControllerTest do
 
   describe "PUT /settings (change name)" do
     @tag :capture_log
-    test "updates the user email", %{conn: conn, user: user} do
+    test "updates the user name", %{conn: conn} do
+      new_name = "user#{System.unique_integer()}"
+
       conn =
         put(conn, Routes.settings_path(conn, :update), %{
-          "action" => "update_email",
-          "current_password" => valid_user_password(),
-          "email" => unique_user_email()
+          "action" => "update_name",
+          "name" => new_name
         })
         |> doc
 
-      assert conn.resp_body =~ "A code to confirm your email"
-      assert Accounts.get_user_by_email(user.email)
+      assert json_response(conn, 200)["message"] =~ "User name updated successfully"
     end
 
-    test "does not update email on invalid data", %{conn: conn} do
+    test "does not update name on invalid data", %{conn: conn} do
       conn =
         put(conn, Routes.settings_path(conn, :update), %{
-          "action" => "update_email",
-          "current_password" => "invalid",
-          "email" => "with spaces"
+          "action" => "update_name",
+          "name" => ""
         })
         |> doc
 
-      assert conn.status == 422
-      assert conn.resp_body =~ "must have the @ sign and no spaces"
-      assert conn.resp_body =~ "is not valid"
+      assert json_response(conn, 422)
     end
   end
 
