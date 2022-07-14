@@ -37,8 +37,8 @@ defmodule Turbo.Accounts.User do
   """
   def registration_changeset(user, attrs, opts \\ []) do
     user
-    |> cast(attrs, [:email, :password, :type])
-    |> validate_required([:type])
+    |> cast(attrs, [:email, :password, :type, :name])
+    |> validate_required([:type, :name])
     |> validate_email()
     |> validate_password(opts)
   end

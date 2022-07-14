@@ -5,8 +5,8 @@ defmodule TurboWeb.AuthControllerTest do
   alias Turbo.Accounts
   alias TurboWeb.Auth
 
-  setup do
-    %{user: user_fixture()}
+  setup %{conn: conn} do
+    {:ok, conn: put_req_header(conn, "accept", "application/json"), user: user_fixture()}
   end
 
   describe "POST /log_in" do

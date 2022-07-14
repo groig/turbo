@@ -7,7 +7,11 @@ defmodule TurboWeb.SettingsControllerTest do
 
   setup :register_and_log_in_user
 
-  describe "PUT /settings (change password form)" do
+  setup %{conn: conn} do
+    {:ok, conn: put_req_header(conn, "accept", "application/json")}
+  end
+
+  describe "PUT /settings (change password)" do
     test "updates the user password and resets tokens", %{conn: conn, user: user} do
       new_password_conn =
         put(conn, Routes.settings_path(conn, :update), %{
@@ -51,7 +55,37 @@ defmodule TurboWeb.SettingsControllerTest do
     end
   end
 
-  describe "PUT /settings (change email form)" do
+  describe "PUT /settings (change email)" do
+    @tag :capture_log
+    test "updates the user email", %{conn: conn, user: user} do
+      conn =
+        put(conn, Routes.settings_path(conn, :update), %{
+          "action" => "update_email",
+          "current_password" => valid_user_password(),
+          "email" => unique_user_email()
+        })
+        |> doc
+
+      assert conn.resp_body =~ "A code to confirm your email"
+      assert Accounts.get_user_by_email(user.email)
+    end
+
+    test "does not update email on invalid data", %{conn: conn} do
+      conn =
+        put(conn, Routes.settings_path(conn, :update), %{
+          "action" => "update_email",
+          "current_password" => "invalid",
+          "email" => "with spaces"
+        })
+        |> doc
+
+      assert conn.status == 422
+      assert conn.resp_body =~ "must have the @ sign and no spaces"
+      assert conn.resp_body =~ "is not valid"
+    end
+  end
+
+  describe "PUT /settings (change name)" do
     @tag :capture_log
     test "updates the user email", %{conn: conn, user: user} do
       conn =

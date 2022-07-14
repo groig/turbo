@@ -6,6 +6,10 @@ defmodule TurboWeb.RegistrationControllerTest do
   alias Turbo.Drivers
   alias Turbo.Customers
 
+  setup %{conn: conn} do
+    {:ok, conn: put_req_header(conn, "accept", "application/json")}
+  end
+
   describe "POST /register customer" do
     @tag :capture_log
     test "creates customer and logs the user in", %{conn: conn} do

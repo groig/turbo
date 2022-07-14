@@ -9,6 +9,7 @@ defmodule TurboWeb.AuthTest do
     conn =
       conn
       |> Map.replace!(:secret_key_base, TurboWeb.Endpoint.config(:secret_key_base))
+      |> put_req_header("accept", "application/json")
       |> init_test_session(%{})
 
     %{user: user_fixture(), conn: conn}

@@ -5,8 +5,8 @@ defmodule TurboWeb.ResetPasswordControllerTest do
   alias Turbo.Repo
   import Turbo.AccountsFixtures
 
-  setup do
-    %{user: user_fixture()}
+  setup %{conn: conn} do
+    {:ok, conn: put_req_header(conn, "accept", "application/json"), user: user_fixture()}
   end
 
   describe "POST /reset_password" do
