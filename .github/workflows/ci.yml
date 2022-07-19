@@ -34,7 +34,9 @@ jobs:
       - run: mix deps.get
       - run: mix format --check-formatted
       - run: mix test
-      - run: mix phx.gen.release
+      - run: mix assets.deploy
+        env:
+          MIX_ENV: prod
       - run: mix release
         env:
           MIX_ENV: prod
