@@ -40,7 +40,7 @@ jobs:
       - run: mix release
         env:
           MIX_ENV: prod
-      - run: tar -C _build/prod/rel -cvf release.tar turbo
+      - run: tar -C _build/prod/rel -cf release.tar turbo
       - uses: actions/upload-artifact@v3
         with:
           name: release.tar
@@ -64,7 +64,10 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          envs: SECRET_KEY_BASE
           script: |
-            tar -xvf /opt/release.tar -C /opt --overwrite
+            systemctl stop turbo
+            tar -xf /opt/release.tar -C /opt --overwrite
+            export SECRET_KEY_BASE=${{secrets.SECRET_KEY_BASE}}
             /opt/turbo/bin/migrate
             systemctl restart turbo
