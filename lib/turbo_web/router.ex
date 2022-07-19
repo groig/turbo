@@ -34,7 +34,6 @@ defmodule TurboWeb.Router do
     pipe_through [:api, :require_authenticated_user]
     get "/confirm_email/:token", SettingsController, :confirm_email
     put "/settings", SettingsController, :update
-
     resources "/addresses", AddressController
     get "/wallet", WalletController, :show
     put "/wallet/:id", WalletController, :credit

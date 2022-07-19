@@ -27,7 +27,7 @@ defmodule TurboWeb.AddressControllerTest do
   describe "index" do
     test "lists all addresses for a customer", %{conn: conn} do
       conn = get(conn, Routes.address_path(conn, :index)) |> doc
-      assert json_response(conn, 200)["data"] == []
+      assert json_response(conn, 200) == []
     end
   end
 
