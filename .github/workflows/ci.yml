@@ -54,6 +54,8 @@ jobs:
           source: "release.tar"
           target: "/opt/"
       - uses: appleboy/ssh-action@master
+        env:
+          SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
