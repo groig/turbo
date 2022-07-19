@@ -38,28 +38,29 @@ jobs:
       - run: mix release
         env:
           MIX_ENV: prod
-      - run: tar -cvf release.tar _build/prod/rel/turbo
+      - run: tar -C _build/prod/rel -cvf release.tar turbo
       - uses: actions/upload-artifact@v3
         with:
-          name: release
+          name: release.tar
           path: release.tar # or path/to/artifact
           retention-days: 3
-      # - uses: appleboy/scp-action@master
-      #   with:
-      #     host: ${{ secrets.SSH_HOST }}
-      #     username: ${{ secrets.SSH_USERNAME }}
-      #     key: ${{ secrets.SSH_KEY }}
-      #     port: ${{ secrets.SSH_PORT }}
-      #     passphrase: ${{ secrets.SSH_PORT }}
-      #     source: "_build/prod/rel/turbo"
-      #     target: "/opt/"
-      # - uses: appleboy/ssh-action@master
-      #   with:
-      #     host: ${{ secrets.SSH_HOST }}
-      #     username: ${{ secrets.SSH_USERNAME }}
-      #     key: ${{ secrets.SSH_KEY }}
-      #     port: ${{ secrets.SSH_PORT }}
-      #     passphrase: ${{ secrets.SSH_PORT }}
-      #     script: |
-      #       /opt/turbo/bin/migrate
-      #       systemctl restart turbo
+      - uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          source: "release.tar"
+          target: "/opt/"
+      - uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          script: |
+            tar -xvf /opt/release.tar -C /opt --overwrite
+            /opt/turbo/bin/migrate
+            systemctl restart turbo
