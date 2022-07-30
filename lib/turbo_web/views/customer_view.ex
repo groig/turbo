@@ -7,7 +7,7 @@ defmodule TurboWeb.CustomerView do
   end
 
   def render("show.json", %{customer: customer}) do
-    render_one(customer, CustomerView, "customer.json")
+    %{data: render_one(customer, CustomerView, "customer.json")}
   end
 
   def render("customer.json", %{customer: customer}) do

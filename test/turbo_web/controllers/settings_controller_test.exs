@@ -26,7 +26,7 @@ defmodule TurboWeb.SettingsControllerTest do
 
       old_token = Auth.fetch_token(conn)
 
-      assert %{"message" => message, "token" => new_token} =
+      assert %{"data" => %{"message" => message, "token" => new_token}} =
                Jason.decode!(new_password_conn.resp_body)
 
       assert message =~ "Password updated successfully"

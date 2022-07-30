@@ -20,7 +20,7 @@ defmodule Turbo.Rides.Ride do
   @doc false
   def changeset(ride, attrs) do
     ride
-    |> cast(attrs, [:start_location, :customer_id])
+    |> cast(attrs, [:start_location, :customer_id, :driver_id])
     |> validate_required([:start_location, :customer_id])
   end
 end

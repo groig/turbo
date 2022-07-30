@@ -21,6 +21,14 @@ defmodule Turbo.Rides do
     Repo.all(Ride)
   end
 
+  def list_rides_for_customer(customer_id) do
+    Repo.all(from r in Ride, where: r.customer_id == ^customer_id)
+  end
+
+  def list_rides_for_driver(driver_id) do
+    Repo.all(from r in Ride, where: r.driver_id == ^driver_id)
+  end
+
   @doc """
   Gets a single ride.
 

@@ -27,7 +27,7 @@ defmodule TurboWeb.AddressControllerTest do
   describe "index" do
     test "lists all addresses for a customer", %{conn: conn} do
       conn = get(conn, Routes.address_path(conn, :index)) |> doc
-      assert json_response(conn, 200) == []
+      assert json_response(conn, 200)["data"] == []
     end
   end
 
@@ -42,12 +42,14 @@ defmodule TurboWeb.AddressControllerTest do
       }
 
       conn = post(conn, Routes.address_path(conn, :create), attrs) |> doc
-      assert %{"id" => id} = json_response(conn, 201)
+      assert %{"data" => %{"id" => id}} = json_response(conn, 201)
 
       conn = get(conn, Routes.address_path(conn, :show, id)) |> doc
 
       assert %{
-               "id" => ^id
+               "data" => %{
+                 "id" => ^id
+               }
              } = json_response(conn, 200)
     end
 
@@ -71,7 +73,9 @@ defmodule TurboWeb.AddressControllerTest do
         |> doc
 
       assert %{
-               "id" => ^id
+               "data" => %{
+                 "id" => ^id
+               }
              } = json_response(conn, 200)
 
       conn =
@@ -97,13 +101,13 @@ defmodule TurboWeb.AddressControllerTest do
       id = address.id
       conn = put(conn, Routes.address_path(conn, :update, address), address: @update_attrs) |> doc
 
-      assert %{"id" => ^id} = json_response(conn, 200)
+      assert %{
+               "data" => %{"id" => ^id}
+             } = json_response(conn, 200)
 
       conn = get(conn, Routes.address_path(conn, :show, id)) |> doc
 
-      assert %{
-               "id" => ^id
-             } = json_response(conn, 200)
+      assert %{"data" => %{"name" => "New Name"}} = json_response(conn, 200)
     end
 
     test "only owner can edit address", %{conn: conn, address: address} do

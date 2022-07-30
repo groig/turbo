@@ -44,10 +44,6 @@ defmodule TurboWeb.Router do
     get "/customers", CustomerController, :index
     get "/customers/:id", CustomerController, :show
     resources "/cars", CarController
-  end
-
-  scope "/api", TurboWeb do
-    pipe_through :api
     resources "/rides", RideController
   end
 

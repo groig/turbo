@@ -18,7 +18,7 @@ defmodule TurboWeb.AuthControllerTest do
         })
         |> doc
 
-      assert %{"token" => token} = Jason.decode!(conn.resp_body)
+      assert %{"data" => %{"token" => token}} = Jason.decode!(conn.resp_body)
       assert user.id == Accounts.get_user_by_token(token).id
     end
 

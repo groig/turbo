@@ -18,7 +18,7 @@ defmodule TurboWeb.WalletControllerTest do
 
     test "returns the drivers wallet", %{conn: conn} do
       conn = get(conn, Routes.wallet_path(conn, :show)) |> doc
-      assert %{"id" => _id, "credit" => 0} = json_response(conn, 200)
+      assert %{"data" => %{"id" => _id, "credit" => 0}} = json_response(conn, 200)
     end
   end
 
@@ -37,7 +37,7 @@ defmodule TurboWeb.WalletControllerTest do
         |> put(Routes.wallet_path(conn, :credit, wallet), %{amount: 42, type: "cash"})
         |> doc
 
-      assert %{"id" => _id, "credit" => 42} = json_response(conn, 200)
+      assert %{"data" => %{"id" => _id, "credit" => 42}} = json_response(conn, 200)
 
       conn =
         build_conn()
@@ -50,7 +50,7 @@ defmodule TurboWeb.WalletControllerTest do
         })
         |> doc
 
-      assert %{"id" => _id, "credit" => 43} = json_response(conn, 200)
+      assert %{"data" => %{"id" => _id, "credit" => 43}} = json_response(conn, 200)
     end
 
     test "card transactions require an id", %{conn: _conn, wallet: wallet} do

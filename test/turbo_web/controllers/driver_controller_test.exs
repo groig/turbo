@@ -17,7 +17,7 @@ defmodule TurboWeb.DriverControllerTest do
         get(conn, Routes.driver_path(conn, :index))
         |> doc
 
-      assert length(json_response(conn, 200)) == 3
+      assert length(json_response(conn, 200)["data"]) == 3
     end
 
     test "lists only self ", %{conn: conn} do
@@ -30,7 +30,7 @@ defmodule TurboWeb.DriverControllerTest do
         get(conn, Routes.driver_path(conn, :index))
         |> doc
 
-      assert hd(json_response(conn, 200))["id"] == driver.id
+      assert hd(json_response(conn, 200)["data"])["id"] == driver.id
     end
   end
 
@@ -44,13 +44,13 @@ defmodule TurboWeb.DriverControllerTest do
         get(conn, Routes.driver_path(conn, :show, driver1))
         |> doc
 
-      assert json_response(conn1, 200)["id"] == driver1.id
+      assert json_response(conn1, 200)["data"]["id"] == driver1.id
 
       conn2 =
         get(conn, Routes.driver_path(conn, :show, driver2))
         |> doc
 
-      assert json_response(conn2, 200)["id"] == driver2.id
+      assert json_response(conn2, 200)["data"]["id"] == driver2.id
     end
 
     test "only renders the driver to himself", %{conn: conn} do
@@ -62,7 +62,7 @@ defmodule TurboWeb.DriverControllerTest do
         get(conn, Routes.driver_path(conn, :show, driver))
         |> doc
 
-      assert json_response(resp_conn, 200)["id"] == driver.id
+      assert json_response(resp_conn, 200)["data"]["id"] == driver.id
 
       not_found_conn =
         get(conn, Routes.driver_path(conn, :show, not_me))

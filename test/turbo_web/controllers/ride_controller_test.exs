@@ -15,9 +15,32 @@ defmodule TurboWeb.RideControllerTest do
   end
 
   describe "index" do
-    test "lists all rides", %{conn: conn} do
-      conn = get(conn, Routes.ride_path(conn, :index))
-      assert json_response(conn, 200)["data"] == []
+    test "lists all rides for admins", %{conn: conn} do
+      %{conn: conn} = register_and_log_in_admin(%{conn: conn})
+      ride_fixture()
+      ride_fixture()
+      ride_fixture()
+      conn = get(conn, Routes.ride_path(conn, :index)) |> doc
+      assert length(json_response(conn, 200)["data"]) == 3
+    end
+
+    test "lists rides for customer", %{conn: conn} do
+      %{conn: conn, customer: customer} = register_and_log_in_customer(%{conn: conn})
+      ride_fixture(%{customer_id: customer.id})
+      ride_fixture()
+      ride_fixture()
+      conn = get(conn, Routes.ride_path(conn, :index)) |> doc
+      assert length(json_response(conn, 200)["data"]) == 1
+    end
+
+    test "lists rides for drivers", %{conn: conn} do
+      %{conn: conn, driver: driver} = register_and_log_in_driver(%{conn: conn})
+      ride_fixture(%{driver_id: driver.id})
+      ride_fixture(%{driver_id: driver.id})
+      ride_fixture()
+      ride_fixture()
+      conn = get(conn, Routes.ride_path(conn, :index)) |> doc
+      assert length(json_response(conn, 200)["data"]) == 2
     end
   end
 

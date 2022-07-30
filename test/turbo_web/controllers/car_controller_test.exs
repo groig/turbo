@@ -24,7 +24,7 @@ defmodule TurboWeb.CarControllerTest do
       conn = get(conn, Routes.car_path(conn, :index)) |> doc
       car_fixture()
       car_fixture()
-      assert hd(json_response(conn, 200))["id"] == car.id
+      assert hd(json_response(conn, 200)["data"])["id"] == car.id
     end
   end
 
@@ -42,16 +42,18 @@ defmodule TurboWeb.CarControllerTest do
       }
 
       conn = post(conn, Routes.car_path(conn, :create), attrs) |> doc
-      assert %{"id" => id} = json_response(conn, 201)
+      assert %{"data" => %{"id" => id}} = json_response(conn, 201)
 
       conn = get(conn, Routes.car_path(conn, :show, id)) |> doc
 
       assert %{
-               "id" => ^id,
-               "color" => "some color",
-               "license_plate" => ^license_plate,
-               "make" => "some make",
-               "model" => "some model"
+               "data" => %{
+                 "id" => ^id,
+                 "color" => "some color",
+                 "license_plate" => ^license_plate,
+                 "make" => "some make",
+                 "model" => "some model"
+               }
              } = json_response(conn, 200)
     end
 
@@ -66,16 +68,18 @@ defmodule TurboWeb.CarControllerTest do
 
     test "renders car when data is valid", %{conn: conn, car: %Car{id: id} = car} do
       conn = put(conn, Routes.car_path(conn, :update, car), car: @update_attrs) |> doc
-      assert %{"id" => ^id} = json_response(conn, 200)
+      assert %{"data" => %{"id" => ^id}} = json_response(conn, 200)
 
       conn = get(conn, Routes.car_path(conn, :show, id))
 
       assert %{
-               "id" => ^id,
-               "color" => "some updated color",
-               "license_plate" => "some updated license_plate",
-               "make" => "some updated make",
-               "model" => "some updated model"
+               "data" => %{
+                 "id" => ^id,
+                 "color" => "some updated color",
+                 "license_plate" => "some updated license_plate",
+                 "make" => "some updated make",
+                 "model" => "some updated model"
+               }
              } = json_response(conn, 200)
     end
 

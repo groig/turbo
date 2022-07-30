@@ -21,7 +21,7 @@ defmodule TurboWeb.RegistrationControllerTest do
         })
         |> doc
 
-      assert %{"id" => id, "token" => token} = Jason.decode!(conn.resp_body)
+      assert %{"data" => %{"id" => id, "token" => token}} = Jason.decode!(conn.resp_body)
       user = Accounts.get_user_by_token(token)
       customer = Customers.get_customer!(id)
       assert user && customer
@@ -52,7 +52,7 @@ defmodule TurboWeb.RegistrationControllerTest do
         })
         |> doc
 
-      assert %{"id" => id, "token" => token} = Jason.decode!(conn.resp_body)
+      assert %{"data" => %{"id" => id, "token" => token}} = Jason.decode!(conn.resp_body)
       user = Accounts.get_user_by_token(token)
       driver = Drivers.get_driver!(id)
       assert user && driver

@@ -3,11 +3,11 @@ defmodule TurboWeb.CarView do
   alias TurboWeb.CarView
 
   def render("index.json", %{cars: cars}) do
-    render_many(cars, CarView, "car.json")
+    %{data: render_many(cars, CarView, "car.json")}
   end
 
   def render("show.json", %{car: car}) do
-    render_one(car, CarView, "car.json")
+    %{data: render_one(car, CarView, "car.json")}
   end
 
   def render("car.json", %{car: car}) do

@@ -6,8 +6,18 @@ defmodule TurboWeb.RideController do
 
   action_fallback TurboWeb.FallbackController
 
-  def index(conn, _params) do
+  def index(%{assigns: %{current_user: %{type: :admin}}} = conn, _params) do
     rides = Rides.list_rides()
+    render(conn, "index.json", rides: rides)
+  end
+
+  def index(%{assigns: %{current_user: %{type: :customer}}} = conn, _params) do
+    rides = Rides.list_rides_for_customer(conn.assigns.current_user.customer.id)
+    render(conn, "index.json", rides: rides)
+  end
+
+  def index(%{assigns: %{current_user: %{type: :driver}}} = conn, _params) do
+    rides = Rides.list_rides_for_driver(conn.assigns.current_user.driver.id)
     render(conn, "index.json", rides: rides)
   end
 

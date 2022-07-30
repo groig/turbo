@@ -36,13 +36,13 @@ defmodule TurboWeb.CustomerControllerTest do
         get(conn, Routes.customer_path(conn, :show, customer1))
         |> doc
 
-      assert json_response(conn1, 200)["id"] == customer1.id
+      assert json_response(conn1, 200)["data"]["id"] == customer1.id
 
       conn2 =
         get(conn, Routes.customer_path(conn, :show, customer2))
         |> doc
 
-      assert json_response(conn2, 200)["id"] == customer2.id
+      assert json_response(conn2, 200)["data"]["id"] == customer2.id
     end
 
     test "only renders the customer to himself", %{conn: conn} do
@@ -54,7 +54,7 @@ defmodule TurboWeb.CustomerControllerTest do
         get(conn, Routes.customer_path(conn, :show, customer))
         |> doc
 
-      assert json_response(resp_conn, 200)["id"] == customer.id
+      assert json_response(resp_conn, 200)["data"]["id"] == customer.id
 
       not_found_conn =
         get(conn, Routes.customer_path(conn, :show, not_me))
