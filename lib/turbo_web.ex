@@ -46,6 +46,17 @@ defmodule TurboWeb do
           |> halt()
         end
       end
+
+      defp require_customer(conn, _opts) do
+        if conn.assigns[:current_user] && conn.assigns.current_user.type == :customer do
+          conn
+        else
+          conn
+          |> put_resp_content_type("application/json")
+          |> send_resp(401, Jason.encode!("Unauthorized"))
+          |> halt()
+        end
+      end
     end
   end
 

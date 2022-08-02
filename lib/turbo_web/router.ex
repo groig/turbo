@@ -44,7 +44,7 @@ defmodule TurboWeb.Router do
     get "/customers", CustomerController, :index
     get "/customers/:id", CustomerController, :show
     resources "/cars", CarController
-    resources "/rides", RideController
+    resources "/rides", RideController, only: [:index, :create, :show, :update]
   end
 
   # Enables LiveDashboard only for development

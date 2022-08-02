@@ -45,6 +45,11 @@ defmodule Turbo.Rides do
   """
   def get_ride!(id), do: Repo.get!(Ride, id)
 
+  def get_ride_for_customer!(id, customer_id),
+    do: Repo.get_by!(Ride, id: id, customer_id: customer_id)
+
+  def get_ride_for_driver!(id, driver_id), do: Repo.get_by!(Ride, id: id, driver_id: driver_id)
+
   @doc """
   Creates a ride.
 
