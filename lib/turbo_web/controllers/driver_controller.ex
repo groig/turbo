@@ -12,6 +12,11 @@ defmodule TurboWeb.DriverController do
     render(conn, "index.json", drivers: drivers)
   end
 
+  def index(%{assigns: %{current_user: %{type: :customer}}} = conn, _params) do
+    drivers = Drivers.list_located_drivers()
+    render(conn, "index.json", drivers: drivers)
+  end
+
   def index(%{assigns: %{current_user: %{type: :driver}}} = conn, _params) do
     render(conn, "index.json", drivers: [conn.assigns.current_user.driver])
   end

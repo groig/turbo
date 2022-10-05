@@ -5,13 +5,46 @@ defmodule TurboWeb.SettingsControllerTest do
   alias TurboWeb.Auth
   import Turbo.AccountsFixtures
 
-  setup :register_and_log_in_user
-
   setup %{conn: conn} do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
   end
 
+  describe "GET /settings" do
+    test "renders current admin", %{conn: _conn} = params do
+      %{conn: conn, user: user} = register_and_log_in_admin(params)
+      conn = get(conn, Routes.settings_path(conn, :show)) |> doc
+      user_id = user.id
+      assert %{"data" => %{"user" => %{"id" => ^user_id}}} = json_response(conn, 200)
+    end
+
+    test "renders current customer", %{conn: _conn} = params do
+      %{conn: conn, user: user, customer: customer} = register_and_log_in_customer(params)
+
+      conn = get(conn, Routes.settings_path(conn, :show)) |> doc
+
+      user_id = user.id
+      customer_id = customer.id
+
+      assert %{"data" => %{"user" => %{"id" => ^user_id}, "customer" => %{"id" => ^customer_id}}} =
+               json_response(conn, 200)
+    end
+
+    test "renders current driver", %{conn: _conn} = params do
+      %{conn: conn, user: user, driver: driver} = register_and_log_in_driver(params)
+
+      conn = get(conn, Routes.settings_path(conn, :show)) |> doc
+
+      user_id = user.id
+      driver_id = driver.id
+
+      assert %{"data" => %{"user" => %{"id" => ^user_id}, "driver" => %{"id" => ^driver_id}}} =
+               json_response(conn, 200)
+    end
+  end
+
   describe "PUT /settings (change password)" do
+    setup [:register_and_log_in_user]
+
     test "updates the user password and resets tokens", %{conn: conn, user: user} do
       new_password_conn =
         put(conn, Routes.settings_path(conn, :update), %{
@@ -56,6 +89,7 @@ defmodule TurboWeb.SettingsControllerTest do
   end
 
   describe "PUT /settings (change email)" do
+    setup [:register_and_log_in_user]
     @tag :capture_log
     test "updates the user email", %{conn: conn, user: user} do
       conn =
@@ -86,6 +120,7 @@ defmodule TurboWeb.SettingsControllerTest do
   end
 
   describe "PUT /settings (change name)" do
+    setup [:register_and_log_in_user]
     @tag :capture_log
     test "updates the user name", %{conn: conn} do
       new_name = "user#{System.unique_integer()}"
@@ -113,6 +148,8 @@ defmodule TurboWeb.SettingsControllerTest do
   end
 
   describe "GET /users/settings/confirm_email/:token" do
+    setup [:register_and_log_in_user]
+
     setup %{user: user} do
       email = unique_user_email()
 

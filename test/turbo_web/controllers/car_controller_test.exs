@@ -93,7 +93,7 @@ defmodule TurboWeb.CarControllerTest do
     setup [:create_car]
 
     test "deletes chosen car", %{conn: conn, car: car} do
-      conn = delete(conn, Routes.car_path(conn, :delete, car))
+      conn = delete(conn, Routes.car_path(conn, :delete, car)) |> doc
       assert response(conn, 204)
 
       assert_error_sent 404, fn ->

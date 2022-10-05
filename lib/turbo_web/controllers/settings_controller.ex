@@ -3,8 +3,23 @@ defmodule TurboWeb.SettingsController do
 
   alias Turbo.Accounts
   alias TurboWeb.Auth
+  import TurboWeb.Auth
 
   action_fallback TurboWeb.FallbackController
+
+  plug :require_authenticated_user, [] when action == :show
+
+  def show(%{assigns: %{current_user: %{type: :admin}}} = conn, _params) do
+    render(conn, "show_admin.json", user: conn.assigns.current_user)
+  end
+
+  def show(%{assigns: %{current_user: %{type: :customer}}} = conn, _params) do
+    render(conn, "show_customer.json", user: conn.assigns.current_user)
+  end
+
+  def show(%{assigns: %{current_user: %{type: :driver}}} = conn, _params) do
+    render(conn, "show_driver.json", user: conn.assigns.current_user)
+  end
 
   def update(conn, %{"action" => "update_email"} = params) do
     %{"current_password" => password, "email" => email} = params
