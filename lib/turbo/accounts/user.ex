@@ -40,6 +40,7 @@ defmodule Turbo.Accounts.User do
     |> cast(attrs, [:email, :password, :type, :name, :phone])
     |> validate_required([:type, :name, :phone])
     |> validate_email()
+    |> unique_constraint(:phone)
     |> validate_password(opts)
   end
 

@@ -16,6 +16,7 @@ defmodule Turbo.Repo.Migrations.CreateUsersAuthTables do
     end
 
     create unique_index(:users, [:email])
+    create unique_index(:users, [:phone])
 
     create table(:users_tokens, primary_key: false) do
       add :id, :binary_id, primary_key: true

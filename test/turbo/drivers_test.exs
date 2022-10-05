@@ -23,7 +23,12 @@ defmodule Turbo.DriversTest do
 
     test "create_driver/1 with valid data creates a driver" do
       user = AccountsFixtures.user_fixture()
-      valid_attrs = %{license: "license#{System.unique_integer()}", user_id: user.id}
+
+      valid_attrs = %{
+        license: "license#{System.unique_integer()}",
+        identity_card: "ci#{System.unique_integer([:positive])}",
+        user_id: user.id
+      }
 
       assert {:ok, %Driver{} = _driver} = Drivers.create_driver(valid_attrs)
     end

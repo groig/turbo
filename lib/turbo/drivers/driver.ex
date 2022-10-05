@@ -6,6 +6,7 @@ defmodule Turbo.Drivers.Driver do
   @foreign_key_type :binary_id
   schema "drivers" do
     field :license, :string
+    field :identity_card, :string
     belongs_to :user, Turbo.Accounts.User
     has_many :cars, Turbo.Cars.Car
     has_one :wallet, Turbo.Wallets.Wallet
@@ -18,8 +19,8 @@ defmodule Turbo.Drivers.Driver do
   @doc false
   def changeset(driver, attrs) do
     driver
-    |> cast(attrs, [:license, :user_id])
-    |> validate_required([:license, :user_id])
+    |> cast(attrs, [:license, :user_id, :identity_card])
+    |> validate_required([:license, :user_id, :identity_card])
   end
 
   @doc false

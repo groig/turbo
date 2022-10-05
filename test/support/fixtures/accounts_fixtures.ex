@@ -7,7 +7,7 @@ defmodule Turbo.AccountsFixtures do
   def unique_user_name, do: "user#{System.unique_integer()}"
   def unique_user_email, do: "user#{System.unique_integer()}@example.com"
   def valid_user_password, do: "hello world!"
-  def valid_phone, do: "55555555"
+  def valid_phone, do: "#{System.unique_integer([:positive])}"
 
   def valid_user_attributes(attrs \\ %{}) do
     Enum.into(attrs, %{

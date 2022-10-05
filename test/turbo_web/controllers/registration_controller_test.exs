@@ -48,7 +48,10 @@ defmodule TurboWeb.RegistrationControllerTest do
       conn =
         post(conn, Routes.registration_path(conn, :create), %{
           "driver" =>
-            Map.merge(valid_user_attributes(email: email), %{"license" => "driver-license-abc"})
+            Map.merge(valid_user_attributes(email: email), %{
+              "license" => "driver-license-abc",
+              "identity_card" => "identity-card-abc"
+            })
         })
         |> doc
 
