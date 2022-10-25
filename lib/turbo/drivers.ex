@@ -18,7 +18,11 @@ defmodule Turbo.Drivers do
 
   """
   def list_drivers do
-    Repo.all(from(d in Driver, preload: :wallet))
+    Repo.all(from(d in Driver, preload: [:wallet, :user]))
+  end
+
+  def list_located_drivers() do
+    Repo.all(from(d in Driver, where: not is_nil(d.last_location)))
   end
 
   @doc """
@@ -35,7 +39,7 @@ defmodule Turbo.Drivers do
       ** (Ecto.NoResultsError)
 
   """
-  def get_driver!(id), do: Repo.get!(Driver, id) |> Repo.preload(:wallet)
+  def get_driver!(id), do: Repo.get!(Driver, id) |> Repo.preload([:wallet, :user])
 
   @doc """
   Creates a driver.

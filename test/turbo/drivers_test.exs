@@ -13,7 +13,8 @@ defmodule Turbo.DriversTest do
 
     test "list_drivers/0 returns all drivers" do
       driver = driver_fixture()
-      assert Drivers.list_drivers() == [driver]
+      id = driver.id
+      assert [%Driver{id: ^id}] = Drivers.list_drivers()
     end
 
     test "get_driver!/1 returns the driver with given id" do

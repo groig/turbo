@@ -1,6 +1,7 @@
 defmodule TurboWeb.DriverControllerTest do
   use TurboWeb.ConnCase, async: true
   alias Turbo.DriversFixtures
+  alias Turbo.Drivers
 
   setup %{conn: conn} do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
@@ -18,6 +19,31 @@ defmodule TurboWeb.DriverControllerTest do
         |> doc
 
       assert length(json_response(conn, 200)["data"]) == 3
+    end
+
+    test "list only id and locations when user is customer", %{conn: conn} do
+      location = %{
+        "last_location" => %{
+          "coordinates" => [30.2, 20.3],
+          "type" => "Point",
+          "crs" => %{"properties" => %{"name" => "EPSG:4326"}, "type" => "name"}
+        }
+      }
+
+      {:ok, driver} =
+        DriversFixtures.driver_fixture()
+        |> Drivers.set_driver_location(location)
+
+      DriversFixtures.driver_fixture()
+      %{conn: conn} = register_and_log_in_customer(%{conn: conn})
+
+      conn =
+        get(conn, Routes.driver_path(conn, :index))
+        |> doc
+
+      assert json_response(conn, 200)["data"] == [
+               %{"id" => driver.id, "last_location" => location["last_location"]}
+             ]
     end
 
     test "lists only self ", %{conn: conn} do
