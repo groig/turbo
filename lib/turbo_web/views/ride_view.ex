@@ -16,7 +16,9 @@ defmodule TurboWeb.RideView do
       start_time: ride.start_time,
       end_time: ride.end_time,
       customer_rating: ride.customer_rating,
-      driver_rating: ride.driver_rating
+      driver_rating: ride.driver_rating,
+      customer_route: ride.customer_route,
+      driver_route: ride.driver_route
     }
   end
 end

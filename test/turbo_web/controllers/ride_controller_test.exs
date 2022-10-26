@@ -95,4 +95,26 @@ defmodule TurboWeb.RideControllerTest do
       assert_error_sent 404, fn -> get(conn, Routes.ride_path(conn, :show, ride2.id)) |> doc end
     end
   end
+
+  describe "set ride route" do
+    test "sets the ride route for a driver", %{conn: conn} do
+      %{conn: conn, driver: driver} = register_and_log_in_driver(%{conn: conn})
+      ride = ride_fixture(%{driver_id: driver.id})
+      route = %{coordinates: [[20, 60], [56, 24], [52.0, 81]], type: "LineString"}
+      conn = put(conn, Routes.ride_path(conn, :update, ride.id), %{driver_route: route}) |> doc
+      response = json_response(conn, 200)
+      assert response["data"]["id"] == ride.id
+      assert response["data"]["driver_route"] != :null
+    end
+
+    test "sets the ride route for a customer", %{conn: conn} do
+      %{conn: conn, customer: customer} = register_and_log_in_customer(%{conn: conn})
+      ride = ride_fixture(%{customer_id: customer.id})
+      route = %{coordinates: [[20, 60], [56, 24], [52.0, 81]], type: "LineString"}
+      conn = put(conn, Routes.ride_path(conn, :update, ride.id), %{customer_route: route}) |> doc
+      response = json_response(conn, 200)
+      assert response["data"]["id"] == ride.id
+      assert response["data"]["customer_route"] != :null
+    end
+  end
 end

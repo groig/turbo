@@ -17,6 +17,8 @@ defmodule Turbo.Repo.Migrations.CreateRides do
     execute("SELECT AddGeometryColumn('rides', 'start_location', 4326, 'POINT', 2)")
     execute("ALTER TABLE rides ALTER COLUMN start_location SET NOT NULL")
     execute("SELECT AddGeometryColumn('rides', 'end_location', 4326, 'POINT', 2)")
+    execute("SELECT AddGeometryColumn('rides', 'customer_route', 4326, 'LINESTRING', 2)")
+    execute("SELECT AddGeometryColumn('rides', 'driver_route', 4326, 'LINESTRING', 2)")
 
     create(index(:rides, [:driver_id]))
     create(index(:rides, [:customer_id]))

@@ -114,4 +114,12 @@ defmodule Turbo.Rides do
   def change_ride(%Ride{} = ride, attrs \\ %{}) do
     Ride.changeset(ride, attrs)
   end
+
+  def set_customer_route(%Ride{} = ride, attrs) do
+    ride |> Ride.customer_route_changeset(attrs) |> Repo.update()
+  end
+
+  def set_driver_route(%Ride{} = ride, attrs) do
+    ride |> Ride.driver_route_changeset(attrs) |> Repo.update()
+  end
 end
