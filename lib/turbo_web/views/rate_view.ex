@@ -27,4 +27,8 @@ defmodule TurboWeb.RateView do
       area: rate.area
     }
   end
+
+  def render("price.json", %{price: price}) do
+    %{data: %{price: price}}
+  end
 end

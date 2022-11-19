@@ -28,13 +28,6 @@ defmodule TurboWeb.Router do
     put "/reset_password/:token", ResetPasswordController, :update
     post "/confirm", ConfirmationController, :create
     post "/confirm/:token", ConfirmationController, :update
-    get "/rates", RateController, :index
-    get "/rates/:id", RateController, :show
-    post "/rates/create_time_rate", RateController, :create_time_rate
-    put "/rates/update_time_rate/:id", RateController, :update_time_rate
-    delete "/rates/delete/:id", RateController, :delete
-    post "/rates/create_area_rate", RateController, :create_area_rate
-    put "/rates/update_area_rate/:id", RateController, :update_area_rate
   end
 
   scope "/api", TurboWeb do
@@ -53,6 +46,16 @@ defmodule TurboWeb.Router do
     get "/customers/:id", CustomerController, :show
     resources "/cars", CarController
     resources "/rides", RideController, only: [:index, :create, :show, :update]
+    get "/rates", RateController, :index
+    get "/rates/calculate", RateController, :calculate
+    get "/rates/:id", RateController, :show
+    post "/rates/create_time_rate", RateController, :create_time_rate
+    put "/rates/update_time_rate/:id", RateController, :update_time_rate
+    delete "/rates/delete/:id", RateController, :delete
+    post "/rates/create_area_rate", RateController, :create_area_rate
+    put "/rates/update_area_rate/:id", RateController, :update_area_rate
+    get "/rates_configuration", RateConfigurationController, :show
+    put "/rates_configuration", RateConfigurationController, :update
   end
 
   # Enables LiveDashboard only for development

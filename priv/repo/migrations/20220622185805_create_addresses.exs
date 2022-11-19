@@ -20,6 +20,6 @@ defmodule Turbo.Repo.Migrations.CreateAddresses do
   end
 
   def down do
-    drop(table(:addresse))
+    drop(table(:addresses))
   end
 end

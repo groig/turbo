@@ -4,6 +4,7 @@ defmodule Turbo.Rates do
   """
 
   import Ecto.Query, warn: false
+  import Geo.PostGIS
   alias Turbo.Repo
 
   alias Turbo.Rates.Rate
@@ -136,5 +137,105 @@ defmodule Turbo.Rates do
   """
   def change_time_rate(%Rate{} = rate, attrs \\ %{}) do
     Rate.time_rate_changeset(rate, attrs)
+  end
+
+  def get_rate_for_ride(car_type, start_time, distance, destination) do
+    case get_rate_for_point(destination) do
+      %Rate{} = rate ->
+        get_fixed_rate(rate, car_type)
+
+      nil ->
+        rate = start_time |> get_rate_for_time() |> get_rate_per_km(distance, car_type)
+        rate_configuration = get_rate_configuration()
+
+        if rate >= rate_configuration.min_rate do
+          rate
+        else
+          rate_configuration.min_rate
+        end
+    end
+  end
+
+  defp get_rate_for_point(point) do
+    query =
+      from rate in Rate,
+        where:
+          rate.type == :area and
+            st_contains(rate.area, ^point),
+        order_by: [desc: rate.inserted_at]
+
+    case Repo.all(query) do
+      [] -> nil
+      [rate | _] -> rate
+    end
+  end
+
+  defp get_rate_for_time(start_time) do
+    query =
+      from rate in Rate,
+        where: rate.type == :time and rate.start <= ^start_time and rate.end > ^start_time,
+        order_by: [desc: rate.inserted_at]
+
+    case Repo.all(query) do
+      [rate | _] ->
+        rate
+    end
+  end
+
+  defp get_fixed_rate(rate, :standard) do
+    rate.fixed_rate_standard
+  end
+
+  defp get_fixed_rate(rate, :comfort) do
+    rate.fixed_rate_comfort
+  end
+
+  defp get_fixed_rate(rate, :familiar) do
+    rate.fixed_rate_familiar
+  end
+
+  defp get_rate_per_km(rate, distance, :standard) do
+    rate.rate_per_km_standard * distance
+  end
+
+  defp get_rate_per_km(rate, distance, :comfort) do
+    rate.rate_per_km_comfort * distance
+  end
+
+  defp get_rate_per_km(rate, distance, :familiar) do
+    rate.rate_per_km_familiar * distance
+  end
+
+  alias Turbo.Rates.RateConfiguration
+
+  @doc """
+  Gets a single rate_configuration.
+
+  Raises `Ecto.NoResultsError` if the Rate configuration does not exist.
+
+  ## Examples
+
+      iex> get_rate_configuration()
+      %RateConfiguration{}
+
+  """
+  def get_rate_configuration(), do: Repo.one(from(rc in RateConfiguration))
+
+  @doc """
+  Updates a rate_configuration.
+
+  ## Examples
+
+      iex> update_rate_configuration(rate_configuration, %{field: new_value})
+      {:ok, %RateConfiguration{}}
+
+      iex> update_rate_configuration(rate_configuration, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_rate_configuration(%RateConfiguration{} = rate_configuration, attrs) do
+    rate_configuration
+    |> RateConfiguration.changeset(attrs)
+    |> Repo.update()
   end
 end

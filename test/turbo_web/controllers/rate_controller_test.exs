@@ -7,12 +7,12 @@ defmodule TurboWeb.RateControllerTest do
 
   @create_time_attrs %{
     description: "some description",
-    end: ~N[2022-10-25 20:34:00],
+    end: ~T[21:34:00],
     name: "some name",
     rate_per_km_standard: 42,
     rate_per_km_comfort: 43,
     rate_per_km_familiar: 44,
-    start: ~N[2022-10-25 20:34:00]
+    start: ~T[20:34:00]
   }
 
   @create_area_attrs %{
@@ -31,12 +31,12 @@ defmodule TurboWeb.RateControllerTest do
 
   @update_time_attrs %{
     description: "some updated description",
-    end: ~N[2022-10-26 20:34:00],
+    end: ~T[21:34:00],
     name: "some updated name",
     rate_per_km_standard: 43,
     rate_per_km_comfort: 44,
     rate_per_km_familiar: 45,
-    start: ~N[2022-10-26 20:34:00]
+    start: ~T[20:34:00]
   }
 
   @update_area_attrs %{
@@ -52,7 +52,14 @@ defmodule TurboWeb.RateControllerTest do
       "type" => "Polygon"
     }
   }
-  @invalid_attrs %{area: nil, description: nil, end: nil, name: nil, rate_per_km: nil, start: nil}
+  @invalid_attrs %{
+    area: nil,
+    description: nil,
+    end: ~T[20:00:00],
+    name: nil,
+    rate_per_km: nil,
+    start: ~T[21:00:00]
+  }
 
   setup %{conn: conn} do
     %{conn: conn} = register_and_log_in_admin(%{conn: conn})
@@ -81,12 +88,12 @@ defmodule TurboWeb.RateControllerTest do
       assert %{
                "id" => ^id,
                "description" => "some description",
-               "end" => "2022-10-25T20:34:00",
+               "end" => "21:34:00",
                "name" => "some name",
                "rate_per_km_standard" => 42,
                "rate_per_km_comfort" => 43,
                "rate_per_km_familiar" => 44,
-               "start" => "2022-10-25T20:34:00"
+               "start" => "20:34:00"
              } = json_response(conn, 200)["data"]
     end
 
@@ -136,12 +143,12 @@ defmodule TurboWeb.RateControllerTest do
       assert %{
                "id" => ^id,
                "description" => "some updated description",
-               "end" => "2022-10-26T20:34:00",
+               "end" => "21:34:00",
                "name" => "some updated name",
                "rate_per_km_standard" => 43,
                "rate_per_km_comfort" => 44,
                "rate_per_km_familiar" => 45,
-               "start" => "2022-10-26T20:34:00"
+               "start" => "20:34:00"
              } = json_response(conn, 200)["data"]
     end
 
@@ -194,6 +201,147 @@ defmodule TurboWeb.RateControllerTest do
         get(conn, Routes.rate_path(conn, :show, rate))
       end
     end
+  end
+
+  @area_1 %Geo.Polygon{
+    coordinates: [
+      [
+        {-82.40007698572896, 23.13955365908314},
+        {-82.39743943409488, 23.141741739321944},
+        {-82.39397048031528, 23.14052907275771},
+        {-82.39342576856474, 23.136416469691415},
+        {-82.39775479352939, 23.13459739348444},
+        {-82.40053569036097, 23.135071937482625},
+        {-82.40165378290153, 23.137945529152688},
+        {-82.40007698572896, 23.13955365908314}
+      ]
+    ]
+  }
+
+  @area_2 %Geo.Polygon{
+    coordinates: [
+      [
+        {-82.38660253716353, 23.13267283672154},
+        {-82.38600048733402, 23.138920954526878},
+        {-82.37708441604921, 23.138103706722536},
+        {-82.37762912779972, 23.126978096056817},
+        {-82.38602915637352, 23.12365605235804},
+        {-82.39216433082672, 23.13003641276599},
+        {-82.38660253716353, 23.13267283672154}
+      ]
+    ]
+  }
+
+  @destination_area_1 %{
+    "coordinates" => [-82.39861486471447, 23.13752372138783],
+    "type" => "Point"
+  }
+
+  @destination_1 %{
+    "coordinates" => [-82.400248999966, 23.129377298679902],
+    "type" => "Point"
+  }
+
+  describe "rate calculation" do
+    setup [:create_rates]
+
+    test "get_rate_for_ride/4 returns the correct rate by distance", %{conn: conn} do
+      conn =
+        get(
+          conn,
+          Routes.rate_path(conn, :calculate, %{
+            "car_type" => "standard",
+            "start_time" => "09:25:00",
+            "distance" => 1,
+            "destination" => @destination_1
+          })
+        )
+        |> doc
+
+      assert json_response(conn, 200)["data"]["price"] == 250
+    end
+
+    test "get_rate_for_ride/4 when the ride starts at the rate edge", %{conn: conn} do
+      conn =
+        get(
+          conn,
+          Routes.rate_path(conn, :calculate, %{
+            "car_type" => "standard",
+            "start_time" => "08:00:00",
+            "distance" => 1,
+            "destination" => @destination_1
+          })
+        )
+        |> doc
+
+      assert json_response(conn, 200)["data"]["price"] == 250
+    end
+
+    test "get_rate_for_ride/4 returns the correct rate by destination area", %{conn: conn} do
+      conn =
+        get(
+          conn,
+          Routes.rate_path(conn, :calculate, %{
+            "car_type" => "standard",
+            "start_time" => "09:25:00",
+            "distance" => 1,
+            "destination" => @destination_area_1
+          })
+        )
+        |> doc
+
+      assert json_response(conn, 200)["data"]["price"] == 10
+    end
+  end
+
+  defp create_rates(context) do
+    time_rate_fixture(%{
+      start: ~T[08:00:00],
+      end: ~T[18:00:00],
+      rate_per_km_standard: 1,
+      rate_per_km_comfort: 2,
+      rate_per_km_familiar: 3
+    })
+
+    time_rate_fixture(%{
+      start: ~T[18:00:00],
+      end: ~T[22:00:00],
+      rate_per_km_standard: 4,
+      rate_per_km_comfort: 5,
+      rate_per_km_familiar: 6
+    })
+
+    time_rate_fixture(%{
+      start: ~T[22:00:00],
+      end: ~T[23:59:00],
+      rate_per_km_standard: 7,
+      rate_per_km_comfort: 8,
+      rate_per_km_familiar: 9
+    })
+
+    time_rate_fixture(%{
+      start: ~T[00:00:00],
+      end: ~T[08:00:00],
+      rate_per_km_standard: 7,
+      rate_per_km_comfort: 8,
+      rate_per_km_familiar: 9
+    })
+
+    area_rate_fixture(%{
+      area: @area_1,
+      fixed_rate_standard: 10,
+      fixed_rate_comfort: 20,
+      fixed_rate_familiar: 30
+    })
+
+    area_rate_fixture(%{
+      area: @area_2,
+      fixed_rate_standard: 40,
+      fixed_rate_comfort: 50,
+      fixed_rate_familiar: 60
+    })
+
+    context
   end
 
   defp create_area_rate(_) do

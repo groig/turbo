@@ -8,7 +8,7 @@ defmodule Turbo.Rates.Rate do
     field :type, Ecto.Enum, values: [:time, :area], default: :time
     field :area, Geo.PostGIS.Geometry
     field :description, :string
-    field :end, :naive_datetime
+    field :end, :time
     field :name, :string
     field :rate_per_km_standard, :integer
     field :rate_per_km_comfort, :integer
@@ -16,7 +16,7 @@ defmodule Turbo.Rates.Rate do
     field :fixed_rate_standard, :integer
     field :fixed_rate_comfort, :integer
     field :fixed_rate_familiar, :integer
-    field :start, :naive_datetime
+    field :start, :time
     field :enabled, :boolean, default: true
 
     timestamps()
@@ -42,7 +42,25 @@ defmodule Turbo.Rates.Rate do
       :rate_per_km_comfort,
       :rate_per_km_familiar
     ])
+    |> validate_time_interval
     |> put_change(:type, :time)
+  end
+
+  defp validate_time_interval(changeset) do
+    start_time = get_field(changeset, :start)
+    end_time = get_field(changeset, :end)
+
+    case Time.compare(start_time, end_time) do
+      :lt ->
+        changeset
+
+      _ ->
+        add_error(
+          changeset,
+          :end,
+          "End time can't be lower than start time"
+        )
+    end
   end
 
   def area_rate_changeset(rate, attrs) do

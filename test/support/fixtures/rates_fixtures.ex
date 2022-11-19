@@ -12,12 +12,12 @@ defmodule Turbo.RatesFixtures do
       attrs
       |> Enum.into(%{
         description: "some description",
-        end: ~N[2022-10-25 20:34:00],
+        end: ~T[21:34:00],
         name: "some name",
         rate_per_km_standard: 42,
         rate_per_km_comfort: 42,
         rate_per_km_familiar: 42,
-        start: ~N[2022-10-25 20:34:00]
+        start: ~T[20:34:00]
       })
       |> Turbo.Rates.create_time_rate()
 

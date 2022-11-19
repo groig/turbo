@@ -59,4 +59,22 @@ defmodule TurboWeb.RateController do
       render(conn, "show.json", rate: rate)
     end
   end
+
+  def calculate(
+        conn,
+        %{
+          "car_type" => car_type,
+          "destination" => %{"coordinates" => [x, y], "type" => "Point"},
+          "distance" => distance,
+          "start_time" => start_time
+        }
+      ) do
+    car_type = String.to_existing_atom(car_type)
+    destination = %Geo.Point{coordinates: {String.to_float(x), String.to_float(y)}, srid: 4326}
+    start_time = Time.from_iso8601!(start_time)
+    {distance, ""} = Float.parse(distance)
+    price = Rates.get_rate_for_ride(car_type, start_time, distance, destination)
+
+    render(conn, "price.json", price: price)
+  end
 end
