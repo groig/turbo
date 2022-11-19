@@ -20,10 +20,11 @@ defmodule TurboWeb.RateConfigurationControllerTest do
 
       conn =
         put(conn, Routes.rate_configuration_path(conn, :update), rate_configuration: @update_attrs)
+        |> doc
 
       assert %{"id" => ^id} = json_response(conn, 200)["data"]
 
-      conn = get(conn, Routes.rate_configuration_path(conn, :show))
+      conn = get(conn, Routes.rate_configuration_path(conn, :show)) |> doc
 
       assert %{
                "id" => ^id,
@@ -38,6 +39,7 @@ defmodule TurboWeb.RateConfigurationControllerTest do
         put(conn, Routes.rate_configuration_path(conn, :update),
           rate_configuration: @invalid_attrs
         )
+        |> doc
 
       assert json_response(conn, 422)["errors"] != %{}
     end
