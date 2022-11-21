@@ -24,7 +24,9 @@ defmodule TurboWeb.RideRequestControllerTest do
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
-      conn = post(conn, Routes.ride_request_path(conn, :create), ride_request: @invalid_attrs)
+      conn =
+        post(conn, Routes.ride_request_path(conn, :create), ride_request: @invalid_attrs) |> doc
+
       assert json_response(conn, 422)["errors"] != %{}
     end
   end

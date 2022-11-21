@@ -1,5 +1,6 @@
 defmodule TurboWeb.UserSocket do
   use Phoenix.Socket
+  alias Turbo.Accounts
 
   # A Socket handler
   #
@@ -9,6 +10,7 @@ defmodule TurboWeb.UserSocket do
   ## Channels
 
   channel "user:*", TurboWeb.UserChannel
+  channel "rides", TurboWeb.RidesChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
@@ -22,8 +24,19 @@ defmodule TurboWeb.UserSocket do
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
   @impl true
-  def connect(_params, socket, _connect_info) do
-    {:ok, socket}
+  def connect(%{"token" => token}, socket, _connect_info) do
+    case token && Accounts.get_user_by_token(token) do
+      nil ->
+        :error
+
+      %Accounts.User{} = user ->
+        socket = assign(socket, :current_user, user)
+        {:ok, socket}
+    end
+  end
+
+  def connect(_params, _socket, _connect_info) do
+    :error
   end
 
   # Socket id's are topics that allow you to identify all sockets for a given user:
@@ -37,5 +50,5 @@ defmodule TurboWeb.UserSocket do
   #
   # Returning `nil` makes this socket anonymous.
   @impl true
-  def id(_socket), do: nil
+  def id(socket), do: socket.assigns[:current_user].id
 end
