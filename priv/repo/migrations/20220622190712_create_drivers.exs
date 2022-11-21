@@ -7,11 +7,12 @@ defmodule Turbo.Repo.Migrations.CreateDrivers do
       add(:license, :string, null: false)
       add(:identity_card, :string, null: false)
       add(:user_id, references("users", type: :binary_id, on_delete: :delete_all), null: false)
+      add(:status, :string, default: "unavailable")
       timestamps()
     end
 
-    create unique_index(:drivers, [:license])
-    create unique_index(:drivers, [:identity_card])
+    create(unique_index(:drivers, [:license]))
+    create(unique_index(:drivers, [:identity_card]))
     execute("SELECT AddGeometryColumn('drivers', 'last_location', 4326, 'POINT', 2)")
   end
 

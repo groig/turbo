@@ -8,6 +8,7 @@ defmodule Turbo.Customers.Customer do
     belongs_to :user, Turbo.Accounts.User
     has_many :addresses, Turbo.Addresses.Address
     has_many :rides, Turbo.Rides.Ride
+    has_many :ride_requests, Turbo.Rides.RideRequest
     timestamps()
   end
 

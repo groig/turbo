@@ -12,6 +12,7 @@ defmodule Turbo.Drivers.Driver do
     has_one :wallet, Turbo.Wallets.Wallet
     has_many :rides, Turbo.Rides.Ride
     field :last_location, Geo.PostGIS.Geometry
+    field :status, Ecto.Enum, values: [:available, :on_ride, :unavailable], default: :unavailable
 
     timestamps()
   end

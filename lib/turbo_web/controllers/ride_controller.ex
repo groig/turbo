@@ -23,17 +23,6 @@ defmodule TurboWeb.RideController do
     render(conn, "index.json", rides: rides)
   end
 
-  def create(conn, ride_params) do
-    ride_params = Map.put(ride_params, "customer_id", conn.assigns.current_user.customer.id)
-
-    with {:ok, %Ride{} = ride} <- Rides.create_ride(ride_params) do
-      conn
-      |> put_status(:created)
-      |> put_resp_header("location", Routes.ride_path(conn, :show, ride))
-      |> render("show.json", ride: ride)
-    end
-  end
-
   def show(%{assigns: %{current_user: %{type: :admin}}} = conn, %{"id" => id}) do
     ride = Rides.get_ride!(id)
     render(conn, "show.json", ride: ride)

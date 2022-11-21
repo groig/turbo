@@ -37,35 +37,6 @@ defmodule TurboWeb.RideControllerTest do
     end
   end
 
-  describe "create ride" do
-    test "renders ride when data is valid", %{conn: conn} do
-      %{conn: conn} = register_and_log_in_customer(%{conn: conn})
-
-      attrs = %{
-        start_location: %{
-          "coordinates" => [30.2, 20.3],
-          "type" => "Point"
-        }
-      }
-
-      conn = post(conn, Routes.ride_path(conn, :create), attrs) |> doc
-      assert %{"id" => id} = json_response(conn, 201)["data"]
-
-      conn = get(conn, Routes.ride_path(conn, :show, id)) |> doc
-
-      assert %{
-               "id" => ^id
-             } = json_response(conn, 200)["data"]
-    end
-
-    test "renders errors when data is invalid", %{conn: conn} do
-      %{conn: conn} = register_and_log_in_customer(%{conn: conn})
-
-      conn = post(conn, Routes.ride_path(conn, :create), %{}) |> doc
-      assert json_response(conn, 422)["errors"] != %{}
-    end
-  end
-
   describe "show ride" do
     test "renders any ride to the admin", %{conn: conn} do
       %{conn: conn} = register_and_log_in_admin(%{conn: conn})

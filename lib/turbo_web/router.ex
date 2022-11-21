@@ -46,6 +46,7 @@ defmodule TurboWeb.Router do
     get "/customers/:id", CustomerController, :show
     resources "/cars", CarController
     resources "/rides", RideController, only: [:index, :create, :show, :update]
+    post "/rides/request", RideRequestController, :create
     get "/rates", RateController, :index
     get "/rates/calculate", RateController, :calculate
     get "/rates/:id", RateController, :show

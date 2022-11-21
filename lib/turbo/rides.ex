@@ -122,4 +122,100 @@ defmodule Turbo.Rides do
   def set_driver_route(%Ride{} = ride, attrs) do
     ride |> Ride.driver_route_changeset(attrs) |> Repo.update()
   end
+
+  alias Turbo.Rides.RideRequest
+
+  @doc """
+  Returns the list of ride_requests.
+
+  ## Examples
+
+      iex> list_ride_requests()
+      [%RideRequest{}, ...]
+
+  """
+  def list_ride_requests do
+    Repo.all(RideRequest)
+  end
+
+  @doc """
+  Gets a single ride_request.
+
+  Raises `Ecto.NoResultsError` if the Ride request does not exist.
+
+  ## Examples
+
+      iex> get_ride_request!(123)
+      %RideRequest{}
+
+      iex> get_ride_request!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_ride_request!(id), do: Repo.get!(RideRequest, id)
+
+  @doc """
+  Creates a ride_request.
+
+  ## Examples
+
+      iex> create_ride_request(%{field: value})
+      {:ok, %RideRequest{}}
+
+      iex> create_ride_request(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_ride_request(attrs \\ %{}) do
+    %RideRequest{}
+    |> RideRequest.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a ride_request.
+
+  ## Examples
+
+      iex> update_ride_request(ride_request, %{field: new_value})
+      {:ok, %RideRequest{}}
+
+      iex> update_ride_request(ride_request, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_ride_request(%RideRequest{} = ride_request, attrs) do
+    ride_request
+    |> RideRequest.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a ride_request.
+
+  ## Examples
+
+      iex> delete_ride_request(ride_request)
+      {:ok, %RideRequest{}}
+
+      iex> delete_ride_request(ride_request)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_ride_request(%RideRequest{} = ride_request) do
+    Repo.delete(ride_request)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking ride_request changes.
+
+  ## Examples
+
+      iex> change_ride_request(ride_request)
+      %Ecto.Changeset{data: %RideRequest{}}
+
+  """
+  def change_ride_request(%RideRequest{} = ride_request, attrs \\ %{}) do
+    RideRequest.changeset(ride_request, attrs)
+  end
 end
