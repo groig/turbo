@@ -167,9 +167,17 @@ defmodule Turbo.Rides do
 
   """
   def create_ride_request(attrs \\ %{}) do
-    %RideRequest{}
-    |> RideRequest.changeset(attrs)
-    |> Repo.insert()
+    with {:ok, ride_request} <-
+           %RideRequest{}
+           |> RideRequest.changeset(attrs)
+           |> Repo.insert() do
+      TurboWeb.Endpoint.broadcast!("rides:lobby", "ride_request", %{
+        id: ride_request.id,
+        start_location: ride_request.start_location
+      })
+
+      {:ok, ride_request}
+    end
   end
 
   @doc """

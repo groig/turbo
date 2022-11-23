@@ -10,7 +10,7 @@ defmodule TurboWeb.UserSocket do
   ## Channels
 
   channel "user:*", TurboWeb.UserChannel
-  channel "rides", TurboWeb.RidesChannel
+  channel "rides:*", TurboWeb.RidesChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
