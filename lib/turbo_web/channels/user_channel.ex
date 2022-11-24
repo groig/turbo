@@ -2,12 +2,20 @@ defmodule TurboWeb.UserChannel do
   use TurboWeb, :channel
 
   @impl true
-  def join("user:lobby", payload, socket) do
-    if authorized?(payload) do
+  def join("user:lobby", _payload, socket) do
+    if authorized?(socket) do
       {:ok, socket}
     else
       {:error, %{reason: "unauthorized"}}
     end
+  end
+
+  def join("user:" <> user_id, _params, socket) do
+    %{id: id} = socket.assigns[:current_user]
+
+    if id == user_id,
+      do: {:ok, socket},
+      else: {:error, :unauthorized}
   end
 
   # Channels can be used in a request/response fashion
@@ -26,7 +34,7 @@ defmodule TurboWeb.UserChannel do
   end
 
   # Add authorization logic here as required.
-  defp authorized?(_payload) do
-    true
+  defp authorized?(socket) do
+    socket.assigns[:current_user] != nil
   end
 end

@@ -5,6 +5,7 @@ defmodule Turbo.Repo.Migrations.CreateRideRequests do
     create table(:ride_requests, primary_key: false) do
       add(:id, :binary_id, primary_key: true)
       add(:customer_id, references(:customers, on_delete: :nilify_all, type: :binary_id))
+      add(:accepted, :boolean, default: false)
 
       timestamps()
     end

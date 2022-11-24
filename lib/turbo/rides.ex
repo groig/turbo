@@ -152,7 +152,7 @@ defmodule Turbo.Rides do
       ** (Ecto.NoResultsError)
 
   """
-  def get_ride_request!(id), do: Repo.get!(RideRequest, id)
+  def get_ride_request!(id), do: Repo.get!(RideRequest, id) |> Repo.preload(:customer)
 
   @doc """
   Creates a ride_request.
@@ -225,5 +225,30 @@ defmodule Turbo.Rides do
   """
   def change_ride_request(%RideRequest{} = ride_request, attrs \\ %{}) do
     RideRequest.changeset(ride_request, attrs)
+  end
+
+  def accept_ride_request(id, driver_id) do
+    ride_request = get_ride_request!(id)
+
+    ride_changeset =
+      Ride.changeset(%Ride{}, %{
+        start_location: ride_request.start_location,
+        customer_id: ride_request.customer.id,
+        ride_request_id: ride_request.id,
+        driver_id: driver_id
+      })
+
+    multi =
+      Ecto.Multi.new()
+      |> Ecto.Multi.update(:ride_request, RideRequest.accept_changeset(ride_request, %{}))
+      |> Ecto.Multi.insert(:ride, ride_changeset)
+
+    case Repo.transaction(multi) do
+      {:ok, data} ->
+        {:ok, data.ride_request}
+
+      {:error, _step, %Ecto.Changeset{} = changeset, _changes_so_far} ->
+        {:error, changeset}
+    end
   end
 end

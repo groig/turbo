@@ -73,7 +73,8 @@ defmodule Turbo.RidesTest do
 
     test "get_ride_request!/1 returns the ride_request with given id" do
       ride_request = ride_request_fixture()
-      assert Rides.get_ride_request!(ride_request.id) == ride_request
+      id = ride_request.id
+      assert %{id: ^id} = Rides.get_ride_request!(ride_request.id)
     end
 
     test "create_ride_request/1 with valid data creates a ride_request" do

@@ -15,6 +15,7 @@ defmodule Turbo.Rides.Ride do
     field :driver_route, Geo.PostGIS.Geometry
     belongs_to :driver, Turbo.Drivers.Driver
     belongs_to :customer, Turbo.Customers.Customer
+    belongs_to :ride_request, Turbo.Rides.RideRequest
 
     timestamps()
   end
@@ -22,7 +23,7 @@ defmodule Turbo.Rides.Ride do
   @doc false
   def changeset(ride, attrs) do
     ride
-    |> cast(attrs, [:start_location, :end_location, :customer_id, :driver_id])
+    |> cast(attrs, [:start_location, :end_location, :customer_id, :driver_id, :ride_request_id])
     |> validate_required([:start_location, :customer_id, :driver_id])
   end
 

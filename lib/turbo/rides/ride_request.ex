@@ -6,7 +6,9 @@ defmodule Turbo.Rides.RideRequest do
   @foreign_key_type :binary_id
   schema "ride_requests" do
     field :start_location, Geo.PostGIS.Geometry
+    field :accepted, :boolean, default: false
     belongs_to :customer, Turbo.Customers.Customer
+    has_one :ride, Turbo.Rides.Ride
 
     timestamps()
   end
@@ -16,5 +18,26 @@ defmodule Turbo.Rides.RideRequest do
     ride_request
     |> cast(attrs, [:start_location, :customer_id])
     |> validate_required([:start_location, :customer_id])
+  end
+
+  def accept_changeset(ride_request, attrs) do
+    ride_request
+    |> cast(attrs, [:accepted])
+    |> validate_accepted
+    |> put_change(:accepted, true)
+  end
+
+  defp validate_accepted(changeset) do
+    accepted = get_field(changeset, :accepted)
+
+    if accepted do
+      add_error(
+        changeset,
+        :accepted,
+        "This ride request was accepted already"
+      )
+    else
+      changeset
+    end
   end
 end
