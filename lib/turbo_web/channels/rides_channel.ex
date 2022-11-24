@@ -19,6 +19,12 @@ defmodule TurboWeb.RidesChannel do
     end
   end
 
+  @impl true
+  def handle_in("chat_message", %{"message" => _message} = payload, socket) do
+    broadcast_from!(socket, "chat_message", payload)
+    {:reply, {:ok, payload}, socket}
+  end
+
   # Add authorization logic here as required.
   defp authorized?(user) do
     user.type == :driver
