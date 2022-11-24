@@ -36,7 +36,7 @@ defmodule TurboWeb.UserChannelTest do
              |> socket(user.id, %{current_user: user})
              |> subscribe_and_join(TurboWeb.UserChannel, "user:" <> user.id)
 
-    assert {:error, :unauthorized} =
+    assert {:error, %{reason: "unauthorized"}} =
              TurboWeb.UserSocket
              |> socket(user.id, %{current_user: user})
              |> subscribe_and_join(TurboWeb.UserChannel, "user:" <> "random-user-id")

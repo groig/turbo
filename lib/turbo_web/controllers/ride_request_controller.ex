@@ -22,7 +22,7 @@ defmodule TurboWeb.RideRequestController do
 
   def accept(conn, %{"id" => id}) do
     with {:ok, %RideRequest{} = ride_request} <-
-           Rides.accept_ride_request(id, conn.assigns.current_user.driver.id) do
+           Rides.accept_ride_request(id, conn.assigns.current_user.driver) do
       conn
       |> put_status(204)
       |> render("show.json", ride_request: ride_request)

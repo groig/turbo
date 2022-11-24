@@ -15,7 +15,7 @@ defmodule TurboWeb.UserChannel do
 
     if id == user_id,
       do: {:ok, socket},
-      else: {:error, :unauthorized}
+      else: {:error, %{reason: "unauthorized"}}
   end
 
   # Channels can be used in a request/response fashion

@@ -36,11 +36,33 @@ defmodule TurboWeb.RideRequestControllerTest do
   end
 
   describe "accept ride_request" do
-    test "renders ride_request when data is valid", %{conn: conn} do
-      %{conn: conn} = register_and_log_in_driver(%{conn: conn})
+    test "renders ride_request when accepting proccess is successfull", %{conn: conn} do
+      %{conn: conn, driver: driver} = register_and_log_in_driver(%{conn: conn})
+
       ride_request = RidesFixtures.ride_request_fixture()
+      id = ride_request.id
+      customer = Turbo.Customers.get_customer!(ride_request.customer_id)
+
+      TurboWeb.Endpoint.subscribe("rides:lobby")
+      TurboWeb.Endpoint.subscribe("user:" <> driver.user_id)
+      TurboWeb.Endpoint.subscribe("user:" <> customer.user_id)
 
       conn = put(conn, Routes.ride_request_path(conn, :accept, ride_request.id)) |> doc
+
+      assert_receive %Phoenix.Socket.Broadcast{
+        event: "request:accepted",
+        payload: %{id: ^id}
+      }
+
+      assert_receive %Phoenix.Socket.Broadcast{
+        event: "ride:created",
+        payload: %{id: _ride_id}
+      }
+
+      assert_receive %Phoenix.Socket.Broadcast{
+        event: "ride:created",
+        payload: %{id: _ride_id}
+      }
 
       assert %{"id" => _id} = json_response(conn, 204)["data"]
     end

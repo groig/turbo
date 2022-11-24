@@ -45,6 +45,8 @@ defmodule Turbo.Rides do
   """
   def get_ride!(id), do: Repo.get!(Ride, id)
 
+  def get_ride(id), do: Repo.get(Ride, id)
+
   def get_ride_for_customer!(id, customer_id),
     do: Repo.get_by!(Ride, id: id, customer_id: customer_id)
 
@@ -171,7 +173,7 @@ defmodule Turbo.Rides do
            %RideRequest{}
            |> RideRequest.changeset(attrs)
            |> Repo.insert() do
-      TurboWeb.Endpoint.broadcast!("rides:lobby", "ride_request", %{
+      TurboWeb.Endpoint.broadcast!("rides:lobby", "request:created", %{
         id: ride_request.id,
         start_location: ride_request.start_location
       })
@@ -227,7 +229,7 @@ defmodule Turbo.Rides do
     RideRequest.changeset(ride_request, attrs)
   end
 
-  def accept_ride_request(id, driver_id) do
+  def accept_ride_request(id, driver) do
     ride_request = get_ride_request!(id)
 
     ride_changeset =
@@ -235,7 +237,7 @@ defmodule Turbo.Rides do
         start_location: ride_request.start_location,
         customer_id: ride_request.customer.id,
         ride_request_id: ride_request.id,
-        driver_id: driver_id
+        driver_id: driver.id
       })
 
     multi =
@@ -245,6 +247,14 @@ defmodule Turbo.Rides do
 
     case Repo.transaction(multi) do
       {:ok, data} ->
+        TurboWeb.Endpoint.broadcast("rides:lobby", "request:accepted", %{id: ride_request.id})
+
+        TurboWeb.Endpoint.broadcast("user:" <> driver.user_id, "ride:created", %{id: data.ride.id})
+
+        TurboWeb.Endpoint.broadcast("user:" <> ride_request.customer.user_id, "ride:created", %{
+          id: data.ride.id
+        })
+
         {:ok, data.ride_request}
 
       {:error, _step, %Ecto.Changeset{} = changeset, _changes_so_far} ->
