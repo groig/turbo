@@ -2,14 +2,7 @@ defmodule TurboWeb.RideRequestControllerTest do
   use TurboWeb.ConnCase
   alias Turbo.RidesFixtures
 
-  @create_attrs %{
-    start_location: %{
-      "coordinates" => [30.2, 20.3],
-      "type" => "Point"
-    }
-  }
-
-  @invalid_attrs %{start_location: nil}
+  @invalid_attrs %{start_location: nil, end_location: nil}
 
   setup %{conn: conn} do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
@@ -18,9 +11,22 @@ defmodule TurboWeb.RideRequestControllerTest do
   describe "create ride_request" do
     test "renders ride_request when data is valid", %{conn: conn} do
       %{conn: conn} = register_and_log_in_customer(%{conn: conn})
+      ride_request = RidesFixtures.ride_request_fixture()
+
+      create_attrs = %{
+        start_location: %{
+          "coordinates" => [30.2, 20.3],
+          "type" => "Point"
+        },
+        end_location: %{
+          "coordinates" => [30.2, 20.3],
+          "type" => "Point"
+        },
+        ride_request_id: ride_request.id
+      }
 
       conn =
-        post(conn, Routes.ride_request_path(conn, :create), ride_request: @create_attrs) |> doc
+        post(conn, Routes.ride_request_path(conn, :create), ride_request: create_attrs) |> doc
 
       assert %{"id" => _id} = json_response(conn, 201)["data"]
     end

@@ -12,13 +12,15 @@ defmodule Turbo.RidesFixtures do
   def ride_fixture(attrs \\ %{}) do
     customer = CustomersFixtures.customer_fixture()
     driver = DriversFixtures.driver_fixture()
+    ride_request = ride_request_fixture()
 
     {:ok, ride} =
       attrs
       |> Enum.into(%{
         start_location: %Geo.Point{coordinates: {30.20, 20.30}, srid: 4326},
         customer_id: customer.id,
-        driver_id: driver.id
+        driver_id: driver.id,
+        ride_request_id: ride_request.id
       })
       |> Turbo.Rides.create_ride()
 
@@ -35,6 +37,7 @@ defmodule Turbo.RidesFixtures do
       attrs
       |> Enum.into(%{
         start_location: %Geo.Point{coordinates: {30.20, 20.30}, srid: 4326},
+        end_location: %Geo.Point{coordinates: {30.20, 20.30}, srid: 4326},
         customer_id: customer.id
       })
       |> Turbo.Rides.create_ride_request()

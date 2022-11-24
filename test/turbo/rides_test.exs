@@ -1,5 +1,6 @@
 defmodule Turbo.RidesTest do
   use Turbo.DataCase, async: true
+  alias Turbo.RidesFixtures
   alias Turbo.CustomersFixtures
   alias Turbo.DriversFixtures
 
@@ -25,12 +26,14 @@ defmodule Turbo.RidesTest do
     test "create_ride/1 with valid data creates a ride" do
       customer = CustomersFixtures.customer_fixture()
       driver = DriversFixtures.driver_fixture()
+      ride_request = RidesFixtures.ride_request_fixture()
       location = %Geo.Point{coordinates: {30.20, 20.30}, srid: 4326}
 
       valid_attrs = %{
         customer_id: customer.id,
         driver_id: driver.id,
-        start_location: location
+        start_location: location,
+        ride_request_id: ride_request.id
       }
 
       assert {:ok, %Ride{} = ride} = Rides.create_ride(valid_attrs)
@@ -82,6 +85,7 @@ defmodule Turbo.RidesTest do
 
       valid_attrs = %{
         start_location: %Geo.Point{coordinates: {30.20, 20.30}, srid: 4326},
+        end_location: %Geo.Point{coordinates: {30.20, 20.30}, srid: 4326},
         customer_id: customer.id
       }
 

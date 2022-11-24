@@ -6,7 +6,7 @@ defmodule TurboWeb.RateController do
 
   action_fallback TurboWeb.FallbackController
 
-  plug :require_admin
+  plug :require_admin, [] when action != :calculate
 
   def index(conn, _params) do
     rates = Rates.list_rates()

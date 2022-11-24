@@ -11,6 +11,7 @@ defmodule Turbo.Repo.Migrations.CreateRideRequests do
     end
 
     execute("SELECT AddGeometryColumn('ride_requests', 'start_location', 4326, 'POINT', 2)")
+    execute("SELECT AddGeometryColumn('ride_requests', 'end_location', 4326, 'POINT', 2)")
     create(index(:ride_requests, [:customer_id]))
   end
 
