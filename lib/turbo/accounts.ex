@@ -30,6 +30,14 @@ defmodule Turbo.Accounts do
     Repo.get_by(User, email: email)
   end
 
+  def list_users do
+    Repo.all(from u in User, where: u.active == true)
+  end
+
+  def list_users(type) do
+    Repo.all(from u in User, where: u.active == true and u.type == ^type)
+  end
+
   @doc """
   Gets a user by email and password.
 

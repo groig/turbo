@@ -32,32 +32,46 @@ defmodule TurboWeb.Router do
 
   scope "/api", TurboWeb do
     pipe_through [:api, :require_authenticated_user]
+
     get "/confirm_email/:token", SettingsController, :confirm_email
+
     get "/settings", SettingsController, :show
     put "/settings", SettingsController, :update
+
     resources "/addresses", AddressController
+
     get "/wallet", WalletController, :show
     put "/wallet/:id", WalletController, :credit
+
     get "/drivers", DriverController, :index
     get "/drivers/:id", DriverController, :show
     put "/drivers/location", DriverController, :location
     put "/drivers/license", DriverController, :license
+    resources "/cars", CarController
+
     get "/customers", CustomerController, :index
     get "/customers/:id", CustomerController, :show
-    resources "/cars", CarController
+
     resources "/rides", RideController, only: [:index, :create, :show, :update]
     post "/rides/request", RideRequestController, :create
     put "/rides/accept/:id", RideRequestController, :accept
+
     get "/rates", RateController, :index
     get "/rates/calculate", RateController, :calculate
     get "/rates/:id", RateController, :show
     post "/rates/create_time_rate", RateController, :create_time_rate
     put "/rates/update_time_rate/:id", RateController, :update_time_rate
-    delete "/rates/delete/:id", RateController, :delete
     post "/rates/create_area_rate", RateController, :create_area_rate
     put "/rates/update_area_rate/:id", RateController, :update_area_rate
+    delete "/rates/:id", RateController, :delete
     get "/rates_configuration", RateConfigurationController, :show
     put "/rates_configuration", RateConfigurationController, :update
+
+    post "/notifications", NotificationController, :create
+    get "/notifications", NotificationController, :index
+    get "/notifications/:id", NotificationController, :show
+    put "/notifications/:id", NotificationController, :update
+    delete "/notifications/:id", NotificationController, :delete
   end
 
   # Enables LiveDashboard only for development

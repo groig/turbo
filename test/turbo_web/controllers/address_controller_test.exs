@@ -78,14 +78,13 @@ defmodule TurboWeb.AddressControllerTest do
                }
              } = json_response(conn, 200)
 
-      conn =
+      assert_error_sent 404, fn ->
         build_conn()
         |> put_req_header("accept", "application/json")
         |> put_req_header("authorization", "Bearer #{not_owner_token}")
         |> get(Routes.address_path(conn, :show, address.id))
         |> doc
-
-      assert conn.status == 404
+      end
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
@@ -115,14 +114,13 @@ defmodule TurboWeb.AddressControllerTest do
       not_owner_user = Repo.get!(User, not_owner.user_id)
       not_owner_token = Auth.log_in_user(not_owner_user)
 
-      conn =
+      assert_error_sent 404, fn ->
         conn
         |> put_req_header("accept", "application/json")
         |> put_req_header("authorization", "Bearer #{not_owner_token}")
         |> put(Routes.address_path(conn, :update, address), address: @update_attrs)
         |> doc
-
-      assert conn.status == 404
+      end
     end
 
     test "renders errors when data is invalid", %{conn: conn, address: address} do
@@ -139,8 +137,10 @@ defmodule TurboWeb.AddressControllerTest do
     test "deletes chosen address", %{conn: conn, address: address} do
       conn = delete(conn, Routes.address_path(conn, :delete, address)) |> doc
       assert response(conn, 204)
-      conn = get(conn, Routes.address_path(conn, :show, address)) |> doc
-      assert conn.status == 404
+
+      assert_error_sent 404, fn ->
+        get(conn, Routes.address_path(conn, :show, address)) |> doc
+      end
     end
 
     test "only owner can delete address", %{conn: conn, address: address} do
@@ -148,14 +148,13 @@ defmodule TurboWeb.AddressControllerTest do
       not_owner_user = Repo.get!(User, not_owner.user_id)
       not_owner_token = Auth.log_in_user(not_owner_user)
 
-      conn =
+      assert_error_sent 404, fn ->
         conn
         |> put_req_header("accept", "application/json")
         |> put_req_header("authorization", "Bearer #{not_owner_token}")
         |> delete(Routes.address_path(conn, :delete, address))
         |> doc
-
-      assert conn.status == 404
+      end
     end
   end
 

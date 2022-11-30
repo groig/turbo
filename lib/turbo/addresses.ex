@@ -24,8 +24,8 @@ defmodule Turbo.Addresses do
   @doc """
   Gets a single address.
   """
-  def get_address(id, customer_id) do
-    Repo.one(from(a in Address, where: a.id == ^id and a.customer_id == ^customer_id))
+  def get_address!(id, customer_id) do
+    Repo.one!(from(a in Address, where: a.id == ^id and a.customer_id == ^customer_id))
   end
 
   @doc """

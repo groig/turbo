@@ -16,9 +16,9 @@ defmodule Turbo.AddressesTest do
       assert Addresses.list_addresses(address.customer_id) == [address]
     end
 
-    test "get_address/2 returns the address with given id" do
+    test "get_address!/2 returns the address with given id" do
       address = address_fixture()
-      assert Addresses.get_address(address.id, address.customer_id) == address
+      assert Addresses.get_address!(address.id, address.customer_id) == address
     end
 
     test "create_address/1 with valid data creates a address" do
@@ -47,13 +47,16 @@ defmodule Turbo.AddressesTest do
     test "update_address/2 with invalid data returns error changeset" do
       address = address_fixture()
       assert {:error, %Ecto.Changeset{}} = Addresses.update_address(address, @invalid_attrs)
-      assert address == Addresses.get_address(address.id, address.customer_id)
+      assert address == Addresses.get_address!(address.id, address.customer_id)
     end
 
     test "delete_address/1 deletes the address" do
       address = address_fixture()
       assert {:ok, %Address{}} = Addresses.delete_address(address)
-      refute Addresses.get_address(address.id, address.customer_id)
+
+      assert_raise Ecto.NoResultsError, fn ->
+        Addresses.get_address!(address.id, address.customer_id)
+      end
     end
 
     test "change_address/1 returns a address changeset" do

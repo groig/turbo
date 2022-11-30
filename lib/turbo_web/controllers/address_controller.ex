@@ -24,36 +24,23 @@ defmodule TurboWeb.AddressController do
   end
 
   def show(conn, %{"id" => id}) do
-    case Addresses.get_address(id, conn.assigns.current_user.customer.id) do
-      %Address{} = address ->
-        render(conn, "show.json", address: address)
-
-      nil ->
-        {:error, :not_found}
-    end
+    address = Addresses.get_address!(id, conn.assigns.current_user.customer.id)
+    render(conn, "show.json", address: address)
   end
 
   def update(conn, %{"id" => id, "address" => address_params}) do
-    case Addresses.get_address(id, conn.assigns.current_user.customer.id) do
-      %Address{} = address ->
-        with {:ok, %Address{} = address} <- Addresses.update_address(address, address_params) do
-          render(conn, "show.json", address: address)
-        end
+    address = Addresses.get_address!(id, conn.assigns.current_user.customer.id)
 
-      nil ->
-        {:error, :not_found}
+    with {:ok, %Address{} = address} <- Addresses.update_address(address, address_params) do
+      render(conn, "show.json", address: address)
     end
   end
 
   def delete(conn, %{"id" => id}) do
-    case Addresses.get_address(id, conn.assigns.current_user.customer.id) do
-      %Address{} = address ->
-        with {:ok, %Address{}} <- Addresses.delete_address(address) do
-          send_resp(conn, :no_content, "")
-        end
+    address = Addresses.get_address!(id, conn.assigns.current_user.customer.id)
 
-      nil ->
-        {:error, :not_found}
+    with {:ok, %Address{}} <- Addresses.delete_address(address) do
+      send_resp(conn, :no_content, "")
     end
   end
 end

@@ -14,6 +14,7 @@ defmodule Turbo.Accounts.User do
     field :type, Ecto.Enum, values: [:customer, :driver, :admin], default: :customer
     has_one :customer, Turbo.Customers.Customer
     has_one :driver, Turbo.Drivers.Driver
+    has_many :notifications, Turbo.Notifications.Notification
 
     timestamps()
   end
