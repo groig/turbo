@@ -61,4 +61,28 @@ defmodule TurboWeb.RideController do
       render(conn, "show.json", ride: ride, type: :driver)
     end
   end
+
+  def update(
+        %{assigns: %{current_user: %{type: :customer}}} = conn,
+        %{
+          "id" => id,
+          "customer_rating" => _rating
+        } = rating_params
+      ) do
+    with %Ride{} = ride <-
+           Rides.get_ride_for_customer!(id, conn.assigns.current_user.customer.id),
+         {:ok, ride} <- Rides.set_customer_rating(ride, rating_params) do
+      render(conn, "show.json", ride: ride, type: :customer)
+    end
+  end
+
+  def update(
+        %{assigns: %{current_user: %{type: :driver}}} = conn,
+        %{"id" => id, "driver_rating" => _rating} = rating_params
+      ) do
+    with %Ride{} = ride <- Rides.get_ride_for_driver!(id, conn.assigns.current_user.driver.id),
+         {:ok, ride} <- Rides.set_driver_rating(ride, rating_params) do
+      render(conn, "show.json", ride: ride, type: :driver)
+    end
+  end
 end

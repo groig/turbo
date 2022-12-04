@@ -8,6 +8,7 @@ defmodule Turbo.Repo.Migrations.CreateRides do
       add(:end_time, :naive_datetime)
       add(:customer_rating, :integer)
       add(:driver_rating, :integer)
+      add(:charged, :decimal)
       add(:driver_id, references(:drivers, on_delete: :nilify_all, type: :binary_id))
       add(:customer_id, references(:customers, on_delete: :nilify_all, type: :binary_id))
 

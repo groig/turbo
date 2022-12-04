@@ -125,6 +125,14 @@ defmodule Turbo.Rides do
     ride |> Ride.driver_route_changeset(attrs) |> Repo.update()
   end
 
+  def set_customer_rating(%Ride{} = ride, attrs) do
+    ride |> Ride.customer_rating_changeset(attrs) |> Repo.update()
+  end
+
+  def set_driver_rating(%Ride{} = ride, attrs) do
+    ride |> Ride.driver_rating_changeset(attrs) |> Repo.update()
+  end
+
   alias Turbo.Rides.RideRequest
 
   @doc """

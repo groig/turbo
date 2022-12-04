@@ -13,6 +13,7 @@ defmodule Turbo.Rides.Ride do
     field :end_location, Geo.PostGIS.Geometry
     field :customer_route, Geo.PostGIS.Geometry
     field :driver_route, Geo.PostGIS.Geometry
+    field :charged, :decimal
     belongs_to :driver, Turbo.Drivers.Driver
     belongs_to :customer, Turbo.Customers.Customer
     belongs_to :ride_request, Turbo.Rides.RideRequest
@@ -39,5 +40,19 @@ defmodule Turbo.Rides.Ride do
     driver
     |> cast(attrs, [:driver_route])
     |> validate_required([:driver_route])
+  end
+
+  @doc false
+  def customer_rating_changeset(driver, attrs) do
+    driver
+    |> cast(attrs, [:customer_rating])
+    |> validate_required([:customer_rating])
+  end
+
+  @doc false
+  def driver_rating_changeset(driver, attrs) do
+    driver
+    |> cast(attrs, [:driver_rating])
+    |> validate_required([:driver_rating])
   end
 end

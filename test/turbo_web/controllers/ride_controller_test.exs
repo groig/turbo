@@ -88,4 +88,29 @@ defmodule TurboWeb.RideControllerTest do
       assert response["data"]["customer_route"] != :null
     end
   end
+
+  describe "set ride rating" do
+    test "sets the ride rating for a driver", %{conn: conn} do
+      %{conn: conn, driver: driver} = register_and_log_in_driver(%{conn: conn})
+      ride = ride_fixture(%{driver_id: driver.id})
+      rating = 5
+      conn = put(conn, Routes.ride_path(conn, :update, ride.id), %{driver_rating: rating}) |> doc
+      response = json_response(conn, 200)
+      assert response["data"]["id"] == ride.id
+      assert response["data"]["driver_rating"] == rating
+    end
+
+    test "sets the ride rating for a customer", %{conn: conn} do
+      %{conn: conn, customer: customer} = register_and_log_in_customer(%{conn: conn})
+      ride = ride_fixture(%{customer_id: customer.id})
+      rating = 3
+
+      conn =
+        put(conn, Routes.ride_path(conn, :update, ride.id), %{customer_rating: rating}) |> doc
+
+      response = json_response(conn, 200)
+      assert response["data"]["id"] == ride.id
+      assert response["data"]["customer_rating"] == rating
+    end
+  end
 end
