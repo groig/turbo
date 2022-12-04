@@ -6,6 +6,8 @@ defmodule Turbo.Customers.Customer do
   @foreign_key_type :binary_id
   schema "customers" do
     belongs_to :user, Turbo.Accounts.User
+    field :home_location, Geo.PostGIS.Geometry
+    field :work_location, Geo.PostGIS.Geometry
     has_many :addresses, Turbo.Addresses.Address
     has_many :rides, Turbo.Rides.Ride
     has_many :ride_requests, Turbo.Rides.RideRequest
@@ -17,5 +19,17 @@ defmodule Turbo.Customers.Customer do
     customer
     |> cast(attrs, [:user_id])
     |> validate_required([:user_id])
+  end
+
+  def home_location_changeset(customer, attrs) do
+    customer
+    |> cast(attrs, [:home_location])
+    |> validate_required([:home_location])
+  end
+
+  def work_location_changeset(customer, attrs) do
+    customer
+    |> cast(attrs, [:work_location])
+    |> validate_required([:work_location])
   end
 end

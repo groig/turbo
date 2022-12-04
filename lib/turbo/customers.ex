@@ -73,6 +73,18 @@ defmodule Turbo.Customers do
     |> Repo.update()
   end
 
+  def update_home_location(%Customer{} = customer, attrs) do
+    customer
+    |> Customer.home_location_changeset(attrs)
+    |> Repo.update()
+  end
+
+  def update_work_location(%Customer{} = customer, attrs) do
+    customer
+    |> Customer.work_location_changeset(attrs)
+    |> Repo.update()
+  end
+
   @doc """
   Deletes a customer.
 

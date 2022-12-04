@@ -2,6 +2,7 @@ defmodule TurboWeb.SettingsController do
   use TurboWeb, :controller
 
   alias Turbo.Accounts
+  alias Turbo.Customers
   alias TurboWeb.Auth
   import TurboWeb.Auth
 
@@ -58,6 +59,24 @@ defmodule TurboWeb.SettingsController do
       token = Auth.log_in_user(user)
 
       render(conn, "update_password.json", token: token, message: "Password updated successfully.")
+    end
+  end
+
+  def update(conn, %{"action" => "update_home_location"} = params) do
+    with {:ok, customer} <-
+           Customers.update_home_location(conn.assigns.current_user.customer, params) do
+      user = conn.assigns.current_user |> Map.put(:customer, customer)
+
+      render(conn, "show_customer.json", user: user)
+    end
+  end
+
+  def update(conn, %{"action" => "update_work_location"} = params) do
+    with {:ok, customer} <-
+           Customers.update_work_location(conn.assigns.current_user.customer, params) do
+      user = conn.assigns.current_user |> Map.put(:customer, customer)
+
+      render(conn, "show_customer.json", user: user)
     end
   end
 

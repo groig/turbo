@@ -119,6 +119,38 @@ defmodule TurboWeb.SettingsControllerTest do
     end
   end
 
+  describe "PUT /settings (update addresses)" do
+    setup [:register_and_log_in_customer]
+
+    test "updates the customer home address", %{conn: conn} do
+      conn =
+        put(conn, Routes.settings_path(conn, :update), %{
+          "action" => "update_home_location",
+          "home_location" => %{
+            "coordinates" => [30.2, 20.3],
+            "type" => "Point"
+          }
+        })
+        |> doc
+
+      assert json_response(conn, 200)["data"]["customer"]["home_location"] != nil
+    end
+
+    test "updates the customer work address", %{conn: conn} do
+      conn =
+        put(conn, Routes.settings_path(conn, :update), %{
+          "action" => "update_work_location",
+          "work_location" => %{
+            "coordinates" => [30.2, 20.3],
+            "type" => "Point"
+          }
+        })
+        |> doc
+
+      data = json_response(conn, 200)["data"]["customer"]["work_location"] != nil
+    end
+  end
+
   describe "PUT /settings (change name)" do
     setup [:register_and_log_in_user]
     @tag :capture_log

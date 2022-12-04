@@ -13,7 +13,11 @@ defmodule TurboWeb.SettingsView do
     %{
       data: %{
         user: %{id: user.id, name: user.name, email: user.email, phone: user.phone},
-        customer: %{id: user.customer.id}
+        customer: %{
+          id: user.customer.id,
+          home_location: user.customer.home_location,
+          work_location: user.customer.work_location
+        }
       }
     }
   end
