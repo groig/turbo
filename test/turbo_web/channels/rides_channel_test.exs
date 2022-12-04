@@ -3,19 +3,27 @@ defmodule TurboWeb.RidesChannelTest do
   alias Ecto.UUID
   alias Turbo.Accounts
   alias Turbo.RidesFixtures
+  alias Turbo.CarsFixtures
+  alias Turbo.Drivers
 
   test "creating a ride request broadcasts the event to the rides channel" do
+    # Driver needs a current_car to be able to join the rides channel
     driver = Turbo.DriversFixtures.driver_fixture()
-    user = Accounts.get_user!(driver.user_id)
+    car = CarsFixtures.car_fixture(%{driver_id: driver.id, type: :familiar})
+    Drivers.change_current_car(driver, %{current_car_id: car.id})
+
+    user =
+      Accounts.get_user!(driver.user_id)
+      |> Turbo.Repo.preload(driver: [:current_car])
 
     {:ok, _, _socket} =
       TurboWeb.UserSocket
       |> socket(user.id, %{current_user: user})
       |> subscribe_and_join(TurboWeb.RidesChannel, "rides:lobby")
 
-    ride_request = RidesFixtures.ride_request_fixture()
+    ride_request = RidesFixtures.ride_request_fixture(%{type: :familiar})
     id = ride_request.id
-    assert_broadcast("request:created", %{id: ^id}) |> doc
+    assert_push("request:created", %{id: ^id}) |> doc
   end
 
   test "cant join channel of non existing ride" do

@@ -2,6 +2,8 @@ defmodule TurboWeb.RidesChannel do
   use TurboWeb, :channel
   alias Turbo.Rides
 
+  intercept ["request:created"]
+
   @impl true
   def join("rides:lobby", _payload, socket) do
     if authorized?(socket.assigns.current_user) do
@@ -25,9 +27,18 @@ defmodule TurboWeb.RidesChannel do
     {:reply, {:ok, payload}, socket}
   end
 
+  @impl true
+  def handle_out("request:created", payload, socket) do
+    if payload.type == socket.assigns.current_user.driver.current_car.type do
+      push(socket, "request:created", payload)
+    end
+
+    {:noreply, socket}
+  end
+
   # Add authorization logic here as required.
   defp authorized?(user) do
-    user.type == :driver
+    user.type == :driver and Ecto.assoc_loaded?(user.driver.current_car)
   end
 
   defp ride_authorized?(ride_id, user) do
