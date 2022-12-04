@@ -7,6 +7,7 @@ defmodule Turbo.Rides.RideRequest do
   schema "ride_requests" do
     field :start_location, Geo.PostGIS.Geometry
     field :end_location, Geo.PostGIS.Geometry
+    field :type, Ecto.Enum, values: [:standard, :comfort, :familiar], default: :standard
     field :accepted, :boolean, default: false
     belongs_to :customer, Turbo.Customers.Customer
     has_one :ride, Turbo.Rides.Ride
@@ -17,8 +18,8 @@ defmodule Turbo.Rides.RideRequest do
   @doc false
   def changeset(ride_request, attrs) do
     ride_request
-    |> cast(attrs, [:start_location, :end_location, :customer_id])
-    |> validate_required([:start_location, :end_location, :customer_id])
+    |> cast(attrs, [:start_location, :end_location, :customer_id, :type])
+    |> validate_required([:start_location, :end_location, :customer_id, :type])
   end
 
   def accept_changeset(ride_request, attrs) do

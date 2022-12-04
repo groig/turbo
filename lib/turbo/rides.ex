@@ -183,6 +183,7 @@ defmodule Turbo.Rides do
            |> Repo.insert() do
       TurboWeb.Endpoint.broadcast!("rides:lobby", "request:created", %{
         id: ride_request.id,
+        type: ride_request.id,
         start_location: ride_request.start_location,
         end_location: ride_request.end_location
       })

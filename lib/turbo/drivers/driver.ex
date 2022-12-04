@@ -9,6 +9,7 @@ defmodule Turbo.Drivers.Driver do
     field :identity_card, :string
     belongs_to :user, Turbo.Accounts.User
     has_many :cars, Turbo.Cars.Car
+    belongs_to :current_car, Turbo.Cars.Car
     has_one :wallet, Turbo.Wallets.Wallet
     has_many :rides, Turbo.Rides.Ride
     field :last_location, Geo.PostGIS.Geometry
@@ -36,5 +37,11 @@ defmodule Turbo.Drivers.Driver do
     driver
     |> cast(attrs, [:license])
     |> validate_required([:license])
+  end
+
+  def current_car_changeset(driver, attrs) do
+    driver
+    |> cast(attrs, [:current_car_id])
+    |> validate_required([:current_car_id])
   end
 end

@@ -25,10 +25,17 @@ defmodule TurboWeb.RideRequestControllerTest do
         ride_request_id: ride_request.id
       }
 
+      TurboWeb.Endpoint.subscribe("rides:lobby")
+
       conn =
         post(conn, Routes.ride_request_path(conn, :create), ride_request: create_attrs) |> doc
 
-      assert %{"id" => _id} = json_response(conn, 201)["data"]
+      assert %{"id" => id} = json_response(conn, 201)["data"]
+
+      assert_receive %Phoenix.Socket.Broadcast{
+        event: "request:created",
+        payload: %{id: ^id}
+      }
     end
 
     test "renders errors when data is invalid", %{conn: conn} do

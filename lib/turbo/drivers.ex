@@ -89,6 +89,12 @@ defmodule Turbo.Drivers do
     |> Repo.update()
   end
 
+  def change_current_car(%Driver{} = driver, attrs) do
+    driver
+    |> Driver.current_car_changeset(attrs)
+    |> Repo.update()
+  end
+
   @doc """
   Deletes a driver.
 

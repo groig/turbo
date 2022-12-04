@@ -38,7 +38,8 @@ defmodule Turbo.RidesFixtures do
       |> Enum.into(%{
         start_location: %Geo.Point{coordinates: {30.20, 20.30}, srid: 4326},
         end_location: %Geo.Point{coordinates: {30.20, 20.30}, srid: 4326},
-        customer_id: customer.id
+        customer_id: customer.id,
+        type: :standard
       })
       |> Turbo.Rides.create_ride_request()
 

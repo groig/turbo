@@ -6,6 +6,7 @@ defmodule Turbo.Repo.Migrations.CreateRideRequests do
       add(:id, :binary_id, primary_key: true)
       add(:customer_id, references(:customers, on_delete: :nilify_all, type: :binary_id))
       add(:accepted, :boolean, default: false)
+      add(:type, :string, default: "standard")
 
       timestamps()
     end

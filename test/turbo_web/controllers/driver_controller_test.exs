@@ -2,6 +2,7 @@ defmodule TurboWeb.DriverControllerTest do
   use TurboWeb.ConnCase, async: true
   alias Turbo.DriversFixtures
   alias Turbo.Drivers
+  alias Turbo.CarsFixtures
 
   setup %{conn: conn} do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
@@ -122,7 +123,6 @@ defmodule TurboWeb.DriverControllerTest do
 
   test "updates drivers license", %{conn: conn} do
     %{conn: conn, driver: driver} = register_and_log_in_driver(%{conn: conn})
-    refute driver.last_location
     license = "license#{System.unique_integer()}"
 
     conn = put(conn, Routes.driver_path(conn, :license), %{license: license}) |> doc
@@ -131,5 +131,29 @@ defmodule TurboWeb.DriverControllerTest do
 
     driver = Turbo.Repo.reload!(driver)
     assert driver.license == license
+  end
+
+  test "updates drivers current car", %{conn: conn} do
+    %{conn: conn, driver: driver} = register_and_log_in_driver(%{conn: conn})
+    car = CarsFixtures.car_fixture(%{driver_id: driver.id})
+
+    conn = put(conn, Routes.driver_path(conn, :current_car), %{current_car_id: car.id}) |> doc
+
+    assert json_response(conn, 200)
+
+    driver = Turbo.Repo.reload!(driver)
+    assert driver.current_car_id == car.id
+  end
+
+  test "cant set current car to car of another driver", %{conn: conn} do
+    %{conn: conn, driver: driver} = register_and_log_in_driver(%{conn: conn})
+    car = CarsFixtures.car_fixture()
+
+    assert_error_sent 404, fn ->
+      put(conn, Routes.driver_path(conn, :current_car), %{current_car_id: car.id}) |> doc
+    end
+
+    driver = Turbo.Repo.reload!(driver)
+    refute driver.current_car_id
   end
 end

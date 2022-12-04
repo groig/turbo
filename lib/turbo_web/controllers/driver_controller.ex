@@ -2,10 +2,11 @@ defmodule TurboWeb.DriverController do
   use TurboWeb, :controller
 
   alias Turbo.Drivers
+  alias Turbo.Cars
 
   action_fallback TurboWeb.FallbackController
 
-  plug :require_driver, [] when action in [:license, :location]
+  plug :require_driver, [] when action in [:license, :location, :current_car]
 
   def index(%{assigns: %{current_user: %{type: :admin}}} = conn, _params) do
     drivers = Drivers.list_drivers()
@@ -46,6 +47,20 @@ defmodule TurboWeb.DriverController do
       |> put_view(TurboWeb.MessageView)
       |> render("message.json",
         message: "Driver license updated successfully"
+      )
+    end
+  end
+
+  def current_car(conn, %{"current_car_id" => car_id} = params) do
+    driver = conn.assigns.current_user.driver
+
+    with %Cars.Car{} <- Cars.get_car!(car_id, driver.id),
+         {:ok, _} <-
+           Drivers.change_current_car(driver, params) do
+      conn
+      |> put_view(TurboWeb.MessageView)
+      |> render("message.json",
+        message: "Current car updated successfully"
       )
     end
   end

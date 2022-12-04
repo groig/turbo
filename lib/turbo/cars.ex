@@ -41,6 +41,10 @@ defmodule Turbo.Cars do
   """
   def get_car!(id), do: Repo.get!(Car, id)
 
+  def get_car!(id, driver_id) do
+    Repo.one!(from(c in Car, where: c.id == ^id and c.driver_id == ^driver_id))
+  end
+
   @doc """
   Creates a car.
 

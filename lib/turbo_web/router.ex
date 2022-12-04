@@ -45,6 +45,7 @@ defmodule TurboWeb.Router do
 
     get "/drivers", DriverController, :index
     get "/drivers/:id", DriverController, :show
+    put "/drivers/current_car", DriverController, :current_car
     put "/drivers/location", DriverController, :location
     put "/drivers/license", DriverController, :license
     resources "/cars", CarController
