@@ -133,7 +133,7 @@ defmodule TurboWeb.SettingsControllerTest do
         })
         |> doc
 
-      assert json_response(conn, 200)["data"]["customer"]["home_location"] != nil
+      assert json_response(conn, 200)["data"]["customer"]["home_location"]
     end
 
     test "updates the customer work address", %{conn: conn} do
@@ -147,7 +147,7 @@ defmodule TurboWeb.SettingsControllerTest do
         })
         |> doc
 
-      json_response(conn, 200)["data"]["customer"]["work_location"] != nil
+      json_response(conn, 200)["data"]["customer"]["work_location"]
     end
   end
 
