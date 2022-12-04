@@ -147,7 +147,7 @@ defmodule TurboWeb.SettingsControllerTest do
         })
         |> doc
 
-      data = json_response(conn, 200)["data"]["customer"]["work_location"] != nil
+      json_response(conn, 200)["data"]["customer"]["work_location"] != nil
     end
   end
 
