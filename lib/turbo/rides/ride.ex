@@ -14,6 +14,7 @@ defmodule Turbo.Rides.Ride do
     field :customer_route, Geo.PostGIS.Geometry
     field :driver_route, Geo.PostGIS.Geometry
     field :charged, :decimal
+    field :status, Ecto.Enum, values: [:created, :ongoing, :cancelled, :done], default: :created
     belongs_to :driver, Turbo.Drivers.Driver
     belongs_to :customer, Turbo.Customers.Customer
     belongs_to :ride_request, Turbo.Rides.RideRequest

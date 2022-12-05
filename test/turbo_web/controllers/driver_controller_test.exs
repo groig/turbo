@@ -22,7 +22,7 @@ defmodule TurboWeb.DriverControllerTest do
       assert length(json_response(conn, 200)["data"]) == 3
     end
 
-    test "list only id and locations when user is customer", %{conn: conn} do
+    test "list only id, location and car_type when user is customer", %{conn: conn} do
       location = %{
         "last_location" => %{
           "coordinates" => [30.2, 20.3],
@@ -32,8 +32,12 @@ defmodule TurboWeb.DriverControllerTest do
       }
 
       {:ok, driver} =
-        DriversFixtures.driver_fixture()
+        DriversFixtures.driver_fixture(%{available: true})
         |> Drivers.set_driver_location(location)
+
+      car = CarsFixtures.car_fixture(%{driver_id: driver.id})
+      Drivers.change_current_car(driver, %{current_car_id: car.id})
+      Drivers.driver_available(driver)
 
       DriversFixtures.driver_fixture()
       %{conn: conn} = register_and_log_in_customer(%{conn: conn})
@@ -43,7 +47,11 @@ defmodule TurboWeb.DriverControllerTest do
         |> doc
 
       assert json_response(conn, 200)["data"] == [
-               %{"id" => driver.id, "last_location" => location["last_location"]}
+               %{
+                 "id" => driver.id,
+                 "last_location" => location["last_location"],
+                 "car_type" => "standard"
+               }
              ]
     end
 

@@ -1,12 +1,14 @@
 defmodule TurboWeb.RidesChannel do
   use TurboWeb, :channel
   alias Turbo.Rides
+  alias Turbo.Drivers
 
   intercept ["request:created"]
 
   @impl true
   def join("rides:lobby", _payload, socket) do
     if authorized?(socket.assigns.current_user) do
+      Drivers.driver_available(socket.assigns.current_user.driver)
       {:ok, socket}
     else
       {:error, %{reason: "unauthorized"}}

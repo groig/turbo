@@ -27,7 +27,8 @@ defmodule TurboWeb.DriverView do
   def render("driver_for_map.json", %{driver: driver}) do
     %{
       id: driver.id,
-      last_location: driver.last_location
+      last_location: driver.last_location,
+      car_type: driver.current_car.type
     }
   end
 

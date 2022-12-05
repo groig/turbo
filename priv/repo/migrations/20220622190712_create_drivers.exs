@@ -4,6 +4,7 @@ defmodule Turbo.Repo.Migrations.CreateDrivers do
   def up do
     create table(:drivers, primary_key: false) do
       add(:id, :binary_id, primary_key: true)
+      add(:available, :boolean, default: false)
       add(:license, :string, null: false)
       add(:identity_card, :string, null: false)
       add(:user_id, references("users", type: :binary_id, on_delete: :delete_all), null: false)
