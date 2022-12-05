@@ -7,7 +7,6 @@ defmodule Turbo.Drivers.Driver do
   schema "drivers" do
     field :license, :string
     field :identity_card, :string
-    field :available, :boolean, default: false
     belongs_to :user, Turbo.Accounts.User
     has_many :cars, Turbo.Cars.Car
     belongs_to :current_car, Turbo.Cars.Car
@@ -22,7 +21,7 @@ defmodule Turbo.Drivers.Driver do
   @doc false
   def changeset(driver, attrs) do
     driver
-    |> cast(attrs, [:license, :user_id, :identity_card, :available])
+    |> cast(attrs, [:license, :user_id, :identity_card, :status])
     |> validate_required([:license, :user_id, :identity_card])
   end
 

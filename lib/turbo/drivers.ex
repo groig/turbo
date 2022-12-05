@@ -24,18 +24,25 @@ defmodule Turbo.Drivers do
   def list_located_drivers() do
     Repo.all(
       from(d in Driver,
-        where: d.available == true and not is_nil(d.last_location),
+        where: d.status == :available and not is_nil(d.last_location),
         preload: :current_car
       )
     )
   end
 
   def driver_available(driver) do
-    update_driver(driver, %{available: true})
+    update_driver(driver, %{status: :available})
   end
 
   def driver_unavailable(driver) do
-    update_driver(driver, %{available: false})
+    {:ok, driver} = update_driver(driver, %{status: :unavailable})
+    IO.inspect("after update_driver")
+    IO.inspect(driver.updated_at)
+    IO.inspect(driver.status)
+  end
+
+  def driver_on_ride(driver) do
+    update_driver(driver, %{status: :on_ride})
   end
 
   @doc """
