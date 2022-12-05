@@ -7,7 +7,7 @@ on:
 
 jobs:
   test-and-release:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     services:
       db:
         image: postgis/postgis
