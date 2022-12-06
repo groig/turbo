@@ -50,8 +50,8 @@ defmodule TurboWeb.RidesChannel do
 
   def handle_out("ride:driver_location", %{"driver_location" => location} = payload, socket) do
     socket =
-      if not socket.assigns.nearby_notification_sent and
-           nearby?(socket.assigns.my_location.coordinates, location["coordinates"]) do
+      if socket.assigns[:my_location] != nil and not socket.assigns.nearby_notification_sent and
+           nearby?(socket.assigns.my_location["coordinates"], location["coordinates"]) do
         push(socket, "ride:driver_nearby", %{"message" => "The driver is nearby"})
         assign(socket, nearby_notification_sent: true)
       else
@@ -65,8 +65,8 @@ defmodule TurboWeb.RidesChannel do
 
   def handle_out("ride:customer_location", %{"customer_location" => location} = payload, socket) do
     socket =
-      if not socket.assigns.nearby_notification_sent and
-           nearby?(socket.assigns.my_location.coordinates, location["coordinates"]) do
+      if socket.assigns[:my_location] != nil and not socket.assigns.nearby_notification_sent and
+           nearby?(socket.assigns.my_location["coordinates"], location["coordinates"]) do
         push(socket, "ride:customer_nearby", %{"message" => "The customer is nearby"})
         assign(socket, nearby_notification_sent: true)
       else

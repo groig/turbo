@@ -133,8 +133,8 @@ defmodule TurboWeb.RidesChannelTest do
              |> socket(customer_user.id, %{
                current_user: customer_user,
                my_location: %{
-                 coordinates: [-82.39689017625378, 23.14074368077616],
-                 type: "Point"
+                 "coordinates" => [-82.39689017625378, 23.14074368077616],
+                 "type" => "Point"
                }
              })
              |> subscribe_and_join(TurboWeb.RidesChannel, "rides:" <> ride.id)
@@ -148,8 +148,8 @@ defmodule TurboWeb.RidesChannelTest do
 
     doc_push(socket_driver, "ride:driver_location", %{
       "driver_location" => %{
-        coordinates: [-82.39758338420903, 23.140209916284533],
-        type: "Point"
+        "coordinates" => [-82.39758338420903, 23.140209916284533],
+        "type" => "Point"
       }
     })
 
@@ -157,8 +157,8 @@ defmodule TurboWeb.RidesChannelTest do
 
     doc_push(socket_driver, "ride:driver_location", %{
       "driver_location" => %{
-        coordinates: [-82.39758338420903, 23.140209916284533],
-        type: "Point"
+        "coordinates" => [-82.39758338420903, 23.140209916284533],
+        "type" => "Point"
       }
     })
 
@@ -179,8 +179,8 @@ defmodule TurboWeb.RidesChannelTest do
              |> socket(driver_user.id, %{
                current_user: driver_user,
                my_location: %{
-                 coordinates: [-82.39689017625378, 23.14074368077616],
-                 type: "Point"
+                 "coordinates" => [-82.39689017625378, 23.14074368077616],
+                 "type" => "Point"
                }
              })
              |> subscribe_and_join(TurboWeb.RidesChannel, "rides:" <> ride.id)
@@ -194,8 +194,8 @@ defmodule TurboWeb.RidesChannelTest do
 
     doc_push(socket_customer, "ride:customer_location", %{
       "customer_location" => %{
-        coordinates: [-82.39758338420903, 23.140209916284533],
-        type: "Point"
+        "coordinates" => [-82.39689017625378, 23.14074368077616],
+        "type" => "Point"
       }
     })
 
@@ -203,8 +203,8 @@ defmodule TurboWeb.RidesChannelTest do
 
     doc_push(socket_customer, "ride:customer_location", %{
       "customer_location" => %{
-        coordinates: [-82.39758338420903, 23.140209916284533],
-        type: "Point"
+        "coordinates" => [-82.39758338420903, 23.140209916284533],
+        "type" => "Point"
       }
     })
 
