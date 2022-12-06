@@ -11,8 +11,8 @@ defmodule TurboWeb.AddressControllerTest do
 
   @update_attrs %{
     location: %{
-      "coordinates" => [42.2, 20.42],
-      "type" => "Point"
+      coordinates: [-82.398, 23.137],
+      type: "Point"
     },
     name: "New Name"
   }
@@ -36,8 +36,8 @@ defmodule TurboWeb.AddressControllerTest do
       attrs = %{
         name: "some address",
         location: %{
-          "coordinates" => [30.2, 20.3],
-          "type" => "Point"
+          coordinates: [-82.398, 23.137],
+          type: "Point"
         }
       }
 

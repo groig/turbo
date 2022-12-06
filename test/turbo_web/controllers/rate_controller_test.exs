@@ -206,14 +206,14 @@ defmodule TurboWeb.RateControllerTest do
   @area_1 %Geo.Polygon{
     coordinates: [
       [
-        {-82.40007698572896, 23.13955365908314},
-        {-82.39743943409488, 23.141741739321944},
-        {-82.39397048031528, 23.14052907275771},
-        {-82.39342576856474, 23.136416469691415},
-        {-82.39775479352939, 23.13459739348444},
-        {-82.40053569036097, 23.135071937482625},
-        {-82.40165378290153, 23.137945529152688},
-        {-82.40007698572896, 23.13955365908314}
+        {-82.400, 23.139},
+        {-82.397, 23.141},
+        {-82.393, 23.140},
+        {-82.393, 23.136},
+        {-82.397, 23.134},
+        {-82.400, 23.135},
+        {-82.401, 23.137},
+        {-82.400, 23.139}
       ]
     ]
   }
@@ -221,25 +221,25 @@ defmodule TurboWeb.RateControllerTest do
   @area_2 %Geo.Polygon{
     coordinates: [
       [
-        {-82.38660253716353, 23.13267283672154},
-        {-82.38600048733402, 23.138920954526878},
-        {-82.37708441604921, 23.138103706722536},
-        {-82.37762912779972, 23.126978096056817},
-        {-82.38602915637352, 23.12365605235804},
-        {-82.39216433082672, 23.13003641276599},
-        {-82.38660253716353, 23.13267283672154}
+        {-82.386, 23.132},
+        {-82.386, 23.138},
+        {-82.377, 23.138},
+        {-82.377, 23.126},
+        {-82.386, 23.123},
+        {-82.392, 23.130},
+        {-82.386, 23.132}
       ]
     ]
   }
 
   @destination_area_1 %{
-    "coordinates" => [-82.39861486471447, 23.13752372138783],
-    "type" => "Point"
+    coordinates: [-82.398, 23.137],
+    type: "Point"
   }
 
   @destination_1 %{
-    "coordinates" => [-82.400248999966, 23.129377298679902],
-    "type" => "Point"
+    coordinates: [-82.400, 23.129],
+    type: "Point"
   }
 
   describe "rate calculation" do
@@ -247,14 +247,15 @@ defmodule TurboWeb.RateControllerTest do
 
     test "get_rate_for_ride/4 returns the correct rate by distance", %{conn: conn} do
       conn =
-        get(
+        post(
           conn,
-          Routes.rate_path(conn, :calculate, %{
-            "car_type" => "standard",
-            "start_time" => "09:25:00",
-            "distance" => 1,
-            "destination" => @destination_1
-          })
+          Routes.rate_path(conn, :calculate),
+          %{
+            car_type: "standard",
+            start_time: "09:25:00",
+            distance: 1,
+            destination: @destination_1
+          }
         )
         |> doc
 
@@ -263,14 +264,15 @@ defmodule TurboWeb.RateControllerTest do
 
     test "get_rate_for_ride/4 when the ride starts at the rate edge", %{conn: conn} do
       conn =
-        get(
+        post(
           conn,
-          Routes.rate_path(conn, :calculate, %{
-            "car_type" => "standard",
-            "start_time" => "08:00:00",
-            "distance" => 1,
-            "destination" => @destination_1
-          })
+          Routes.rate_path(conn, :calculate),
+          %{
+            car_type: "standard",
+            start_time: "08:00:00",
+            distance: 1,
+            destination: @destination_1
+          }
         )
         |> doc
 
@@ -279,14 +281,15 @@ defmodule TurboWeb.RateControllerTest do
 
     test "get_rate_for_ride/4 returns the correct rate by destination area", %{conn: conn} do
       conn =
-        get(
+        post(
           conn,
-          Routes.rate_path(conn, :calculate, %{
-            "car_type" => "standard",
-            "start_time" => "09:25:00",
-            "distance" => 1,
-            "destination" => @destination_area_1
-          })
+          Routes.rate_path(conn, :calculate),
+          %{
+            car_type: "standard",
+            start_time: "09:25:00",
+            distance: 1,
+            destination: @destination_area_1
+          }
         )
         |> doc
 

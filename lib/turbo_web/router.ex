@@ -48,7 +48,7 @@ defmodule TurboWeb.Router do
     put "/drivers/current_car", DriverController, :current_car
     put "/drivers/location", DriverController, :location
     put "/drivers/license", DriverController, :license
-    put "drivers/status", DriverController, :status
+    put "/drivers/status", DriverController, :status
     resources "/cars", CarController
 
     get "/customers", CustomerController, :index
@@ -59,7 +59,7 @@ defmodule TurboWeb.Router do
     put "/rides/accept/:id", RideRequestController, :accept
 
     get "/rates", RateController, :index
-    get "/rates/calculate", RateController, :calculate
+    post "/rates/calculate", RateController, :calculate
     get "/rates/:id", RateController, :show
     post "/rates/create_time_rate", RateController, :create_time_rate
     put "/rates/update_time_rate/:id", RateController, :update_time_rate
