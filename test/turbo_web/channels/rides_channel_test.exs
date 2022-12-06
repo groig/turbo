@@ -69,9 +69,24 @@ defmodule TurboWeb.RidesChannelTest do
              |> socket(user.id, %{current_user: user})
              |> subscribe_and_join(TurboWeb.RidesChannel, "rides:" <> ride.id)
 
-    ref = doc_push(socket, "chat_message", %{"message" => "hello there"})
-    assert_broadcast("chat_message", %{"message" => "hello there"}) |> doc
+    ref = doc_push(socket, "ride:chat_message", %{"message" => "hello there"})
+    assert_broadcast("ride:chat_message", %{"message" => "hello there"}) |> doc
     assert_reply(ref, :ok, %{"message" => "hello there"}) |> doc
+  end
+
+  test "driver can send  location messages to ride topic" do
+    driver = Turbo.DriversFixtures.driver_fixture()
+    user = Accounts.get_user!(driver.user_id)
+    ride = RidesFixtures.ride_fixture(%{driver_id: driver.id})
+
+    assert {:ok, _, socket} =
+             TurboWeb.UserSocket
+             |> socket(user.id, %{current_user: user})
+             |> subscribe_and_join(TurboWeb.RidesChannel, "rides:" <> ride.id)
+
+    ref = doc_push(socket, "ride:driver_location", %{"driver_location" => "hello there"})
+    assert_broadcast("ride:driver_location", %{"driver_location" => "hello there"}) |> doc
+    assert_reply(ref, :ok, %{"driver_location" => "hello there"}) |> doc
   end
 
   test "customer can send chat messages to ride topic" do
@@ -84,8 +99,23 @@ defmodule TurboWeb.RidesChannelTest do
              |> socket(user.id, %{current_user: user})
              |> subscribe_and_join(TurboWeb.RidesChannel, "rides:" <> ride.id)
 
-    ref = doc_push(socket, "chat_message", %{"message" => "hello there"})
-    assert_broadcast("chat_message", %{"message" => "hello there"}) |> doc
+    ref = doc_push(socket, "ride:chat_message", %{"message" => "hello there"})
+    assert_broadcast("ride:chat_message", %{"message" => "hello there"}) |> doc
     assert_reply(ref, :ok, %{"message" => "hello there"}) |> doc
+  end
+
+  test "customer can send location messages to ride topic" do
+    customer = Turbo.CustomersFixtures.customer_fixture()
+    user = Accounts.get_user!(customer.user_id)
+    ride = RidesFixtures.ride_fixture(%{customer_id: customer.id})
+
+    assert {:ok, _, socket} =
+             TurboWeb.UserSocket
+             |> socket(user.id, %{current_user: user})
+             |> subscribe_and_join(TurboWeb.RidesChannel, "rides:" <> ride.id)
+
+    ref = doc_push(socket, "ride:customer_location", %{"customer_location" => "hello there"})
+    assert_broadcast("ride:customer_location", %{"customer_location" => "hello there"}) |> doc
+    assert_reply(ref, :ok, %{"customer_location" => "hello there"}) |> doc
   end
 end

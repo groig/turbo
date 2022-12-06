@@ -22,8 +22,20 @@ defmodule TurboWeb.RidesChannel do
   end
 
   @impl true
-  def handle_in("chat_message", %{"message" => _message} = payload, socket) do
-    broadcast_from!(socket, "chat_message", payload)
+  def handle_in("ride:chat_message", %{"message" => _message} = payload, socket) do
+    broadcast_from!(socket, "ride:chat_message", payload)
+    {:reply, {:ok, payload}, socket}
+  end
+
+  @impl true
+  def handle_in("ride:driver_location", %{"driver_location" => _location} = payload, socket) do
+    broadcast_from!(socket, "ride:driver_location", payload)
+    {:reply, {:ok, payload}, socket}
+  end
+
+  @impl true
+  def handle_in("ride:customer_location", %{"customer_location" => _location} = payload, socket) do
+    broadcast_from!(socket, "ride:customer_location", payload)
     {:reply, {:ok, payload}, socket}
   end
 
