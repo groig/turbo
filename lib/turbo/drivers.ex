@@ -30,19 +30,16 @@ defmodule Turbo.Drivers do
     )
   end
 
-  def driver_available(driver) do
-    update_driver(driver, %{status: :available})
-  end
+  def change_driver_status(driver, attrs) do
+    case driver.current_car_id do
+      nil ->
+        {:error, "The driver must select a car first"}
 
-  def driver_unavailable(driver) do
-    {:ok, driver} = update_driver(driver, %{status: :unavailable})
-    IO.inspect("after update_driver")
-    IO.inspect(driver.updated_at)
-    IO.inspect(driver.status)
-  end
-
-  def driver_on_ride(driver) do
-    update_driver(driver, %{status: :on_ride})
+      _ ->
+        driver
+        |> Driver.status_changeset(attrs)
+        |> Repo.update()
+    end
   end
 
   @doc """

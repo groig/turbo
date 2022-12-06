@@ -39,6 +39,12 @@ defmodule Turbo.Drivers.Driver do
     |> validate_required([:license])
   end
 
+  def status_changeset(driver, attrs) do
+    driver
+    |> cast(attrs, [:status])
+    |> validate_required([:status])
+  end
+
   def current_car_changeset(driver, attrs) do
     driver
     |> cast(attrs, [:current_car_id])

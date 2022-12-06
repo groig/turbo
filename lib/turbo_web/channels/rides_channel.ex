@@ -39,6 +39,7 @@ defmodule TurboWeb.RidesChannel do
   # Add authorization logic here as required.
   defp authorized?(user) do
     user.type == :driver and user.driver.status == :available and
+      user.driver.current_car_id != nil and
       Ecto.assoc_loaded?(user.driver.current_car)
   end
 

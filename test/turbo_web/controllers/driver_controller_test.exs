@@ -32,14 +32,14 @@ defmodule TurboWeb.DriverControllerTest do
       }
 
       {:ok, driver} =
-        DriversFixtures.driver_fixture(%{available: true})
+        DriversFixtures.driver_fixture(%{status: :available})
         |> Drivers.set_driver_location(location)
 
       car = CarsFixtures.car_fixture(%{driver_id: driver.id})
       Drivers.change_current_car(driver, %{current_car_id: car.id})
-      Drivers.driver_available(driver)
 
       DriversFixtures.driver_fixture()
+
       %{conn: conn} = register_and_log_in_customer(%{conn: conn})
 
       conn =
@@ -139,6 +139,37 @@ defmodule TurboWeb.DriverControllerTest do
 
     driver = Turbo.Repo.reload!(driver)
     assert driver.license == license
+  end
+
+  test "updates drivers status", %{conn: conn} do
+    %{conn: conn, driver: driver} = register_and_log_in_driver(%{conn: conn})
+    car = CarsFixtures.car_fixture(%{driver_id: driver.id})
+    Drivers.change_current_car(driver, %{current_car_id: car.id})
+
+    conn = put(conn, Routes.driver_path(conn, :status), %{status: :available}) |> doc
+
+    assert json_response(conn, 200)
+
+    driver = Turbo.Repo.reload!(driver)
+    assert driver.status == :available
+
+    conn = put(conn, Routes.driver_path(conn, :status), %{status: :unavailable}) |> doc
+    assert json_response(conn, 200)
+    driver = Turbo.Repo.reload!(driver)
+    assert driver.status == :unavailable
+
+    conn = put(conn, Routes.driver_path(conn, :status), %{status: :on_ride}) |> doc
+    assert json_response(conn, 200)
+    driver = Turbo.Repo.reload!(driver)
+    assert driver.status == :on_ride
+  end
+
+  test "cant change driver status if there is no current car", %{conn: conn} do
+    %{conn: conn} = register_and_log_in_driver(%{conn: conn})
+
+    conn = put(conn, Routes.driver_path(conn, :status), %{status: :available}) |> doc
+
+    assert json_response(conn, 422)["errors"] != %{}
   end
 
   test "updates drivers current car", %{conn: conn} do

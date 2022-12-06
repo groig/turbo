@@ -51,6 +51,19 @@ defmodule TurboWeb.DriverController do
     end
   end
 
+  def status(conn, %{"status" => _status} = params) do
+    driver = conn.assigns.current_user.driver
+
+    with {:ok, _} <-
+           Drivers.change_driver_status(driver, params) do
+      conn
+      |> put_view(TurboWeb.MessageView)
+      |> render("message.json",
+        message: "Driver status updated successfully"
+      )
+    end
+  end
+
   def current_car(conn, %{"current_car_id" => car_id} = params) do
     driver = conn.assigns.current_user.driver
 
