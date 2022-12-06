@@ -118,4 +118,96 @@ defmodule TurboWeb.RidesChannelTest do
     assert_broadcast("ride:customer_location", %{"customer_location" => "hello there"}) |> doc
     assert_reply(ref, :ok, %{"customer_location" => "hello there"}) |> doc
   end
+
+  test "customer gets a notification when the driver is nearby" do
+    customer = Turbo.CustomersFixtures.customer_fixture()
+    customer_user = Accounts.get_user!(customer.user_id)
+
+    driver = Turbo.DriversFixtures.driver_fixture()
+    driver_user = Accounts.get_user!(driver.user_id)
+
+    ride = RidesFixtures.ride_fixture(%{customer_id: customer.id, driver_id: driver.id})
+
+    assert {:ok, _, _socket_customer} =
+             TurboWeb.UserSocket
+             |> socket(customer_user.id, %{
+               current_user: customer_user,
+               my_location: %{
+                 coordinates: [-82.39689017625378, 23.14074368077616],
+                 type: "Point"
+               }
+             })
+             |> subscribe_and_join(TurboWeb.RidesChannel, "rides:" <> ride.id)
+
+    assert {:ok, _, socket_driver} =
+             TurboWeb.UserSocket
+             |> socket(driver_user.id, %{
+               current_user: driver_user
+             })
+             |> subscribe_and_join(TurboWeb.RidesChannel, "rides:" <> ride.id)
+
+    doc_push(socket_driver, "ride:driver_location", %{
+      "driver_location" => %{
+        coordinates: [-82.39758338420903, 23.140209916284533],
+        type: "Point"
+      }
+    })
+
+    assert_push("ride:driver_nearby", %{"message" => "The driver is nearby"}) |> doc
+
+    doc_push(socket_driver, "ride:driver_location", %{
+      "driver_location" => %{
+        coordinates: [-82.39758338420903, 23.140209916284533],
+        type: "Point"
+      }
+    })
+
+    refute_push("ride:driver_nearby", %{"message" => "The driver is nearby"})
+  end
+
+  test "driver gets a notification when the customer is nearby" do
+    driver = Turbo.DriversFixtures.driver_fixture()
+    driver_user = Accounts.get_user!(driver.user_id)
+
+    customer = Turbo.CustomersFixtures.customer_fixture()
+    customer_user = Accounts.get_user!(customer.user_id)
+
+    ride = RidesFixtures.ride_fixture(%{driver_id: driver.id, customer_id: customer.id})
+
+    assert {:ok, _, _socket_driver} =
+             TurboWeb.UserSocket
+             |> socket(driver_user.id, %{
+               current_user: driver_user,
+               my_location: %{
+                 coordinates: [-82.39689017625378, 23.14074368077616],
+                 type: "Point"
+               }
+             })
+             |> subscribe_and_join(TurboWeb.RidesChannel, "rides:" <> ride.id)
+
+    assert {:ok, _, socket_customer} =
+             TurboWeb.UserSocket
+             |> socket(customer_user.id, %{
+               current_user: customer_user
+             })
+             |> subscribe_and_join(TurboWeb.RidesChannel, "rides:" <> ride.id)
+
+    doc_push(socket_customer, "ride:customer_location", %{
+      "customer_location" => %{
+        coordinates: [-82.39758338420903, 23.140209916284533],
+        type: "Point"
+      }
+    })
+
+    assert_push("ride:customer_nearby", %{"message" => "The customer is nearby"}) |> doc
+
+    doc_push(socket_customer, "ride:customer_location", %{
+      "customer_location" => %{
+        coordinates: [-82.39758338420903, 23.140209916284533],
+        type: "Point"
+      }
+    })
+
+    refute_push("ride:customer_nearby", %{"message" => "The customer is nearby"})
+  end
 end

@@ -2,7 +2,7 @@ defmodule TurboWeb.RidesChannel do
   use TurboWeb, :channel
   alias Turbo.Rides
 
-  intercept ["request:created"]
+  intercept ["request:created", "ride:driver_location", "ride:customer_location"]
 
   @impl true
   def join("rides:lobby", _payload, socket) do
@@ -15,7 +15,7 @@ defmodule TurboWeb.RidesChannel do
 
   def join("rides:" <> ride_id, _payload, socket) do
     if ride_authorized?(ride_id, socket.assigns.current_user) do
-      {:ok, socket}
+      {:ok, assign(socket, nearby_notification_sent: false)}
     else
       {:error, %{reason: "unauthorized"}}
     end
@@ -27,14 +27,14 @@ defmodule TurboWeb.RidesChannel do
     {:reply, {:ok, payload}, socket}
   end
 
-  @impl true
-  def handle_in("ride:driver_location", %{"driver_location" => _location} = payload, socket) do
+  def handle_in("ride:driver_location", %{"driver_location" => location} = payload, socket) do
+    socket = assign(socket, my_location: location)
     broadcast_from!(socket, "ride:driver_location", payload)
     {:reply, {:ok, payload}, socket}
   end
 
-  @impl true
-  def handle_in("ride:customer_location", %{"customer_location" => _location} = payload, socket) do
+  def handle_in("ride:customer_location", %{"customer_location" => location} = payload, socket) do
+    socket = assign(socket, my_location: location)
     broadcast_from!(socket, "ride:customer_location", payload)
     {:reply, {:ok, payload}, socket}
   end
@@ -46,6 +46,44 @@ defmodule TurboWeb.RidesChannel do
     end
 
     {:noreply, socket}
+  end
+
+  def handle_out("ride:driver_location", %{"driver_location" => location} = payload, socket) do
+    socket =
+      if not socket.assigns.nearby_notification_sent and
+           nearby?(socket.assigns.my_location.coordinates, location["coordinates"]) do
+        push(socket, "ride:driver_nearby", %{"message" => "The driver is nearby"})
+        assign(socket, nearby_notification_sent: true)
+      else
+        socket
+      end
+
+    push(socket, "ride:driver_location", payload)
+
+    {:noreply, socket}
+  end
+
+  def handle_out("ride:customer_location", %{"customer_location" => location} = payload, socket) do
+    socket =
+      if not socket.assigns.nearby_notification_sent and
+           nearby?(socket.assigns.my_location.coordinates, location["coordinates"]) do
+        push(socket, "ride:customer_nearby", %{"message" => "The customer is nearby"})
+        assign(socket, nearby_notification_sent: true)
+      else
+        socket
+      end
+
+    push(socket, "ride:customer_location", payload)
+
+    {:noreply, socket}
+  end
+
+  defp nearby?(point1, point2) do
+    Geocalc.distance_between(
+      point1,
+      point2
+    ) <
+      100
   end
 
   # Add authorization logic here as required.
