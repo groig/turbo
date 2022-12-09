@@ -74,6 +74,7 @@ defmodule TurboWeb.Router do
     get "/notifications/:id", NotificationController, :show
     put "/notifications/:id", NotificationController, :update
     delete "/notifications/:id", NotificationController, :delete
+    post "/notifications/push_codes", PushCodeController, :create
   end
 
   # Enables LiveDashboard only for development

@@ -155,4 +155,102 @@ defmodule Turbo.Notifications do
   def change_notification(%Notification{} = notification, attrs \\ %{}) do
     Notification.changeset(notification, attrs)
   end
+
+  alias Turbo.Notifications.PushCode
+
+  @doc """
+  Returns the list of push_codes.
+
+  ## Examples
+
+      iex> list_push_codes()
+      [%PushCode{}, ...]
+
+  """
+  def list_push_codes(user_id) do
+    Repo.all(from(p in PushCode, where: p.user_id == ^user_id))
+  end
+
+  @doc """
+  Gets a single push_code.
+
+  Raises `Ecto.NoResultsError` if the Push code does not exist.
+
+  ## Examples
+
+      iex> get_push_code!(123)
+      %PushCode{}
+
+      iex> get_push_code!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_push_code!(id, user_id) do
+    Repo.one!(from(p in PushCode, where: p.id == ^id and p.user_id == ^user_id))
+  end
+
+  @doc """
+  Creates a push_code.
+
+  ## Examples
+
+      iex> create_push_code(%{field: value})
+      {:ok, %PushCode{}}
+
+      iex> create_push_code(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_push_code(attrs \\ %{}) do
+    %PushCode{}
+    |> PushCode.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a push_code.
+
+  ## Examples
+
+      iex> update_push_code(push_code, %{field: new_value})
+      {:ok, %PushCode{}}
+
+      iex> update_push_code(push_code, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_push_code(%PushCode{} = push_code, attrs) do
+    push_code
+    |> PushCode.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a push_code.
+
+  ## Examples
+
+      iex> delete_push_code(push_code)
+      {:ok, %PushCode{}}
+
+      iex> delete_push_code(push_code)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_push_code(%PushCode{} = push_code) do
+    Repo.delete(push_code)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking push_code changes.
+
+  ## Examples
+
+      iex> change_push_code(push_code)
+      %Ecto.Changeset{data: %PushCode{}}
+
+  """
+  def change_push_code(%PushCode{} = push_code, attrs \\ %{}) do
+    PushCode.changeset(push_code, attrs)
+  end
 end

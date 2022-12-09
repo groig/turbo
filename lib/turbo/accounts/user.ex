@@ -3,6 +3,7 @@ defmodule Turbo.Accounts.User do
   import Ecto.Changeset
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
+
   schema "users" do
     field :active, :boolean, default: true
     field :email, :string
@@ -14,7 +15,7 @@ defmodule Turbo.Accounts.User do
     field :type, Ecto.Enum, values: [:customer, :driver, :admin], default: :customer
     has_one :customer, Turbo.Customers.Customer
     has_one :driver, Turbo.Drivers.Driver
-    has_many :notifications, Turbo.Notifications.Notification
+    has_many :push_codes, Turbo.Notifications.PushCode
 
     timestamps()
   end

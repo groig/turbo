@@ -73,4 +73,68 @@ defmodule Turbo.NotificationsTest do
       assert %Ecto.Changeset{} = Notifications.change_notification(notification)
     end
   end
+
+  describe "push_codes" do
+    alias Turbo.Notifications.PushCode
+
+    import Turbo.NotificationsFixtures
+    alias Turbo.AccountsFixtures
+
+    @invalid_attrs %{code: nil}
+
+    test "list_push_codes/0 returns all push_codes" do
+      push_code = push_code_fixture()
+      assert Notifications.list_push_codes(push_code.user_id) == [push_code]
+    end
+
+    test "get_push_code!/1 returns the push_code with given id" do
+      push_code = push_code_fixture()
+      assert Notifications.get_push_code!(push_code.id, push_code.user_id) == push_code
+    end
+
+    test "create_push_code/1 with valid data creates a push_code" do
+      user = AccountsFixtures.user_fixture()
+      valid_attrs = %{code: "some code", user_id: user.id}
+
+      assert {:ok, %PushCode{} = push_code} = Notifications.create_push_code(valid_attrs)
+      assert push_code.code == "some code"
+    end
+
+    test "create_push_code/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Notifications.create_push_code(@invalid_attrs)
+    end
+
+    test "update_push_code/2 with valid data updates the push_code" do
+      push_code = push_code_fixture()
+      update_attrs = %{code: "some updated code"}
+
+      assert {:ok, %PushCode{} = push_code} =
+               Notifications.update_push_code(push_code, update_attrs)
+
+      assert push_code.code == "some updated code"
+    end
+
+    test "update_push_code/2 with invalid data returns error changeset" do
+      push_code = push_code_fixture()
+
+      assert {:error, %Ecto.Changeset{}} =
+               Notifications.update_push_code(push_code, @invalid_attrs)
+
+      assert push_code == Notifications.get_push_code!(push_code.id, push_code.user_id)
+    end
+
+    test "delete_push_code/1 deletes the push_code" do
+      push_code = push_code_fixture()
+      assert {:ok, %PushCode{}} = Notifications.delete_push_code(push_code)
+
+      assert_raise Ecto.NoResultsError, fn ->
+        Notifications.get_push_code!(push_code.id, push_code.user_id)
+      end
+    end
+
+    test "change_push_code/1 returns a push_code changeset" do
+      push_code = push_code_fixture()
+      assert %Ecto.Changeset{} = Notifications.change_push_code(push_code)
+    end
+  end
 end

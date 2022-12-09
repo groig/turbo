@@ -23,4 +23,21 @@ defmodule Turbo.NotificationsFixtures do
 
     notification
   end
+
+  @doc """
+  Generate a push_code.
+  """
+  def push_code_fixture(attrs \\ %{}) do
+    user = AccountsFixtures.user_fixture(%{type: :customer})
+
+    {:ok, push_code} =
+      attrs
+      |> Enum.into(%{
+        code: "some code",
+        user_id: user.id
+      })
+      |> Turbo.Notifications.create_push_code()
+
+    push_code
+  end
 end
