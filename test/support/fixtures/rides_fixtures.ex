@@ -45,4 +45,27 @@ defmodule Turbo.RidesFixtures do
 
     ride_request
   end
+
+  @doc """
+  Generate a ride_reservation.
+  """
+  def ride_reservation_fixture(attrs \\ %{}) do
+    customer = CustomersFixtures.customer_fixture()
+
+    {:ok, ride_reservation} =
+      attrs
+      |> Enum.into(%{
+        baggage: true,
+        car_type: :standard,
+        identity_card: "some identity_card",
+        name: "some name",
+        passenger_amount: 42,
+        start_location: %Geo.Point{coordinates: {30.20, 20.30}, srid: 4326},
+        end_location: %Geo.Point{coordinates: {30.20, 20.30}, srid: 4326},
+        customer_id: customer.id
+      })
+      |> Turbo.Rides.create_ride_reservation()
+
+    ride_reservation
+  end
 end

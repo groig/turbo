@@ -13,6 +13,7 @@ defmodule Turbo.Customers.Customer do
     has_many :addresses, Turbo.Addresses.Address
     has_many :rides, Turbo.Rides.Ride
     has_many :ride_requests, Turbo.Rides.RideRequest
+    has_many :reservations, Turbo.Rides.RideReservation
     timestamps()
   end
 

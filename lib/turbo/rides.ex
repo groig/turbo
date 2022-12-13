@@ -271,4 +271,107 @@ defmodule Turbo.Rides do
         {:error, changeset}
     end
   end
+
+  alias Turbo.Rides.RideReservation
+
+  @doc """
+  Returns the list of reservations.
+
+  ## Examples
+
+      iex> list_reservations()
+      [%RideReservation{}, ...]
+
+  """
+  def list_reservations do
+    Repo.all(RideReservation)
+  end
+
+  def list_reservations(customer_id) do
+    Repo.all(from r in RideReservation, where: r.customer_id == ^customer_id)
+  end
+
+  @doc """
+  Gets a single ride_reservation.
+
+  Raises `Ecto.NoResultsError` if the Ride reservation does not exist.
+
+  ## Examples
+
+      iex> get_ride_reservation!(123)
+      %RideReservation{}
+
+      iex> get_ride_reservation!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_ride_reservation!(id), do: Repo.get!(RideReservation, id)
+
+  def get_ride_reservation!(id, customer_id),
+    do: Repo.one!(from r in RideReservation, where: r.id == ^id and r.customer_id == ^customer_id)
+
+  @doc """
+  Creates a ride_reservation.
+
+  ## Examples
+
+      iex> create_ride_reservation(%{field: value})
+      {:ok, %RideReservation{}}
+
+      iex> create_ride_reservation(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_ride_reservation(attrs \\ %{}) do
+    %RideReservation{}
+    |> RideReservation.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a ride_reservation.
+
+  ## Examples
+
+      iex> update_ride_reservation(ride_reservation, %{field: new_value})
+      {:ok, %RideReservation{}}
+
+      iex> update_ride_reservation(ride_reservation, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_ride_reservation(%RideReservation{} = ride_reservation, attrs) do
+    ride_reservation
+    |> RideReservation.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a ride_reservation.
+
+  ## Examples
+
+      iex> delete_ride_reservation(ride_reservation)
+      {:ok, %RideReservation{}}
+
+      iex> delete_ride_reservation(ride_reservation)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_ride_reservation(%RideReservation{} = ride_reservation) do
+    Repo.delete(ride_reservation)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking ride_reservation changes.
+
+  ## Examples
+
+      iex> change_ride_reservation(ride_reservation)
+      %Ecto.Changeset{data: %RideReservation{}}
+
+  """
+  def change_ride_reservation(%RideReservation{} = ride_reservation, attrs \\ %{}) do
+    RideReservation.changeset(ride_reservation, attrs)
+  end
 end
