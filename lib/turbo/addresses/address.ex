@@ -8,6 +8,7 @@ defmodule Turbo.Addresses.Address do
   schema "addresses" do
     field :name, :string
     field :location, Geo.PostGIS.Geometry
+    field :reverse_geocoding, :string
     belongs_to :customer, Turbo.Customers.Customer
 
     timestamps()
@@ -16,7 +17,7 @@ defmodule Turbo.Addresses.Address do
   @doc false
   def changeset(address, attrs) do
     address
-    |> cast(attrs, [:name, :location, :customer_id])
+    |> cast(attrs, [:name, :location, :customer_id, :reverse_geocoding])
     |> validate_required([:name, :location, :customer_id])
   end
 end

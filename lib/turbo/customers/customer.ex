@@ -8,6 +8,8 @@ defmodule Turbo.Customers.Customer do
     belongs_to :user, Turbo.Accounts.User
     field :home_location, Geo.PostGIS.Geometry
     field :work_location, Geo.PostGIS.Geometry
+    field :home_location_reverse_geocoding, :string
+    field :work_location_reverse_geocoding, :string
     has_many :addresses, Turbo.Addresses.Address
     has_many :rides, Turbo.Rides.Ride
     has_many :ride_requests, Turbo.Rides.RideRequest
@@ -23,13 +25,13 @@ defmodule Turbo.Customers.Customer do
 
   def home_location_changeset(customer, attrs) do
     customer
-    |> cast(attrs, [:home_location])
+    |> cast(attrs, [:home_location, :home_location_reverse_geocoding])
     |> validate_required([:home_location])
   end
 
   def work_location_changeset(customer, attrs) do
     customer
-    |> cast(attrs, [:work_location])
+    |> cast(attrs, [:work_location, :work_location_reverse_geocoding])
     |> validate_required([:work_location])
   end
 end

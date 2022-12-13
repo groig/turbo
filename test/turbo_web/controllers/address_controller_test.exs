@@ -14,7 +14,8 @@ defmodule TurboWeb.AddressControllerTest do
       coordinates: [-82.398, 23.137],
       type: "Point"
     },
-    name: "New Name"
+    name: "New Name",
+    reverse_geocoding: "a new string address"
   }
   @invalid_attrs %{name: nil, location: nil}
 
@@ -38,7 +39,8 @@ defmodule TurboWeb.AddressControllerTest do
         location: %{
           coordinates: [-82.398, 23.137],
           type: "Point"
-        }
+        },
+        reverse_geocoding: "some string address"
       }
 
       conn = post(conn, Routes.address_path(conn, :create), attrs) |> doc

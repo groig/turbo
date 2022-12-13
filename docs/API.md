@@ -106,7 +106,7 @@
     },
     "type": "Point"
   },
-  "id": "56c7b4c5-a22e-4d5f-a19d-d936c32e37e4",
+  "id": "74a4e937-c561-4c3a-8409-3462059493fb",
   "start_location": {
     "coordinates": [
       30.2,
@@ -125,7 +125,7 @@
 ```
 ### <a id=turboweb-rideschannel-driver-can-send-chat-messages-to-ride-topic></a>driver can send chat messages to ride topic
 #### Message
-* __Topic:__ rides:e790d3b3-11d9-4dcc-b394-76a1d8078c41
+* __Topic:__ rides:d0da7adb-bae6-401d-8d5b-05bef4acef9f
 * __Event:__ ride:chat_message
 * __Body:__
 ```json
@@ -134,7 +134,7 @@
 }
 ```
 #### Broadcast
-* __Topic:__ rides:e790d3b3-11d9-4dcc-b394-76a1d8078c41
+* __Topic:__ rides:d0da7adb-bae6-401d-8d5b-05bef4acef9f
 * __Event:__ ride:chat_message
 * __Body:__
 ```json
@@ -152,7 +152,7 @@
 ```
 ### <a id=turboweb-rideschannel-driver-can-send-location-messages-to-ride-topic></a>driver can send  location messages to ride topic
 #### Message
-* __Topic:__ rides:1b488df7-f72c-4a16-8790-426c8a2896a8
+* __Topic:__ rides:71f8cbfc-b2d0-4686-a281-bd05c3fde480
 * __Event:__ ride:driver_location
 * __Body:__
 ```json
@@ -161,7 +161,7 @@
 }
 ```
 #### Broadcast
-* __Topic:__ rides:1b488df7-f72c-4a16-8790-426c8a2896a8
+* __Topic:__ rides:71f8cbfc-b2d0-4686-a281-bd05c3fde480
 * __Event:__ ride:driver_location
 * __Body:__
 ```json
@@ -179,7 +179,7 @@
 ```
 ### <a id=turboweb-rideschannel-customer-can-send-chat-messages-to-ride-topic></a>customer can send chat messages to ride topic
 #### Message
-* __Topic:__ rides:7fcd70de-d5c0-4ea3-8208-0bc058344914
+* __Topic:__ rides:a2e55f96-b660-4452-92e3-679c170debfc
 * __Event:__ ride:chat_message
 * __Body:__
 ```json
@@ -188,7 +188,7 @@
 }
 ```
 #### Broadcast
-* __Topic:__ rides:7fcd70de-d5c0-4ea3-8208-0bc058344914
+* __Topic:__ rides:a2e55f96-b660-4452-92e3-679c170debfc
 * __Event:__ ride:chat_message
 * __Body:__
 ```json
@@ -206,7 +206,7 @@
 ```
 ### <a id=turboweb-rideschannel-customer-can-send-location-messages-to-ride-topic></a>customer can send location messages to ride topic
 #### Message
-* __Topic:__ rides:465eb1a9-94fc-48a2-8bdb-63e08b30154e
+* __Topic:__ rides:c22adfac-9ea1-494b-a74e-e80ea8a68268
 * __Event:__ ride:customer_location
 * __Body:__
 ```json
@@ -215,7 +215,7 @@
 }
 ```
 #### Broadcast
-* __Topic:__ rides:465eb1a9-94fc-48a2-8bdb-63e08b30154e
+* __Topic:__ rides:c22adfac-9ea1-494b-a74e-e80ea8a68268
 * __Event:__ ride:customer_location
 * __Body:__
 ```json
@@ -233,7 +233,7 @@
 ```
 ### <a id=turboweb-rideschannel-customer-gets-a-notification-when-the-driver-is-nearby></a>customer gets a notification when the driver is nearby
 #### Message
-* __Topic:__ rides:42dd5e64-261f-4585-8eca-76b4aafd32a0
+* __Topic:__ rides:b54f38e0-0d25-486d-8a58-1622acf9c7b2
 * __Event:__ ride:driver_location
 * __Body:__
 ```json
@@ -248,7 +248,7 @@
 }
 ```
 #### Message
-* __Topic:__ rides:42dd5e64-261f-4585-8eca-76b4aafd32a0
+* __Topic:__ rides:b54f38e0-0d25-486d-8a58-1622acf9c7b2
 * __Event:__ ride:driver_nearby
 * __Body:__
 ```json
@@ -257,7 +257,7 @@
 }
 ```
 #### Message
-* __Topic:__ rides:42dd5e64-261f-4585-8eca-76b4aafd32a0
+* __Topic:__ rides:b54f38e0-0d25-486d-8a58-1622acf9c7b2
 * __Event:__ ride:driver_location
 * __Body:__
 ```json
@@ -273,7 +273,7 @@
 ```
 ### <a id=turboweb-rideschannel-driver-gets-a-notification-when-the-customer-is-nearby></a>driver gets a notification when the customer is nearby
 #### Message
-* __Topic:__ rides:2ab120e5-6454-4ae1-83a4-e50516b407f1
+* __Topic:__ rides:0bad30d0-d919-4d71-9629-25a503a0cfbb
 * __Event:__ ride:customer_location
 * __Body:__
 ```json
@@ -288,7 +288,7 @@
 }
 ```
 #### Message
-* __Topic:__ rides:2ab120e5-6454-4ae1-83a4-e50516b407f1
+* __Topic:__ rides:0bad30d0-d919-4d71-9629-25a503a0cfbb
 * __Event:__ ride:customer_nearby
 * __Body:__
 ```json
@@ -297,7 +297,7 @@
 }
 ```
 #### Message
-* __Topic:__ rides:2ab120e5-6454-4ae1-83a4-e50516b407f1
+* __Topic:__ rides:0bad30d0-d919-4d71-9629-25a503a0cfbb
 * __Event:__ ride:customer_location
 * __Body:__
 ```json
@@ -378,7 +378,7 @@
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer o85lthRu0cL0YY0y7WLUiD7fS1TkRbDW0iDLQ4eCfpA=
+authorization: Bearer Rsppmc07pJZAAR8CzheAYTwvmGRyireXEwQiVLhPLeo=
 ```
 
 ##### Response
@@ -387,7 +387,7 @@ authorization: Bearer o85lthRu0cL0YY0y7WLUiD7fS1TkRbDW0iDLQ4eCfpA=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2Tq4JGFC8gAACPk
+x-request-id: FzB6BVkm8ZCgjLUAACeD
 ```
 * __Response body:__
 ```json
@@ -405,7 +405,7 @@ x-request-id: FzAzo2Tq4JGFC8gAACPk
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer T6xywm0_AxqFdrFs7flfODiiaQ-gfzr57Dn8WqjoVBo=
+authorization: Bearer 8SUY5MpXHegEYZJhJRmmZQHQsTrLSm9Ws38jUTQzgUo=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -418,7 +418,8 @@ content-type: multipart/mixed; boundary=plug_conn_test
     ],
     "type": "Point"
   },
-  "name": "some address"
+  "name": "some address",
+  "reverse_geocoding": "some string address"
 }
 ```
 
@@ -428,13 +429,13 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2Wag__RdvYAABSD
+x-request-id: FzB6BVpqMXLUV1oAABKE
 ```
 * __Response body:__
 ```json
 {
   "data": {
-    "id": "9ff0f1ae-7968-473f-91ec-bcd4ca95e80a",
+    "id": "68f0d24b-d12f-464e-a876-2e1871af7df9",
     "location": {
       "coordinates": [
         -82.398,
@@ -452,11 +453,11 @@ x-request-id: FzAzo2Wag__RdvYAABSD
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/addresses/9ff0f1ae-7968-473f-91ec-bcd4ca95e80a
+* __Path:__ /api/addresses/68f0d24b-d12f-464e-a876-2e1871af7df9
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer T6xywm0_AxqFdrFs7flfODiiaQ-gfzr57Dn8WqjoVBo=
+authorization: Bearer 8SUY5MpXHegEYZJhJRmmZQHQsTrLSm9Ws38jUTQzgUo=
 ```
 
 ##### Response
@@ -465,13 +466,13 @@ authorization: Bearer T6xywm0_AxqFdrFs7flfODiiaQ-gfzr57Dn8WqjoVBo=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2XWELXRdvYAABoi
+x-request-id: FzB6BVqIhcfUV1oAABME
 ```
 * __Response body:__
 ```json
 {
   "data": {
-    "id": "9ff0f1ae-7968-473f-91ec-bcd4ca95e80a",
+    "id": "68f0d24b-d12f-464e-a876-2e1871af7df9",
     "location": {
       "coordinates": [
         -82.398,
@@ -494,11 +495,11 @@ x-request-id: FzAzo2XWELXRdvYAABoi
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/addresses/7e370c60-6410-4736-a810-4210bf4f4ab1
+* __Path:__ /api/addresses/568c154d-1670-4360-b5af-a3e7666c79fc
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer OawQTEcgTuYfp2pQPiKbnVH6W0I6rT3VmIugRqBpqBc=
+authorization: Bearer 13Gtpz6i7sT0v8ihsZsV5tT_W30fhu3S02m4C9LJkZ4=
 ```
 
 ##### Response
@@ -507,13 +508,13 @@ authorization: Bearer OawQTEcgTuYfp2pQPiKbnVH6W0I6rT3VmIugRqBpqBc=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2pCzhQ8hU8AACok
+x-request-id: FzB6BSbD2QtY_RUAAAvh
 ```
 * __Response body:__
 ```json
 {
   "data": {
-    "id": "7e370c60-6410-4736-a810-4210bf4f4ab1",
+    "id": "568c154d-1670-4360-b5af-a3e7666c79fc",
     "location": {
       "coordinates": [
         30.2,
@@ -527,7 +528,7 @@ x-request-id: FzAzo2pCzhQ8hU8AACok
       },
       "type": "Point"
     },
-    "name": "address-576460752303412924"
+    "name": "address-576460752303420542"
   }
 }
 ```
@@ -541,7 +542,7 @@ x-request-id: FzAzo2pCzhQ8hU8AACok
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer dE9_xdJAwUopfMRusI66rpxBQ3T4W5cmChvS13sJsUY=
+authorization: Bearer bEe00IziCilKZfKxodjBy-zN679i_QPNmTCvHETWnf8=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -558,7 +559,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2iDwiVpnH0AACfk
+x-request-id: FzB6BVm7lE5kM2MAAChD
 ```
 * __Response body:__
 ```json
@@ -579,11 +580,11 @@ x-request-id: FzAzo2iDwiVpnH0AACfk
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/addresses/8cc348ed-8ac6-48e7-b68c-d5f871bdb682
+* __Path:__ /api/addresses/b7757469-6770-4e7b-9979-a589435dc0fa
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer IqH6uC6AVgs1bVxQkzKcGXjp9wDoDuG1KruPuzxaYjQ=
+authorization: Bearer w_svhhIqdW8B_p4UJRyn1y6MSJ-A9AicCQXnejeFC-M=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -597,7 +598,8 @@ content-type: multipart/mixed; boundary=plug_conn_test
       ],
       "type": "Point"
     },
-    "name": "New Name"
+    "name": "New Name",
+    "reverse_geocoding": "a new string address"
   }
 }
 ```
@@ -608,13 +610,13 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2cS8rH4-AYAACXk
+x-request-id: FzB6BVhN6edoQTEAACbj
 ```
 * __Response body:__
 ```json
 {
   "data": {
-    "id": "8cc348ed-8ac6-48e7-b68c-d5f871bdb682",
+    "id": "b7757469-6770-4e7b-9979-a589435dc0fa",
     "location": {
       "coordinates": [
         -82.398,
@@ -632,11 +634,11 @@ x-request-id: FzAzo2cS8rH4-AYAACXk
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/addresses/8cc348ed-8ac6-48e7-b68c-d5f871bdb682
+* __Path:__ /api/addresses/b7757469-6770-4e7b-9979-a589435dc0fa
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer IqH6uC6AVgs1bVxQkzKcGXjp9wDoDuG1KruPuzxaYjQ=
+authorization: Bearer w_svhhIqdW8B_p4UJRyn1y6MSJ-A9AicCQXnejeFC-M=
 ```
 
 ##### Response
@@ -645,13 +647,13 @@ authorization: Bearer IqH6uC6AVgs1bVxQkzKcGXjp9wDoDuG1KruPuzxaYjQ=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2dDVl74-AYAACYE
+x-request-id: FzB6BVh7HaloQTEAACcD
 ```
 * __Response body:__
 ```json
 {
   "data": {
-    "id": "8cc348ed-8ac6-48e7-b68c-d5f871bdb682",
+    "id": "b7757469-6770-4e7b-9979-a589435dc0fa",
     "location": {
       "coordinates": [
         -82.398,
@@ -675,11 +677,11 @@ x-request-id: FzAzo2dDVl74-AYAACYE
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/addresses/62ab02c5-ca40-4a93-b2a9-bf6102c74c1c
+* __Path:__ /api/addresses/bb2c5dd1-3459-4bb8-85ef-51608655fdd4
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer yHxtkbOIRFso3cWorJpPb0LbjB244LLAvF63hQRFA3A=
+authorization: Bearer lpCOJioMhLBnr51c28HqEveA-oCIbcfHRp3ujnuod_g=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -698,7 +700,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzozobUWienYcAAAoh
+x-request-id: FzB6BVTRJKi-1LQAABth
 ```
 * __Response body:__
 ```json
@@ -719,11 +721,11 @@ x-request-id: FzAzozobUWienYcAAAoh
 
 ##### Request
 * __Method:__ DELETE
-* __Path:__ /api/addresses/e466200f-123a-4acd-aacb-ddadf2675874
+* __Path:__ /api/addresses/68513230-5100-41e2-b39e-4d7a5c0cba0a
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer 57DG0bNf6cO8Eoj3b7XPOKHWQOp5k2RvS2h6t7nJnKQ=
+authorization: Bearer KF4HTDBuUKMtU0x6LXcN6WlosEOeoFtrxkEkzsFc9yY=
 ```
 
 ##### Response
@@ -731,7 +733,7 @@ authorization: Bearer 57DG0bNf6cO8Eoj3b7XPOKHWQOp5k2RvS2h6t7nJnKQ=
 * __Response headers:__
 ```
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2CNSYauePgAABIj
+x-request-id: FzB6BVKxsvSV1-QAABih
 ```
 * __Response body:__
 ```json
@@ -748,7 +750,7 @@ x-request-id: FzAzo2CNSYauePgAABIj
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer HA9vhEqQgDypCACH7btiEoxG4eV052zKXQoYIZcU2Kg=
+authorization: Bearer 3MJuP6aH74YlbQHVRkBo-avDeujxrWIxHKA4VzdWetY=
 ```
 
 ##### Response
@@ -757,7 +759,7 @@ authorization: Bearer HA9vhEqQgDypCACH7btiEoxG4eV052zKXQoYIZcU2Kg=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2Hyq2E0cz4AACEE
+x-request-id: FzB6BVOEeHVsv5kAABmB
 ```
 * __Response body:__
 ```json
@@ -765,8 +767,8 @@ x-request-id: FzAzo2Hyq2E0cz4AACEE
   "data": [
     {
       "color": "some color",
-      "id": "5151f699-b932-468a-8550-4a03ba810a5e",
-      "license_plate": "license--576460752303415164",
+      "id": "964a6c24-8800-4982-b859-1df5194d90e9",
+      "license_plate": "license--576460752303416991",
       "make": "some make",
       "model": "some model"
     }
@@ -783,14 +785,14 @@ x-request-id: FzAzo2Hyq2E0cz4AACEE
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer DRf5vwxgynJMMm_lPQlHw2d9PtMp2kjF1JlfPrcmg3A=
+authorization: Bearer 0JmomnaNRvxB_0nlRfVBcXSZjtaSReliEVB189XzD38=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
 ```json
 {
   "color": "some color",
-  "license_plate": "license--576460752303417407",
+  "license_plate": "license--576460752303416190",
   "make": "some make",
   "model": "some model"
 }
@@ -802,16 +804,16 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2ATw_xdhZUAABfh
-location: /api/cars/2ef8cc00-3257-4910-aa86-6c6fec17d49b
+x-request-id: FzB6BVEs91vs4wAAAByi
+location: /api/cars/7aae6b0f-7197-4236-b8c1-1f6116ce8fbb
 ```
 * __Response body:__
 ```json
 {
   "data": {
     "color": "some color",
-    "id": "2ef8cc00-3257-4910-aa86-6c6fec17d49b",
-    "license_plate": "license--576460752303417407",
+    "id": "7aae6b0f-7197-4236-b8c1-1f6116ce8fbb",
+    "license_plate": "license--576460752303416190",
     "make": "some make",
     "model": "some model"
   }
@@ -823,11 +825,11 @@ location: /api/cars/2ef8cc00-3257-4910-aa86-6c6fec17d49b
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/cars/2ef8cc00-3257-4910-aa86-6c6fec17d49b
+* __Path:__ /api/cars/7aae6b0f-7197-4236-b8c1-1f6116ce8fbb
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer DRf5vwxgynJMMm_lPQlHw2d9PtMp2kjF1JlfPrcmg3A=
+authorization: Bearer 0JmomnaNRvxB_0nlRfVBcXSZjtaSReliEVB189XzD38=
 ```
 
 ##### Response
@@ -836,15 +838,15 @@ authorization: Bearer DRf5vwxgynJMMm_lPQlHw2d9PtMp2kjF1JlfPrcmg3A=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2CMI91dhZUAABkC
+x-request-id: FzB6BVHKWNLs4wAAABcB
 ```
 * __Response body:__
 ```json
 {
   "data": {
     "color": "some color",
-    "id": "2ef8cc00-3257-4910-aa86-6c6fec17d49b",
-    "license_plate": "license--576460752303417407",
+    "id": "7aae6b0f-7197-4236-b8c1-1f6116ce8fbb",
+    "license_plate": "license--576460752303416190",
     "make": "some make",
     "model": "some model"
   }
@@ -860,7 +862,7 @@ x-request-id: FzAzo2CMI91dhZUAABkC
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer REsUbsjjZ_nF4Lsdh3Jw3JljxJud5nxxCCo1TB_CABA=
+authorization: Bearer D3rswlZNkcH2HPtAHZJOal6AK-7lplJVnXWRvk1Chjo=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -881,7 +883,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo1NCGgGbP-EAABWi
+x-request-id: FzB6BUifg_Qsnw8AABVi
 ```
 * __Response body:__
 ```json
@@ -908,11 +910,11 @@ x-request-id: FzAzo1NCGgGbP-EAABWi
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/cars/a3cf8d6c-4370-4fc6-8c9c-fcef67bcea45
+* __Path:__ /api/cars/3a3f421f-cbad-4aae-a0ea-a4d39a65d320
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer -y2746b4XWGm0GB_Y8CODZ9vJak_S1mCvMghRIAitUQ=
+authorization: Bearer Q1260XK28wE5y3jGHgMfwVHqhNEPYv-W7f9-nXjTaeA=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -933,14 +935,14 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzozobxcxy19wAAApB
+x-request-id: FzB6BUYyo7N2hioAABRi
 ```
 * __Response body:__
 ```json
 {
   "data": {
     "color": "some updated color",
-    "id": "a3cf8d6c-4370-4fc6-8c9c-fcef67bcea45",
+    "id": "3a3f421f-cbad-4aae-a0ea-a4d39a65d320",
     "license_plate": "some updated license_plate",
     "make": "some updated make",
     "model": "some updated model"
@@ -953,11 +955,11 @@ x-request-id: FzAzozobxcxy19wAAApB
 
 ##### Request
 * __Method:__ DELETE
-* __Path:__ /api/cars/707c7062-6ced-41a0-b606-04a652bab3ab
+* __Path:__ /api/cars/183809e3-85f1-42db-8da7-83e097847dd1
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer -WjUv9G1qFxaKaQq9-LISXAr9iNMA7jOo1zS-8yuL80=
+authorization: Bearer _TaoxwqmFKQsvPBxsXGRq-daqvAYTvPeGO0Gz4DRd58=
 ```
 
 ##### Response
@@ -965,7 +967,7 @@ authorization: Bearer -WjUv9G1qFxaKaQq9-LISXAr9iNMA7jOo1zS-8yuL80=
 * __Response headers:__
 ```
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo1tqLI1-FP4AABzE
+x-request-id: FzB6BUqNamTIhpAAABgC
 ```
 * __Response body:__
 ```json
@@ -987,7 +989,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 * __Request body:__
 ```json
 {
-  "email": "user-576460752303420221@example.com"
+  "email": "user-576460752303418141@example.com"
 }
 ```
 
@@ -997,7 +999,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo1VEgayQsSkAAA0D
+x-request-id: FzB6BUAvRUsHsB4AAAxh
 ```
 * __Response body:__
 ```json
@@ -1019,7 +1021,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 * __Request body:__
 ```json
 {
-  "email": "user-576460752303418590@example.com"
+  "email": "user-576460752303420380@example.com"
 }
 ```
 
@@ -1029,7 +1031,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo06867CIlyAAAA6B
+x-request-id: FzB6BT916rVCLd4AAA0E
 ```
 * __Response body:__
 ```json
@@ -1061,7 +1063,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzozsizRr2ksQAAAph
+x-request-id: FzB6BT8RaHWmY28AABNj
 ```
 * __Response body:__
 ```json
@@ -1075,7 +1077,7 @@ x-request-id: FzAzozsizRr2ksQAAAph
 
 ##### Request
 * __Method:__ POST
-* __Path:__ /api/confirm/15nZfLOQdqwFxQDf4f7nvkioCbsd3i6tNX6QoHP3l8Y
+* __Path:__ /api/confirm/NXsOZw66Sj06Rq9213BD2s4rmsCqRgm5FSr1G7kxKWw
 * __Request headers:__
 ```
 accept: application/json
@@ -1087,7 +1089,7 @@ accept: application/json
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo0-gTFHHMfMAABSi
+x-request-id: FzB6BSdIQjMl06MAAA7i
 ```
 * __Response body:__
 ```json
@@ -1100,7 +1102,7 @@ x-request-id: FzAzo0-gTFHHMfMAABSi
 
 ##### Request
 * __Method:__ POST
-* __Path:__ /api/confirm/15nZfLOQdqwFxQDf4f7nvkioCbsd3i6tNX6QoHP3l8Y
+* __Path:__ /api/confirm/NXsOZw66Sj06Rq9213BD2s4rmsCqRgm5FSr1G7kxKWw
 * __Request headers:__
 ```
 accept: application/json
@@ -1112,7 +1114,7 @@ accept: application/json
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo0_np_LHMfMAABTC
+x-request-id: FzB6BT7Gc1El06MAABLj
 ```
 * __Response body:__
 ```json
@@ -1141,7 +1143,7 @@ accept: application/json
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo1A7bgM28sAAABTi
+x-request-id: FzB6BT-1TV3hBDQAABPj
 ```
 * __Response body:__
 ```json
@@ -1164,7 +1166,7 @@ x-request-id: FzAzo1A7bgM28sAAABTi
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer 0HUsRrLH2ioLTGGYByBRCARzkcWJZllbGNkwdXJ36w0=
+authorization: Bearer 9m2d4b4VJDnsrZ9Q2nSZJ4eb3qwzvsRWi7iLvV_26M8=
 ```
 
 ##### Response
@@ -1173,7 +1175,7 @@ authorization: Bearer 0HUsRrLH2ioLTGGYByBRCARzkcWJZllbGNkwdXJ36w0=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzozsjqZkrNeMAAAxk
+x-request-id: FzB6BUFhA_YJ5-UAAAzh
 ```
 * __Response body:__
 ```json
@@ -1187,11 +1189,11 @@ x-request-id: FzAzozsjqZkrNeMAAAxk
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/customers/d60fc7bb-a0b8-4208-afc0-2eb8cd2ffda5
+* __Path:__ /api/customers/e70776d9-d925-443a-a9ec-3efc65e018a6
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer h6ryR2Q0gT2QpZqHKWgVGw_LkJ7GNaQozrSEXmGdF0g=
+authorization: Bearer XE4_JcpyQvcbnIk2jzrrGd2qArIx8hNUar8UQyMOFaw=
 ```
 
 ##### Response
@@ -1200,13 +1202,13 @@ authorization: Bearer h6ryR2Q0gT2QpZqHKWgVGw_LkJ7GNaQozrSEXmGdF0g=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo1KJbEncdg4AABSE
+x-request-id: FzB6BSdUiXlCHzMAAA8C
 ```
 * __Response body:__
 ```json
 {
   "data": {
-    "id": "d60fc7bb-a0b8-4208-afc0-2eb8cd2ffda5"
+    "id": "e70776d9-d925-443a-a9ec-3efc65e018a6"
   }
 }
 ```
@@ -1215,11 +1217,11 @@ x-request-id: FzAzo1KJbEncdg4AABSE
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/customers/9b43fdfb-8572-46e1-8d97-be740443b7dc
+* __Path:__ /api/customers/2176af73-8a7d-43e1-833e-dcc2f46b7f32
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer h6ryR2Q0gT2QpZqHKWgVGw_LkJ7GNaQozrSEXmGdF0g=
+authorization: Bearer XE4_JcpyQvcbnIk2jzrrGd2qArIx8hNUar8UQyMOFaw=
 ```
 
 ##### Response
@@ -1228,13 +1230,13 @@ authorization: Bearer h6ryR2Q0gT2QpZqHKWgVGw_LkJ7GNaQozrSEXmGdF0g=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo1LMr2_cdg4AABUE
+x-request-id: FzB6BUDd5e5CHzMAABJi
 ```
 * __Response body:__
 ```json
 {
   "data": {
-    "id": "9b43fdfb-8572-46e1-8d97-be740443b7dc"
+    "id": "2176af73-8a7d-43e1-833e-dcc2f46b7f32"
   }
 }
 ```
@@ -1243,11 +1245,11 @@ x-request-id: FzAzo1LMr2_cdg4AABUE
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/customers/723c1084-6398-4fcd-8e35-55e46b149287
+* __Path:__ /api/customers/d68d9ba1-8f82-4a3c-b014-b689439cc47b
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer ij4RDf44gklcVA0WcU8Tgk3lMOR_cYYK-M3hGkJz8MU=
+authorization: Bearer 9sPsBSlAmtFSOeZ3GSzpENq7oyzXJlehLMbvn9sK5IY=
 ```
 
 ##### Response
@@ -1256,13 +1258,13 @@ authorization: Bearer ij4RDf44gklcVA0WcU8Tgk3lMOR_cYYK-M3hGkJz8MU=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo1OKl4bpz_QAABAh
+x-request-id: FzB6BUL3QaFLOM8AABej
 ```
 * __Response body:__
 ```json
 {
   "data": {
-    "id": "723c1084-6398-4fcd-8e35-55e46b149287"
+    "id": "d68d9ba1-8f82-4a3c-b014-b689439cc47b"
   }
 }
 ```
@@ -1271,11 +1273,11 @@ x-request-id: FzAzo1OKl4bpz_QAABAh
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/customers/d68a83e8-f375-44d5-a938-e2f986e280fc
+* __Path:__ /api/customers/2b97c41a-ce03-40fc-8f50-d885a2ea5994
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer ij4RDf44gklcVA0WcU8Tgk3lMOR_cYYK-M3hGkJz8MU=
+authorization: Bearer 9sPsBSlAmtFSOeZ3GSzpENq7oyzXJlehLMbvn9sK5IY=
 ```
 
 ##### Response
@@ -1283,7 +1285,7 @@ authorization: Bearer ij4RDf44gklcVA0WcU8Tgk3lMOR_cYYK-M3hGkJz8MU=
 * __Response headers:__
 ```
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo1PJyOTpz_QAABBB
+x-request-id: FzB6BUMehXdLOM8AABgj
 content-type: application/json; charset=utf-8
 ```
 * __Response body:__
@@ -1301,7 +1303,7 @@ content-type: application/json; charset=utf-8
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer UQPxsqN8C8Xb-RvoTQMsWA0elzVd4q9n5SxsLC6nwC0=
+authorization: Bearer jKSEPgI5WIy3FW1TFVLGMmWEZR9s9cJDsHRwRUgmscI=
 ```
 
 ##### Response
@@ -1310,7 +1312,7 @@ authorization: Bearer UQPxsqN8C8Xb-RvoTQMsWA0elzVd4q9n5SxsLC6nwC0=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2Z703M814sAABxC
+x-request-id: FzB6BUNrKQ3X0QYAABhD
 ```
 * __Response body:__
 ```json
@@ -1318,24 +1320,24 @@ x-request-id: FzAzo2Z703M814sAABxC
   "data": [
     {
       "credit": 0,
-      "email": "user-576460752303418301@example.com",
-      "id": "0ee19484-e776-4e73-bdca-bcdb7387b8ef",
-      "name": "user-576460752303418333",
-      "phone": "5220"
+      "email": "user-576460752303417757@example.com",
+      "id": "97981684-bf07-4866-8b64-cf8c1cdb8ed9",
+      "name": "user-576460752303417789",
+      "phone": "5764"
     },
     {
       "credit": 0,
-      "email": "user-576460752303416862@example.com",
-      "id": "07f1b600-1d2d-4def-a595-28a14f0b6bbf",
-      "name": "user-576460752303416894",
-      "phone": "6659"
+      "email": "user-576460752303419935@example.com",
+      "id": "cbec9885-8f08-4bb6-b2e2-590d52026ca6",
+      "name": "user-576460752303419967",
+      "phone": "3586"
     },
     {
       "credit": 0,
-      "email": "user-576460752303416478@example.com",
-      "id": "d673896e-6429-4a3e-b819-d6a818384c07",
-      "name": "user-576460752303416510",
-      "phone": "7043"
+      "email": "user-576460752303419839@example.com",
+      "id": "36f55b25-8cba-4092-b086-8dad89ce7244",
+      "name": "user-576460752303419871",
+      "phone": "3682"
     }
   ]
 }
@@ -1349,7 +1351,7 @@ x-request-id: FzAzo2Z703M814sAABxC
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer IY6hLjoGQqvRKmUMbRmE06jwroj3-PewhKqpSAIMpbQ=
+authorization: Bearer 6rEhcyMVMAKzdpy910v3JssuyKk-FgSBVhc5phrBdwI=
 ```
 
 ##### Response
@@ -1358,7 +1360,7 @@ authorization: Bearer IY6hLjoGQqvRKmUMbRmE06jwroj3-PewhKqpSAIMpbQ=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo0d68pnKGrYAABDE
+x-request-id: FzB6BVZ2wP6pvJEAACMj
 ```
 * __Response body:__
 ```json
@@ -1366,7 +1368,7 @@ x-request-id: FzAzo0d68pnKGrYAABDE
   "data": [
     {
       "car_type": "standard",
-      "id": "1fcde9f0-2d98-4235-bf51-15f6f94e7fd1",
+      "id": "f5974cb8-238a-463a-bf3e-613dca41e522",
       "last_location": {
         "coordinates": [
           30.2,
@@ -1393,7 +1395,7 @@ x-request-id: FzAzo0d68pnKGrYAABDE
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer roTqAKb_GofoVrZEzau2c3-0-SXfQhBbuXCHbXUKYes=
+authorization: Bearer oxxxzV__6vLwHSTky1cez37Bz8OdyVD-Opf0lXHivGw=
 ```
 
 ##### Response
@@ -1402,7 +1404,7 @@ authorization: Bearer roTqAKb_GofoVrZEzau2c3-0-SXfQhBbuXCHbXUKYes=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2kMSQNyFJYAAB5h
+x-request-id: FzB6BVSSJdT9mCAAAB_C
 ```
 * __Response body:__
 ```json
@@ -1410,10 +1412,10 @@ x-request-id: FzAzo2kMSQNyFJYAAB5h
   "data": [
     {
       "credit": 0,
-      "email": "user-576460752303416030@example.com",
-      "id": "6476b59b-538c-4876-a6cc-cb195a50b99f",
-      "name": "user-576460752303416062",
-      "phone": "7491"
+      "email": "user-576460752303417407@example.com",
+      "id": "ac8322d9-f846-467a-9ca3-037b338e1e44",
+      "name": "user-576460752303417439",
+      "phone": "6114"
     }
   ]
 }
@@ -1424,11 +1426,11 @@ x-request-id: FzAzo2kMSQNyFJYAAB5h
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/drivers/d7c7e7f2-57e6-48c6-9f1c-7d49a33d6a32
+* __Path:__ /api/drivers/bbf35372-e13d-43dc-8641-58dcb820cf5c
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer 0vMU9McBbiAT5dZNKJO5MT3PZUfIiPcH4xc6sPriec8=
+authorization: Bearer wdxdEGUSd86PMFGAz85fvoM_wt_v1q364LnqeVVTMuw=
 ```
 
 ##### Response
@@ -1437,17 +1439,17 @@ authorization: Bearer 0vMU9McBbiAT5dZNKJO5MT3PZUfIiPcH4xc6sPriec8=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2qEOPrsvpkAABbD
+x-request-id: FzB6BVg8pObmSgcAACCh
 ```
 * __Response body:__
 ```json
 {
   "data": {
     "credit": 0,
-    "email": "user-576460752303415486@example.com",
-    "id": "d7c7e7f2-57e6-48c6-9f1c-7d49a33d6a32",
-    "name": "user-576460752303415518",
-    "phone": "8035"
+    "email": "user-576460752303413789@example.com",
+    "id": "bbf35372-e13d-43dc-8641-58dcb820cf5c",
+    "name": "user-576460752303413821",
+    "phone": "9732"
   }
 }
 ```
@@ -1456,11 +1458,11 @@ x-request-id: FzAzo2qEOPrsvpkAABbD
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/drivers/a7707f47-2d7a-4634-a675-7858baf96c76
+* __Path:__ /api/drivers/c2d890df-3780-4e37-ba9a-54a6a0fd1ae1
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer 0vMU9McBbiAT5dZNKJO5MT3PZUfIiPcH4xc6sPriec8=
+authorization: Bearer wdxdEGUSd86PMFGAz85fvoM_wt_v1q364LnqeVVTMuw=
 ```
 
 ##### Response
@@ -1469,17 +1471,17 @@ authorization: Bearer 0vMU9McBbiAT5dZNKJO5MT3PZUfIiPcH4xc6sPriec8=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2q7GDHsvpkAABbj
+x-request-id: FzB6BVhqnijmSgcAACEh
 ```
 * __Response body:__
 ```json
 {
   "data": {
     "credit": 0,
-    "email": "user-576460752303412860@example.com",
-    "id": "a7707f47-2d7a-4634-a675-7858baf96c76",
-    "name": "user-576460752303412892",
-    "phone": "10661"
+    "email": "user-576460752303413661@example.com",
+    "id": "c2d890df-3780-4e37-ba9a-54a6a0fd1ae1",
+    "name": "user-576460752303413693",
+    "phone": "9860"
   }
 }
 ```
@@ -1488,11 +1490,11 @@ x-request-id: FzAzo2q7GDHsvpkAABbj
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/drivers/e42e66e7-d8ec-4390-9c1d-ef467b98f93f
+* __Path:__ /api/drivers/814adebc-48f8-419a-9bd1-1a69f8069d0c
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer oQaxv65mtbXj8SVS1K77mDIpV_TkQtyhW0kDgAdZjt0=
+authorization: Bearer BJNMEHpCDVHSFFhtf7wbB1DiiQoTD9GUgz7PgCG-p2Q=
 ```
 
 ##### Response
@@ -1501,17 +1503,17 @@ authorization: Bearer oQaxv65mtbXj8SVS1K77mDIpV_TkQtyhW0kDgAdZjt0=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2zgLpz9Yp8AACxk
+x-request-id: FzB6BTRvcRLKS6cAAA_C
 ```
 * __Response body:__
 ```json
 {
   "data": {
     "credit": 0,
-    "email": "user-576460752303412348@example.com",
-    "id": "e42e66e7-d8ec-4390-9c1d-ef467b98f93f",
-    "name": "user-576460752303412380",
-    "phone": "11173"
+    "email": "user-576460752303419357@example.com",
+    "id": "814adebc-48f8-419a-9bd1-1a69f8069d0c",
+    "name": "user-576460752303419389",
+    "phone": "4164"
   }
 }
 ```
@@ -1520,11 +1522,11 @@ x-request-id: FzAzo2zgLpz9Yp8AACxk
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/drivers/88670ec5-4c87-4f5f-8c31-f18d281065c3
+* __Path:__ /api/drivers/64d4a94b-c9a0-4dbb-b6bf-cd9ebf1936ff
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer oQaxv65mtbXj8SVS1K77mDIpV_TkQtyhW0kDgAdZjt0=
+authorization: Bearer BJNMEHpCDVHSFFhtf7wbB1DiiQoTD9GUgz7PgCG-p2Q=
 ```
 
 ##### Response
@@ -1532,7 +1534,7 @@ authorization: Bearer oQaxv65mtbXj8SVS1K77mDIpV_TkQtyhW0kDgAdZjt0=
 * __Response headers:__
 ```
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo20gcrr9Yp8AACJh
+x-request-id: FzB6BUFlhbbKS6cAAA0k
 content-type: application/json; charset=utf-8
 ```
 * __Response body:__
@@ -1549,7 +1551,7 @@ content-type: application/json; charset=utf-8
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer Get62KtnSySrUacnAksd90q-sOpzFH1osvaRlGTYXbk=
+authorization: Bearer wWgO9A0RHei464uhpfomqOmkeTGRPVH0iGeq6ppSmOc=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -1571,7 +1573,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2wKV9RfXQYAACDB
+x-request-id: FzB6BVcZTcXqv5sAAB5B
 ```
 * __Response body:__
 ```json
@@ -1597,13 +1599,13 @@ x-request-id: FzAzo2wKV9RfXQYAACDB
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer lRIIFfsID-iMwd-NgOrv4YKoCoUrR_uF8R1S19-VL4g=
+authorization: Bearer fX09KzoDbRLr7V5r2oeP-ATFyih3ZaEatpF-QYvpK8E=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
 ```json
 {
-  "license": "license-576460752303412444"
+  "license": "license-576460752303417759"
 }
 ```
 
@@ -1613,7 +1615,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2tdqoc2j5EAACtE
+x-request-id: FzB6BVFTpZOipDcAABaB
 ```
 * __Response body:__
 ```json
@@ -1631,7 +1633,7 @@ x-request-id: FzAzo2tdqoc2j5EAACtE
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer Adw4gzsOdj7R3tQAH2Zjz8Y-Sw4syIwR3-w59CEGuIw=
+authorization: Bearer iwDtMVFT9Xcj15PAT-yUx64zZn-Yrufzuoivfa_Fy-c=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -1647,7 +1649,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo13YgOggQMYAABbB
+x-request-id: FzB6BUcxrp2_YRMAABrj
 ```
 * __Response body:__
 ```json
@@ -1664,7 +1666,7 @@ x-request-id: FzAzo13YgOggQMYAABbB
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer Adw4gzsOdj7R3tQAH2Zjz8Y-Sw4syIwR3-w59CEGuIw=
+authorization: Bearer iwDtMVFT9Xcj15PAT-yUx64zZn-Yrufzuoivfa_Fy-c=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -1680,7 +1682,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo17p8r0gQMYAABfC
+x-request-id: FzB6BUeMf52_YRMAABsj
 ```
 * __Response body:__
 ```json
@@ -1697,7 +1699,7 @@ x-request-id: FzAzo17p8r0gQMYAABfC
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer Adw4gzsOdj7R3tQAH2Zjz8Y-Sw4syIwR3-w59CEGuIw=
+authorization: Bearer iwDtMVFT9Xcj15PAT-yUx64zZn-Yrufzuoivfa_Fy-c=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -1713,7 +1715,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo19iyH8gQMYAABdB
+x-request-id: FzB6BUhY3Zy_YRMAABMB
 ```
 * __Response body:__
 ```json
@@ -1730,7 +1732,7 @@ x-request-id: FzAzo19iyH8gQMYAABdB
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer BLRRhGpqXMrufRD8pYRtj8PZzaQ8LQUJhD_YVTxDhIs=
+authorization: Bearer 9nAcQcug1tEdxlKn15odGtso_LS2AeSUdgAX-JMRiIg=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -1746,7 +1748,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo1ycll6s7nYAABTB
+x-request-id: FzB6BUWElvwdCZ8AABmj
 ```
 * __Response body:__
 ```json
@@ -1768,13 +1770,13 @@ x-request-id: FzAzo1ycll6s7nYAABTB
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer mTOqACIV3IQkYv8mwKRxcqx8KQiKvj_KLvCkUDZ_S9Y=
+authorization: Bearer thLgt6f8QJnCZvaXOmjLJ0GB86oiaXGUtEe-lPwesrs=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
 ```json
 {
-  "current_car_id": "f222fec8-e737-46d1-bb53-01ec1fea549a"
+  "current_car_id": "6004d710-e74b-49d9-8349-5482d9c9df20"
 }
 ```
 
@@ -1784,7 +1786,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2FBXj4CHCMAABmB
+x-request-id: FzB6BUSeoo7FDCwAABCB
 ```
 * __Response body:__
 ```json
@@ -1802,7 +1804,7 @@ x-request-id: FzAzo2FBXj4CHCMAABmB
 * __Path:__ /api/notifications/push_codes
 * __Request headers:__
 ```
-authorization: Bearer MS-Mi_mMJOoYDvNCzS5BKUf1xJwtZcvB27G-zTJFRSA=
+authorization: Bearer lw9ear5v8xXX-nWbsbtSOYZEYWoDPWNrMx20OPtbhpA=
 accept: application/json
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
@@ -1821,14 +1823,14 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo4Ef84WX3MYAAB8j
+x-request-id: FzB6BXBwYEREqyEAADoh
 ```
 * __Response body:__
 ```json
 {
   "data": {
     "code": "some code",
-    "id": "e6cb6e43-f457-4f3d-9f8e-8a7f3ed94f4a"
+    "id": "317646c5-b9f6-42f4-8880-4ffae60c2ce0"
   }
 }
 ```
@@ -1842,7 +1844,7 @@ x-request-id: FzAzo4Ef84WX3MYAAB8j
 * __Path:__ /api/rates_configuration
 * __Request headers:__
 ```
-authorization: Bearer FTjQ-BqCHB_4qKicp6m0Y9qRl1XEgCFkn4Aq3sydw0M=
+authorization: Bearer 0o9oc4LP2BzJ7Vjnxle759ZEBXIUAixiSVpdtcgg1zQ=
 accept: application/json
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
@@ -1861,13 +1863,13 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo4CD_voQmGcAADOB
+x-request-id: FzB6BW_X2hbpgh8AAC_D
 ```
 * __Response body:__
 ```json
 {
   "data": {
-    "id": "df5606a4-910e-4dce-93ec-9463f959c9f9",
+    "id": "83559aac-5498-4d47-b778-c814df631d89",
     "min_rate": 43
   }
 }
@@ -1881,7 +1883,7 @@ x-request-id: FzAzo4CD_voQmGcAADOB
 * __Path:__ /api/rates_configuration
 * __Request headers:__
 ```
-authorization: Bearer FTjQ-BqCHB_4qKicp6m0Y9qRl1XEgCFkn4Aq3sydw0M=
+authorization: Bearer 0o9oc4LP2BzJ7Vjnxle759ZEBXIUAixiSVpdtcgg1zQ=
 accept: application/json
 ```
 
@@ -1891,13 +1893,13 @@ accept: application/json
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo4CaW4IQmGcAADOh
+x-request-id: FzB6BW_xd-bpgh8AADkh
 ```
 * __Response body:__
 ```json
 {
   "data": {
-    "id": "df5606a4-910e-4dce-93ec-9463f959c9f9",
+    "id": "83559aac-5498-4d47-b778-c814df631d89",
     "min_rate": 43
   }
 }
@@ -1911,7 +1913,7 @@ x-request-id: FzAzo4CaW4IQmGcAADOh
 * __Path:__ /api/rates_configuration
 * __Request headers:__
 ```
-authorization: Bearer Z2Mg_TLU-uYttIncZzHorwpisQCcM66mMlEn5qJmgQs=
+authorization: Bearer G5RLnbiaUrlxlPW8DqujfnsL-LaQThEop9npdgOMUvM=
 accept: application/json
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
@@ -1930,7 +1932,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo4DhP5y_eXkAADQh
+x-request-id: FzB6BXAyZDAcLlwAADmh
 ```
 * __Response body:__
 ```json
@@ -1952,7 +1954,7 @@ x-request-id: FzAzo4DhP5y_eXkAADQh
 * __Path:__ /api/rates
 * __Request headers:__
 ```
-authorization: Bearer SZVuGOB22NUCQI3imwly3as-HXqllVJwCHVeI9r1Ggc=
+authorization: Bearer 2bK0olObdQ04aXdbSkuRVze1pIG4ir79_iNpRs7uv28=
 accept: application/json
 ```
 
@@ -1962,7 +1964,7 @@ accept: application/json
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo30MstKs0ZQAAC6B
+x-request-id: FzB6BWfBtJ-z1aMAADAh
 ```
 * __Response body:__
 ```json
@@ -1978,7 +1980,7 @@ x-request-id: FzAzo30MstKs0ZQAAC6B
 * __Path:__ /api/rates
 * __Request headers:__
 ```
-authorization: Bearer SZVuGOB22NUCQI3imwly3as-HXqllVJwCHVeI9r1Ggc=
+authorization: Bearer 2bK0olObdQ04aXdbSkuRVze1pIG4ir79_iNpRs7uv28=
 accept: application/json
 ```
 
@@ -1988,7 +1990,7 @@ accept: application/json
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo30suXas0ZQAAC7B
+x-request-id: FzB6BWf_P-6z1aMAADBh
 ```
 * __Response body:__
 ```json
@@ -2001,7 +2003,7 @@ x-request-id: FzAzo30suXas0ZQAAC7B
       "fixed_rate_comfort": null,
       "fixed_rate_familiar": null,
       "fixed_rate_standard": null,
-      "id": "7f3aabb5-94a2-417b-97e8-b4a09dc3dfe8",
+      "id": "c7c4d8cc-3b74-442d-9813-da7f86a85753",
       "name": "some name",
       "rate_per_km_comfort": 42,
       "rate_per_km_familiar": 42,
@@ -2021,7 +2023,7 @@ x-request-id: FzAzo30suXas0ZQAAC7B
 * __Path:__ /api/rates/create_time_rate
 * __Request headers:__
 ```
-authorization: Bearer ZWMXmgKyuDq24x13-HyeIpafmGMHfVp9DfEqgOyyXWU=
+authorization: Bearer JVxXIMP6y6n2ZAZEizENqAXrsfn7ErH1j2ww6d9q5l8=
 accept: application/json
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
@@ -2046,8 +2048,8 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3xGJJ4G2T0AADZE
-location: /api/rates/00f9582d-02b6-4585-bb7b-45b7fa09c08f
+x-request-id: FzB6BWsL4dVPABUAADSh
+location: /api/rates/3beb6669-c676-4d5f-99a7-bf27e0e995ff
 ```
 * __Response body:__
 ```json
@@ -2059,7 +2061,7 @@ location: /api/rates/00f9582d-02b6-4585-bb7b-45b7fa09c08f
     "fixed_rate_comfort": null,
     "fixed_rate_familiar": null,
     "fixed_rate_standard": null,
-    "id": "00f9582d-02b6-4585-bb7b-45b7fa09c08f",
+    "id": "3beb6669-c676-4d5f-99a7-bf27e0e995ff",
     "name": "some name",
     "rate_per_km_comfort": 43,
     "rate_per_km_familiar": 44,
@@ -2075,10 +2077,10 @@ location: /api/rates/00f9582d-02b6-4585-bb7b-45b7fa09c08f
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/rates/00f9582d-02b6-4585-bb7b-45b7fa09c08f
+* __Path:__ /api/rates/3beb6669-c676-4d5f-99a7-bf27e0e995ff
 * __Request headers:__
 ```
-authorization: Bearer ZWMXmgKyuDq24x13-HyeIpafmGMHfVp9DfEqgOyyXWU=
+authorization: Bearer JVxXIMP6y6n2ZAZEizENqAXrsfn7ErH1j2ww6d9q5l8=
 accept: application/json
 ```
 
@@ -2088,7 +2090,7 @@ accept: application/json
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3xlKBIG2T0AAC1h
+x-request-id: FzB6BWsj1FBPABUAADTB
 ```
 * __Response body:__
 ```json
@@ -2100,7 +2102,7 @@ x-request-id: FzAzo3xlKBIG2T0AAC1h
     "fixed_rate_comfort": null,
     "fixed_rate_familiar": null,
     "fixed_rate_standard": null,
-    "id": "00f9582d-02b6-4585-bb7b-45b7fa09c08f",
+    "id": "3beb6669-c676-4d5f-99a7-bf27e0e995ff",
     "name": "some name",
     "rate_per_km_comfort": 43,
     "rate_per_km_familiar": 44,
@@ -2119,7 +2121,7 @@ x-request-id: FzAzo3xlKBIG2T0AAC1h
 * __Path:__ /api/rates/create_time_rate
 * __Request headers:__
 ```
-authorization: Bearer -TpILovCKPPEzLxhXN-RvvUZYQCBr7y1iEgy7n9nbLc=
+authorization: Bearer YNXtq16yXe4h3Yn9740eQQMgyx5pvJ3Ce5z54_OWgbE=
 accept: application/json
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
@@ -2143,7 +2145,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3sOFIu_q1UAADTE
+x-request-id: FzB6BWiMxk7DVVsAADGB
 ```
 * __Response body:__
 ```json
@@ -2176,7 +2178,7 @@ x-request-id: FzAzo3sOFIu_q1UAADTE
 * __Path:__ /api/rates/create_area_rate
 * __Request headers:__
 ```
-authorization: Bearer BXYp5SvwJQ7vN-63dpW3S1AETaSx8rAi_UCwNPo9eN4=
+authorization: Bearer mP4CJ8US1YCspNw1bFqqXR765P7cvWUJBR7lA4jwDNE=
 accept: application/json
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
@@ -2226,8 +2228,8 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3ifd_vQyjQAADLE
-location: /api/rates/348291f5-8d1f-4020-95a9-b6e6c6796fd8
+x-request-id: FzB6BWtulX5NPWQAADVB
+location: /api/rates/6fe28a61-2119-4c5a-b59c-0f806faf7bb5
 ```
 * __Response body:__
 ```json
@@ -2265,7 +2267,7 @@ location: /api/rates/348291f5-8d1f-4020-95a9-b6e6c6796fd8
     "fixed_rate_comfort": 43,
     "fixed_rate_familiar": 44,
     "fixed_rate_standard": 42,
-    "id": "348291f5-8d1f-4020-95a9-b6e6c6796fd8",
+    "id": "6fe28a61-2119-4c5a-b59c-0f806faf7bb5",
     "name": "some name",
     "rate_per_km_comfort": null,
     "rate_per_km_familiar": null,
@@ -2281,10 +2283,10 @@ location: /api/rates/348291f5-8d1f-4020-95a9-b6e6c6796fd8
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/rates/348291f5-8d1f-4020-95a9-b6e6c6796fd8
+* __Path:__ /api/rates/6fe28a61-2119-4c5a-b59c-0f806faf7bb5
 * __Request headers:__
 ```
-authorization: Bearer BXYp5SvwJQ7vN-63dpW3S1AETaSx8rAi_UCwNPo9eN4=
+authorization: Bearer mP4CJ8US1YCspNw1bFqqXR765P7cvWUJBR7lA4jwDNE=
 accept: application/json
 ```
 
@@ -2294,7 +2296,7 @@ accept: application/json
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3jPU3_QyjQAACuB
+x-request-id: FzB6BWud5uNNPWQAADVh
 ```
 * __Response body:__
 ```json
@@ -2338,7 +2340,7 @@ x-request-id: FzAzo3jPU3_QyjQAACuB
     "fixed_rate_comfort": 43,
     "fixed_rate_familiar": 44,
     "fixed_rate_standard": 42,
-    "id": "348291f5-8d1f-4020-95a9-b6e6c6796fd8",
+    "id": "6fe28a61-2119-4c5a-b59c-0f806faf7bb5",
     "name": "some name",
     "rate_per_km_comfort": null,
     "rate_per_km_familiar": null,
@@ -2357,7 +2359,7 @@ x-request-id: FzAzo3jPU3_QyjQAACuB
 * __Path:__ /api/rates/create_area_rate
 * __Request headers:__
 ```
-authorization: Bearer VEbKPO7Mog2lkFXOm2zujRdQQQJ_5v9ovRCXps3K6vs=
+authorization: Bearer C7MgPsgV-5goTl6ou23Y8zwVZ3g-9v95zJXjgb2pY7c=
 accept: application/json
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
@@ -2381,7 +2383,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3tC2M0la54AADTk
+x-request-id: FzB6BWrSeB129hIAADQh
 ```
 * __Response body:__
 ```json
@@ -2411,10 +2413,10 @@ x-request-id: FzAzo3tC2M0la54AADTk
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/rates/update_time_rate/28d6947d-881e-42e1-bc93-3d39b49b4453
+* __Path:__ /api/rates/update_time_rate/7ec86f61-545f-413d-928d-ef13c0f428fe
 * __Request headers:__
 ```
-authorization: Bearer op99TcdIurFjUWCzb3BIFgPRNPGNnnl1oYPlvhtNfr0=
+authorization: Bearer dUwOmH0THye4538NOfrl0W7BNo9SILeeTnrhv2fr6R0=
 accept: application/json
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
@@ -2439,7 +2441,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3uMgOt2iR4AADVk
+x-request-id: FzB6BWxN_p5fiwMAADaB
 ```
 * __Response body:__
 ```json
@@ -2451,7 +2453,7 @@ x-request-id: FzAzo3uMgOt2iR4AADVk
     "fixed_rate_comfort": null,
     "fixed_rate_familiar": null,
     "fixed_rate_standard": null,
-    "id": "28d6947d-881e-42e1-bc93-3d39b49b4453",
+    "id": "7ec86f61-545f-413d-928d-ef13c0f428fe",
     "name": "some updated name",
     "rate_per_km_comfort": 44,
     "rate_per_km_familiar": 45,
@@ -2467,10 +2469,10 @@ x-request-id: FzAzo3uMgOt2iR4AADVk
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/rates/28d6947d-881e-42e1-bc93-3d39b49b4453
+* __Path:__ /api/rates/7ec86f61-545f-413d-928d-ef13c0f428fe
 * __Request headers:__
 ```
-authorization: Bearer op99TcdIurFjUWCzb3BIFgPRNPGNnnl1oYPlvhtNfr0=
+authorization: Bearer dUwOmH0THye4538NOfrl0W7BNo9SILeeTnrhv2fr6R0=
 accept: application/json
 ```
 
@@ -2480,7 +2482,7 @@ accept: application/json
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3uz_SZ2iR4AAC0h
+x-request-id: FzB6BWx7bCBfiwMAADah
 ```
 * __Response body:__
 ```json
@@ -2492,7 +2494,7 @@ x-request-id: FzAzo3uz_SZ2iR4AAC0h
     "fixed_rate_comfort": null,
     "fixed_rate_familiar": null,
     "fixed_rate_standard": null,
-    "id": "28d6947d-881e-42e1-bc93-3d39b49b4453",
+    "id": "7ec86f61-545f-413d-928d-ef13c0f428fe",
     "name": "some updated name",
     "rate_per_km_comfort": 44,
     "rate_per_km_familiar": 45,
@@ -2508,10 +2510,10 @@ x-request-id: FzAzo3uz_SZ2iR4AAC0h
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/rates/update_time_rate/4dc2dfdb-b8d5-4463-88e2-a9449d1f06d0
+* __Path:__ /api/rates/update_time_rate/20273f9b-ac6d-49dd-9ffd-4a658ab950d0
 * __Request headers:__
 ```
-authorization: Bearer UywoNplOTRnc5-dtAesuHVPuOozrAzYs8f9KKa03ayI=
+authorization: Bearer allK7VLQrsd4StphFT5g2i3-j_IUU2dRD0vVCLQHsaA=
 accept: application/json
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
@@ -2535,7 +2537,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo31tXHx4iQMAAC9B
+x-request-id: FzB6BWhH0htkp4IAADDh
 ```
 * __Response body:__
 ```json
@@ -2556,10 +2558,10 @@ x-request-id: FzAzo31tXHx4iQMAAC9B
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/rates/update_area_rate/28ccde75-4ae0-488e-8dc5-8b1cf54358c9
+* __Path:__ /api/rates/update_area_rate/a052a7bc-5dee-4726-919f-bd26561119a0
 * __Request headers:__
 ```
-authorization: Bearer mQw59E620z3RNk99ZohdpHKIbqypUz-VAp0oj-4-OFY=
+authorization: Bearer dUhw_flo3Pn9wjdvMd-NMlDZTLo4MnLFeNS_Vj0ssKg=
 accept: application/json
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
@@ -2609,7 +2611,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3yoefiTB24AAC3h
+x-request-id: FzB6BWvlyhcidvwAADXh
 ```
 * __Response body:__
 ```json
@@ -2647,7 +2649,7 @@ x-request-id: FzAzo3yoefiTB24AAC3h
     "fixed_rate_comfort": 44,
     "fixed_rate_familiar": 45,
     "fixed_rate_standard": 43,
-    "id": "28ccde75-4ae0-488e-8dc5-8b1cf54358c9",
+    "id": "a052a7bc-5dee-4726-919f-bd26561119a0",
     "name": "some updated name",
     "rate_per_km_comfort": null,
     "rate_per_km_familiar": null,
@@ -2663,10 +2665,10 @@ x-request-id: FzAzo3yoefiTB24AAC3h
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/rates/28ccde75-4ae0-488e-8dc5-8b1cf54358c9
+* __Path:__ /api/rates/a052a7bc-5dee-4726-919f-bd26561119a0
 * __Request headers:__
 ```
-authorization: Bearer mQw59E620z3RNk99ZohdpHKIbqypUz-VAp0oj-4-OFY=
+authorization: Bearer dUhw_flo3Pn9wjdvMd-NMlDZTLo4MnLFeNS_Vj0ssKg=
 accept: application/json
 ```
 
@@ -2676,7 +2678,7 @@ accept: application/json
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3zFGbyTB24AAC4B
+x-request-id: FzB6BWwCkP0idvwAADYB
 ```
 * __Response body:__
 ```json
@@ -2720,7 +2722,7 @@ x-request-id: FzAzo3zFGbyTB24AAC4B
     "fixed_rate_comfort": 44,
     "fixed_rate_familiar": 45,
     "fixed_rate_standard": 43,
-    "id": "28ccde75-4ae0-488e-8dc5-8b1cf54358c9",
+    "id": "a052a7bc-5dee-4726-919f-bd26561119a0",
     "name": "some updated name",
     "rate_per_km_comfort": null,
     "rate_per_km_familiar": null,
@@ -2736,10 +2738,10 @@ x-request-id: FzAzo3zFGbyTB24AAC4B
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/rates/update_area_rate/73257ae6-1a93-4ad6-9445-3ff08cc5cbd3
+* __Path:__ /api/rates/update_area_rate/1488d173-2d1c-413d-8611-cb1af2a64426
 * __Request headers:__
 ```
-authorization: Bearer Ykpm5zVtKYCJ7ux7kAd_diSW4b6UlOoX0TsaHx_XlMc=
+authorization: Bearer DoCf0JJujEt2MgZTq6q6qk7Rh2Koa8i7vb1xaT4iKFo=
 accept: application/json
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
@@ -2763,7 +2765,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3wEnEI2OOcAAC1B
+x-request-id: FzB6BWqTf6YtKUsAADOh
 ```
 * __Response body:__
 ```json
@@ -2787,7 +2789,7 @@ x-request-id: FzAzo3wEnEI2OOcAAC1B
 * __Path:__ /api/rates/calculate
 * __Request headers:__
 ```
-authorization: Bearer G_cKoQSKDuroGJLLptjp7XvbVbp8OL5dX-SVkMY8By8=
+authorization: Bearer 8YLupi5OIAduZvmlavAQPuEaWXDdffmXyLXvNBth9y4=
 accept: application/json
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
@@ -2813,7 +2815,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3lWB6XmVJEAADME
+x-request-id: FzB6BWln6tpb82YAADIB
 ```
 * __Response body:__
 ```json
@@ -2831,7 +2833,7 @@ x-request-id: FzAzo3lWB6XmVJEAADME
 * __Path:__ /api/rates/calculate
 * __Request headers:__
 ```
-authorization: Bearer z8TmHmEF84W2Df06BYMcbPKkQ7ionpjY-49bBqPVLxk=
+authorization: Bearer 01MRehTbZggaGFc7EODTyzp4BoaSs87VZLbSfbnZzWI=
 accept: application/json
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
@@ -2857,7 +2859,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3pEvtZfZAsAACyh
+x-request-id: FzB6BWjo3oIoK_8AAB-E
 ```
 * __Response body:__
 ```json
@@ -2875,7 +2877,7 @@ x-request-id: FzAzo3pEvtZfZAsAACyh
 * __Path:__ /api/rates/calculate
 * __Request headers:__
 ```
-authorization: Bearer BnEHXOVOFKTwd4tT_QrMmjZAKY-EabQuyF6wWBn8rJE=
+authorization: Bearer kmbGnp0OQxKb8MYEqGbmL8eMjV18whMV5URbpcVpqDM=
 accept: application/json
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
@@ -2901,7 +2903,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3rKD0DgC3cAADRE
+x-request-id: FzB6BWpC22kJd8sAADMh
 ```
 * __Response body:__
 ```json
@@ -2928,10 +2930,10 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```json
 {
   "customer": {
-    "email": "user-576460752303419837@example.com",
-    "name": "user-576460752303419805",
+    "email": "user-576460752303416093@example.com",
+    "name": "user-576460752303416061",
     "password": "hello world!",
-    "phone": "3748"
+    "phone": "7492"
   }
 }
 ```
@@ -2942,14 +2944,14 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo1e2KyG9nP4AAA7D
+x-request-id: FzB6BUnykouVeuQAAB1j
 ```
 * __Response body:__
 ```json
 {
   "data": {
-    "id": "5eeee2b5-b3ba-45ba-bb62-f709a9731860",
-    "token": "hvfu4bGkFGPkb6auycsgqQif4vooJyYlEPYJJ9K3z94="
+    "id": "0fde6cff-b938-4d63-a2bf-23f88becb449",
+    "token": "DRe4bbp8ZEsxZ4uBCNP9_QoUoXE_FhfrLmp9HtUZ9sA="
   }
 }
 ```
@@ -2980,7 +2982,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo1eajgt-ItAAABjk
+x-request-id: FzB6BUm_FWGr2koAABcC
 ```
 * __Response body:__
 ```json
@@ -3016,12 +3018,12 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```json
 {
   "driver": {
-    "email": "user-576460752303419199@example.com",
+    "email": "user-576460752303418783@example.com",
     "identity_card": "identity-card-abc",
     "license": "driver-license-abc",
-    "name": "user-576460752303419167",
+    "name": "user-576460752303418751",
     "password": "hello world!",
-    "phone": "4386"
+    "phone": "4802"
   }
 }
 ```
@@ -3032,14 +3034,14 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo1Vp7LNxuuIAABFB
+x-request-id: FzB6BUhG0NDQ5agAABLh
 ```
 * __Response body:__
 ```json
 {
   "data": {
-    "id": "77fac2d0-11a2-416a-ac53-1f3802ff4dfe",
-    "token": "04-EApgNlDO1KhvnuT0frBMqFodfb6Qy6THlPm_q-68="
+    "id": "57770a7c-452f-4dca-87b7-06d5b197b476",
+    "token": "D8Xa3bUUkGlmyo7clDC5FxR5pUPE7pv0ubPbni3tBsQ="
   }
 }
 ```
@@ -3058,10 +3060,10 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```json
 {
   "driver": {
-    "email": "user-576460752303418942@example.com",
-    "name": "user-576460752303418910",
+    "email": "user-576460752303418365@example.com",
+    "name": "user-576460752303418333",
     "password": "hello world!",
-    "phone": "4643"
+    "phone": "5220"
   }
 }
 ```
@@ -3072,7 +3074,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo02En3L0f5kAABJC
+x-request-id: FzB6BT--y5HYSn4AABSD
 ```
 * __Response body:__
 ```json
@@ -3102,10 +3104,10 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```json
 {
   "admin": {
-    "email": "user-576460752303417404@example.com",
-    "name": "user-576460752303417372",
+    "email": "user-576460752303420316@example.com",
+    "name": "user-576460752303420284",
     "password": "hello world!",
-    "phone": "6181"
+    "phone": "3269"
   }
 }
 ```
@@ -3116,7 +3118,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo1bwGIeD4IsAABhE
+x-request-id: FzB6BT9qApYVUukAAAzk
 ```
 * __Response body:__
 ```json
@@ -3151,7 +3153,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo1dyk2gqp9EAABjE
+x-request-id: FzB6BUl-mWEEdQ0AABbi
 ```
 * __Response body:__
 ```json
@@ -3188,7 +3190,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 * __Request body:__
 ```json
 {
-  "email": "user-576460752303417468@example.com"
+  "email": "user-576460752303418943@example.com"
 }
 ```
 
@@ -3198,7 +3200,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo1cl-5C_YRMAABhk
+x-request-id: FzB6BUeqa453Ud8AABJB
 ```
 * __Response body:__
 ```json
@@ -3230,7 +3232,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo0-2JES3lkoAAA9h
+x-request-id: FzB6BUZghaF5o30AABSC
 ```
 * __Response body:__
 ```json
@@ -3244,7 +3246,7 @@ x-request-id: FzAzo0-2JES3lkoAAA9h
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/reset_password/nxptg9Cz1LYrMcbMrM2VkSkaMaSSBXrWmt7QkMWkREQ
+* __Path:__ /api/reset_password/ySoRP0BaOpmk5yYO9wDD79t01cqjF9HCPnCjD-5KAf0
 * __Request headers:__
 ```
 accept: application/json
@@ -3264,7 +3266,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo065_qkOo5AAABPC
+x-request-id: FzB6BUXBJxLFVTYAABOi
 ```
 * __Response body:__
 ```json
@@ -3277,7 +3279,7 @@ x-request-id: FzAzo065_qkOo5AAABPC
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/reset_password/JJ1Qi1lnDwP-l3xsTmpErB3z_pr1G5a5SMgpdz3fUtc
+* __Path:__ /api/reset_password/HdRyIf4CalZjITkTSKUdEJaVVkCtb_6TblrK9F3nh1w
 * __Request headers:__
 ```
 accept: application/json
@@ -3297,7 +3299,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo1CD4mkJH5oAAA-B
+x-request-id: FzB6BT6BcnBAf58AABKj
 ```
 * __Response body:__
 ```json
@@ -3329,7 +3331,7 @@ accept: application/json
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo1ZYPL-5zl0AABYi
+x-request-id: FzB6BUbToc8Z55gAAA6k
 ```
 * __Response body:__
 ```json
@@ -3352,7 +3354,7 @@ x-request-id: FzAzo1ZYPL-5zl0AABYi
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer 268sCqItcIgobPKufPEkTnwFyskJWK8159P1birVlog=
+authorization: Bearer L2FR0gGU_QXCQmyyjpo_DYuGuR09KR6ONQuvOINzc-U=
 ```
 
 ##### Response
@@ -3361,7 +3363,7 @@ authorization: Bearer 268sCqItcIgobPKufPEkTnwFyskJWK8159P1birVlog=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo1gbMaJwUnsAAA7j
+x-request-id: FzB6BV1WSgG-W7UAACPC
 ```
 * __Response body:__
 ```json
@@ -3373,7 +3375,7 @@ x-request-id: FzAzo1gbMaJwUnsAAA7j
       "driver_rating": null,
       "driver_route": null,
       "end_time": null,
-      "id": "ae6dea59-22c4-49fb-9a53-fab28c262a44",
+      "id": "9e94d875-3c47-46ce-b1aa-8f687deb0b29",
       "start_time": null
     },
     {
@@ -3382,7 +3384,7 @@ x-request-id: FzAzo1gbMaJwUnsAAA7j
       "driver_rating": null,
       "driver_route": null,
       "end_time": null,
-      "id": "da0acff0-b0ec-4741-8e8e-df28fe05dd56",
+      "id": "44e112c4-3ed1-461b-a7dd-10721851769b",
       "start_time": null
     },
     {
@@ -3391,7 +3393,7 @@ x-request-id: FzAzo1gbMaJwUnsAAA7j
       "driver_rating": null,
       "driver_route": null,
       "end_time": null,
-      "id": "8ddf08ba-de19-4781-8454-3443c19c2764",
+      "id": "d1389b57-69d3-46c0-b082-5b2f3a4daae9",
       "start_time": null
     }
   ]
@@ -3406,7 +3408,7 @@ x-request-id: FzAzo1gbMaJwUnsAAA7j
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer 5QJ9yKxwkB5Oaz_T-s1JyK0Eqzoj5ML4Qnv7fNDSPfM=
+authorization: Bearer 2cnhIwhToNpWsqAEnpCdzXE4QpAXu_fS_7XFotJXqLs=
 ```
 
 ##### Response
@@ -3415,7 +3417,7 @@ authorization: Bearer 5QJ9yKxwkB5Oaz_T-s1JyK0Eqzoj5ML4Qnv7fNDSPfM=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2iqiGNXXcIAACgE
+x-request-id: FzB6BVrkvwE75KUAACQh
 ```
 * __Response body:__
 ```json
@@ -3427,7 +3429,7 @@ x-request-id: FzAzo2iqiGNXXcIAACgE
       "driver_rating": null,
       "driver_route": null,
       "end_time": null,
-      "id": "ec70ed9f-444c-4bbe-9332-9e79fab3498e",
+      "id": "28fd7321-e7ca-40bd-aa3c-f28ef2621a2a",
       "start_time": null
     }
   ]
@@ -3442,7 +3444,7 @@ x-request-id: FzAzo2iqiGNXXcIAACgE
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer IED8ceBMWK6zG0GSYEpYDwBdUW1y9SL7QJsyAirgWsg=
+authorization: Bearer TQWhPl_fNRVAmRmEl8fWzhhV6hmN2hCVdK6rgghcCUk=
 ```
 
 ##### Response
@@ -3451,7 +3453,7 @@ authorization: Bearer IED8ceBMWK6zG0GSYEpYDwBdUW1y9SL7QJsyAirgWsg=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo209R8gJlUgAACKB
+x-request-id: FzB6BWJF-rGWlkYAABrE
 ```
 * __Response body:__
 ```json
@@ -3463,7 +3465,7 @@ x-request-id: FzAzo209R8gJlUgAACKB
       "driver_rating": null,
       "driver_route": null,
       "end_time": null,
-      "id": "83925e80-4f81-4494-b05e-9f47d277257e",
+      "id": "050c3faf-ccd3-4424-89a1-fd5e8dfe024e",
       "start_time": null
     },
     {
@@ -3472,7 +3474,7 @@ x-request-id: FzAzo209R8gJlUgAACKB
       "driver_rating": null,
       "driver_route": null,
       "end_time": null,
-      "id": "b7d8701d-133a-4fbe-a6bf-8633df8ee0c5",
+      "id": "3749f78f-4e13-4673-b18b-1e861cb1d2f8",
       "start_time": null
     }
   ]
@@ -3484,11 +3486,11 @@ x-request-id: FzAzo209R8gJlUgAACKB
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/rides/4cff6dfe-cec8-492e-b1a3-49aca03e2b32
+* __Path:__ /api/rides/025931ab-274a-4f7d-8caa-2b028fcf8b72
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer QkB0iBg4y8hix8msKLb8wvc15bzKxkNR5jBd2yExImo=
+authorization: Bearer w1fplSzDvOggI9zgijiTzrVTDsPfHcOv8IJDNl4A-LE=
 ```
 
 ##### Response
@@ -3497,7 +3499,7 @@ authorization: Bearer QkB0iBg4y8hix8msKLb8wvc15bzKxkNR5jBd2yExImo=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3NAIWVKLHwAABxD
+x-request-id: FzB6BUsOXlNrZNAAAB8D
 ```
 * __Response body:__
 ```json
@@ -3508,7 +3510,7 @@ x-request-id: FzAzo3NAIWVKLHwAABxD
     "driver_rating": null,
     "driver_route": null,
     "end_time": null,
-    "id": "4cff6dfe-cec8-492e-b1a3-49aca03e2b32",
+    "id": "025931ab-274a-4f7d-8caa-2b028fcf8b72",
     "start_time": null
   }
 }
@@ -3518,11 +3520,11 @@ x-request-id: FzAzo3NAIWVKLHwAABxD
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/rides/0ac60f93-8027-42ac-8558-75dd2cf203e6
+* __Path:__ /api/rides/75da1810-97e3-4e40-ac1c-2caa45809594
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer QkB0iBg4y8hix8msKLb8wvc15bzKxkNR5jBd2yExImo=
+authorization: Bearer w1fplSzDvOggI9zgijiTzrVTDsPfHcOv8IJDNl4A-LE=
 ```
 
 ##### Response
@@ -3531,7 +3533,7 @@ authorization: Bearer QkB0iBg4y8hix8msKLb8wvc15bzKxkNR5jBd2yExImo=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3NYpFtKLHwAABxj
+x-request-id: FzB6BUtl5y9rZNAAABii
 ```
 * __Response body:__
 ```json
@@ -3542,7 +3544,7 @@ x-request-id: FzAzo3NYpFtKLHwAABxj
     "driver_rating": null,
     "driver_route": null,
     "end_time": null,
-    "id": "0ac60f93-8027-42ac-8558-75dd2cf203e6",
+    "id": "75da1810-97e3-4e40-ac1c-2caa45809594",
     "start_time": null
   }
 }
@@ -3552,11 +3554,11 @@ x-request-id: FzAzo3NYpFtKLHwAABxj
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/rides/47b2c86f-5b54-4c60-834a-20f06dc901a5
+* __Path:__ /api/rides/b7bf2695-8634-4ba6-a231-a2490df4917f
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer 5lsc2qayBlDilpSCd4hBaYnk5umXJsT8OxRTL4PlK_o=
+authorization: Bearer tfzqYzcFz5SVVYYb49hqiDPUpvzHdeRSa_6GNIF_FCw=
 ```
 
 ##### Response
@@ -3565,7 +3567,7 @@ authorization: Bearer 5lsc2qayBlDilpSCd4hBaYnk5umXJsT8OxRTL4PlK_o=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3GuSnIlHG4AADAk
+x-request-id: FzB6BV9OImfRuYcAAChB
 ```
 * __Response body:__
 ```json
@@ -3576,7 +3578,7 @@ x-request-id: FzAzo3GuSnIlHG4AADAk
     "driver_rating": null,
     "driver_route": null,
     "end_time": null,
-    "id": "47b2c86f-5b54-4c60-834a-20f06dc901a5",
+    "id": "b7bf2695-8634-4ba6-a231-a2490df4917f",
     "start_time": null
   }
 }
@@ -3586,11 +3588,11 @@ x-request-id: FzAzo3GuSnIlHG4AADAk
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/rides/aa9367e4-8d05-459b-bce6-6622d75c6d03
+* __Path:__ /api/rides/cfd62f99-941f-41ba-9864-b6bf905a3787
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer mVNufYA-IWVWI4j7q8N-gfetKSkHn7HrUz9EbGSwPjI=
+authorization: Bearer CIg_t_9gd8n1XI9ChE4n22UUb9ztRrsUDWAzeP-GS5g=
 ```
 
 ##### Response
@@ -3599,7 +3601,7 @@ authorization: Bearer mVNufYA-IWVWI4j7q8N-gfetKSkHn7HrUz9EbGSwPjI=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2-D1hl-uIsAAC3E
+x-request-id: FzB6BVfm6QYnhiAAACYj
 ```
 * __Response body:__
 ```json
@@ -3610,7 +3612,7 @@ x-request-id: FzAzo2-D1hl-uIsAAC3E
     "driver_rating": null,
     "driver_route": null,
     "end_time": null,
-    "id": "aa9367e4-8d05-459b-bce6-6622d75c6d03",
+    "id": "cfd62f99-941f-41ba-9864-b6bf905a3787",
     "start_time": null
   }
 }
@@ -3621,11 +3623,11 @@ x-request-id: FzAzo2-D1hl-uIsAAC3E
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/rides/d67ca491-91f4-47ed-8dd4-74f4e1a643a3
+* __Path:__ /api/rides/d4ba078b-9fb2-4b82-984d-54695052c37b
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer ElA4bH1Xxyi7cY6zYu0iGouIGSqRNudxpB_HtEbvikM=
+authorization: Bearer yX7lVO_OLgYP-Hzzh8x_HyqBX2b7CSgZdwzg6JzpB5E=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -3657,7 +3659,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo16KY7hlp5oAAB5E
+x-request-id: FzB6BVKuW_nPaF8AAB1C
 ```
 * __Response body:__
 ```json
@@ -3684,7 +3686,7 @@ x-request-id: FzAzo16KY7hlp5oAAB5E
       "type": "LineString"
     },
     "end_time": null,
-    "id": "d67ca491-91f4-47ed-8dd4-74f4e1a643a3",
+    "id": "d4ba078b-9fb2-4b82-984d-54695052c37b",
     "start_time": null
   }
 }
@@ -3694,11 +3696,11 @@ x-request-id: FzAzo16KY7hlp5oAAB5E
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/rides/7d0726fe-c834-4004-b850-28fadf11be4f
+* __Path:__ /api/rides/c93b80b7-6ea6-419f-9c8b-79d7bf0e4314
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer YGd6k8AEhAZGKtMPmKP6XG43FzZlezVp0Xh0V3-H9II=
+authorization: Bearer xIh5ueMHmDcSVEYdK7B0nVnk2iuAY5D-NuLD-sG3v3g=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -3730,7 +3732,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo1tZpK9U4p4AAA9D
+x-request-id: FzB6BU6gyFCUojkAABPB
 ```
 * __Response body:__
 ```json
@@ -3757,7 +3759,7 @@ x-request-id: FzAzo1tZpK9U4p4AAA9D
     "driver_rating": null,
     "driver_route": null,
     "end_time": null,
-    "id": "7d0726fe-c834-4004-b850-28fadf11be4f",
+    "id": "c93b80b7-6ea6-419f-9c8b-79d7bf0e4314",
     "start_time": null
   }
 }
@@ -3767,11 +3769,11 @@ x-request-id: FzAzo1tZpK9U4p4AAA9D
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/rides/8ecc4882-b843-421b-8919-9003df90c347
+* __Path:__ /api/rides/3518cd6a-2f73-4268-8da4-cb96645a7cb1
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer lCeQjQGdtOccX38X9mveeSkDN2a5QVcxxzBEkDACKYw=
+authorization: Bearer uZuQnb3Q_Dwr0P--NcZAZ3DGtc8UAAoPwk1JL2wWhgw=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -3787,7 +3789,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2D5pVSKPSQAABjh
+x-request-id: FzB6BU0mGDmGT3MAABoC
 ```
 * __Response body:__
 ```json
@@ -3798,7 +3800,7 @@ x-request-id: FzAzo2D5pVSKPSQAABjh
     "driver_rating": 5,
     "driver_route": null,
     "end_time": null,
-    "id": "8ecc4882-b843-421b-8919-9003df90c347",
+    "id": "3518cd6a-2f73-4268-8da4-cb96645a7cb1",
     "start_time": null
   }
 }
@@ -3808,11 +3810,11 @@ x-request-id: FzAzo2D5pVSKPSQAABjh
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/rides/31b1e89b-f56e-4d7b-bb04-e438ef3c7986
+* __Path:__ /api/rides/97c45544-678e-4044-9378-c49abc469d2c
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer N0XX4lAx1--HNfSIsObWGhuNlQrXTS9YPOfQtCodFbI=
+authorization: Bearer Vo7cxqWKWsKuoHPPUvHGDAPSHd-S7OzGkkU1gH6QX9s=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -3828,7 +3830,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2OLr0dDboEAACOE
+x-request-id: FzB6BVVxvRlpw9QAACHi
 ```
 * __Response body:__
 ```json
@@ -3839,7 +3841,7 @@ x-request-id: FzAzo2OLr0dDboEAACOE
     "driver_rating": null,
     "driver_route": null,
     "end_time": null,
-    "id": "31b1e89b-f56e-4d7b-bb04-e438ef3c7986",
+    "id": "97c45544-678e-4044-9378-c49abc469d2c",
     "start_time": null
   }
 }
@@ -3855,7 +3857,7 @@ x-request-id: FzAzo2OLr0dDboEAACOE
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer j4VI07dAV0hDjHltHqCZexKT7YhohK5rqj6EcjbuJcY=
+authorization: Bearer RLrktxQwiCfWjGpj85Er5Q4DDyD66quLtitd37VdEIQ=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -3869,7 +3871,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
       ],
       "type": "Point"
     },
-    "ride_request_id": "86413994-fcd4-438e-8e25-4bdca107446e",
+    "ride_request_id": "ecf57c3a-6d53-4681-a95f-9f8dae7cea4e",
     "start_location": {
       "coordinates": [
         30.2,
@@ -3887,13 +3889,13 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3b0AsF6b7EAAB1j
+x-request-id: FzB6BWa03LYG5mQAAC7h
 ```
 * __Response body:__
 ```json
 {
   "data": {
-    "id": "45037f3d-dad1-4934-b820-a70ad62a7a6e",
+    "id": "ec06db7e-41bd-4766-b258-2cdeabd4dd1f",
     "start_location": {
       "coordinates": [
         30.2,
@@ -3913,7 +3915,7 @@ x-request-id: FzAzo3b0AsF6b7EAAB1j
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer KAfx081axYEcUswYJ44CKcRUqYJR5hEtAkEf3faIaAU=
+authorization: Bearer 4lPqdiwUua3FaR_qdAMkwFKZ0Beoq45WUMt1BDWg7_g=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -3932,7 +3934,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3aNPaHk9KwAACoh
+x-request-id: FzB6BWY8J-_c1FcAAC5B
 ```
 * __Response body:__
 ```json
@@ -3953,11 +3955,11 @@ x-request-id: FzAzo3aNPaHk9KwAACoh
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/rides/accept/4b6080b8-d9e4-4cdb-a161-2a1305532b7d
+* __Path:__ /api/rides/accept/bd577731-5e79-48f9-84a7-3590e92eee52
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer l9YPwHat9JLz5Y-yplL8Pfl---461umMOgwgocfBKpM=
+authorization: Bearer T0ay_fl6_ZSSoQRQIpwBjRea2M-33OGiqfp9B5VZ4I0=
 ```
 
 ##### Response
@@ -3966,13 +3968,13 @@ authorization: Bearer l9YPwHat9JLz5Y-yplL8Pfl---461umMOgwgocfBKpM=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3d_h6PVod4AACth
+x-request-id: FzB6BWXaA2tJSrMAAC3B
 ```
 * __Response body:__
 ```json
 {
   "data": {
-    "id": "4b6080b8-d9e4-4cdb-a161-2a1305532b7d",
+    "id": "bd577731-5e79-48f9-84a7-3590e92eee52",
     "start_location": {
       "coordinates": [
         30.2,
@@ -3994,11 +3996,11 @@ x-request-id: FzAzo3d_h6PVod4AACth
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/rides/accept/3168e855-ba71-4f67-8c69-6eda8955b39a
+* __Path:__ /api/rides/accept/3f5efd78-8995-4f7f-8c43-70cbd3ce020c
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer DQrKMI5c1tbH-d5IYbAGIvs7xyDt2x9Fz_vVFIYyo5Q=
+authorization: Bearer 1BgGz6azPZVXcnrGZIAKjsdXldnBaQVoKH-GDA8cfLc=
 ```
 
 ##### Response
@@ -4007,13 +4009,13 @@ authorization: Bearer DQrKMI5c1tbH-d5IYbAGIvs7xyDt2x9Fz_vVFIYyo5Q=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3gciIZhZzoAADIk
+x-request-id: FzB6BWdCJ2KRVCUAAB8E
 ```
 * __Response body:__
 ```json
 {
   "data": {
-    "id": "3168e855-ba71-4f67-8c69-6eda8955b39a",
+    "id": "3f5efd78-8995-4f7f-8c43-70cbd3ce020c",
     "start_location": {
       "coordinates": [
         30.2,
@@ -4035,11 +4037,11 @@ x-request-id: FzAzo3gciIZhZzoAADIk
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/rides/accept/3168e855-ba71-4f67-8c69-6eda8955b39a
+* __Path:__ /api/rides/accept/3f5efd78-8995-4f7f-8c43-70cbd3ce020c
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer DQrKMI5c1tbH-d5IYbAGIvs7xyDt2x9Fz_vVFIYyo5Q=
+authorization: Bearer 1BgGz6azPZVXcnrGZIAKjsdXldnBaQVoKH-GDA8cfLc=
 ```
 
 ##### Response
@@ -4048,7 +4050,7 @@ authorization: Bearer DQrKMI5c1tbH-d5IYbAGIvs7xyDt2x9Fz_vVFIYyo5Q=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3hNOSlhZzoAADJE
+x-request-id: FzB6BWd_kyiRVCUAAC-h
 ```
 * __Response body:__
 ```json
@@ -4076,7 +4078,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 * __Request body:__
 ```json
 {
-  "email": "user-576460752303419421@example.com",
+  "email": "user-576460752303416574@example.com",
   "password": "hello world!"
 }
 ```
@@ -4087,13 +4089,13 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo1zIMmrO8KsAABTh
+x-request-id: FzB6BU4VN5wCHCMAACBj
 ```
 * __Response body:__
 ```json
 {
   "data": {
-    "token": "m07xxxjjuCvwCk5Q83H2St_p1E7xOK4mAbSKzuFt9t0="
+    "token": "UP1R858VuW_Z6d-qLW5SPjMTz6dkPd1ydUzFTCeu66Y="
   }
 }
 ```
@@ -4111,7 +4113,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 * __Request body:__
 ```json
 {
-  "email": "user-576460752303419517@example.com",
+  "email": "user-576460752303416766@example.com",
   "password": "invalid_password"
 }
 ```
@@ -4122,7 +4124,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo1xnBvi2UOUAABbi
+x-request-id: FzB6BU2y5yQEuvIAABNB
 ```
 * __Response body:__
 ```json
@@ -4144,7 +4146,7 @@ x-request-id: FzAzo1xnBvi2UOUAABbi
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer n_KHDEl3fsEtdXiIPmKJGLTzk6AkY_IXjCZ_yuiZIi8=
+authorization: Bearer FNLFPpyh-83ndqrZCGvBcbQjgNcL57lhDQksI-Sru4k=
 ```
 
 ##### Response
@@ -4153,7 +4155,7 @@ authorization: Bearer n_KHDEl3fsEtdXiIPmKJGLTzk6AkY_IXjCZ_yuiZIi8=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo11zOoPvEIoAAB1k
+x-request-id: FzB6BU1CzZw467UAAB_j
 ```
 * __Response body:__
 ```json
@@ -4178,7 +4180,7 @@ accept: application/json
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo14jhr0-ygoAAB4k
+x-request-id: FzB6BU6wjz5a0MUAABPh
 ```
 * __Response body:__
 ```json
@@ -4197,7 +4199,7 @@ x-request-id: FzAzo14jhr0-ygoAAB4k
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer LT7rK9cJI9ABTU28MQY3IV4jkgs2QXOraJzfguMoaNc=
+authorization: Bearer PKFbuvhfPCfQVSvizI5IMakj9uXpcoX3AlXiDFChsCk=
 ```
 
 ##### Response
@@ -4206,17 +4208,17 @@ authorization: Bearer LT7rK9cJI9ABTU28MQY3IV4jkgs2QXOraJzfguMoaNc=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo225oPm9zqIAABjD
+x-request-id: FzB6BV3ollwlHG4AABak
 ```
 * __Response body:__
 ```json
 {
   "data": {
     "user": {
-      "email": "user-576460752303414750@example.com",
-      "id": "9d146840-cd22-426e-9db3-299fd9e56880",
-      "name": "user-576460752303414782",
-      "phone": "8771"
+      "email": "user-576460752303413311@example.com",
+      "id": "1c8b4f53-9b7b-43f7-9c26-eca0cefe2038",
+      "name": "user-576460752303413343",
+      "phone": "10210"
     }
   }
 }
@@ -4230,7 +4232,7 @@ x-request-id: FzAzo225oPm9zqIAABjD
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer i_-2Q2msEkW3_xSc6onnsdDRUel04IdzKdc4jDstRzw=
+authorization: Bearer pX9ZWXPXhnZe_tfZDNFdzMIfqhk31rKLTQal1j2SVIQ=
 ```
 
 ##### Response
@@ -4239,7 +4241,7 @@ authorization: Bearer i_-2Q2msEkW3_xSc6onnsdDRUel04IdzKdc4jDstRzw=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3IPKFTGZX4AABlD
+x-request-id: FzB6BVpNiYwgjXcAACkj
 ```
 * __Response body:__
 ```json
@@ -4247,14 +4249,16 @@ x-request-id: FzAzo3IPKFTGZX4AABlD
   "data": {
     "customer": {
       "home_location": null,
-      "id": "8741a732-6488-4070-a9b0-79089be5559d",
-      "work_location": null
+      "home_location_reverse_geocoding": null,
+      "id": "f14d7978-3467-4f4d-953f-8d4669e88f65",
+      "work_location": null,
+      "work_location_reverse_geocoding": null
     },
     "user": {
-      "email": "user-576460752303411100@example.com",
-      "id": "cb1dcee3-5404-489b-af60-775ce3f259c8",
-      "name": "user-576460752303411132",
-      "phone": "12421"
+      "email": "user-576460752303413117@example.com",
+      "id": "c1904dc4-3086-4efe-85e4-16501c84e94a",
+      "name": "user-576460752303413149",
+      "phone": "10404"
     }
   }
 }
@@ -4268,7 +4272,7 @@ x-request-id: FzAzo3IPKFTGZX4AABlD
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer yK80jL2TQhiHGWCgYSewv3WchnUHgSXaNQG2jda6gvM=
+authorization: Bearer AxkgihBoclx3xHt3LipetXkpPRjOOV94oI336PIIh00=
 ```
 
 ##### Response
@@ -4277,21 +4281,21 @@ authorization: Bearer yK80jL2TQhiHGWCgYSewv3WchnUHgSXaNQG2jda6gvM=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3EgX8UFRCAAACWB
+x-request-id: FzB6BV9MmAT-epsAABfk
 ```
 * __Response body:__
 ```json
 {
   "data": {
     "driver": {
-      "id": "d4cdc8a3-c2e5-4485-94f5-a4af58379dbc",
-      "license": "licence-576460752303413951"
+      "id": "d5919d1c-bc94-4ece-a8be-2d1e3e4b14a4",
+      "license": "licence-576460752303414014"
     },
     "user": {
-      "email": "user-576460752303417085@example.com",
-      "id": "f275e3be-23fa-4d70-b1d0-8e04fb2ac874",
-      "name": "user-576460752303417117",
-      "phone": "6436"
+      "email": "user-576460752303414078@example.com",
+      "id": "d16e10da-5d2d-4c22-a4a6-986dc11066eb",
+      "name": "user-576460752303414110",
+      "phone": "9443"
     }
   }
 }
@@ -4306,7 +4310,7 @@ x-request-id: FzAzo3EgX8UFRCAAACWB
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer Kxulc4F8AQh5h8cBE3ewioDkgQAa8KWLzAEi6FRI1o8=
+authorization: Bearer JHFSdv5oZflgOI9kIFgPwmP6XrfTJ1X_twZtH-pK5Hc=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -4327,14 +4331,14 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo25YsNrdCn0AACzk
+x-request-id: FzB6BVsrjzHRDQQAABQE
 ```
 * __Response body:__
 ```json
 {
   "data": {
     "message": "Password updated successfully.",
-    "token": "kSnMp4cPDVLPACbWX26tYObBmmd3oNo30OqDJUihTnM="
+    "token": "nqFKspu2qlWqIQc3S7hMGONw6b7SQXn1Os5sjCPLfOs="
   }
 }
 ```
@@ -4347,7 +4351,7 @@ x-request-id: FzAzo25YsNrdCn0AACzk
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer 41VtrgLSQEhdtkohALjEUqlNlgCdINhbBNDfRvRTLrU=
+authorization: Bearer tIn1iRYC_m6QlgcJO7h_XKQqF73en9H8JLkz2SXe-HM=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -4368,7 +4372,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2supe0_SxoAACqk
+x-request-id: FzB6BV-uweWH2fMAACjB
 ```
 * __Response body:__
 ```json
@@ -4395,7 +4399,7 @@ x-request-id: FzAzo2supe0_SxoAACqk
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer Z3njp_16Psekqxs4ucbvUJZk2CfXrJoPRWzSchCf-yM=
+authorization: Bearer Di4LOyLxDLjrllTAdEerdlvMSbxbIPJTMOCaMPCLmP0=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -4403,7 +4407,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 {
   "action": "update_email",
   "current_password": "hello world!",
-  "email": "user-576460752303414142@example.com"
+  "email": "user-576460752303412253@example.com"
 }
 ```
 
@@ -4413,7 +4417,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2-Mg4H1VzgAACSi
+x-request-id: FzB6BV6Yq_qF_pkAACwD
 ```
 * __Response body:__
 ```json
@@ -4430,7 +4434,7 @@ x-request-id: FzAzo2-Mg4H1VzgAACSi
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer 932xbBey2dlfuScnb-RhG0B5ZJS5fiOGHrpWvKXc9lU=
+authorization: Bearer uPAcMSIwKDzVVvQH2fnQ9uH2jU6bup2lE3bOUr_ojag=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -4448,7 +4452,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3ACRHx61jwAACUi
+x-request-id: FzB6BWDojICmnCwAACZi
 ```
 * __Response body:__
 ```json
@@ -4472,7 +4476,7 @@ x-request-id: FzAzo3ACRHx61jwAACUi
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer q2HVi1UhyvaRrL0lLTLjKQIepeqvYZeWMBlQbHC5-Rk=
+authorization: Bearer qWA7dV0qy5pPTqRgGiTpEo13Ux0GPHy3--m-qlRmOm0=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -4485,7 +4489,8 @@ content-type: multipart/mixed; boundary=plug_conn_test
       20.3
     ],
     "type": "Point"
-  }
+  },
+  "home_location_reverse_geocoding": "home address string"
 }
 ```
 
@@ -4495,7 +4500,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3Jo3jSzILwAABoj
+x-request-id: FzB6BVq6yhNbkbIAABNk
 ```
 * __Response body:__
 ```json
@@ -4509,14 +4514,16 @@ x-request-id: FzAzo3Jo3jSzILwAABoj
         ],
         "type": "Point"
       },
-      "id": "235b13a2-855a-4106-b316-dfc8e71291e5",
-      "work_location": null
+      "home_location_reverse_geocoding": "home address string",
+      "id": "24e81aff-640a-4bb2-beb5-f995016f6db4",
+      "work_location": null,
+      "work_location_reverse_geocoding": null
     },
     "user": {
-      "email": "user-576460752303411004@example.com",
-      "id": "1d1e1fe4-b695-4ef5-be6e-daec4f7db7e8",
-      "name": "user-576460752303411036",
-      "phone": "12517"
+      "email": "user-576460752303414399@example.com",
+      "id": "ad78da57-5956-4e4c-8ae3-83dad3c06de3",
+      "name": "user-576460752303414431",
+      "phone": "9122"
     }
   }
 }
@@ -4530,7 +4537,7 @@ x-request-id: FzAzo3Jo3jSzILwAABoj
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer hSPKmKaz3BNQInddBCAgfvAiX9LpVqV11B3APZdyHuY=
+authorization: Bearer piU-PLqzve2LA6BdkDWfj8pwo3Qq4PKzv53qbVTKvjM=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -4543,7 +4550,8 @@ content-type: multipart/mixed; boundary=plug_conn_test
       20.3
     ],
     "type": "Point"
-  }
+  },
+  "work_location_reverse_geocoding": "work address string"
 }
 ```
 
@@ -4553,7 +4561,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3GM3IzZ6RAAACYC
+x-request-id: FzB6BWB8-nxt1jMAACmB
 ```
 * __Response body:__
 ```json
@@ -4561,20 +4569,22 @@ x-request-id: FzAzo3GM3IzZ6RAAACYC
   "data": {
     "customer": {
       "home_location": null,
-      "id": "ab0ef888-2dce-4dcb-8a6b-14e69ee3788c",
+      "home_location_reverse_geocoding": null,
+      "id": "c5c29b2d-b88b-4c80-a3fa-61a44a52f24b",
       "work_location": {
         "coordinates": [
           30.2,
           20.3
         ],
         "type": "Point"
-      }
+      },
+      "work_location_reverse_geocoding": "work address string"
     },
     "user": {
-      "email": "user-576460752303411324@example.com",
-      "id": "96fdcd93-dadb-4a2d-a446-e77b4eadacaa",
-      "name": "user-576460752303411356",
-      "phone": "12197"
+      "email": "user-576460752303413822@example.com",
+      "id": "63f7c7e2-04ed-4f5b-97b7-74c18416285e",
+      "name": "user-576460752303413854",
+      "phone": "9699"
     }
   }
 }
@@ -4588,14 +4598,14 @@ x-request-id: FzAzo3GM3IzZ6RAAACYC
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer ddW5l4FI8cEOBSvtVe86lPReYig1mxjPbo5tMF_J9NE=
+authorization: Bearer QV1htV3P6IHPRRzY2EqRlUFCHyJQHm2VQweqZNyl250=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
 ```json
 {
   "action": "update_profile",
-  "name": "user-576460752303411612",
+  "name": "user-576460752303413247",
   "phone": "123456"
 }
 ```
@@ -4606,7 +4616,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3Bu7e8fA8QAAC6E
+x-request-id: FzB6BV4-_61tN0oAACgh
 ```
 * __Response body:__
 ```json
@@ -4623,7 +4633,7 @@ x-request-id: FzAzo3Bu7e8fA8QAAC6E
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer E85zWvZnqGI0nptbH-8RxuWq1DR1JZOaqRthtt5dYAU=
+authorization: Bearer N_EA-EkUUUSPhRf2v1pray65WkUKqoqkk7sWO-8nZvc=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -4641,7 +4651,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2y83j9ZfMoAABgj
+x-request-id: FzB6BV0Q6I-FLGsAACdh
 ```
 * __Response body:__
 ```json
@@ -4662,11 +4672,11 @@ x-request-id: FzAzo2y83j9ZfMoAABgj
 
 ##### Request
 * __Method:__ GET
-* __Path:__ /api/confirm_email/qu1oUYzN0sTSb5RS1BQdLg2ITJzI8H0AskKRTaZwStg
+* __Path:__ /api/confirm_email/c2ukiQOfs4oIwIiFIzEKsoM444-35I3MJ3kFfoUC6Gg
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer iEsIvqc0HyFnk13pnwvUpuHnmkYcVHwgPm2n5j2ExRk=
+authorization: Bearer gENYsQxJ2GdiZ1TY6DaOl9KZhWOmJGgFuDpop3NFxb8=
 ```
 
 ##### Response
@@ -4675,7 +4685,7 @@ authorization: Bearer iEsIvqc0HyFnk13pnwvUpuHnmkYcVHwgPm2n5j2ExRk=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo2vwTq4zpVoAACCh
+x-request-id: FzB6BVx6qgGwbCAAABXE
 ```
 * __Response body:__
 ```json
@@ -4692,7 +4702,7 @@ x-request-id: FzAzo2vwTq4zpVoAACCh
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer kVwcW4A7BV4Hu6-1LCuLAx0oZqc6LT1PmVrTUDFSu1A=
+authorization: Bearer e1_AjN3wvx1lgiz6eZHF9sC2ZRN0aKQoUk3STUZniqo=
 ```
 
 ##### Response
@@ -4701,7 +4711,7 @@ authorization: Bearer kVwcW4A7BV4Hu6-1LCuLAx0oZqc6LT1PmVrTUDFSu1A=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo20e9hQl4wIAABij
+x-request-id: FzB6BVwBZSJKPT0AACXh
 ```
 * __Response body:__
 ```json
@@ -4724,7 +4734,7 @@ x-request-id: FzAzo20e9hQl4wIAABij
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer er9Hi4tMaExeIfami-juzWdtF37bvoMMDhm53GCur6M=
+authorization: Bearer N6JV6fZ-p-8hhvIC5Q56QzGmU14A-Enug1eYUVbOyr0=
 ```
 
 ##### Response
@@ -4733,14 +4743,14 @@ authorization: Bearer er9Hi4tMaExeIfami-juzWdtF37bvoMMDhm53GCur6M=
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3Rv0Hh9GJ4AADEE
+x-request-id: FzB6BWT7uGZa_5MAAB1k
 ```
 * __Response body:__
 ```json
 {
   "data": {
     "credit": 0,
-    "id": "78753697-edae-4f1f-b227-6473e99d33e4"
+    "id": "099ba1fd-98ac-42dd-9142-2ac40def83c4"
   }
 }
 ```
@@ -4750,11 +4760,11 @@ x-request-id: FzAzo3Rv0Hh9GJ4AADEE
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/wallet/3b831926-4de0-488b-8d13-602c42c0fee3
+* __Path:__ /api/wallet/89346f53-a222-490f-a031-e2b533e2d42b
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer Kve1_tMieiX2c2LI2Xmi8QfG_1xxLypkJUyPZGp3VIs=
+authorization: Bearer LCOisyzGdopK0e-NOp4ablhjoxlyHrpAiQaXcJLc7iQ=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -4771,14 +4781,14 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3POoCaeDnsAACdh
+x-request-id: FzB6BWRfYAU4BXgAAByk
 ```
 * __Response body:__
 ```json
 {
   "data": {
     "credit": 42,
-    "id": "3b831926-4de0-488b-8d13-602c42c0fee3"
+    "id": "89346f53-a222-490f-a031-e2b533e2d42b"
   }
 }
 ```
@@ -4787,11 +4797,11 @@ x-request-id: FzAzo3POoCaeDnsAACdh
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/wallet/3b831926-4de0-488b-8d13-602c42c0fee3
+* __Path:__ /api/wallet/89346f53-a222-490f-a031-e2b533e2d42b
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer Kve1_tMieiX2c2LI2Xmi8QfG_1xxLypkJUyPZGp3VIs=
+authorization: Bearer LCOisyzGdopK0e-NOp4ablhjoxlyHrpAiQaXcJLc7iQ=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -4809,14 +4819,14 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3P1VImeDnsAACeB
+x-request-id: FzB6BWSOHsw4BXgAACxB
 ```
 * __Response body:__
 ```json
 {
   "data": {
     "credit": 43,
-    "id": "3b831926-4de0-488b-8d13-602c42c0fee3"
+    "id": "89346f53-a222-490f-a031-e2b533e2d42b"
   }
 }
 ```
@@ -4825,11 +4835,11 @@ x-request-id: FzAzo3P1VImeDnsAACeB
 
 ##### Request
 * __Method:__ PUT
-* __Path:__ /api/wallet/e7a6cc81-dfe7-4dbb-a601-aed943057580
+* __Path:__ /api/wallet/1b51841d-d089-4b8d-babb-c0068a2cbd3b
 * __Request headers:__
 ```
 accept: application/json
-authorization: Bearer 5XB-WbnphHsfk7JdtNgtA23QBDMzmzJ6RlqWeVCzRPU=
+authorization: Bearer lcB3SJQ1C43PS2SPKEeTPBYWYNVHZP0ULrsJ-I2qyrU=
 content-type: multipart/mixed; boundary=plug_conn_test
 ```
 * __Request body:__
@@ -4845,7 +4855,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 * __Response headers:__
 ```
 cache-control: max-age=0, private, must-revalidate
-x-request-id: FzAzo3ZHXXvlqPcAACoB
+x-request-id: FzB6BWVWRiytaRgAAB4k
 content-type: application/json; charset=utf-8
 ```
 * __Response body:__

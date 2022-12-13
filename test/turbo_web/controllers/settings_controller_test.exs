@@ -129,11 +129,15 @@ defmodule TurboWeb.SettingsControllerTest do
           "home_location" => %{
             "coordinates" => [30.2, 20.3],
             "type" => "Point"
-          }
+          },
+          "home_location_reverse_geocoding" => "home address string"
         })
         |> doc
 
       assert json_response(conn, 200)["data"]["customer"]["home_location"]
+
+      assert "home address string" =
+               json_response(conn, 200)["data"]["customer"]["home_location_reverse_geocoding"]
     end
 
     test "updates the customer work address", %{conn: conn} do
@@ -143,11 +147,15 @@ defmodule TurboWeb.SettingsControllerTest do
           "work_location" => %{
             "coordinates" => [30.2, 20.3],
             "type" => "Point"
-          }
+          },
+          "work_location_reverse_geocoding" => "work address string"
         })
         |> doc
 
-      json_response(conn, 200)["data"]["customer"]["work_location"]
+      assert json_response(conn, 200)["data"]["customer"]["work_location"]
+
+      assert "work address string" =
+               json_response(conn, 200)["data"]["customer"]["work_location_reverse_geocoding"]
     end
   end
 

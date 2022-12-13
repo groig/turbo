@@ -16,7 +16,9 @@ defmodule TurboWeb.SettingsView do
         customer: %{
           id: user.customer.id,
           home_location: user.customer.home_location,
-          work_location: user.customer.work_location
+          home_location_reverse_geocoding: user.customer.home_location_reverse_geocoding,
+          work_location: user.customer.work_location,
+          work_location_reverse_geocoding: user.customer.work_location_reverse_geocoding
         }
       }
     }
