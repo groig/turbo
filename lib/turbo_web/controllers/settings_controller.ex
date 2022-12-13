@@ -37,15 +37,14 @@ defmodule TurboWeb.SettingsController do
     end
   end
 
-  def update(conn, %{"action" => "update_name"} = params) do
-    %{"name" => name} = params
+  def update(conn, %{"action" => "update_profile"} = params) do
     user = conn.assigns.current_user
 
-    with {:ok, _} <- Accounts.change_user_name(user, %{"name" => name}) do
+    with {:ok, _} <- Accounts.change_user_profile(user, params) do
       conn
       |> put_view(TurboWeb.MessageView)
       |> render("message.json",
-        message: "User name updated successfully"
+        message: "Profile updated successfully"
       )
     end
   end

@@ -95,10 +95,10 @@ defmodule Turbo.Accounts.User do
     end
   end
 
-  def name_changeset(user, attrs) do
+  def profile_changeset(user, attrs) do
     user
-    |> cast(attrs, [:name])
-    |> validate_required([:name])
+    |> cast(attrs, [:name, :phone])
+    |> validate_required([:name, :phone])
   end
 
   @doc """

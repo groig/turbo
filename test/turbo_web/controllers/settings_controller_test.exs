@@ -151,27 +151,29 @@ defmodule TurboWeb.SettingsControllerTest do
     end
   end
 
-  describe "PUT /settings (change name)" do
+  describe "PUT /settings (update profile)" do
     setup [:register_and_log_in_user]
     @tag :capture_log
-    test "updates the user name", %{conn: conn} do
+    test "updates the user profile", %{conn: conn} do
       new_name = "user#{System.unique_integer()}"
 
       conn =
         put(conn, Routes.settings_path(conn, :update), %{
-          "action" => "update_name",
-          "name" => new_name
+          "action" => "update_profile",
+          "name" => new_name,
+          "phone" => "123456"
         })
         |> doc
 
-      assert json_response(conn, 200)["message"] =~ "User name updated successfully"
+      assert json_response(conn, 200)["message"] =~ "Profile updated successfully"
     end
 
-    test "does not update name on invalid data", %{conn: conn} do
+    test "does not update profile on invalid data", %{conn: conn} do
       conn =
         put(conn, Routes.settings_path(conn, :update), %{
-          "action" => "update_name",
-          "name" => ""
+          "action" => "update_profile",
+          "name" => "",
+          "phone" => ""
         })
         |> doc
 
