@@ -10,10 +10,10 @@ defmodule TurboWeb.AuthControllerTest do
   end
 
   describe "POST /log_in" do
-    test "logs the user in", %{conn: conn, user: user} do
+    test "logs the user in with email", %{conn: conn, user: user} do
       conn =
         post(conn, Routes.auth_path(conn, :create), %{
-          "email" => user.email,
+          "email_or_phone" => user.email,
           "password" => valid_user_password()
         })
         |> doc
@@ -22,16 +22,40 @@ defmodule TurboWeb.AuthControllerTest do
       assert user.id == Accounts.get_user_by_token(token).id
     end
 
-    test "emits error message with invalid credentials", %{conn: conn, user: user} do
+    test "logs the user in with phone", %{conn: conn, user: user} do
       conn =
         post(conn, Routes.auth_path(conn, :create), %{
-          "email" => user.email,
+          "email_or_phone" => user.phone,
+          "password" => valid_user_password()
+        })
+        |> doc
+
+      assert %{"data" => %{"token" => token}} = Jason.decode!(conn.resp_body)
+      assert user.id == Accounts.get_user_by_token(token).id
+    end
+
+    test "emits error message with invalid credentials with email", %{conn: conn, user: user} do
+      conn =
+        post(conn, Routes.auth_path(conn, :create), %{
+          "email_or_phone" => user.email,
           "password" => "invalid_password"
         })
         |> doc
 
       assert conn.status == 401
-      assert conn.resp_body =~ "Invalid email or password"
+      assert conn.resp_body =~ "Invalid email, phone or password"
+    end
+
+    test "emits error message with invalid credentials with phone", %{conn: conn, user: user} do
+      conn =
+        post(conn, Routes.auth_path(conn, :create), %{
+          "email_or_phone" => user.phone,
+          "password" => "invalid_password"
+        })
+        |> doc
+
+      assert conn.status == 401
+      assert conn.resp_body =~ "Invalid email, phone or password"
     end
   end
 

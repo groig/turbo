@@ -65,7 +65,7 @@ defmodule TurboWeb.SettingsControllerTest do
       assert message =~ "Password updated successfully"
       refute Accounts.get_user_by_token(old_token)
       assert user.id == Accounts.get_user_by_token(new_token).id
-      assert Accounts.get_user_by_email_and_password(user.email, "new valid password")
+      assert Accounts.get_user_by_email_or_phone_and_password(user.email, "new valid password")
     end
 
     test "does not update password on invalid data", %{conn: conn} do

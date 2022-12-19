@@ -8,7 +8,7 @@ defmodule Turbo.Repo.Migrations.CreateUsersAuthTables do
       add :id, :binary_id, primary_key: true
       add :email, :citext, null: false
       add :name, :string
-      add :phone, :string
+      add :phone, :string, null: false
       add :hashed_password, :string, null: false
       add :confirmed_at, :naive_datetime
       add(:type, :string, default: "customer")

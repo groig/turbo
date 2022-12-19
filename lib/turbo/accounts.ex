@@ -43,16 +43,18 @@ defmodule Turbo.Accounts do
 
   ## Examples
 
-      iex> get_user_by_email_and_password("foo@example.com", "correct_password")
+      iex> get_user_by_email_or_phone_and_password("foo@example.com", "correct_password")
       %User{}
 
-      iex> get_user_by_email_and_password("foo@example.com", "invalid_password")
+      iex> get_user_by_email_or_phone_and_password("foo@example.com", "invalid_password")
       nil
 
   """
-  def get_user_by_email_and_password(email, password)
-      when is_binary(email) and is_binary(password) do
-    user = Repo.get_by(User, email: email)
+  def get_user_by_email_or_phone_and_password(email_or_phone, password)
+      when is_binary(email_or_phone) and is_binary(password) do
+    user =
+      Repo.one(from u in User, where: u.email == ^email_or_phone or u.phone == ^email_or_phone)
+
     if User.valid_password?(user, password), do: user
   end
 

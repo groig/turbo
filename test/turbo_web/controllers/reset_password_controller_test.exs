@@ -51,7 +51,7 @@ defmodule TurboWeb.ResetPasswordControllerTest do
         |> doc
 
       assert conn.resp_body =~ "Password reset successfully"
-      assert Accounts.get_user_by_email_and_password(user.email, "new valid password")
+      assert Accounts.get_user_by_email_or_phone_and_password(user.email, "new valid password")
     end
 
     test "does not reset password on invalid data", %{conn: conn, token: token} do
