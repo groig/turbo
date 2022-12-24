@@ -189,6 +189,24 @@ defmodule TurboWeb.SettingsControllerTest do
     end
   end
 
+  describe "PUT /settings (update picture)" do
+    setup [:register_and_log_in_user]
+    @tag :capture_log
+    test "updates the user picture", %{conn: conn, user: user} do
+      picture_upload = %Plug.Upload{path: "test/support/fixtures/pic.png", filename: "pic.png"}
+
+      conn =
+        put(conn, Routes.settings_path(conn, :update), %{
+          "action" => "update_picture",
+          "picture" => picture_upload
+        })
+        |> doc
+
+      assert json_response(conn, 200)["message"] =~ "Picture updated successfully"
+      assert File.exists?("uploads/avatars/#{user.id}/original.png")
+    end
+  end
+
   describe "GET /users/settings/confirm_email/:token" do
     setup [:register_and_log_in_user]
 
