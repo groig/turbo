@@ -1,5 +1,6 @@
 defmodule Turbo.Accounts.User do
   use Ecto.Schema
+  use Waffle.Ecto.Schema
   import Ecto.Changeset
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
@@ -9,6 +10,7 @@ defmodule Turbo.Accounts.User do
     field :email, :string
     field :name, :string
     field :phone, :string
+    field :picture, Turbo.ProfileImage.Type
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
     field :confirmed_at, :naive_datetime
@@ -126,6 +128,13 @@ defmodule Turbo.Accounts.User do
   def confirm_changeset(user) do
     now = NaiveDateTime.utc_now() |> NaiveDateTime.truncate(:second)
     change(user, confirmed_at: now)
+  end
+
+  @doc false
+  def picture_changeset(user, attrs) do
+    user
+    |> cast_attachments(attrs, [:picture], allow_paths: true)
+    |> validate_required([:picture])
   end
 
   @doc """

@@ -174,6 +174,10 @@ defmodule Turbo.Accounts do
     User.profile_changeset(user, attrs) |> Repo.update()
   end
 
+  def change_user_picture(user, attrs \\ %{}) do
+    User.picture_changeset(user, attrs) |> Repo.update()
+  end
+
   @doc """
   Emulates that the email will change without actually changing
   it in the database.

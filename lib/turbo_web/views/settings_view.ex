@@ -6,13 +6,27 @@ defmodule TurboWeb.SettingsView do
   end
 
   def render("show_admin.json", %{user: user}) do
-    %{data: %{user: %{id: user.id, name: user.name, email: user.email, phone: user.phone}}}
+    %{
+      data: %{
+        user: %{
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          phone: user.phone
+        }
+      }
+    }
   end
 
   def render("show_customer.json", %{user: user}) do
     %{
       data: %{
-        user: %{id: user.id, name: user.name, email: user.email, phone: user.phone},
+        user: %{
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          phone: user.phone
+        },
         customer: %{
           id: user.customer.id,
           home_location: user.customer.home_location,
@@ -27,7 +41,12 @@ defmodule TurboWeb.SettingsView do
   def render("show_driver.json", %{user: user}) do
     %{
       data: %{
-        user: %{id: user.id, name: user.name, email: user.email, phone: user.phone},
+        user: %{
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          phone: user.phone
+        },
         driver: %{id: user.driver.id, license: user.driver.license}
       }
     }

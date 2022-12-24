@@ -59,6 +59,8 @@ defmodule Turbo.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:geo_postgis, "~> 3.4"},
       {:geocalc, "~> 0.8"},
+      {:waffle, "~> 1.1.5"},
+      {:waffle_ecto, "~> 0.0.11"},
       {:bureaucrat, "~> 0.2.9"},
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
       {:excoveralls, "~> 0.14", only: [:dev, :test]}

@@ -49,6 +49,18 @@ defmodule TurboWeb.SettingsController do
     end
   end
 
+  def update(conn, %{"action" => "update_picture"} = params) do
+    user = conn.assigns.current_user
+
+    with {:ok, _} <- Accounts.change_user_picture(user, params) do
+      conn
+      |> put_view(TurboWeb.MessageView)
+      |> render("message.json",
+        message: "Picture updated successfully"
+      )
+    end
+  end
+
   def update(conn, %{"action" => "update_password"} = params) do
     %{"current_password" => password, "passwords" => passwords} = params
     user = conn.assigns.current_user
