@@ -204,6 +204,10 @@ defmodule TurboWeb.SettingsControllerTest do
 
       assert json_response(conn, 200)["message"] =~ "Picture updated successfully"
       assert File.exists?("uploads/avatars/#{user.id}/original.png")
+
+      conn = get(conn, "/uploads/avatars/#{user.id}/original.png")
+
+      assert conn.status == 200
     end
   end
 
