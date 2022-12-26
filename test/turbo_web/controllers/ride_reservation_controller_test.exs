@@ -56,7 +56,7 @@ defmodule TurboWeb.RideReservationControllerTest do
 
   describe "index" do
     test "lists all reservations", %{conn: conn} do
-      conn = get(conn, Routes.ride_reservation_path(conn, :index))
+      conn = get(conn, Routes.ride_reservation_path(conn, :index)) |> doc
       assert json_response(conn, 200)["data"] == []
     end
   end
@@ -65,10 +65,11 @@ defmodule TurboWeb.RideReservationControllerTest do
     test "renders ride_reservation when data is valid", %{conn: conn} do
       conn =
         post(conn, Routes.ride_reservation_path(conn, :create), ride_reservation: @create_attrs)
+        |> doc
 
       assert %{"id" => id} = json_response(conn, 201)["data"]
 
-      conn = get(conn, Routes.ride_reservation_path(conn, :show, id))
+      conn = get(conn, Routes.ride_reservation_path(conn, :show, id)) |> doc
 
       assert %{
                "id" => ^id,
@@ -83,6 +84,7 @@ defmodule TurboWeb.RideReservationControllerTest do
     test "renders errors when data is invalid", %{conn: conn} do
       conn =
         post(conn, Routes.ride_reservation_path(conn, :create), ride_reservation: @invalid_attrs)
+        |> doc
 
       assert json_response(conn, 422)["errors"] != %{}
     end
@@ -99,10 +101,11 @@ defmodule TurboWeb.RideReservationControllerTest do
         put(conn, Routes.ride_reservation_path(conn, :update, ride_reservation),
           ride_reservation: @update_attrs
         )
+        |> doc
 
       assert %{"id" => ^id} = json_response(conn, 200)["data"]
 
-      conn = get(conn, Routes.ride_reservation_path(conn, :show, id))
+      conn = get(conn, Routes.ride_reservation_path(conn, :show, id)) |> doc
 
       assert %{
                "id" => ^id,
@@ -119,6 +122,7 @@ defmodule TurboWeb.RideReservationControllerTest do
         put(conn, Routes.ride_reservation_path(conn, :update, ride_reservation),
           ride_reservation: @invalid_attrs
         )
+        |> doc
 
       assert json_response(conn, 422)["errors"] != %{}
     end
@@ -128,11 +132,11 @@ defmodule TurboWeb.RideReservationControllerTest do
     setup [:create_ride_reservation]
 
     test "deletes chosen ride_reservation", %{conn: conn, ride_reservation: ride_reservation} do
-      conn = delete(conn, Routes.ride_reservation_path(conn, :delete, ride_reservation))
+      conn = delete(conn, Routes.ride_reservation_path(conn, :delete, ride_reservation)) |> doc
       assert response(conn, 204)
 
       assert_error_sent 404, fn ->
-        get(conn, Routes.ride_reservation_path(conn, :show, ride_reservation))
+        get(conn, Routes.ride_reservation_path(conn, :show, ride_reservation)) |> doc
       end
     end
   end
