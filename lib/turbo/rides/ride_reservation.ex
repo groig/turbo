@@ -7,11 +7,15 @@ defmodule Turbo.Rides.RideReservation do
   schema "reservations" do
     field :baggage, :boolean, default: false
     field :car_type, Ecto.Enum, values: [:standard, :premium, :familiar], default: :standard
+    field :status, Ecto.Enum, values: [:requested, :pending, :approved], default: :requested
     field :end_location, Geo.PostGIS.Geometry
     field :start_location, Geo.PostGIS.Geometry
     field :identity_card, :string
     field :name, :string
     field :passenger_amount, :integer
+    field :start_time, :naive_datetime
+    field :price, :decimal
+    field :time, :integer
     belongs_to :customer, Turbo.Customers.Customer
 
     timestamps()
@@ -28,7 +32,8 @@ defmodule Turbo.Rides.RideReservation do
       :baggage,
       :passenger_amount,
       :car_type,
-      :customer_id
+      :customer_id,
+      :start_time
     ])
     |> validate_required([
       :name,
@@ -38,7 +43,8 @@ defmodule Turbo.Rides.RideReservation do
       :baggage,
       :passenger_amount,
       :car_type,
-      :customer_id
+      :customer_id,
+      :start_time
     ])
   end
 end

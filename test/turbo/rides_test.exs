@@ -139,7 +139,8 @@ defmodule Turbo.RidesTest do
         passenger_amount: 42,
         start_location: %Geo.Point{coordinates: {30.20, 20.30}, srid: 4326},
         end_location: %Geo.Point{coordinates: {30.20, 20.30}, srid: 4326},
-        customer_id: customer.id
+        customer_id: customer.id,
+        start_time: ~N[2018-11-15 10:00:00]
       }
 
       assert {:ok, %RideReservation{} = ride_reservation} =

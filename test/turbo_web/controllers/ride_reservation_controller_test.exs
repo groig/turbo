@@ -22,7 +22,8 @@ defmodule TurboWeb.RideReservationControllerTest do
     },
     name: "some name",
     passenger_amount: 42,
-    identity_card: "some identity_card"
+    identity_card: "some identity_card",
+    start_time: ~N[2018-11-15 10:00:00]
   }
   @update_attrs %{
     baggage: false,
