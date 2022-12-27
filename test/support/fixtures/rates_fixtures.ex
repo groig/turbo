@@ -15,7 +15,7 @@ defmodule Turbo.RatesFixtures do
         end: ~T[21:34:00],
         name: "some name",
         rate_per_km_standard: 42,
-        rate_per_km_comfort: 42,
+        rate_per_km_premium: 42,
         rate_per_km_familiar: 42,
         start: ~T[20:34:00]
       })
@@ -36,7 +36,7 @@ defmodule Turbo.RatesFixtures do
         description: "some description",
         name: "some name",
         fixed_rate_standard: 42,
-        fixed_rate_comfort: 42,
+        fixed_rate_premium: 42,
         fixed_rate_familiar: 42
       })
       |> Turbo.Rates.create_area_rate()

@@ -11,10 +11,10 @@ defmodule Turbo.Rates.Rate do
     field :end, :time
     field :name, :string
     field :rate_per_km_standard, :integer
-    field :rate_per_km_comfort, :integer
+    field :rate_per_km_premium, :integer
     field :rate_per_km_familiar, :integer
     field :fixed_rate_standard, :integer
-    field :fixed_rate_comfort, :integer
+    field :fixed_rate_premium, :integer
     field :fixed_rate_familiar, :integer
     field :start, :time
     field :enabled, :boolean, default: true
@@ -31,7 +31,7 @@ defmodule Turbo.Rates.Rate do
       :start,
       :end,
       :rate_per_km_standard,
-      :rate_per_km_comfort,
+      :rate_per_km_premium,
       :rate_per_km_familiar
     ])
     |> validate_required([
@@ -39,7 +39,7 @@ defmodule Turbo.Rates.Rate do
       :start,
       :end,
       :rate_per_km_standard,
-      :rate_per_km_comfort,
+      :rate_per_km_premium,
       :rate_per_km_familiar
     ])
     |> validate_time_interval
@@ -70,14 +70,14 @@ defmodule Turbo.Rates.Rate do
       :description,
       :area,
       :fixed_rate_standard,
-      :fixed_rate_comfort,
+      :fixed_rate_premium,
       :fixed_rate_familiar
     ])
     |> validate_required([
       :name,
       :area,
       :fixed_rate_standard,
-      :fixed_rate_comfort,
+      :fixed_rate_premium,
       :fixed_rate_familiar
     ])
     |> put_change(:type, :area)

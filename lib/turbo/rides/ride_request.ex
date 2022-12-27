@@ -7,7 +7,7 @@ defmodule Turbo.Rides.RideRequest do
   schema "ride_requests" do
     field :start_location, Geo.PostGIS.Geometry
     field :end_location, Geo.PostGIS.Geometry
-    field :type, Ecto.Enum, values: [:standard, :comfort, :familiar], default: :standard
+    field :type, Ecto.Enum, values: [:standard, :premium, :familiar], default: :standard
     field :accepted, :boolean, default: false
     belongs_to :customer, Turbo.Customers.Customer
     has_one :ride, Turbo.Rides.Ride

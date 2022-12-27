@@ -26,7 +26,7 @@ defmodule TurboWeb.RideReservationControllerTest do
   }
   @update_attrs %{
     baggage: false,
-    car_type: :comfort,
+    car_type: :premium,
     end_location: %{
       coordinates: [-82.398, 23.137],
       type: "Point"
@@ -110,7 +110,7 @@ defmodule TurboWeb.RideReservationControllerTest do
       assert %{
                "id" => ^id,
                "baggage" => false,
-               "car_type" => "comfort",
+               "car_type" => "premium",
                "identity_card" => "some updated identity_card",
                "name" => "some updated name",
                "passenger_amount" => 43

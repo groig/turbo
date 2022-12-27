@@ -161,7 +161,7 @@ defmodule Turbo.RidesTest do
 
       update_attrs = %{
         baggage: false,
-        car_type: :comfort,
+        car_type: :premium,
         start_location: %Geo.Point{coordinates: {30.20, 20.30}, srid: 4326},
         end_location: %Geo.Point{coordinates: {30.20, 20.30}, srid: 4326},
         identity_card: "some updated identity_card",
@@ -173,7 +173,7 @@ defmodule Turbo.RidesTest do
                Rides.update_ride_reservation(ride_reservation, update_attrs)
 
       assert ride_reservation.baggage == false
-      assert ride_reservation.car_type == :comfort
+      assert ride_reservation.car_type == :premium
       assert ride_reservation.identity_card == "some updated identity_card"
       assert ride_reservation.name == "some updated name"
       assert ride_reservation.passenger_amount == 43

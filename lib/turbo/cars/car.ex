@@ -9,7 +9,7 @@ defmodule Turbo.Cars.Car do
     field :license_plate, :string
     field :make, :string
     field :model, :string
-    field :type, Ecto.Enum, values: [:standard, :comfort, :familiar], default: :standard
+    field :type, Ecto.Enum, values: [:standard, :premium, :familiar], default: :standard
     belongs_to :driver, Turbo.Drivers.Driver
 
     timestamps()

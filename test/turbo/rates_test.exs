@@ -34,7 +34,7 @@ defmodule Turbo.RatesTest do
         end: ~T[21:34:00],
         name: "some name",
         rate_per_km_standard: 42,
-        rate_per_km_comfort: 43,
+        rate_per_km_premium: 43,
         rate_per_km_familiar: 44,
         start: ~T[20:34:00]
       }
@@ -44,7 +44,7 @@ defmodule Turbo.RatesTest do
       assert rate.end == ~T[21:34:00]
       assert rate.name == "some name"
       assert rate.rate_per_km_standard == 42
-      assert rate.rate_per_km_comfort == 43
+      assert rate.rate_per_km_premium == 43
       assert rate.rate_per_km_familiar == 44
       assert rate.start == ~T[20:34:00]
       assert rate.type == :time
@@ -57,7 +57,7 @@ defmodule Turbo.RatesTest do
         end: ~T[19:34:00],
         name: "some name",
         rate_per_km_standard: 42,
-        rate_per_km_comfort: 43,
+        rate_per_km_premium: 43,
         rate_per_km_familiar: 44
       }
 
@@ -74,7 +74,7 @@ defmodule Turbo.RatesTest do
         description: "some description",
         name: "some name",
         fixed_rate_standard: 42,
-        fixed_rate_comfort: 43,
+        fixed_rate_premium: 43,
         fixed_rate_familiar: 44
       }
 
@@ -82,7 +82,7 @@ defmodule Turbo.RatesTest do
       assert rate.description == "some description"
       assert rate.name == "some name"
       assert rate.fixed_rate_standard == 42
-      assert rate.fixed_rate_comfort == 43
+      assert rate.fixed_rate_premium == 43
       assert rate.fixed_rate_familiar == 44
       assert rate.type == :area
     end
@@ -95,7 +95,7 @@ defmodule Turbo.RatesTest do
         end: ~T[21:34:00],
         name: "some updated name",
         rate_per_km_standard: 43,
-        rate_per_km_comfort: 44,
+        rate_per_km_premium: 44,
         rate_per_km_familiar: 45,
         start: ~T[20:34:00]
       }
@@ -105,7 +105,7 @@ defmodule Turbo.RatesTest do
       assert rate.end == ~T[21:34:00]
       assert rate.name == "some updated name"
       assert rate.rate_per_km_standard == 43
-      assert rate.rate_per_km_comfort == 44
+      assert rate.rate_per_km_premium == 44
       assert rate.rate_per_km_familiar == 45
       assert rate.start == ~T[20:34:00]
     end
@@ -117,7 +117,7 @@ defmodule Turbo.RatesTest do
         description: "some updated description",
         name: "some updated name",
         fixed_rate_standard: 43,
-        fixed_rate_comfort: 44,
+        fixed_rate_premium: 44,
         fixed_rate_familiar: 45,
         area: %Geo.Polygon{
           coordinates: [
@@ -130,7 +130,7 @@ defmodule Turbo.RatesTest do
       assert rate.description == "some updated description"
       assert rate.name == "some updated name"
       assert rate.fixed_rate_standard == 43
-      assert rate.fixed_rate_comfort == 44
+      assert rate.fixed_rate_premium == 44
       assert rate.fixed_rate_familiar == 45
     end
 
@@ -213,7 +213,7 @@ defmodule Turbo.RatesTest do
       assert Rates.get_rate_for_ride(:standard, ~T[09:25:00], 1, @destination_1) ==
                config.min_rate
 
-      assert Rates.get_rate_for_ride(:comfort, ~T[09:25:00], 1, @destination_1) == config.min_rate
+      assert Rates.get_rate_for_ride(:premium, ~T[09:25:00], 1, @destination_1) == config.min_rate
 
       assert Rates.get_rate_for_ride(:familiar, ~T[09:25:00], 1, @destination_1) ==
                config.min_rate
@@ -221,25 +221,25 @@ defmodule Turbo.RatesTest do
       assert Rates.get_rate_for_ride(:standard, ~T[09:25:00], 2, @destination_2) ==
                config.min_rate
 
-      assert Rates.get_rate_for_ride(:comfort, ~T[09:25:00], 2, @destination_2) == config.min_rate
+      assert Rates.get_rate_for_ride(:premium, ~T[09:25:00], 2, @destination_2) == config.min_rate
       assert Rates.get_rate_for_ride(:familiar, ~T[09:25:00], 2, @destination_2) == 400
 
       assert Rates.get_rate_for_ride(:standard, ~T[19:25:00], 2, @destination_1) ==
                config.min_rate
 
-      assert Rates.get_rate_for_ride(:comfort, ~T[19:25:00], 2, @destination_1) == 300
+      assert Rates.get_rate_for_ride(:premium, ~T[19:25:00], 2, @destination_1) == 300
       assert Rates.get_rate_for_ride(:familiar, ~T[19:25:00], 2, @destination_1) == 500
 
       assert Rates.get_rate_for_ride(:standard, ~T[19:25:00], 4, @destination_2) == 400
-      assert Rates.get_rate_for_ride(:comfort, ~T[19:25:00], 4, @destination_2) == 600
+      assert Rates.get_rate_for_ride(:premium, ~T[19:25:00], 4, @destination_2) == 600
       assert Rates.get_rate_for_ride(:familiar, ~T[19:25:00], 4, @destination_2) == 1000
 
       assert Rates.get_rate_for_ride(:standard, ~T[00:25:00], 3, @destination_1) == 450
-      assert Rates.get_rate_for_ride(:comfort, ~T[00:25:00], 3, @destination_1) == 600
+      assert Rates.get_rate_for_ride(:premium, ~T[00:25:00], 3, @destination_1) == 600
       assert Rates.get_rate_for_ride(:familiar, ~T[00:25:00], 3, @destination_1) == 900
 
       assert Rates.get_rate_for_ride(:standard, ~T[00:25:00], 6, @destination_2) == 900
-      assert Rates.get_rate_for_ride(:comfort, ~T[00:25:00], 6, @destination_2) == 1200
+      assert Rates.get_rate_for_ride(:premium, ~T[00:25:00], 6, @destination_2) == 1200
       assert Rates.get_rate_for_ride(:familiar, ~T[00:25:00], 6, @destination_2) == 1800
     end
 
@@ -252,11 +252,11 @@ defmodule Turbo.RatesTest do
 
     test "get_rate_for_ride/4 returns the correct rate by destination area" do
       assert Rates.get_rate_for_ride(:standard, ~T[09:25:00], 1, @destination_area_1) == 10
-      assert Rates.get_rate_for_ride(:comfort, ~T[09:25:00], 1, @destination_area_1) == 20
+      assert Rates.get_rate_for_ride(:premium, ~T[09:25:00], 1, @destination_area_1) == 20
       assert Rates.get_rate_for_ride(:familiar, ~T[09:25:00], 1, @destination_area_1) == 30
 
       assert Rates.get_rate_for_ride(:standard, ~T[09:25:00], 2, @destination_area_2) == 40
-      assert Rates.get_rate_for_ride(:comfort, ~T[09:25:00], 2, @destination_area_2) == 50
+      assert Rates.get_rate_for_ride(:premium, ~T[09:25:00], 2, @destination_area_2) == 50
       assert Rates.get_rate_for_ride(:familiar, ~T[09:25:00], 2, @destination_area_2) == 60
     end
   end
@@ -266,7 +266,7 @@ defmodule Turbo.RatesTest do
       start: ~T[08:00:00],
       end: ~T[18:00:00],
       rate_per_km_standard: 50,
-      rate_per_km_comfort: 100,
+      rate_per_km_premium: 100,
       rate_per_km_familiar: 200
     })
 
@@ -274,7 +274,7 @@ defmodule Turbo.RatesTest do
       start: ~T[18:00:00],
       end: ~T[22:00:00],
       rate_per_km_standard: 100,
-      rate_per_km_comfort: 150,
+      rate_per_km_premium: 150,
       rate_per_km_familiar: 250
     })
 
@@ -282,7 +282,7 @@ defmodule Turbo.RatesTest do
       start: ~T[22:00:00],
       end: ~T[23:59:00],
       rate_per_km_standard: 150,
-      rate_per_km_comfort: 200,
+      rate_per_km_premium: 200,
       rate_per_km_familiar: 300
     })
 
@@ -290,21 +290,21 @@ defmodule Turbo.RatesTest do
       start: ~T[00:00:00],
       end: ~T[08:00:00],
       rate_per_km_standard: 150,
-      rate_per_km_comfort: 200,
+      rate_per_km_premium: 200,
       rate_per_km_familiar: 300
     })
 
     area_rate_fixture(%{
       area: @area_1,
       fixed_rate_standard: 10,
-      fixed_rate_comfort: 20,
+      fixed_rate_premium: 20,
       fixed_rate_familiar: 30
     })
 
     area_rate_fixture(%{
       area: @area_2,
       fixed_rate_standard: 40,
-      fixed_rate_comfort: 50,
+      fixed_rate_premium: 50,
       fixed_rate_familiar: 60
     })
 

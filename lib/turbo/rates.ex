@@ -186,8 +186,8 @@ defmodule Turbo.Rates do
     rate.fixed_rate_standard
   end
 
-  defp get_fixed_rate(rate, :comfort) do
-    rate.fixed_rate_comfort
+  defp get_fixed_rate(rate, :premium) do
+    rate.fixed_rate_premium
   end
 
   defp get_fixed_rate(rate, :familiar) do
@@ -198,8 +198,8 @@ defmodule Turbo.Rates do
     rate.rate_per_km_standard * distance
   end
 
-  defp get_rate_per_km(rate, distance, :comfort) do
-    rate.rate_per_km_comfort * distance
+  defp get_rate_per_km(rate, distance, :premium) do
+    rate.rate_per_km_premium * distance
   end
 
   defp get_rate_per_km(rate, distance, :familiar) do

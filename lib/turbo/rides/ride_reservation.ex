@@ -6,7 +6,7 @@ defmodule Turbo.Rides.RideReservation do
   @foreign_key_type :binary_id
   schema "reservations" do
     field :baggage, :boolean, default: false
-    field :car_type, Ecto.Enum, values: [:standard, :comfort, :familiar], default: :standard
+    field :car_type, Ecto.Enum, values: [:standard, :premium, :familiar], default: :standard
     field :end_location, Geo.PostGIS.Geometry
     field :start_location, Geo.PostGIS.Geometry
     field :identity_card, :string

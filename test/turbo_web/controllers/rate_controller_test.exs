@@ -10,7 +10,7 @@ defmodule TurboWeb.RateControllerTest do
     end: ~T[21:34:00],
     name: "some name",
     rate_per_km_standard: 42,
-    rate_per_km_comfort: 43,
+    rate_per_km_premium: 43,
     rate_per_km_familiar: 44,
     start: ~T[20:34:00]
   }
@@ -19,7 +19,7 @@ defmodule TurboWeb.RateControllerTest do
     description: "some description",
     name: "some name",
     fixed_rate_standard: 42,
-    fixed_rate_comfort: 43,
+    fixed_rate_premium: 43,
     fixed_rate_familiar: 44,
     area: %{
       "coordinates" => [
@@ -34,7 +34,7 @@ defmodule TurboWeb.RateControllerTest do
     end: ~T[21:34:00],
     name: "some updated name",
     rate_per_km_standard: 43,
-    rate_per_km_comfort: 44,
+    rate_per_km_premium: 44,
     rate_per_km_familiar: 45,
     start: ~T[20:34:00]
   }
@@ -43,7 +43,7 @@ defmodule TurboWeb.RateControllerTest do
     description: "some updated description",
     name: "some updated name",
     fixed_rate_standard: 43,
-    fixed_rate_comfort: 44,
+    fixed_rate_premium: 44,
     fixed_rate_familiar: 45,
     area: %{
       "coordinates" => [
@@ -91,7 +91,7 @@ defmodule TurboWeb.RateControllerTest do
                "end" => "21:34:00",
                "name" => "some name",
                "rate_per_km_standard" => 42,
-               "rate_per_km_comfort" => 43,
+               "rate_per_km_premium" => 43,
                "rate_per_km_familiar" => 44,
                "start" => "20:34:00"
              } = json_response(conn, 200)["data"]
@@ -117,7 +117,7 @@ defmodule TurboWeb.RateControllerTest do
                "description" => "some description",
                "name" => "some name",
                "fixed_rate_standard" => 42,
-               "fixed_rate_comfort" => 43,
+               "fixed_rate_premium" => 43,
                "fixed_rate_familiar" => 44
              } = json_response(conn, 200)["data"]
     end
@@ -146,7 +146,7 @@ defmodule TurboWeb.RateControllerTest do
                "end" => "21:34:00",
                "name" => "some updated name",
                "rate_per_km_standard" => 43,
-               "rate_per_km_comfort" => 44,
+               "rate_per_km_premium" => 44,
                "rate_per_km_familiar" => 45,
                "start" => "20:34:00"
              } = json_response(conn, 200)["data"]
@@ -177,7 +177,7 @@ defmodule TurboWeb.RateControllerTest do
                "description" => "some updated description",
                "name" => "some updated name",
                "fixed_rate_standard" => 43,
-               "fixed_rate_comfort" => 44,
+               "fixed_rate_premium" => 44,
                "fixed_rate_familiar" => 45
              } = json_response(conn, 200)["data"]
     end
@@ -302,7 +302,7 @@ defmodule TurboWeb.RateControllerTest do
       start: ~T[08:00:00],
       end: ~T[18:00:00],
       rate_per_km_standard: 1,
-      rate_per_km_comfort: 2,
+      rate_per_km_premium: 2,
       rate_per_km_familiar: 3
     })
 
@@ -310,7 +310,7 @@ defmodule TurboWeb.RateControllerTest do
       start: ~T[18:00:00],
       end: ~T[22:00:00],
       rate_per_km_standard: 4,
-      rate_per_km_comfort: 5,
+      rate_per_km_premium: 5,
       rate_per_km_familiar: 6
     })
 
@@ -318,7 +318,7 @@ defmodule TurboWeb.RateControllerTest do
       start: ~T[22:00:00],
       end: ~T[23:59:00],
       rate_per_km_standard: 7,
-      rate_per_km_comfort: 8,
+      rate_per_km_premium: 8,
       rate_per_km_familiar: 9
     })
 
@@ -326,21 +326,21 @@ defmodule TurboWeb.RateControllerTest do
       start: ~T[00:00:00],
       end: ~T[08:00:00],
       rate_per_km_standard: 7,
-      rate_per_km_comfort: 8,
+      rate_per_km_premium: 8,
       rate_per_km_familiar: 9
     })
 
     area_rate_fixture(%{
       area: @area_1,
       fixed_rate_standard: 10,
-      fixed_rate_comfort: 20,
+      fixed_rate_premium: 20,
       fixed_rate_familiar: 30
     })
 
     area_rate_fixture(%{
       area: @area_2,
       fixed_rate_standard: 40,
-      fixed_rate_comfort: 50,
+      fixed_rate_premium: 50,
       fixed_rate_familiar: 60
     })
 
