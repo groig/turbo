@@ -7,7 +7,7 @@ on:
 
 jobs:
   test-and-release:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     services:
       db:
         image: postgis/postgis
@@ -34,40 +34,3 @@ jobs:
       - run: mix deps.get
       - run: mix format --check-formatted
       - run: mix test
-      - run: mix assets.deploy
-        env:
-          MIX_ENV: prod
-      - run: mix release
-        env:
-          MIX_ENV: prod
-      - run: tar -C _build/prod/rel -cf release.tar turbo
-      - uses: actions/upload-artifact@v3
-        with:
-          name: release.tar
-          path: release.tar # or path/to/artifact
-          retention-days: 3
-      - uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          passphrase: ${{ secrets.SSH_PASSPHRASE }}
-          source: "release.tar"
-          target: "/opt/"
-      - uses: appleboy/ssh-action@master
-        env:
-          SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          passphrase: ${{ secrets.SSH_PASSPHRASE }}
-          envs: SECRET_KEY_BASE
-          script: |
-            systemctl stop turbo
-            tar -xf /opt/release.tar -C /opt --overwrite
-            export SECRET_KEY_BASE=${{secrets.SECRET_KEY_BASE}}
-            /opt/turbo/bin/migrate
-            systemctl restart turbo
